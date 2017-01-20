@@ -1,0 +1,4 @@
+= render 'shared/user_header', user: @user
+
+.cards
+  = render partial: 'companies/company', collection: @companies.map { |c| CompanyDecorator.new(c) }

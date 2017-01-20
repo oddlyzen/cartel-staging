@@ -1,0 +1,5 @@
+.nested-fields
+  = f.association :language, as: :select, placeholder: 'Select a language', input_html: { data: { klass: 'Language', url: my_tags_path(format: :json) } }, wrapper: :selectize
+  = f.input :level, collection: options_for_enum(LanguageProficiency.levels), prompt: 'Please select'
+  = link_to_remove_association 'Remove', f, class: 'btn btn-default'
+  hr

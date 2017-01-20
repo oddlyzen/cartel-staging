@@ -1,0 +1,8 @@
+.col-md-3
+  .card
+    = link_to artist_artwork_path(@artist, artwork.id), remote: true, data: { toggle: 'modal', target: '#modal' }, id: "artwork_#{artwork.id}" do
+      .img-md
+        = image_tag artwork.image_url
+    .details
+      b = artwork.title
+      p = artwork.year

@@ -1,0 +1,7 @@
+$('.cards').append("<%=j render(partial: 'professional', collection: @professionals) %>");
+
+<% if @professionals.current_page == @professionals.total_pages %>
+  $('#load-more').remove();
+<% else %>
+  $('#load-more a').attr('href', '<%= professionals_path(page: @professionals.current_page + 1) %>');
+<% end %>

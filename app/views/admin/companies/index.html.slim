@@ -1,0 +1,28 @@
+.row
+  .col-xs-1
+    = render partial: 'admin/menubar'
+  .col-xs-11
+    h1 Companies
+
+    .table-responsive
+      table.table.table-hover
+        thead
+          tr
+            th Company Name
+            th Address
+            th Year Established
+            th Opening Times
+            th Contact
+            th Action
+        tbody
+          - @companies.each do |company|
+             tr
+              td = company.name
+              td = company.full_address
+              td = company.established_in
+              td = company.opening_time
+              td = company.closing_time
+              td = company.contact
+              td
+                = link_to 'View', company_path(company), class: 'btn btn-default'
+                = link_to 'Edit', edit_admin_company_path(company), class: 'btn btn-primary'

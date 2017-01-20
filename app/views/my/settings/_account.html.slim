@@ -1,0 +1,28 @@
+.modal-title We're sorry to see you go
+.account
+  .row
+    = simple_form_for(@user, url: deactivate_my_settings_path, method: :put) do |f|
+      .col-xs-8.col-xs-offset-2
+        .text-center
+          p Why are you deactivating your account?
+        .form-group
+          span.radio
+            = f.radio_button :reason_deactivating, 'Inappropriate content & information',
+              checked: true
+            = f.label :reason_deactivating, 'Inappropriate content & information',
+              value: 'Inappropriate content & information'
+          span.radio
+            = f.radio_button :reason_deactivating, 'It does not add much value'
+            = f.label :reason_deactivating, 'It does not add much value',
+              value: 'It does not add much value'
+          span.radio
+            = f.radio_button :reason_deactivating, 'I am using another professional service'
+            = f.label :reason_deactivating, 'I am using another professional service',
+              value: 'I am using another professional service'
+          span.radio
+            = f.radio_button :reason_deactivating, 'other', id: 'other_radio', value: 'Other'
+            label#other_label
+            = text_field_tag 'reason', nil, placeholder: 'Other', class: 'form-control', id: :reason_deactivating_input
+      .text-center
+        = link_to 'Cancel', '#', class: 'btn btn-primary', 'data-dismiss': 'modal'
+        = f.submit 'Deactivate Account', class: 'btn btn-primary deactivate'

@@ -1,0 +1,9 @@
+.card
+  = link_to portfolio_series_path(series) do
+    - if series.artwork
+      = filepicker_image_tag series.artwork.image_url, w: 260, h: 260, fit: 'crop', align: 'faces'
+    - else
+      = image_tag 'artwork_160x160.png', size: '260x260'
+  .text-center
+    b = truncate(series.title, length: 15)
+    p = series.year&.strftime('%Y')

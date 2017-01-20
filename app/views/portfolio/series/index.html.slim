@@ -1,0 +1,8 @@
+nav.row
+  .cta
+    = link_to 'Upload Series', upload_portfolio_artworks_path, class: 'btn btn-primary'
+
+= render 'shared/user_header', user: @user
+
+.cards
+  = render partial: 'series', collection: @series

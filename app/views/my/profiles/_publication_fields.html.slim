@@ -1,0 +1,43 @@
+fieldset.nested-fields
+  hr.-thin
+  - if f.object.new_record? || f.object.pdf_url.present?
+    .row
+      .col-xs-6.col-xs-offset-4
+        .publications-upload
+          - if f.object.new_record?
+            p File Name:
+            = f.filepicker_field :pdf_url, button_text: 'Upload Your Full Publication Here in PDF',
+              button_class: 'btn btn-default btn-block', extensions: '.pdf',
+              multiple: false, onchange: 'publicationsUpload(event)'
+          - else
+            = link_to "PDF: #{f.object.pdf_url.split('/').last}", f.object.pdf_url, target: '_blank'
+    - if f.object.new_record?
+      .row
+        .col-xs-6.col-xs-push-4
+          p.text-center OR fill in the details below
+  - if f.object.new_record? || f.object.pdf_url.blank?
+    .row
+      .col-xs-4
+        .form-inline
+          = f.input :day, label: false, collection: 1..31, prompt: 'Date', input_html: { class: 'date' }
+          = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+          = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+
+      .col-xs-6
+        - if @user.professional?
+          = f.input :participation, label: false, collection: options_for_enum(Publication.participations), prompt: 'Participation', include_blank: false
+        = f.input :category, label: false, collection: options_for_enum(Publication.categories), prompt: 'Type', include_blank: false
+        = f.input :title, label: false, required: false, placeholder: 'Title'
+        = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title'
+        = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: 'publication' } }
+        = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: 'publication' } }
+        = f.input :publisher, label: false, required: false, placeholder: 'Publisher'
+        = f.input :edition, label: false, required: false, placeholder: 'Edition'
+        = f.input :editor, label: false, required: false, placeholder: 'Editor'
+        = f.input :issue, label: false, required: false, placeholder: 'Issue'
+        = f.input :page_numbers, label: false, required: false, placeholder: 'Page Numbers'
+        = f.input :link, label: false, required: false, placeholder: 'Link'
+        - if f.object.attachment_url.blank?
+          = f.filepicker_field :attachment_url, button_text: 'Upload PDF', button_class: 'btn btn-default btn-block', extensions: '.pdf', multiple: false
+        - else
+          = link_to 'PDF Link', f.object.attachment_url, target: '_blank'

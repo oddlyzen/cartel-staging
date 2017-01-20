@@ -1,0 +1,61 @@
+= f.simple_fields_for :user do |user|
+  = user.input :role, as: :hidden, input_html: { value: 'artist' }
+  .form-group
+    .row
+      .col-xs-2
+        label Current Status
+      .col-xs-10
+        = user.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_ARTIST),
+        include_blank: false, prompt: 'Please Select'
+  .form-group
+    .row
+      .col-xs-10.col-xs-push-2.artist_current_status
+        = user.input_field :artist_status_text, as: :select, collection: Company.pluck(:name).map(&:titleize), placeholder: 'Please fill in',
+          multiple: true, include_blank: false
+  .form-group
+    .row
+      .col-xs-10.col-xs-push-2.artist_current_status
+        = f.input :other_current_status_string, as: :string, placeholder: 'Please fill in'
+  .form-group
+    .row
+      .col-xs-5.col-xs-offset-2
+        = user.input :commission, as: :boolean, wrapper: :custom_form_boolean, input_html: { id: nil }, label: 'Available for commission'
+
+  = f.simple_fields_for :profile do |profile|
+    .form-group
+      .row
+        .col-xs-2
+          label Media
+        .col-xs-10
+          = profile.input :medium_ids, as: :check_boxes, collection: Medium.where(set_display: true).pluck(:name, :id), label: false
+      .row
+        .col-xs-10.col-xs-push-2.artist_media
+          = f.input_field :other_media_array, as: :select, collection: Medium.approved.where(set_display: false).pluck(:name), placeholder: 'Please fill in',
+            multiple: true, include_blank: false
+    .form-group
+      .row
+        .col-xs-2
+          label Subjects & Themes
+        .col-xs-10
+          = f.input_field :other_subjects_array, as: :select, collection: Subject.approved.pluck(:name), placeholder: 'Please fill in',
+            multiple: true, include_blank: false
+
+  hr
+
+  h4.text-center Exhibitions
+  = user.simple_fields_for :exhibitions do |exhibition|
+    = render 'exhibition_fields', f: exhibition
+
+  section.navigation
+    .row
+      .col-xs-12
+        .form-group.acknowledgement
+          = user.check_box :acknowledgement, id: 'artist_acknowledgement'
+          =t :ack_label
+
+    .form-group
+      .row
+        .col-xs-12
+          = user.button :submit, 'Back', class: 'btn btn-default pull-left', type: 'button', id: 'back-artist'
+          = user.button :submit, 'Register', class: 'btn btn-default pull-right register', type: 'submit',
+          disabled: 'disabled', id: ''

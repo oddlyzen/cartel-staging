@@ -1,0 +1,173 @@
+body.professionals-show, body.professionals-index,
+body.artists-show, body.artists-index {
+
+  a:hover { text-decoration: none; }
+
+  #network, #pages { color: $light-grey; }
+
+}
+
+body.artists-show, body.professionals-show {
+
+  p {
+    font-family: $font-body-regular;
+  }
+
+  .section-1 {
+    ul {
+      @include no-style;
+
+      margin-bottom: 15px;
+    }
+
+    li { margin-bottom: 10px; }
+
+    margin-bottom: 30px;
+
+    .status-current {
+      .location, .based, .link { margin-bottom: 15px; }
+
+      .fa {
+        color: $light-grey;
+        padding-right: 10px;
+      }
+
+      b { padding-left: 5px; }
+    }
+
+    .social-links {
+      margin-top: 10px;
+      @include inline-list;
+
+      li:first-of-type {
+        padding-left: 0px;
+      }
+      li {
+        padding-right: 15px;
+        a > i {
+          font-size: 20px;
+        }
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+
+    ul.company-representation {
+      @include inline-list;
+      margin-bottom: -10px;
+
+      li {
+        padding-left: 0px;
+        &:not(:last-child):after { content: ","; }
+        &:first-child:after { content: none; }
+
+      }
+    }
+
+    .interest-skills {
+      @include inline-list;
+      @include make-row;
+
+      h2 { margin-bottom: 0px; }
+
+      li {
+        @include make-xs-column(3);
+      }
+    }
+
+    .statement {
+      @include make-row;
+      @include make-xs-column(12);
+
+      font-family: $font-body-regular;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .user-status {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .section-1-2{
+       border-bottom: 3px solid $white;
+       margin-top: 20px;
+       padding-bottom: 25px;
+    }
+  }
+
+  .section-2 {
+    .col--left {
+      border-right: 3px solid $white;
+      padding-right: 5px;
+    }
+
+    .col--right {
+      padding-left: 30px;
+    }
+
+    .item {
+      @include make-row;
+      @include make-xs-column(12);
+
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid $white;
+
+      &--no-border {
+        border-bottom: none;
+      }
+
+      .education, .solo, .awards, .professional, .group {
+        @include no-style;
+
+        li {
+          @include make-row;
+          @include make-xs-column(12);
+          margin-bottom: 20px;
+
+          .year {
+            @include make-xs-column(4);
+            padding-left: 0;
+          }
+
+          .details {
+            @include make-xs-column(8);
+            padding-right: 0;
+            p { margin-bottom: 2px; }
+
+          }
+        }
+      }
+
+      .professional, .collections, .memberships, .media-features, .bibliography, .publications {
+        @include no-style;
+
+        p { margin-bottom: 0px; }
+
+        li { margin-bottom: 15px; }
+
+      }
+    }
+  }
+}
+
+body.artists-index {
+
+  ul.list-inline {
+    font-family: "BebasNeue";
+    font-size: 15px;
+    color: #4d4d4d;
+  }
+
+  .btn-default {
+    width: 360px;
+    margin: 20px;
+  }
+
+  h3 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}

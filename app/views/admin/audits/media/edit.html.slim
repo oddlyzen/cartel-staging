@@ -1,0 +1,9 @@
+.row
+  .col-xs-12
+  h2 Edit #{@medium.name.titleize}
+  = simple_form_for @medium, url: { action: 'update' } do |f|
+    = f.input :name, input_html: { value: f.object.name.titleize }
+    = f.input :state, as: :select, collection: options_for_enum(Medium.states), prompt: 'Please Select'
+    = f.button :submit
+    = f.input :name_edit_date, as: :hidden, input_html: { value: Date.today }
+    = link_to 'Back', admin_audits_media_path, class: 'btn btn-default pull-right'

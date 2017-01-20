@@ -1,0 +1,7 @@
+.row
+  .col-xs-12
+    .item-box
+      - artworks.each do |artwork|
+        .item
+          = link_to portfolio_series_artworks_path(id: artwork.id), remote: true do
+            = filepicker_image_tag artwork.image_url, w: 100, h: 100, fit: 'crop', align: 'faces'

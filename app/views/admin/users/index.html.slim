@@ -1,0 +1,35 @@
+.row
+  .col-xs-1
+    = render partial: 'admin/menubar'
+  .col-xs-11
+    h1 Users
+
+    .table-responsive
+      table.table.table-hover
+        thead
+          tr
+            th First Name
+            th Last Name
+            th Email
+            th Date of Birth
+            th Active
+            th Title
+            th Role
+            th Action
+
+        tbody
+          - @users.each do |user|
+             tr
+              td = user.first_name
+              td = user.last_name
+              td = user.email
+              td = user.date_of_birth
+              td = user.active
+              td = user.title
+              td = user.role
+              td
+                - unless user == current_user
+                  - if user.active?
+                    = link_to 'Deactivate', deactivate_admin_user_path(user), class: 'btn btn-primary', method: :put
+                  - else
+                    = link_to 'Activate', activate_admin_user_path(user), class: 'btn btn-primary', method: :put

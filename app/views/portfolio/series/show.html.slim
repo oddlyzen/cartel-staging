@@ -1,0 +1,28 @@
+= render 'shared/user_header', user: @user
+.row
+  .col-xs-4
+    = link_to '< Back To All Series', portfolio_series_index_path, class: 'btn btn-default btn-block'
+  .col-xs-8
+    = link_to 'Edit Series', edit_portfolio_series_path, class: 'btn btn-default'
+.row
+  .series
+    .title-year
+      h1 = @series.title
+      p = @series.year&.strftime('%Y')
+    hr
+    p = @series.description
+    hr
+    - if @series.exhibition
+      b = "Solo Exhibition" if @exhibition.in_solo?
+      .exhibition
+        b = @exhibition.title
+        p = @exhibition.location
+        p = @exhibition.start_year
+  .col-xs-8
+    .cards
+      - if @series.artworks.empty?
+        .col-xs-12
+          h1.text-center No Artworks in Series
+      - else
+        = render partial: 'artwork', collection: @series.artworks
+

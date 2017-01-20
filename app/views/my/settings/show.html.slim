@@ -1,0 +1,35 @@
+.row
+
+  .col-xs-8.col-xs-offset-2
+    h1.text-center Settings
+    = simple_form_for(@user, url: my_settings_path, method: :put, class: 'form-horizontal') do |f|
+
+      .form-inline
+        .col-xs-2 = f.label 'Salutations'
+        .col-xs-10#custom-select
+          = f.input :title, label: false do
+            = f.select :title, options_for_select(User.titles.collect { |s| [s[0].humanize, s[0]] }),
+              {}, class: 'form-control'
+
+      .form-inline
+        .col-xs-2 = f.label 'Full Name'
+        .col-xs-10
+          = f.input :first_name, label: false, placeholder: 'First Name', class: 'form-control'
+          = f.input :last_name, label: false, placeholder: 'Last Name', class: 'form-control'
+      .form-inline
+        .col-xs-2 = f.label 'Email'
+        .col-xs-10 = f.input :email, label: false, required: false, placeholder: 'Email Address', class: 'form-control'
+
+      .form-inline
+        .col-xs-2 = f.label 'Password'
+        .col-xs-10 = link_to 'Change Password', my_password_path, class: 'btn btn-primary btn-password',
+          remote: true, 'data-toggle': 'modal', 'data-target': '#modal'
+      .form-inline
+        .col-xs-2 = f.label 'Date of Birth', class: 'dob'
+        .col-xs-10 = f.input :date_of_birth, as: :date, label: false, order: [:day, :month, :year], start_year: 1936, end_year: Date.today.year
+
+      .form-inline
+        .col-xs-12
+          = f.submit 'Save & Done', class: 'btn btn-primary pull-right'
+          = link_to 'Deactivate Account', account_my_settings_path, class: 'btn btn-primary pull-right deactivate',
+          remote: true, 'data-toggle': 'modal', 'data-target': '#modal'

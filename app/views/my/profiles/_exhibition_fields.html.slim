@@ -1,0 +1,41 @@
+fieldset.nested-fields
+  hr.-thin
+  - if f.object.new_record? || f.object.pdf_url.present?
+    .row
+      .col-xs-4
+        .form-inline
+          = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
+          span &ndash;
+          = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
+      .col-xs-6
+        .exhibition-upload
+          p File Name:
+          = f.filepicker_field :pdf_url,
+            button_text: (f.object.pdf_url.blank? ? 'Upload New PDF' : 'Replace Current PDF'),
+            button_class: 'btn btn-default btn-block', extensions: '.pdf', multiple: false,
+            onchange: 'exhibitionUpload(event)'
+
+    - if f.object.new_record?
+      .row
+        .col-xs-6.col-xs-push-4
+          p.text-center OR fill in the details below
+  - if f.object.new_record? || f.object.pdf_url.blank?
+    .row
+      .col-xs-4
+        .form-inline
+          = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+          = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
+          span &ndash;
+          = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+          = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
+      .col-xs-6
+        - if @user.professional?
+          = f.input :involvement, label: false, collection: options_for_enum(Exhibition.involvements), prompt: 'Involvement',
+            include_blank: false
+        = f.input :title, label: false, placeholder: 'Exhibition Title'
+        - if @user.artist?
+          = f.input :category, label: false, collection: Exhibition::OPTIONS_FOR_CATEGORY, prompt: 'Type',
+            include_blank: false
+        = f.association :venue, label: false, prompt: 'Venue', wrapper: :selectize, input_html: { data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) } }
+        = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: 'exhibition' } }
+        = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: 'exhibition' } }

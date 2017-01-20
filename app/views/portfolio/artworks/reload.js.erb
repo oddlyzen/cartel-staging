@@ -1,0 +1,40 @@
+$('#js-artwork-active').html('<%= j (render partial: 'active', locals: { prev_id: @prev_id, artwork: @artwork, next_id: @next_id }) %>');
+$('#js-artwork-gallery').html('<%= j (render partial: 'gallery', locals: { artworks: @artworks }) %>');
+$('#js-artwork-form').html('<%= j (render partial: 'form', locals: { artwork: @artwork }) %>');
+
+var link = 'a[href="/portfolio/series/<%= @artwork.series_id %>/artworks?id=<%= @artwork.id %>"]';
+$('.item ' + link + ' img').addClass('active');
+
+prepare_country_city_selection('select[data-selectize-country]');
+
+$('select[data-selectize-tag=true]').selectize({
+  plugins: ['remove_button'],
+  delimiter: ',',
+  render: {
+    option_create: function(data, escape) {
+      return '<div class="create">This is a new tag. Pending approval from admin. Click to add <strong>' + escape(data.input) + '</strong>&hellip;</div>';
+    }
+  },
+  create: function(input, callback) {
+    var klass;
+    klass = void 0;
+    klass = this.$input.data('klass');
+    $.ajax({
+      url: '/my/tags.json',
+      type: 'POST',
+      data: {
+        name: input,
+        klass: klass
+      },
+      success: function(tag) {
+        return callback({
+          value: tag.id,
+          text: tag.name
+        });
+      }
+    });
+  }
+});
+
+$('select[data-selectize-collaborator=true').selectize({})
+

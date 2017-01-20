@@ -1,0 +1,8 @@
+.col-md-6
+  .card
+    = link_to artist_series_path(@artist, series) do
+      .cover-image
+        = image_tag series.artwork&.image_url
+    .details
+      b = series.title
+      p = series.year&.strftime("%Y")

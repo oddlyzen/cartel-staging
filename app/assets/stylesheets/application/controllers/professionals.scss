@@ -1,0 +1,24 @@
+body.professionals-index {
+
+  a:hover { text-decoration: none; }
+
+  #network, #pages { color: $light-grey; }
+
+  #profile { border-bottom: 3px solid black; }
+
+}
+
+
+body.professionals-index {
+
+  ul.list-inline {
+    font-family: "BebasNeue";
+    font-size: 15px;
+    color: #4d4d4d;
+  }
+
+  .btn-default {
+    width: 360px;
+    margin: 20px;
+  }
+}

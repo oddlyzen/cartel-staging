@@ -1,0 +1,33 @@
+body.pages-privacy-policy {
+
+  h2.title {
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    text-align: center;
+    color: $light-grey;
+  }
+
+  .terms {
+    ol {
+      counter-reset: item;
+      padding-left: 0px;
+    }
+
+    li {
+      display: block;
+
+      b {
+        text-transform: uppercase;
+      }
+
+      &.section { margin-bottom: 30px; }
+    }
+
+    li:before {
+      font-weight: bold;
+      content: counters(item, ".") " ";
+      counter-increment: item;
+    }
+  }
+
+}

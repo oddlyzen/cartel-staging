@@ -1,0 +1,38 @@
+fieldset.nested-fields
+  hr.-thin
+  - if f.object.new_record? || f.object.pdf_url.present?
+    .row
+      .col-xs-6.col-xs-offset-4
+        .bibliography-upload
+          - if f.object.new_record?
+            p File Name: .
+            = f.filepicker_field :pdf_url,
+              button_text: 'Upload Your Full Bibliography Here in PDF',
+              button_class: 'btn btn-default btn-block', extensions: '.pdf',
+              multiple: false, onchange: 'bibliographyUpload(event)'
+
+          - else
+            = link_to "PDF: #{f.object.pdf_url.split('/').last}", f.object.pdf_url, target: '_blank'
+    - if f.object.new_record?
+      .row
+        .col-xs-6.col-xs-push-4
+          p.text-center OR fill in the details below
+  - if f.object.new_record? || f.object.pdf_url.blank?
+    .row
+      .col-xs-4
+        .form-inline
+          = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+          = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+      .col-xs-6
+        = f.input :title, label: false, required: false, placeholder: 'Title'
+        = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title'
+        = f.input :publisher, label: false, required: false, placeholder: 'Publisher'
+        = f.input :edition, label: false, required: false, placeholder: 'Edition'
+        = f.input :author, label: false, required: false, placeholder: 'Author'
+        = f.input :page_number, label: false, required: false, placeholder: 'Page Number'
+        = f.input :source_type, label: false, collection: options_for_enum(Bibliography.source_types.except(:paper)), include_blank: false, prompt: 'Type'
+        = f.input :link, label: false, required: false, placeholder: 'Link'
+        - if f.object.attachment_url.blank?
+          = f.filepicker_field :attachment_url, button_text: 'Upload PDF', button_class: 'btn btn-default btn-block', extensions: '.pdf', multiple: false
+        - else
+          = link_to 'PDF Link', f.object.attachment_url, target: '_blank'

@@ -1,0 +1,9 @@
+.row
+  .col-xs-12
+  h2 Edit #{@subject.name}
+  = simple_form_for @subject, url: { action: 'update' } do |f|
+    = f.input :name, input_html: { value: f.object.name.titleize }
+    = f.input :state, as: :select, collection: options_for_enum(Subject.states), prompt: 'Please Select'
+    = f.button :submit
+    = f.input :name_edit_date, as: :hidden, input_html: { value: Date.today }
+    = link_to 'Back', admin_audits_subjects_path, class: 'btn btn-default pull-right'

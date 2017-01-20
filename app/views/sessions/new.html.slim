@@ -1,0 +1,34 @@
+.row
+
+  .col-xs-8.logo
+    h1 Cartel
+    h3 Manage Your Art World
+
+  .col-xs-4
+
+    = simple_form_for @form, url: login_path do |f|
+
+      .row
+        = f.input :email, placeholder: 'Email', label: false, error: false
+        = f.input :password, as: :password, placeholder: 'Password', label: false, error: false
+
+        .pull-right = link_to 'Forgot Password', '', data: { toggle: 'modal', target: '#js-modal-forgot-password' }, class: 'btn btn-link'
+
+      .row.pull-right
+        = f.submit 'Log in', class: 'btn btn-default'
+
+#js-modal-forgot-password.modal.fade.in role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-hidden='true' data-dismiss='modal' type='button' &times;
+      .modal-body
+        .text-center
+          h4 Reset Password
+          = form_tag password_resets_path do
+            .row
+              .col-xs-6.col-xs-offset-3
+                .form-group
+                  = text_field_tag :email, nil, placeholder: 'Your Valid Email Address', class: 'form-control'
+            = submit_tag 'Reset Password', class: 'btn btn-default'
+      .modal-footer

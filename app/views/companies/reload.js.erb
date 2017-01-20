@@ -1,0 +1,7 @@
+$('.cards').append("<%=j render(partial: 'company', collection: @companies) %>");
+
+<% if @companies.current_page == @companies.total_pages %>
+  $('#load-more').remove();
+<% else %>
+  $('#load-more a').attr('href', '<%= companies_path(page: @companies.current_page + 1) %>');
+<% end %>

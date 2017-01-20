@@ -1,0 +1,15 @@
+.row
+  .col-xs-10.col-xs-offset-1
+    h1 Edit Organization
+    = simple_form_for @company_form, url: my_company_path, method: :patch do |f|
+      = f.simple_fields_for :company do |company|
+        .form-group
+          .text-center
+            = image_tag image_url(company.object, 160, 160, 'clip'), size: '160x160'
+          .col-xs-12.text-center
+            .form-group
+              = company.input_field :image_url, { type: 'filepicker-dragdrop',data: { fp_option_modal: false, fp_multiple: true,fp_mimetypes: 'image/*', fp_apikey: ENV["FILEPICKER_API_KEY"],fp_drag_class: 'upload-pane', fp_button_class: 'hidden', fp_drag_text: 'Upload Image' } }
+        label Name of Organization
+        = company.input :name, label: false
+        = render 'form', company: company
+      = f.submit 'Save', class: 'btn btn-default'

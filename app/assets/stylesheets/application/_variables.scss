@@ -1,0 +1,52 @@
+// Bootstrap Overrides
+
+$brand-primary: #262626;
+$secondary-color: #8D0101;
+$brand-warning: #8D0101 !default;
+
+$dark-grey: #4d4d4d;
+$medium-grey: #737373;
+$grey: #999999;
+$light-grey: #b3b3b3;
+
+$medium-white: #d9d9d9;
+$white: #f2f2f2;
+$light-white: #f7f7f7;
+$black: #000000;
+
+$facebook: #3c5a96;
+
+// Fonts
+
+@font-face {
+  font-family: 'BebasNeue';
+  src: font-url('BebasNeue.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceSansPro-Light';
+  src: font-url('SourceSansPro-Light.ttf');
+  font-weight: light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: font-url('SourceSansPro-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceSansPro-Semibold';
+  src: font-url('SourceSansPro-Semibold.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-heading: 'BebasNeue';
+$font-body-light: 'SourceSansPro-Light';
+$font-body-regular: 'SourceSansPro-Regular';
+$font-body-semibold: 'SourceSansPro-Semibold';

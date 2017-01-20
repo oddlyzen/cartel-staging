@@ -1,0 +1,178 @@
+body.my-settings {
+
+  h1 {
+    font-size: 35px;
+    margin-top: 25px;
+  }
+
+  .btn-primary {
+    background-color: $dark-grey;
+    border: 1px solid $brand-primary;
+    border-radius: 2px;
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 1.5;
+    margin-right: 0px;
+    width: 200px;
+  }
+
+  .btn-password { width: 563px; }
+
+  .deactivate {
+    background-color: $secondary-color;
+    border: 1px solid #6F0000;
+    margin-right: 10px;
+  }
+
+  form { margin-top: 40px; }
+
+  .form-inline {
+    margin-bottom: 40px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  .form-control {
+    border: 1px solid $medium-white;
+    border-radius: 0px;
+    height: 36px;
+    font-family: $font-body-regular;
+    font-size: 12px;
+    color: $brand-primary;
+  }
+
+  #user_title { width: 230px; }
+
+  #user_email { width: 563px; }
+
+  #user_first_name {
+    margin-right: 34px;
+    width: 230px;
+  }
+
+  #user_last_name { width: 298px; }
+
+  select.form-control {
+    padding-bottom: 5px;
+    -webkit-appearance: none;
+  }
+
+  label {
+    font-family: $font-body-regular;
+    font-size: 14px;
+    line-height: 2.2;
+    color: $light-grey;
+
+    &.dob { line-height: 2.9; }
+  }
+
+  #custom-select {
+    display: inline;
+    padding: 0 0 0 15px;
+
+    &:after {
+      content: "\f0d7";
+      font-family: FontAwesome;
+      position: relative;
+      right: 20px;
+      top: 2px;
+      line-height: 10%;
+    }
+  }
+
+  #push {
+    padding-bottom: 200px;
+  }
+
+  .col-xs-12 {
+    margin-top: 30px;
+    padding-right: 48px;
+  }
+
+  #modal {
+
+    .account {
+      .col-xs-9.col-xs-offset-2 { padding-left: 35px; }
+
+      .col-xs-10.col-xs-offset-2 { padding-left: 25px; }
+
+      label {
+        color: $dark-grey;
+        font-size: 14px;
+        margin-left: 0px;
+        padding-left: 0px;
+      }
+
+      h1 { margin-top: 5px; }
+
+      p {
+        font-size: 20px;
+        padding-bottom: 10px;
+      }
+
+      .btn {
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .modal-dialog { width: 664px; }
+
+    .form-group.text-center {
+      padding-top: 40px;
+    }
+
+    p {
+      font-family: $font-body-regular;
+      padding-bottom: 20px;
+    }
+
+    label {
+      color: $light-grey;
+      font-family: $font-body-regular;
+      font-size: 12px;
+      line-height: 1.2;
+      margin-left: 20px;
+      margin-top: 5px;
+    }
+
+    .btn-primary { margin-right: 10px; }
+
+    .form-control { width: 300px; }
+
+    input[type="text"] {
+      border: none;
+      box-shadow: none;
+      display: inline;
+      font-size: 12px;
+      padding: 0px;
+      width: 120px;
+    }
+
+    input[type=radio] {
+      display: none;
+    }
+
+    input[type='radio'] + label:before {
+      display: inline-block;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-right: 8px;
+      width: 30px;
+    }
+
+    input[type=radio] + label:before {
+      content: "\f10c"; /* Radio Unchecked */
+    }
+    input[type=radio]:checked + label:before {
+      content: "\f111"; /* Radio Checked */
+    }
+  }
+}

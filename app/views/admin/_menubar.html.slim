@@ -1,0 +1,6 @@
+ul.nav.nav-pills.nav-stacked
+  li = link_to 'User', admin_users_path, class: active_if([admin_users_path])
+  li = link_to 'Company', admin_companies_path, class: active_if([admin_companies_path])
+  li = link_to 'Event', admin_events_path, class: active_if([admin_events_path])
+  li = link_to 'RSS Feed', admin_feeds_path, class: active_if([admin_feeds_path])
+  li = link_to 'Audit', admin_audits_media_path, class: active_if([admin_audits_media_path, admin_audits_subjects_path, admin_audits_specialisations_path])

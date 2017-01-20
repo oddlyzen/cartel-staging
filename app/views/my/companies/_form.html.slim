@@ -1,0 +1,23 @@
+= company.input :established_in, label: 'Established', as: :date, order: [:year], start_year: 1936, end_year: Date.today.year
+label What type of organisation is this?
+= company.input :organization_type_ids, label: false, as: :check_boxes, collection: @company_form.options_for_public_organization_type
+= company.input :organization_type_ids, collection: @company_form.options_for_private_organization_type, include_hidden: false, placeholder: 'Add Other Organization Type', input_html: { multiple: true, data: { klass: 'OrganizationType', selectize_organisation_type: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+= company.input :about_us, as: :text, label: 'Organisation Description', input_html: { maxlength: 1000, rows: 12 }
+= company.input :website
+= company.input :facebook
+= company.input :twitter
+= company.input :instagram
+label Location
+= company.input :country, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize, input_html: { data: { selectize_country: 'company' } }
+= company.input :state, collection: Location.state_options_for_country(company.object.country), prompt: 'State', wrapper: :selectize, input_html: { data: { selectize_state: 'company' } }
+= company.input :address_1, label: 'Address Line 1'
+= company.input :address_2, label: 'Address Line 2'
+label Opening Hours
+.form-group
+  .form-inline
+    = company.input :opening_time, label: false, prompt: true, minute_step: 15
+    span &ndash;
+    = company.input :closing_time, label: false, prompt: true, minute_step: 15
+label Contact Us
+= company.input :email, label: false, placeholder: 'Email'
+= company.input :phone, label: false, placeholder: 'Phone Number (+60193477620)'

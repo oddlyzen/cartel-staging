@@ -1,0 +1,38 @@
+h1 {
+  font-family: $font-heading;
+  letter-spacing: 1.5px;
+  font-size: 44px;
+  color: $dark-grey;
+}
+
+h2 {
+  font-family: $font-heading;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  color: $light-grey;
+  margin-top: 2px;
+
+  &.title { font-size: 30px; }
+}
+
+h3 {
+  font-family: $font-heading;
+  letter-spacing: 1.5px;
+  font-size: 25px;
+  color: $brand-primary;
+  line-height: 18px;
+}
+
+h4 {
+  font-family: $font-body-light;
+  font-size: 15px;
+  color: $dark-grey;
+  line-height: 19px;
+}
+p {
+  font-family: $font-body-light;
+}
+
+span {
+  font-family: $font-body-regular;
+}

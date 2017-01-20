@@ -1,0 +1,13 @@
+.col-xs-4
+  .card
+    header
+      = link_to company_path(company) do
+        .row
+          .col-xs-4
+            .img-sm
+              = image_tag company.image_url
+
+          .col-xs-8.right-card
+            h3.organisation_name = company.name
+            p.organisation_location = company.location
+            p.tagline = company.full_address

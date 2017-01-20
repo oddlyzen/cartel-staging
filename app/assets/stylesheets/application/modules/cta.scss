@@ -1,0 +1,31 @@
+body.artists-show,
+body.professionals-show,
+body.artworks-index,
+body.my-profiles-edit,
+body.portfolio-series-index,
+body.my-companies-index {
+
+  .cta {
+    @include make-md-column(12);
+    height: 0px;
+    top: 30px;
+    z-index: 2;
+
+    .btn {
+      width: 200px;
+      float: right !important;
+      margin-right: 0px;
+    }
+    &.manage-portfolio{
+      top: 0px;
+    }
+  }
+
+}
+body.my-profiles-edit {
+  .cta {
+    .btn {
+      margin-left: 10px;
+    }
+  }
+}

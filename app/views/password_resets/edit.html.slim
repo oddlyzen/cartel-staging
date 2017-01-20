@@ -1,0 +1,8 @@
+.row
+  .col-xs-6.col-xs-offset-3
+    h1 Create New Password
+    = simple_form_for @user, url: password_reset_path(@token), method: :patch do |f|
+      = f.input :email, label: false, placeholder: 'Email'
+      = f.input :password, label: false, placeholder: 'New Password'
+      = f.input :password_confirmation, label: false, placeholder: 'Password Confirmation'
+      = f.submit 'Change Password', class: 'pull-right btn btn-default'

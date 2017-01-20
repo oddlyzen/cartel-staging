@@ -1,0 +1,44 @@
+.row
+  .col-md-12
+    h1 Edit Organization
+    = simple_form_for(@company, url: admin_company_path, method: :put) do |f|
+
+      .row
+        .col-md-4.col-md-offset-4
+          .form-group.text-center
+
+            .img-container
+               = image_tag @company.image_url, class: 'company-image'
+
+            p Recommended size is 250x250
+
+          .form-group
+            = f.filepicker_field :image_url,
+              button_text: 'Click to upload your company picture',
+              button_class: 'btn btn-default btn-block',
+              onchange: 'onCompanyPhotoUpload(event)',
+              services: 'COMPUTER',
+              mimetypes: 'image/*',
+              multiple: false
+
+      .row
+        .col-md-6
+          = f.input :name, placeholder: 'Company Name'
+          = f.input :motto, placeholder: 'Company Message/Motto'
+          = f.input :location, placeholder: 'Location'
+          = f.input :established_in, as: :date
+          = f.input :address_1, placeholder: 'Address Line 1', label: 'Address Line 1'
+          = f.input :address_2, placeholder: 'Address Line 2', label: 'Address Line 2'
+
+        .col-md-6
+          = f.input :opening_time, placeholder: 'Opening Time'
+          = f.input :closing_time, placeholder: 'Closing Time'
+          = f.input :contact, placeholder: 'Contact'
+          = f.input :about_us, placeholder: 'About Us'
+          = f.input :facebook, placeholder: 'Facebook'
+          = f.input :twitter, placeholder: 'Twitter'
+          = f.input :instagram, placeholder: 'Instagram'
+
+      .row
+        .col-md-4.col-md-offset-4
+          = f.submit class: 'btn btn-default btn-block'

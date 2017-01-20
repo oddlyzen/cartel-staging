@@ -1,0 +1,3 @@
+.card
+  = check_box_tag 'bulk_group_form[artwork_ids][]', artwork.id
+  = filepicker_image_tag artwork.image_url, w: 160, h: 160, fit: 'crop', align: 'faces'

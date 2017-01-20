@@ -1,0 +1,7 @@
+= render 'shared/user_header', user: @user
+
+.cards
+  = render partial: 'friend', collection: @friends
+
+= render 'disconnect'
+

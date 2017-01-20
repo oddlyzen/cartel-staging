@@ -1,0 +1,93 @@
+section.section-2
+  .row
+    .col-xs-6.col--left
+      - unless artist.educations.blank?
+        .item
+          h2 Education
+          ul.education
+            - artist.educations.each do |education|
+              li
+                b.year = date_in_range(education)
+                .details
+                  p #{education.education_level}, #{education.institution}, #{university_location(education)}
+                  p #{education.field_of_study},#{education.education_grade}
+                  p = education.education_description
+      - unless @professional.awards.blank?
+        .item
+          h2 Grants, Fellowships & Awards
+          ul.awards
+            - @professional.awards.each do |award|
+              li
+                b.year = single_date(award)
+                p.details #{award.title}, #{award.awarding_body}, #{award.state}
+      - unless @professional.participations.blank?
+        .item
+          h2 Professional & Community Participation
+          ul.education
+            - @professional.participations.each do |participation|
+              li
+                b.year = single_date(participation)
+                p.details
+                  - if participation.link.blank?
+                    = participation.title
+                  - else
+                    = link_to participation.title, external_url(participation.link), target: '_blank'
+      - unless @professional.all_exhibitions.blank?
+        .item.item--no-border
+          h2 Exhibition Record
+          ul.solo
+            - @professional.all_exhibitions.each do |exhibition|
+              li
+                b.year = date_in_range(exhibition)
+                p.details
+                  span #{exhibition.title} #{exhibition.venue.name} #{exhibition.state}
+    .col-xs-6.col--right
+      - unless @professional.experiences.blank?
+        .item
+          h2 Professional Experience
+          ul.professional
+            - @professional.experiences.each do |professional|
+              li
+                b.year = date_in_range(professional)
+                .details
+                  p = professional.company_location
+                  p = professional.full_position
+                  p = professional.description
+                  b = external_link_with_name(professional, professional.link)
+      - unless @professional.publications.blank?
+        .item
+          h2 Scholarly & Professional Publications
+          ul.publications
+            - @professional.publications.each do |publication|
+              li
+                - if publication.category.blank?
+                  b = link_to ('PUBLICATIONS AS AUTHOR'), publication.pdf_url
+                - elsif publication.category == 'book' || publication.category == 'catalogue'
+                  p #{publication.title}, #{publication.publisher}, #{publication.year}
+                - else
+                  - if publication.link.blank?
+                      span  #{publication.title}
+                  - else
+                      b = external_link(publication)
+
+                  span , #{publication.publication_title}, no. #{publication.edition}, #{publication.state}, #{single_full_date(publication)}, pp. #{publication.page_numbers}
+                  br
+                  b = link_to ('PDF File'), publication.attachment_url
+      - unless @professional.memberships.blank?
+        .item
+          h2 Professional Affiliations/Memberships
+          ul.memberships
+            - @professional.memberships.each do |membership|
+              li = membership.name
+      - unless @professional.media_features.blank?
+        .item.item--no-border
+          h2 Media Features
+          ul.media-features
+            - @professional.media_features.each do |media_feature|
+              li
+                - if media_feature.link.blank?
+                  p #{media_feature.title}, #{media_feature.description}, #{single_date(media_feature)}
+                - else
+                  b = external_link(media_feature)
+                  span , #{media_feature.description}, #{single_date(media_feature)}
+

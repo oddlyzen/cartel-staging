@@ -1,0 +1,32 @@
+.row
+  .col-xs-12
+    = simple_form_for(@artwork, url: portfolio_artworks_path) do |f|
+      .col-xs-5
+        .form-group
+          = f.input :title, placeholder: 'Artwork Title', label: false
+          = f.input :year, placeholder: 'YYYY', label: false
+          = f.input :art_type, placeholder: 'Type', label: false
+          .form-inline
+            = f.input :height, placeholder: 'HH', label: false
+            | x
+            = f.input :width, placeholder: 'WW', label: false
+            | x
+            = f.input :length, placeholder: 'LL', label: false
+            = f.input :unit, as: :select, collection: Artwork.units.collect { |t| [t[0], t[0]] }, label: false
+
+          = f.input :description, as: :text, input_html: { rows: 8 }, label: false
+          .pull-right
+            span#counter
+            |  characters left
+          = f.input :subject_themes, placeholder: 'Add a subject or theme', label: 'Subject & Themes'
+      .col-xs-5
+        .form-group
+          = f.filepicker_field :image_url
+
+        = f.submit class: 'btn btn-primary'
+
+  .col-xs-12
+    = simple_form_for(Exhibition.new, url: studio_artworks_path) do |f|
+        .col-xs-5
+          .form-group
+            = f.filepicker_field :pdf_url

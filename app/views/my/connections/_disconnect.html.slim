@@ -1,0 +1,17 @@
+#disconnect.modal.fade role='dialog'
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+      .modal-title Confirm Disconnect
+      .modal-body
+        .row
+          .col-xs-12
+            .text-center.modal-text
+              p
+        .row
+          .col-xs-12
+            .text-center
+              = link_to 'Cancel', '#', class: 'btn btn-default', data: { dismiss: 'modal',
+                target: 'disconnect' }
+              = link_to 'Disconnect', '#', class: 'btn btn-primary', id: 'disconnect_btn', method: :delete
+      .modal-footer

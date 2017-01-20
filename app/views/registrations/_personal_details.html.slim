@@ -1,0 +1,53 @@
+= f.simple_fields_for :user do |user|
+  = user.hidden_field :referrer_id, value: params[:referrer_id]
+  .form-group
+    = user.label 'Salutations', class: 'col-xs-2 control-label'
+    .col-xs-4
+      = user.input :title, collection: options_for_enum(User.titles), include_blank: false,
+      prompt: 'Please Select'
+    = user.label 'Gender', class: 'col-xs-2 control-label'
+    .col-xs-4
+      = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline' }
+
+  .form-group
+    = user.label 'Full Name', class: 'col-xs-2 control-label'
+    .col-xs-4
+      = user.input :first_name, placeholder: 'First Name'
+    .col-xs-4.pull-right
+      = user.input :last_name, placeholder: 'Last Name'
+
+  .form-group
+    = user.label 'Email', class: 'col-xs-2 control-label'
+    .col-xs-10
+      = user.input :email, placeholder: 'name@email.com'
+
+  .form-group
+    = user.label :date_of_birth, class: 'col-xs-2 control-label date_of_birth', label: 'Date of Birth'
+    .col-xs-3
+      = user.input :date_of_birth, as: :date, order: [:day, :month, :year], prompt: true, label: false, start_year: 1936, end_year: Date.today.year - 10
+
+  .form-group
+    = user.label 'Nationality', class: 'col-xs-2 control-label'
+    .col-xs-4
+      = user.input :nationality_country, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize
+    = user.label :residency_status, class: 'col-xs-2 control-label residency_status', label: 'Resident Status'
+    .col-xs-4
+      = user.input :residency_status, collection: options_for_enum(User.residency_statuses),
+      prompt: 'Please Select'
+
+  .form-group
+    = user.label :based_country, class: 'col-xs-2 control-label', label: 'Based In'
+    .col-xs-4
+      = user.input :based_country, as: :select, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize, input_html: { data: { selectize_country: 'based_country' } }
+    = user.label 'City/State', class: 'col-xs-2 control-label'
+    .col-xs-4
+      = user.input :based_state, as: :select, collection: {}, prompt: 'State', wrapper: :selectize, input_html: { data: { selectize_state: 'based_country' } }
+
+  .form-group
+    = user.label 'Password', class: 'col-xs-2 control-label'
+    .col-xs-4
+      = user.input :password, placeholder: '........'
+    = user.label :password_confirmation, class: 'col-xs-2 control-label', label: 'Confirm Password'
+    .col-xs-4
+      = user.input :password_confirmation, placeholder: '........'
+

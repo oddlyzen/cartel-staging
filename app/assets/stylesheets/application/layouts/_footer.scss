@@ -1,0 +1,59 @@
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 16px;
+}
+
+body {
+  margin-bottom: 65px;
+}
+
+footer.footer {
+  padding: 7px 28px 0 20px;
+  -webkit-box-shadow: 0 -2px 6px 0px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 0 -2px 6px 0px rgba(0, 0, 0, .25);
+  box-shadow: 0 -2px 2px 0px rgba(0, 0, 0, .25);
+  position: absolute;
+  height: 65px;
+  bottom: 0;
+  width: 100%;
+  font-family: $font-body-regular;
+  font-size: 12px;
+
+  .nav {
+
+    p {
+      line-height: 20px;
+      margin-top: 14px;
+    }
+
+    li {
+      line-height: 20px;
+
+      a { color: $brand-primary; }
+
+      a:hover { background: none; }
+
+      &:last-child a { padding-right: 0; }
+
+    }
+
+  }
+
+  .navbar-right { margin-right: 0px; }
+
+  .navbar-nav {
+    &.navbar-right{
+      li > a {
+        font-size: 14px;
+      }
+    }
+
+    &.navbar-left{
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+}

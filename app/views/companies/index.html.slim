@@ -1,0 +1,9 @@
+= render 'shared/discover'
+.row
+  = render partial: 'company', collection: @companies.map { |c| CompanyDecorator.new(c) }
+.row
+  .col-xs-12
+    .text-center
+      - unless @companies.current_page == @companies.total_pages
+        #load-more
+          = link_to 'Load More', companies_path(page: @companies.current_page + 1), remote: true, class: 'btn btn-default'

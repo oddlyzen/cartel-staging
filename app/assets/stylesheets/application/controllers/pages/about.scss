@@ -1,0 +1,35 @@
+body.pages-about {
+
+  h2.title {
+    @include make-row();
+    @include make-xs-column(12);
+
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    color: $light-grey;
+  }
+
+  .logo {
+    text-align: center;
+    margin-top: 80px;
+
+    h1 {
+      font-size: 140px;
+    }
+
+    h3 {
+      font-size: 36px;
+    }
+  }
+
+  .content {
+    @include make-row();
+
+    .pull-right { margin-right: 0px; }
+
+    p {
+      text-align: justify;
+    }
+  }
+
+}

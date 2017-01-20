@@ -1,0 +1,337 @@
+body.portfolio-artworks {
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h4 {
+    line-height: 10px;
+  }
+
+  .user-header {
+    text-align: center;
+
+    h1 {
+      color: $brand-primary;
+    }
+
+    ul { @include inline-list }
+
+    .tagline { margin-bottom: 20px; }
+
+    .page-links {
+      margin-bottom: 50px;
+      font-size: 17px;
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+    }
+  }
+}
+
+body.portfolio-artworks-index {
+  .fa-caret-left:before {
+    font-size: xx-large;
+    margin-right: 30px;
+    position: absolute;
+    top: auto;
+    bottom: 205px;
+    right: auto;
+    left: -30px;
+  }
+
+ .fa-caret-right:before {
+    font-size: xx-large;
+    margin-left: 30px;
+  }
+
+  nav.links {
+    @include make-row();
+    height: 100px;
+
+    .btn { margin: 0px; }
+  }
+
+  section {
+    @include make-row();
+    min-height: 80vh;
+  }
+
+  article {
+    @include make-xs-column(8);
+
+    .item-box {
+      padding-top: 8px;
+      width: 685px;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      .item {
+        margin-right: 14px;
+        margin-bottom: 14px;
+
+        &:last-of-type { margin-right: 0px; }
+
+        .active {
+          background:rgba(0, 0, 0, .75);
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
+  aside {
+    .selectize-control {
+      margin-bottom: 15px;
+    }
+
+    @include make-xs-column(4);
+
+    .panel-heading {
+      background-color: white;
+      padding-left: 0px;
+      margin-bottom: 20px;
+
+      h4.panel-title {
+        color: $light-grey;
+        font-family: $font-heading;
+        letter-spacing: 1.5px;
+        font-size: 18px;
+      }
+
+      a {
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none !important;
+
+        &[aria-expanded="true"] {
+          .fa-chevron-up:before {
+            content: "\f078";
+          }
+        }
+      }
+    }
+
+    #js-private-parent > .panel-default {
+      border: none;
+      box-shadow: none;
+    }
+
+  }
+
+
+  form.edit_artwork {
+    padding-bottom: 20px;
+
+    select.date {
+      width: 48%;
+
+      &:first-of-type {
+        margin-right: 2%;
+      }
+    }
+
+    .btn { width: 100%; }
+
+    .checkbox input[type="checkbox"] {
+      margin-left: 0px;
+    }
+
+    .form-inline {
+      margin-bottom: 15px;
+
+      input {
+        width: 100%;
+        padding: 6px 12px;
+      }
+
+      &.four-fields {
+        .form-group {
+          width: 20%;
+        }
+
+        span { padding: 3%; }
+
+        .artwork_unit > select {
+          margin-left: 35%;
+        }
+      }
+
+      &.two-fields {
+        .form-group {
+          width: 48%;
+
+          &:first-of-type {
+            margin-right: 4%;
+          }
+        }
+      }
+
+      &.country-city {
+        .form-group {
+          width: 48%;
+
+          &:first-of-type {
+            margin-right: 3%;
+          }
+        }
+
+        select {
+          width: 100%;
+        }
+      }
+    }
+
+
+    ul {
+      @include inline-list;
+      margin-top: 50px;
+
+      li {
+        width: 48%;
+        padding: 0px;
+
+        &:first-of-type {
+          margin-right: 3%;
+        }
+      }
+    }
+  }
+}
+
+body.portfolio-artworks-upload {
+
+  header {
+    h1 {
+      margin-top: 0px;
+    }
+    margin-top: 30px;
+  }
+
+  form.new_bulk_group_form{
+    margin-top: 20px;
+
+    .card {
+      margin-right: 30px;
+    }
+    section.all-series {
+      border-bottom: 3px solid $white;
+    }
+    .upload-artworks{
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+
+    .btn.group-submit {
+      margin-right: 0;
+      margin-top: 15px;
+    }
+  }
+
+
+  h3 {
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    color: $dark-grey;
+  }
+
+  .btn-default {
+    min-width: 200px;
+    &:before {
+      content: '< '
+    }
+    &:disabled {
+      pointer-events: auto;
+    }
+  }
+
+  .btn-tertiary {
+    height: 160px;
+    width: 160px;
+    padding: 40%;
+  }
+
+  .cards {
+    @include make-row();
+
+    &--artworks { margin-left: 5px; }
+  }
+
+  .card {
+    @include make-xs-column(2);
+    margin-bottom: 25px;
+
+    .text-center {
+      min-height: 50px;
+      width: 160px;
+    }
+
+    .btn { margin-bottom: 10px; }
+
+    img {
+      margin-bottom: 10px;
+    }
+
+    b {
+      font-size: 18px;
+      font-family: $font-body-semibold;
+    }
+
+    p {
+      font-size: 14px;
+      font-family: $font-body-regular;
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      left: -4px;
+      top: -4px;
+
+      &:checked + img {
+        background:rgba(0, 0, 0, .75);
+        opacity: 0.3;
+      }
+    }
+  }
+
+  .links--select {
+    text-transform: uppercase;
+    height: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    ul {
+      @include inline-list;
+    }
+  }
+
+  .upload-pane {
+    @include make-row();
+    @include make-xs-column(12);
+    border: 3px dashed $light-grey !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 20px !important;
+    height: 200px;
+    font-size: 30px !important;
+    font-family: $font-body-regular;
+    color: $light-grey !important;
+    text-align: center;
+  }
+
+  form.new_bulk_upload_form {
+    height: 300px;
+    margin-top: 30px;
+
+    .upload-pane {
+      margin-bottom: 30px !important;
+
+      span {
+        font-family: $font-body-semibold;
+        font-size: 20px !important;
+        color: $light-grey !important;
+      }
+    }
+  }
+}

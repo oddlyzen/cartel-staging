@@ -1,0 +1,22 @@
+= render 'shared/user_header', user: @artist
+
+- if @artist == current_user
+  nav.row
+    .cta.manage-portfolio
+      = link_to 'Manage your portfolio', upload_portfolio_artworks_path, class: 'btn btn-primary'
+ul.tab-list
+  li.active role="presentation"
+    a.btn.btn-tertiary aria-controls="all-series" data-toggle="tab" href="#all-series" role="tab" Series
+  li role="presentation"
+    a.btn.btn-tertiary aria-controls="artworks" data-toggle="tab" href="#all-artworks" role="tab" Artworks
+
+.row
+  .col-md-12
+    .tab-content
+      #all-series.tab-pane.active role="tabpanel"
+        .row
+          = render partial: 'series', collection: @series
+      #all-artworks.tab-pane role="tabpanel"
+        .row
+          = render partial: 'artwork', collection: @artworks
+

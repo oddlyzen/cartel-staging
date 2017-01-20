@@ -1,0 +1,178 @@
+body.my-feeds-show {
+
+  h2.date-today {
+    color: $light-grey;
+    font-family: $font-heading;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    margin: 0px;
+  }
+
+  .feeds {
+    padding-bottom: 50px;
+    width: 100%;
+    -moz-column-count:2;
+    -moz-column-gap: 2%;
+    -moz-column-width: 50%;
+    -webkit-column-count:2;
+    -webkit-column-gap: 2%;
+    -webkit-column-width: 50%;
+    column-count: 2;
+    column-gap: 2%;
+    column-width: 50%;
+
+    > hr {
+      margin: 10px 0;
+    }
+  }
+
+  .item-box {
+    padding: 20px;
+    display: inline-block;
+  }
+
+  .item {
+    .user {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      img {
+        margin-right: 20px;
+      }
+    }
+
+    .content {
+      margin-left: 70px;
+
+      i > a {
+        color: $light-grey;
+      }
+
+      b > a { color: $light-grey; }
+
+      p {
+        color: $light-grey;
+        width: 400px;
+        text-align: justify;
+        margin-bottom: 10px;
+
+        &.title {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        &.timestamp {
+          font-size: 0.8em;
+        }
+      }
+
+      img {
+        @include img-responsive();
+        margin-bottom: 10px;
+
+        &.main-image { margin-top: 10px; }
+        &.thumbnail {
+          height: 130px;
+        }
+      }
+    }
+  }
+
+  .artwork {
+    .btn { width: 100px }
+
+    .tag-request {
+      @include make-row();
+      height: 50px;
+      padding: 5px 0px;
+      display: flex;
+      align-items: center;
+      margin-top: -15px;
+      padding-left: 20px;
+
+      p {
+        color: $dark-grey;
+        margin: 0px;
+      }
+    }
+
+  }
+
+}
+
+body.my-feeds.modal-open {
+
+  .modal-body p {
+    margin-bottom: 0px;
+  }
+
+  .artwork {
+    .btn { width: 100px }
+
+    .tag-request {
+      @include make-row();
+      height: 50px;
+      padding: 5px 0px;
+      display: flex;
+      align-items: center;
+      margin-top: -15px;
+      padding-left: 20px;
+
+      p {
+        color: $dark-grey;
+        margin: 0px;
+      }
+    }
+
+    .content {
+      @include make-row();
+      padding-left: 20px;
+
+      h2.title {
+        font-size: 30px;
+        color: $black;
+      }
+
+      b { font-family: $font-body-regular; }
+
+      .sub-heading {
+        margin-top: 30px;
+      }
+
+      p {
+
+        a { color: $light-grey; }
+
+        font-family: $font-body-regular;
+
+        &.heading {
+          color: #000;
+          font-size: 16px;
+        }
+
+        &.description {
+          font-size: 12px;
+          margin-top: 30px;
+          text-align: justify;
+        }
+
+        &.exhibitions {
+          margin-top: 30px;
+        }
+
+      }
+
+    }
+
+  }
+
+}

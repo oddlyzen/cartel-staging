@@ -1,0 +1,9 @@
+nav.row
+  = render 'networks/call_to_action', connection: @current_professional
+
+= render 'profile_header', user: @professional
+
+- if current_user.friends.include?(@current_professional) || current_user == @current_professional
+  = render 'profile_details', artist: @professional
+- else
+  h1.text-center Add #{@professional.full_name} To Your Network To See More

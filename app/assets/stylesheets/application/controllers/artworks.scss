@@ -1,0 +1,118 @@
+body.artworks-index {
+
+  .details {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .tab-content{
+    margin-top: 30px;
+  }
+
+  .tab-list {
+    @include make-row;
+    @include make-xs-column(12);
+    @include inline-list;
+
+    text-align: center;
+    margin-bottom: 30px;
+
+    li {
+      padding: 0px;
+
+      a.btn-tertiary {
+        margin: 0px;
+        width: 100px;
+
+        &[href="#all-series"] {
+          margin-right: -2px;
+          border-right: none !important;
+          border-radius: 2px 0px 0px 2px !important;
+        }
+
+        &[href="#all-artworks"] {
+          margin-left: -2px;
+          border-left: none !important;
+          border-radius: 0px 2px 2px 0px !important;
+        }
+      }
+
+      &.active {
+        .btn-tertiary {
+          color: white;
+          border: 1px solid $brand-primary;
+          background-color: $dark-grey;
+        }
+      }
+    }
+  }
+
+}
+
+body.artworks-index.modal-open {
+
+  .modal-body p {
+    margin-bottom: 0px;
+  }
+
+  .artwork {
+    .btn { width: 100px }
+
+    .tag-request {
+      @include make-row();
+      height: 50px;
+      padding: 5px 0px;
+      display: flex;
+      align-items: center;
+      margin-top: -15px;
+      padding-left: 20px;
+
+      p {
+        color: $dark-grey;
+        margin: 0px;
+      }
+    }
+
+    .content {
+      @include make-row();
+      padding-left: 20px;
+
+      h2.title {
+        font-size: 30px;
+        color: $black;
+      }
+
+      b { font-family: $font-body-regular; }
+
+      .sub-heading {
+        margin-top: 30px;
+      }
+
+      p {
+
+        a { color: $light-grey; }
+
+        font-family: $font-body-regular;
+
+        &.heading {
+          color: #000;
+          font-size: 16px;
+        }
+
+        &.description {
+          font-size: 12px;
+          margin-top: 30px;
+          text-align: justify;
+        }
+
+        &.exhibitions {
+          margin-top: 30px;
+        }
+
+      }
+
+    }
+
+  }
+
+}

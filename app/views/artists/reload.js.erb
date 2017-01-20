@@ -1,0 +1,7 @@
+$('.cards').append("<%=j render(partial: 'artist', collection: @artists) %>");
+
+<% if @artists.current_page == @artists.total_pages %>
+  $('#load-more').remove();
+<% else %>
+  $('#load-more a').attr('href', '<%= artists_path(page: @artists.current_page + 1) %>');
+<% end %>

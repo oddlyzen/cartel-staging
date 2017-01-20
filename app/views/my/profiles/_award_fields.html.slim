@@ -1,0 +1,12 @@
+fieldset.nested-fields
+  hr.-thin
+  .row
+    .col-xs-4
+      .form-inline
+        = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+    .col-xs-6
+      = f.input :awarding_body, label: false, placeholder: 'Awarding Body'
+      = f.input :title, label: false, placeholder: 'Title'
+      = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: "award-#{f.object.id || 'new'}" } }
+      = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: "award-#{f.object.id || 'new'}"  } }

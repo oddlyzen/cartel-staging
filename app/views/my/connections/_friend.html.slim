@@ -1,0 +1,28 @@
+.col-xs-3.text-center
+  .card
+    header
+      = link_to profile_path(friend) do
+        .row
+          .col-xs-12
+            = image_tag profile_image_url(friend, 120, 120, 'clip'), size: '120x120'
+          .col-xs-12
+            h3.artist_name = friend.full_name
+            h4.artist_based = friend.role.capitalize
+            h4.artist_based = friend.display_based_in
+          .col-xs-12.tagline
+            p = friend.statement_snippet
+        .row
+          .col-xs-12
+            ul
+              - friend.media_tags.each do |m|
+                li.label = m
+    nav
+      .row
+        .col-xs-12
+          ul
+            li
+              b #{friend.series_count}
+              span Series |
+              b #{friend.artworks_count}
+              span Artworks
+            li = link_to 'Disconnect', '#', class: 'btn btn-default', data: { toggle: 'modal', target: '#disconnect', friendname: friend.full_name, disconnectlink: my_connection_path(friend) }

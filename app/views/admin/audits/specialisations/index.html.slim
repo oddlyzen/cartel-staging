@@ -1,0 +1,36 @@
+.row
+  .col-xs-1
+    = render partial: 'admin/menubar'
+  .col-xs-11
+    ul.nav.nav-tabs
+      li role='presentation'
+        = link_to 'Audit Media', admin_audits_media_path
+      li role='presentation'
+        = link_to 'Audit Subjects', admin_audits_subjects_path
+      li.active role= 'presentation'
+        = link_to 'Audit Specialisations', admin_audits_specialisations_path
+
+    h3 Subjects & Themes
+    .table-responsive
+      table.table.table-hover
+        thead
+          tr
+            th Tag Name
+            th User Name
+            th Status
+            th Approve/Reject Date
+            th Tag Name Last Updated
+            th Action
+
+        tbody
+          - @specialisations.each do |specialisation|
+            tr
+              td = specialisation.name.titleize
+              td = specialisation.tag_user_full_name.titleize
+              td = specialisation.state.humanize
+              td = specialisation.action_date
+              td = specialisation.name_edit_date
+              td = link_to 'Edit', edit_admin_audits_specialisation_path(specialisation), class: 'btn btn-secondary'
+              - if specialisation.pending?
+                td = link_to 'Approve', approve_admin_audits_specialisation_path(specialisation), method: :patch, class: 'btn btn-default'
+                td = link_to 'Reject', reject_admin_audits_specialisation_path(specialisation), method: :patch, class: 'btn btn-primary'

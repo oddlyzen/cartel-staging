@@ -1,0 +1,91 @@
+section.section-2
+  .row
+    .col-xs-3
+      .row
+        .col-xs-12
+          .has-feedback
+            label Where are you based?
+            = fa_icon('location-arrow', class: 'form-control-feedback')
+            = f.input :based_country, collection: Location.options_for_country,
+              include_blank: false, input_html: { data: { selectize_country: 'based_in' } }, wrapper: :selectize
+      .row
+        .col-xs-12
+          .has-feedback
+            = fa_icon('location-arrow', class: 'form-control-feedback')
+            = f.input :based_state, collection: Location.state_options_for_country(f.object.based_country),
+              include_blank: false, input_html: { data: { selectize_state: 'based_in' } }, wrapper: :selectize
+      .row
+        .col-xs-12
+          .has-feedback
+            label Nationality
+            = fa_icon('map-marker', class: 'form-control-feedback')
+            = f.input :nationality_country, collection: Location.options_for_country,
+              include_blank: false, input_html: { data: { selectize: true } }, wrapper: :selectize
+      .row
+        .col-xs-12
+          .has-feedback
+            = fa_icon('map-marker', class: 'form-control-feedback')
+            = f.input :residency_status, collection: options_for_enum(User.residency_statuses),
+              include_blank: false, input_html: { data: { selectize: true } }, wrapper: :selectize
+      .row
+        .col-xs-12
+          .has-feedback
+            = fa_icon('globe', class: 'form-control-feedback')
+            = f.input :link, label: false, placeholder: 'Website Link'
+      .row
+        .col-xs-12
+          .has-feedback
+            = fa_icon('facebook-official', class: 'form-control-feedback')
+            = f.input :facebook_link, placeholder: 'Place URL here', label: false
+        .col-xs-12
+          .has-feedback
+            = fa_icon('twitter', class: 'form-control-feedback')
+            = f.input :twitter_link, placeholder: 'Place URL here', label: false
+        .col-xs-12
+          .has-feedback
+            = fa_icon('instagram', class: 'form-control-feedback')
+            = f.input :instagram_link, label: false, placeholder: 'Instagram Link'
+      .row
+        .col-xs-12
+          .form-group
+            label Current Status
+            = f.input :current_status, label: false, as: :select, collection: options_for_enum(User::STATUS_OPTIONS_FOR_ARTIST), include_blank: false
+            = f.input :representative_ids, collection: Company.pluck(:name, :id), selected: f.object.joined_companies.pluck(:id), include_hidden: false, placeholder: 'Organisations', input_html: { multiple: true, data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) } }, wrapper: :selectize
+            = f.input :other_status, label: false, placeholder: 'Other status'
+      .row
+        .col-xs-12
+          .checkbox
+            = f.check_box :commission
+            = f.label :commission, 'Available for commission'
+    .col-xs-9
+      ul.interests-skills
+        = f.simple_fields_for :profile do |profile|
+          li
+            label Media
+            .input-group
+              = profile.input :medium_ids, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', input_html: { multiple: true, data: { klass: 'Medium', url: my_tags_path(format: :json) } }, wrapper: :selectize
+          li
+            label Subjects & Themes
+            .input-group
+              = profile.input :subject_ids, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'Add a subject/themes', input_html: { multiple: true, data: { klass: 'Subject', url: my_tags_path(format: :json) } }, wrapper: :selectize
+          li
+            label Skills
+            .input-group
+              = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'Add a skill', input_html: { multiple: true, data: { klass: 'Skill', url: my_tags_path(format: :json) } }, wrapper: :selectize
+          li
+            label Languages
+            #language-proficiencies
+              = profile.simple_fields_for :language_proficiencies do |proficiency|
+                = render 'language_proficiency_fields', f: proficiency
+
+            #language-proficiencies-links
+              = link_to_add_association 'Add more', profile, :language_proficiencies, class: 'btn btn-default', data: { association_insertion_node: '#language-proficiencies', association_insertion_method: 'append' }
+
+      .row
+        .col-xs-12
+          = f.input :statement, as: :text, label: false, placeholder: 'Write your artist statement here',
+          input_html: { maxlength: 500 }
+          .form-inline
+            .col-xs-12
+              .pull-right max 500 characters
+hr

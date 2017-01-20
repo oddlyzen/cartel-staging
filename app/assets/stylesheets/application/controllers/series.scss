@@ -1,0 +1,128 @@
+body.series-show {
+
+  .thumb {
+    text-align: center;
+    min-width: 222px;
+
+    h5 {
+      margin: 0 auto;
+      font-size: 13px;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+    }
+  }
+
+  .exhibition {
+    margin-top: -23px;
+
+    p {
+      margin: 0px;
+    }
+  }
+
+  .series {
+    margin-top: 50px;
+    min-height: 500px;
+
+    .title-year {
+      padding-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    h1.title {
+      color: $dark-grey;
+      font-family: $font-body-light;
+      font-size: 30px;
+      margin: 0px;
+    }
+
+    p.year {
+      color: $light-grey;
+      margin-top: 20px;
+    }
+
+    p.description {
+      color: $dark-grey;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    p, b {
+      font-family: $font-body-regular;
+    }
+
+  }
+
+}
+
+
+body.series.series-show.modal-open {
+
+  .modal-body p {
+    margin-bottom: 0px;
+  }
+
+  .artwork {
+    .btn { width: 100px }
+
+    .tag-request {
+      @include make-row();
+      height: 50px;
+      padding: 5px 0px;
+      display: flex;
+      align-items: center;
+      margin-top: -15px;
+      padding-left: 20px;
+
+      p {
+        color: $dark-grey;
+        margin: 0px;
+      }
+    }
+
+    .content {
+      @include make-row();
+      padding-left: 20px;
+
+      h2.title {
+        font-size: 30px;
+        color: $black;
+      }
+
+      b { font-family: $font-body-regular; }
+
+      .sub-heading {
+        margin-top: 30px;
+      }
+
+      p {
+
+        a { color: $light-grey; }
+
+        font-family: $font-body-regular;
+
+        &.heading {
+          color: #000;
+          font-size: 16px;
+        }
+
+        &.description {
+          font-size: 12px;
+          margin-top: 30px;
+          text-align: justify;
+        }
+
+        &.exhibitions {
+          margin-top: 30px;
+        }
+
+      }
+
+    }
+
+  }
+
+}

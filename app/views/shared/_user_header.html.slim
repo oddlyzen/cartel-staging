@@ -1,0 +1,17 @@
+header.user-header
+  .col-xs-12
+    .img-container
+      = image_tag user.profile_image_url
+
+    h1 = user.full_name
+    p = user.tagline
+    ul
+      li class="#{active(:profile)}" = link_to 'Profile', profile_path(user)
+      - if user.artist?
+        li class="#{active(:portfolio)}" = link_to 'Portfolio', artist_artworks_path(user)
+        li class="#{active(:network)}" = link_to 'Network', artist_networks_path(user)
+      - elsif user.professional? && user == current_user
+        li class="#{active(:network)}" = link_to 'Network', professional_networks_path(user)
+      - if !user.companies.blank? || user == current_user
+        li class="#{active(:page)}" = link_to 'Pages', pages_path(user)
+

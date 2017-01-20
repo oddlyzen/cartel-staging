@@ -1,0 +1,117 @@
+= render 'shared/user_header', user: @user
+.row
+  aside
+    = link_to '< Done', '', data: { toggle: 'modal', target: '#js-modal-alert', url: artist_series_path(@user, @series) },
+      class: 'btn btn-default'
+    ul.tab-list
+
+      li.active = link_to 'Series', '#js-series-edit', data: { toggle: 'tab', tooltip: 'tooltip', placement: 'bottom' },
+        title: 'Edit Your Series Details', class: 'btn btn-secondary'
+
+      li  = link_to 'Bulk Edit', '#js-bulk-edit', data: { toggle: 'tab', tooltip: 'tooltip', placement: 'bottom' },
+        title: 'Bulk Edit Details on Selected Artwork', class: 'btn btn-secondary'
+
+    .tab-content
+      #js-series-edit.tab-pane.active role="tabpanel"
+        = simple_form_for @series_update_form, url: portfolio_series_path, method: :patch do |f|
+          = f.input :id, as: :hidden, value: @series.id
+          = f.simple_fields_for :series do |series|
+            = series.input :title, label: false, placeholder: 'Title'
+            = series.input :description, as: :text, label: false, placeholder: 'Series description', input_html: { rows: 10 }
+            = series.input :year, as: :date, order: [:year], label: false, prompt: true, start_year: 1936, end_year: Date.today.year
+            = series.input :link, label: false, placeholder: 'Link'
+            label Exhibition
+            .js-existing-exhibition
+              = series.input :exhibition_id, label: false, collection: @user.exhibitions.pluck(:title, :id), include_blank: false, prompt: 'Please select an exhibition...'
+              = link_to 'Add New Exhibition', 'javascript:void(0)', id: 'js-show-exhibition', class: 'btn btn-default'
+            .js-new-exhibition
+              = f.simple_fields_for :exhibition do |exhibition|
+                = exhibition.input :title, label: false, placeholder: 'Title'
+                = exhibition.input :start_year, label: false, prompt: true, collection: Year.collection_options
+                = exhibition.filepicker_field :pdf_url, label: false, button_text: 'PDF Upload', button_class: 'btn btn-default',
+                  extensions: '.pdf', multiple: false
+                = exhibition.input :country, as: :select, collection: Location.options_for_country, prompt: 'Select Country', wrapper: :selectize, input_html: { data: { selectize_country: 'exhibition-new' } }
+                = exhibition.input :state, as: :select, collection: {}, prompt: 'Select State', wrapper: :selectize, input_html: { data: { selectize_state: 'exhibition-new' } }
+                = exhibition.input :category, as: :select, collection: Exhibition::OPTIONS_FOR_CATEGORY, include_blank: false,
+                  label: false, prompt: 'Select Category'
+                = exhibition.input :venue_id, label: false, collection: Company.pluck(:name, :id), include_blank: false, prompt: 'Venue',
+                  input_html: { data: { klass: 'Company', selectize_company: true } }, wrapper: :selectize
+                = exhibition.input :representation_id, label: false, collection: Company.pluck(:name, :id), include_blank: false, prompt: 'Representation',
+                  input_html: { data: { klass: 'Company', selectize_company: true } }, wrapper: :selectize
+            = series.input :acknowledgement, as: :boolean, label: Exhibition::NOTICE, boolean_style: :inline,
+              input_html: { checked_value: true, unchecked_value: false }
+          ul.links--apply
+            li = f.submit 'Apply Details', class: 'btn btn-default'
+            li = link_to 'Cancel', '', class: 'btn btn-secondary',
+                 data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_path(@series) }
+            li.full = link_to 'Delete Series', portfolio_series_path(@series), method: :delete, class: 'btn btn-primary'
+            - if @series.unpublished?
+              li.full = link_to 'Publish Series', publish_portfolio_series_path(@series), method: :patch, class: 'btn btn-default', id: 'publish-series'
+            - elsif @series.published?
+              li.full = link_to 'Unpublish Series', unpublish_portfolio_series_path(@series), method: :patch, class: 'btn btn-primary'
+
+      #js-bulk-edit.tab-pane role="tabpanel"
+        = simple_form_for Artwork.new, url: bulk_update_portfolio_series_artworks_path(@series), method: :patch do |f|
+          = f.input :ids, as: :hidden
+          = f.input :series_id, label: false, collection: @user.series.select(:title, :id), selected: @series.id, include_blank: false
+          = f.input :medium_ids, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', label: 'Media',
+            input_html: { multiple: true, data: { klass: 'Medium', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+          = f.input :subject_ids, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'Add a subject or theme',
+            label: 'Subject & Themes', input_html: { multiple: true, data: { klass: 'Subject', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+          = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+          = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+          .form-inline.four-fields
+            = f.input :height, placeholder: 'HH', label: false, input_html: { min: 1 }
+            span &times
+            = f.input :width, placeholder: 'WW', label: false, input_html: { min: 1 }
+            span &times
+            = f.input :length, placeholder: 'LL', label: false, input_html: { min: 1 }
+            = f.input :unit, as: :select, collection: Artwork.units.collect { |t| [t[0], t[0]] }, label: false,
+              include_blank: false
+          = f.input :country, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize, input_html: { data: { selectize_country: 'artwork-bulk-edit' } }
+          = f.input :city, collection: {}, prompt: 'State', wrapper: :selectize, input_html: { data: { selectize_state: 'artwork-bulk-edit' } }
+          = f.input :for_sale, as: :boolean, label: 'Is this artwork for sale?', boolean_style: :inline,
+            input_html: { checked_value: true, unchecked_value: false }
+          ul.links--apply
+            li = f.submit 'Apply Details', class: 'btn btn-default'
+            li = link_to 'Cancel', '', class: 'btn btn-secondary',
+                 data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_path(@series) }
+
+  article
+    = simple_form_for @series, url: bulk_destroy_portfolio_series_artworks_path(@series), method: :delete do |f|
+      - unless @series.artworks.empty?
+        .row
+          .col-xs-12
+            .pull-left
+              = link_to 'Re-Arrange', rearrange_portfolio_series_path, class: 'btn btn-secondary'
+              = f.submit 'Delete', class: 'btn btn-secondary'
+              = link_to 'Make Series Cover', set_cover_portfolio_series_path(@series), method: :patch,
+                class: 'btn btn-secondary', id: 'js-set-cover'
+            .pull-right
+              = link_to 'Edit Individual Artwork', '', title: 'Edit Individual Artwork Details',
+                data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_artworks_path(@series),
+                tooltip: 'tooltip', placement: 'bottom' }, class: 'btn btn-default'
+        .row
+          .links--select
+            ul
+              li = link_to 'Select All', 'javascript:void(0)', id: 'js-select-all'
+              li |
+              li = link_to 'Select None', 'javascript:void(0)', id: 'js-select-none'
+      section.cards
+        .card
+          = link_to fa_icon('plus 2x'), upload_portfolio_artworks_path(series_id: @series), class: 'btn btn-tertiary'
+          .text-center
+            b Add Artwork
+        = render partial: 'artwork', collection: @series.artworks, locals: { f: f }
+
+.modal.fade#js-modal-alert
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss='modal' type='button' #{fa_icon('times')}
+      .modal-title Are you sure?
+      .modal-body
+        .text-center
+          p Please save your changes before leaving the page!
+          = link_to 'Yes', '', class: 'btn btn-default'
+      .modal-footer

@@ -1,0 +1,139 @@
+body.artists-index,
+body.professionals-index,
+body.companies-index,
+body.networks-index,
+body.my-connections-index,
+body.organisations-index,
+body.my-companies-index {
+
+  .card {
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 3px;
+    min-height: 360px;
+
+    > header {
+      height: 250px;
+
+      .tagline {
+        margin-top: 8px;
+      }
+
+      h3 {
+        font-family: $font-heading;
+        letter-spacing: 1.5px;
+        font-size: 20px;
+        line-height: 25px;
+      }
+      h3.artist_name {
+        margin-bottom: 0px;
+      }
+      h4.artist_based{
+        margin-top: 0px;
+      }
+
+      p {
+        font-family: $font-body-light;
+        margin: 0px;
+      }
+    }
+
+    > article {
+      min-height: 130px;
+
+      p {
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+
+      ul {
+        @include inline-list();
+        max-height: 70px;
+
+        li.label {
+          overflow: hidden;
+          margin: 0px 3px 3px 0px;
+          padding: 10px;
+          background-color: $white;
+          color: $brand-primary;
+        }
+      }
+    }
+
+    > hr {
+      margin-top: 5px;
+    }
+
+    > footer {
+      .networking {
+        margin-top: 14px;
+      }
+    }
+
+    > nav {
+      font-family: $font-body-regular;
+
+      .col-xs-12 > ul {
+        @include no-style();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > li {
+
+          > .btn:only-of-type { margin-right: 0px; }
+
+          > span {
+            padding-right: 5px;
+            padding-left: 5px;
+            color: $light-grey;
+          }
+        }
+      }
+
+    }
+  }
+
+}
+body.companies-index, body.my-companies-index {
+  .card {
+    min-height: 130px;
+    padding: 25px;
+
+    > header {
+        height: 100px;
+
+        .tagline {
+          margin-top: 30px;
+        }
+
+        h3.organisation_name {
+          margin-top: 5px;
+          margin-bottom: 0px;
+        }
+        h4.organisation_location{
+          margin-top: 0px;
+        }
+        .right-card{
+          padding-left: 30px;
+        }
+    }
+    > article {
+      min-height: 50px;
+    }
+  }
+}
+
+body.networks-index,
+body.my-connections-index {
+  .card {
+    > nav {
+      .col-xs-12 > ul {
+        display: block;
+      }
+    }
+  }
+
+}
+

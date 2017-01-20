@@ -1,0 +1,26 @@
+.row
+  .col-xs-12
+    .item-box
+      .item
+        = link_to artist_path(feed_item.artwork.user_id) do
+          .user
+            = image_tag profile_image_url(feed_item.user, 50, 50, 'clip'), size: '50x50'
+            h3 = feed_item.user_name
+
+        .content
+          .row
+            .col-xs-12
+              p.title Added #{artwork_path(feed_item.artwork)} to #{series_path(feed_item.artwork.series)}
+
+          .row
+            .col-xs-12
+              = link_to artist_artwork_path(feed_item.user_id, feed_item.artwork_id), remote: true, data: { toggle: 'modal', target: '#modal' } do
+                = filepicker_image_tag(feed_item.artwork.image_url, { fit: 'crop', align: 'faces' }, class: 'main-image')
+
+          .row
+            .col-xs-12
+              p.description = truncate(feed_item.artwork.description, length: 150)
+
+          .row
+            .col-xs-12
+              p.timestamp = feed_item.time

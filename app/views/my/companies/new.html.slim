@@ -1,0 +1,12 @@
+.row
+  .col-xs-10.col-xs-offset-1
+    h1 Create New Organisations
+    = simple_form_for @company_form, url: { action: 'create' }, method: 'post' do |f|
+      = f.simple_fields_for :company do |company|
+        .text-center
+          .form-group
+            = company.input_field :image_url, { type: 'filepicker-dragdrop',data: { fp_option_modal: false, fp_multiple: true,fp_mimetypes: 'image/*', fp_apikey: ENV["FILEPICKER_API_KEY"],fp_drag_class: 'upload-pane', fp_button_class: 'hidden', fp_drag_text: 'Upload Image' } }
+        label Name of Organization
+        = company.input :name, collection: Company.pending.pluck(:name), label: false, wrapper: :selectize, input_html: { data: { selectize_company: true } }
+        = render 'form', company: company
+        = f.submit 'Submit', class: 'btn btn-default'

@@ -1,0 +1,9 @@
+= render 'shared/discover'
+.row
+  = render partial: 'artist', collection: @artists
+.row
+  .col-xs-12
+    .text-center
+      - unless @artists.current_page == @artists.total_pages
+        #load-more
+          = link_to 'Load More', artists_path(page: @artists.current_page + 1), remote: true, class: 'btn btn-default'

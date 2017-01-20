@@ -1,0 +1,29 @@
+.row
+  .col-xs-12
+    h1 Manage Your Organisation
+    .table-responsive
+      table.table.table-hover
+        thead
+          tr
+            th First Name
+            th Last Name
+            th Email
+            th User Type
+            th Status
+            th Action
+        tbody
+          - @company_presenter.memberships.each do |membership|
+            tr
+              td = membership.user.first_name.titleize
+              td = membership.user.last_name.titleize
+              td = membership.user.email
+              td = membership.user.role.titleize
+              td = membership.state.titleize
+              - if membership.pending?
+                td
+                  ul.list-inline
+                    li = link_to 'Approve', approve_my_company_membership_path(@company_presenter.company, membership.id), method: :patch, class: 'btn btn-info'
+                    li = link_to 'Reject', reject_my_company_membership_path(@company_presenter.company, membership.id), method: :patch, class: 'btn btn-warning'
+              - else
+                td = link_to 'Remove', my_company_memberships_path(company_id: @company_presenter.company, member_id: membership.user_id), method: :delete, class: 'btn btn-info'
+

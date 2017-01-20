@@ -1,0 +1,56 @@
+= simple_form_for artwork, url: portfolio_series_artwork_path(series_id: artwork.series_id, id: artwork.id) do |f|
+  = f.input :title, placeholder: 'Artwork Title', label: false
+  = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+  = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+  = f.input :description, as: :text, placeholder: 'Description', label: false, input_html: { rows: 10 }
+  .form-inline.four-fields
+    = f.input :height, placeholder: 'HH', label: false, input_html: { min: 1 }
+    span &times
+    = f.input :width, placeholder: 'WW', label: false, input_html: { min: 1 }
+    span &times
+    = f.input :length, placeholder: 'LL', label: false, input_html: { min: 1 }
+    = f.input :unit, as: :select, collection: Artwork.units.collect { |t| [t[0], t[0]] }, label: false,
+      include_blank: false
+  = f.input :medium_ids, as: :select, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', label: 'Media', input_html: { multiple: true, data: { klass: 'Medium', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+  = f.input :subject_ids, as: :select, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'Add a subject or theme', label: 'Subject & Themes', input_html: { multiple: true, data: { klass: 'Subject', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+  = f.input :collaborator_ids, as: :select, collection: User.artist.pluck(:first_name, :id), selected: artwork.collaborators.pluck(:id), include_hidden: false, placeholder: 'Add a collaborator', input_html: { multiple: true, data: { selectize_collaborator: true } }, wrapper: :selectize
+  = f.input :series_id, label: false, collection: @user.series.select(:title, :id), include_blank: false
+  .form-inline.two-fields
+    = f.input :edition, placeholder: 'Edition', label: false, input_html: { min: 1 }
+    = f.input :edition_of, placeholder: 'Edition Of', label: false, input_html: { min: 1 }
+  = f.input :for_sale, as: :boolean, label: 'Is this artwork for sale?', boolean_style: :inline,
+            input_html: { checked_value: true, unchecked_value: false }
+
+  = f.input :acknowledgement, as: :boolean, label: Exhibition::NOTICE, boolean_style: :inline,
+            input_html: { checked_value: true, unchecked_value: false }
+  ul
+    li = f.submit 'Apply', class: 'btn btn-default'
+    li = link_to 'Cancel', '', class: 'btn btn-tertiary',
+         data: { toggle: 'modal', target: '#js-modal-alert', url: edit_portfolio_series_path(@series) }
+
+#js-private-parent.panel-group
+  .panel.panel-default
+    .panel-heading
+      = link_to '#js-private-fields', data: { parent: '#js-private-parent', toggle: 'collapse' }, class: 'collapsed' do
+        h4.panel-title Private Artwork Details
+        = fa_icon 'chevron-up'
+    #js-private-fields.panel-collapse.collapse
+      = simple_form_for artwork, url: portfolio_series_artwork_path(series_id: artwork.series_id, id: artwork.id) do |f|
+        .form-inline.two-fields
+          = f.input :artist_inventory, placeholder: 'Artist Inventory', label: false, input_html: { min: 1 }
+          = f.input :gallery_inventory, placeholder: 'Gallery Inventory', label: false, input_html: { min: 1 }
+        .form-inline.two-fields
+          = f.input :signature, label: false, placeholder: 'Signature'
+          = f.input :signature_location, label: false, placeholder: 'Signature Location'
+        = f.input :country, collection: Location.options_for_country, include_blank: false, label: false, prompt: 'Country', input_html: { data: { selectize_country: "artwork-#{f.object.id}" } }, wrapper: :selectize
+        = f.input :city, collection: Location.state_options_for_country(f.object.country), label: false, prompt: 'City', input_html: { data: { selectize_state: "artwork-#{f.object.id}" } }, wrapper: :selectize
+        = f.input :private_collection, label: false, placeholder: 'Private Collection'
+        = f.input :public_collection, label: false, placeholder: 'Public Collection'
+        = f.input :notes, label: false, placeholder: 'Artist Notes'
+        = f.input :signed_dated, as: :boolean, label: 'Is this artwork signed or dated?', boolean_style: :inline,
+                  input_html: { checked_value: true, unchecked_value: false }
+        ul
+          li = f.submit 'Apply', class: 'btn btn-default'
+          li = link_to 'Cancel', '', class: 'btn btn-tertiary',
+               data: { toggle: 'modal', target: '#js-modal-alert', url: edit_portfolio_series_path(@series) }
+

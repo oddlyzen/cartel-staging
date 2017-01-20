@@ -1,0 +1,59 @@
+@mixin default-btn-style {
+  color: white;
+  font-family: $font-body-semibold;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  padding: 10px 15px;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.btn.btn-link { color: $light-grey; }
+
+.btn.btn-default {
+
+  @include default-btn-style;
+
+  border: 1px solid $brand-primary;
+  background-color: $dark-grey;
+
+  .fa {
+    font-size: small;
+  }
+}
+
+.btn.btn-primary {
+
+  @include default-btn-style;
+
+  border: 1px solid $secondary-color;
+  background-color: $secondary-color;
+
+}
+
+.btn-secondary {
+  @include default-btn-style;
+
+  background-color: $white;
+  color: $light-grey;
+  border: none;
+
+  &:hover {
+    background-color: $light-grey;
+    color: $white;
+  }
+}
+
+.btn.btn-tertiary {
+  @include default-btn-style;
+
+  background-color: $white;
+  color: $light-grey;
+
+  &:hover {
+    background-color: $light-grey;
+    color: $white;
+  }
+}

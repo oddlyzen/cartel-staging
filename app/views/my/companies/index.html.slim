@@ -1,0 +1,8 @@
+nav.row
+  .cta
+    = link_to 'Create New Organisation', new_my_company_path, class: 'btn btn-primary pull-right'
+
+= render 'shared/user_header', user: @user
+
+.cards
+  = render @companies

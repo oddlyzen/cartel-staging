@@ -1,0 +1,6 @@
+.row
+  .col-xs-12
+    h2.date-today Today, #{Time.zone.today.strftime('%d %B')}
+.feeds
+  - @feed_items.each do |feed_item|
+    = render "#{feed_item.kind}_feed_item", feed_item: feed_item

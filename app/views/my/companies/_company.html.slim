@@ -1,0 +1,24 @@
+.col-xs-4
+  .card.company
+    header
+      = link_to company_path(company) do
+        .row
+          .col-xs-4
+            .img-sm
+              = image_tag company.image_url
+
+          .col-xs-8.right-card
+            h3.organisation_name = company.name
+            p = company.location
+            p.tagline = company.full_address
+    article
+      .row
+        .col-xs-12
+          p = truncate(company.description, length: 45)
+    hr
+    nav
+      .row
+        .col-xs-12
+          ul
+            li = link_to 'Edit', edit_my_company_path(company), class: 'btn btn-primary'
+            li = link_to 'Manage', my_company_path(company), class: 'btn btn-default'

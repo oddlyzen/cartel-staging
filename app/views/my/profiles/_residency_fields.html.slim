@@ -1,0 +1,18 @@
+fieldset.nested-fields
+  hr.-thin
+  .row
+    .col-xs-4
+      .form-inline
+        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
+        span &ndash;
+        = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
+      .checkbox.-push
+        = f.check_box :current
+        = f.label :current, 'Present'
+    .col-xs-6
+      = f.input :body, label: false, placeholder: 'Residency Body'
+      = f.input :title, label: false, placeholder: 'Residency Title'
+      = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: "residency-#{f.object.id || 'new'}" } }
+      = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: "residency-#{f.object.id || 'new'}"  } }

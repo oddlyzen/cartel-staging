@@ -1,0 +1,47 @@
+body.my-companies-index {
+
+  .card > nav ul {
+    justify-content: flex-end !important;
+    li:first-of-type { margin-right: 10px; }
+  }
+
+}
+
+body.my-companies-new, body.my-companies-edit {
+
+  h1 {
+    color: $light-grey;
+    text-align: center;
+  }
+
+  form.new_my_company_form, form.edit_company {
+    min-height: 1100px;
+
+    .my_company_form_company_name .selectize-input:after { border-style: none; }
+
+    .company_organization_type_ids, .my_company_form_company_organization_type_ids {
+      .selectize-input { display: none; }
+    }
+
+    .form-inline {
+      span {
+        padding: 10px;
+      }
+    }
+
+    textarea {
+      border: 1px solid $medium-white;
+      resize: none;
+      height: 138px;
+    }
+  
+    select.date { width: 100%; }
+
+    span.checkbox {
+      width: 20%;
+      display: inline-block;
+    }
+  }
+
+}
+

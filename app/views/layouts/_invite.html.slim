@@ -1,0 +1,17 @@
+.modal.fade#js-modal-invitation
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" #{fa_icon('times')}
+      .modal-title Send An Invitation
+      .modal-body
+        .text-center
+          = form_tag my_invite_path do
+            .row
+              .col-xs-6.col-xs-offset-3
+                .form-group
+                  = text_field_tag :full_name, nil, placeholder: 'Full Name', class: 'form-control', required: true
+                .form-group
+                  = text_field_tag :email, nil, placeholder: 'Email Address Here', class: 'form-control', required: true
+                .form-group
+                  = submit_tag 'Send', class: 'btn btn-default'

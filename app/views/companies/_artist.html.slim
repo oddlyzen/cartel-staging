@@ -1,0 +1,6 @@
+.card
+  .avatar
+    = link_to profile_path(user), target: '_blank' do
+      = image_tag profile_image_url(user, 160, 160, 'clip'), size: '160x160'
+  .details
+    h6 = user.full_name

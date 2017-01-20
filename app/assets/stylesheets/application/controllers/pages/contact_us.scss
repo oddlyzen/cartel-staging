@@ -1,0 +1,61 @@
+body.pages-contact-us {
+
+  .content {
+    margin-top: 100px;
+  }
+
+  header {
+    margin-top: 100px;
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+
+    h1 {
+      font-size: 100px;
+      margin: 0px;
+    }
+
+    h3 {
+      margin: 0px;
+    }
+  }
+
+  aside {
+    @include make-row();
+
+    margin-top: 260px;
+
+    h2 {
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      text-align: center;
+      color: $light-grey;
+    }
+
+    form.new_enquiry_form {
+      textarea { height: 200px; }
+
+      .btn[type="submit"] {
+        float: right;
+        margin: 0px;
+        width: 100px;
+      }
+    }
+
+    .form-inline {
+      margin-bottom: 15px;
+
+      .form-group {
+        width: 48%;
+
+        &:first-of-type {
+          margin-right: 4%;
+        }
+
+        .form-control {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,19 @@
+.form-selectize {
+  margin-bottom: 10px;
+  font-family: $font-body-regular !important;
+}
+
+.selectize-input {
+  box-shadow: none !important;
+
+  &.input-active {
+    border: 1px solid black;
+    -webkit-appearance: none;
+  }
+
+  > input {
+    cursor: text !important;
+  }
+
+  &:after { border-style: none !important; }
+}

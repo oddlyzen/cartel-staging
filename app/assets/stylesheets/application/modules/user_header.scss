@@ -1,0 +1,80 @@
+body.portfolio-series-index,
+body.portfolio-series-show,
+body.portfolio-series-edit,
+body.portfolio-series-update,
+body.portfolio-series-publish,
+body.portfolio-artworks-index,
+body.my-companies-index,
+body.my-connections-index,
+body.artists-show,
+body.professionals-show,
+body.artworks-index,
+body.series-show,
+body.organisations-index,
+body.networks-index {
+
+  header.user-header {
+    @include make-row();
+    text-align: center;
+    padding-top: 30px;
+    margin-bottom: 30px;
+
+    h1 {
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      font-size: 35px;
+      color: $brand-primary;
+    }
+
+    h4 {
+      font-family: $font-body-light;
+      font-size: 15px;
+      color: $light-grey;
+      line-height: 19px;
+      height: 30px;
+    }
+
+    ul {
+      @include inline-list;
+      margin-bottom: 50px;
+      font-size: 14px;
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      text-align: center;
+
+      li {
+        margin: 0px 15px;
+        padding-bottom: 5px;
+
+        &.is-active {
+          padding-bottom: 5px;
+          border-bottom: 4px solid black;
+        }
+      }
+
+      a { text-decoration: none; }
+    }
+  }
+
+}
+
+
+body.artists-show, body.networks-index,
+body.professionals-show, body.artworks-index, body.my-companies-index  {
+  header.user-header {
+    ul {
+      margin-bottom: 25px;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+    p {
+      font-family: $font-body-regular;
+    }
+  }
+}
+
+body.artworks-index {
+  header.user-header{
+    margin-bottom: 10px;
+  }
+}

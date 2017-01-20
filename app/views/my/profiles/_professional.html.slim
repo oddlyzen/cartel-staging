@@ -1,0 +1,127 @@
+= simple_form_for(@profile_form, url: my_profile_path, method: :patch) do |f|
+
+  = f.simple_fields_for :user do |user|
+    = render 'header', f: user
+    = render 'professional_status_fields', f: user
+
+    section.section-3
+      .row
+        .col-xs-12
+          #accordion.panel-group aria-multiselectable='true' role='tablist'
+            .panel.panel-default
+              #heading-education.panel-heading role='tab' data-toggle='collapse' href='#collapse-education'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-education' aria-expanded='true' data-parent='#accordion' Education
+                  = fa_icon 'chevron-down', class: 'indicator pull-right'
+              #collapse-education.panel-collapse.collapse.in aria-labelledby='heading-education' role='tabpanel'
+                .panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :educations do |education|
+                      = render 'education_fields', f: education
+                  .row
+                    .col-xs-12
+                      = link_to_add_association fa_icon('plus').html_safe + ' add', user, :educations,
+                        class: 'btn btn-default pull-right'
+            hr
+            .panel.panel-default
+              #heading-awards.panel-heading role='tab' data-toggle='collapse' href='#collapse-awards'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-awards' aria-expanded='true' data-parent='#accordion' Grants/Fellowships/Awards
+                  = fa_icon 'chevron-up', class: 'indicator pull-right'
+              #collapse-awards.panel-collapse.collapse aria-labelledby='heading-awards' role='tabpanel'
+                #partial-award.panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :awards do |award|
+                      = render 'award_fields', f: award
+                  .row
+                    .col-xs-12
+                      = link_to_add_association 'add', user, :awards, class: 'btn btn-default button-link pull-right'
+            hr
+            .panel.panel-default
+              #heading-participations.panel-heading role='tab' data-toggle='collapse' href='#collapse-participations'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-participations' aria-expanded='true' data-parent='#accordion' Professional & Community Participation
+                  = fa_icon 'chevron-up', class: 'indicator pull-right'
+              #collapse-participations.panel-collapse.collapse aria-labelledby='heading-participations' role='tabpanel'
+                .panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :participations do |participation|
+                      = render 'participation_fields', f: participation
+                  .row
+                    .col-xs-12
+                      = link_to_add_association 'add', user, :participations, class: 'btn btn-default button-link pull-right'
+            hr
+            .panel.panel-default
+              #heading-exhibition.panel-heading role='tab' data-toggle='collapse' href='#collapse-exhibition'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-exhibition' aria-expanded='false' data-parent='#accordion' Exhibition Record
+                  = fa_icon 'chevron-up', class: 'indicator pull-right'
+              #collapse-exhibition.panel-collapse.collapse aria-labelledby='heading-exhibition' role='tabpanel'
+                #partial-exhibition.panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :exhibitions do |exhibition|
+                      = render 'exhibition_fields', f: exhibition
+                  .row
+                    .col-xs-12
+                      = link_to_add_association 'add', user, :exhibitions, class: 'btn btn-default button-link pull-right'
+            hr
+            .panel.panel-default
+              #heading-experience.panel-heading role='tab' data-toggle='collapse' href='#collapse-experience'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-experience' aria-expanded='false' data-parent='#accordion' Professional Experience
+                  = fa_icon 'chevron-up', class: 'indicator pull-right'
+              #collapse-experience.panel-collapse.collapse aria-labelledby='heading-experience' role='tabpanel'
+                #partial-experience.panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :experiences do |experience|
+                      = render 'experience_fields', f: experience
+                  .row
+                    .col-xs-12
+                      = link_to_add_association 'add', user, :experiences, class: 'btn btn-default button-link pull-right'
+            hr
+            .panel.panel-default
+              #heading-publications.panel-heading role='tab' data-toggle='collapse' href='#collapse-publications'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-publications' aria-expanded='false' data-parent='#accordion' Scholarly & Professional Publications
+                  = fa_icon 'chevron-up', class: 'indicator pull-right'
+              #collapse-publications.panel-collapse.collapse aria-labelledby='heading-publications' role='tabpanel'
+                #partial-publication.panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :publications do |publication|
+                      = render 'publication_fields', f: publication
+                  .row
+                    .col-xs-12
+                      = link_to_add_association 'add', user, :publications, class: 'btn btn-default button-link pull-right'
+            hr
+            .panel.panel-default
+              #heading-memberships.panel-heading role='tab' data-toggle='collapse' href='#collapse-memberships'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-memberships' aria-expanded='false' data-parent='#accordion' Professional Affliations/Memberships
+                  = fa_icon 'chevron-up', class: 'indicator pull-right'
+              #collapse-memberships.panel-collapse.collapse aria-labelledby='heading-memberships' role='tabpanel'
+                .panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :memberships do |membership|
+                      = render 'membership_fields', f: membership
+                  .row
+                    .col-xs-12
+                      = link_to_add_association 'add', user, :memberships, class: 'btn btn-default button-link pull-right'
+            hr
+            .panel.panel-default
+              #heading-media.panel-heading role='tab' data-toggle='collapse' href='#collapse-media'
+                h4.panel-title
+                  a.collapsed aria-controls='collapse-media' aria-expanded='false' data-parent='#accordion' Media Features
+                  = fa_icon 'chevron-up', class: 'indicator pull-right'
+              #collapse-media.panel-collapse.collapse aria-labelledby='heading-media' role='tabpanel'
+                .panel-body
+                  .row.cocoon-container
+                    = user.simple_fields_for :media_features do |media_feature|
+                      = render 'media_feature_fields', f: media_feature
+                  .row
+                    .col-xs-12
+                      = link_to_add_association 'add', user, :media_features, class: 'btn btn-default button-link pull-right'
+  nav.row
+    .cta
+      = f.submit 'Save & Done', class: 'btn btn-default'
+      = link_to 'Cancel', profile_path(current_user), class: 'btn btn-primary'
+

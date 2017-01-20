@@ -1,0 +1,416 @@
+body.my-profiles-edit {
+
+  hr {
+    background-color: $white;
+    height: 3px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+
+    &.-transparent {
+      border: none;
+      background-color: transparent;
+    }
+
+    &.-thin {
+      height: 1px;
+    }
+  }
+
+  .col-xs-6.col-xs-push-4 p {
+    padding: 20px;
+  }
+
+  textarea {
+    border: 1px solid $medium-white;
+    resize: none;
+    height: 138px;
+  }
+
+  textarea:focus, input[type=text]:focus, select:focus {
+    border: 1px solid black;
+    -webkit-appearance: none;
+  }
+
+  header.user-header {
+    @include make-row();
+    text-align: center;
+    padding-top: 30px;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 35px;
+      color: $brand-primary;
+    }
+
+    input {
+      margin: auto;
+      width: 400px;
+      text-align: center;
+    }
+  }
+
+  .interests-skills {
+    @include no-style;
+    @include make-row;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    label {
+      margin-bottom: 0px;
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      font-size: 18px;
+      color: $light-grey;
+      margin-top: 2px;
+      font-weight: normal;
+    }
+
+    .selectize-input {
+      width: 190px;
+      min-height: 85px;
+    }
+
+    .selectize-dropdown { z-index: 1000 }
+
+    li {
+      @include make-xs-column(3);
+    }
+  }
+
+  .form-inline > span {
+    padding: 10px;
+  }
+
+  select.month, select.date {
+    margin-right: 10px;
+  }
+
+  .form-group.date {
+
+    select.date {
+      width: 70px;
+
+      &:first-of-type {
+        display: none;
+      }
+    }
+  }
+
+  .body1 {
+    color: $brand-primary;
+    font-family: $font-body-regular;
+    font-size: 14px;
+  }
+
+  .body2 {
+    color: $brand-primary;
+    font-family: $font-body-regular;
+    font-size: 12px;
+  }
+
+  .check_boxes {
+    column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+  }
+
+  .col-xs-12 > label {
+    color: $light-grey;
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    font-size: 18px;
+  }
+
+  .form-group {
+    color: $brand-primary;
+    font-family: $font-body-regular;
+    font-size: 12px;
+  }
+
+  .panel { box-shadow: none; }
+
+  .panel-default { border: 0px none transparent; }
+
+  .panel-group .panel-heading + .panel-collapse > .panel-body { border-top: 0px none transparent; }
+
+  .panel-body.body1 .form-group { margin-bottom: 2px; }
+
+  .panel-heading {
+    padding-left: 0px;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  #custom-select {
+    display: inline;
+    padding: 0px;
+
+    &:after {
+      content: "\f0d7";
+      font-family: FontAwesome;
+      font-size: large;
+      position: relative;
+      right: 24px;
+      top: 2px;
+    }
+  }
+
+  .custom-select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .custom-select select {
+    display: inline-block;
+    width: 100%;
+    padding: 4px 3px 3px 5px;
+    margin: 0;
+    outline:none;
+    -webkit-appearance:none;
+    padding-left: 12px;
+  }
+
+  .custom-select:after {
+    content: "\f0d7";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 7px;
+    right: 0;
+    bottom: 0;
+    padding: 0 7px;
+    pointer-events:none;
+  }
+
+  .no-pointer-events .custom-select:after { content: none; }
+
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .custom-select select {
+        padding-right:30px;
+    }
+  }
+
+  input[type=checkbox] {
+    display:none;
+  }
+
+  /* to hide the checkbox itself */
+  input[type=checkbox] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+  }
+
+  input[type=checkbox] + label:before {
+      content: "\f096";
+  }
+
+  /* unchecked icon */
+  input[type=checkbox] + label:before {
+      letter-spacing: 10px;
+  }
+
+  /* space between checkbox and label */
+  input[type=checkbox]:checked + label:before {
+      content: "\f046";
+  }
+
+  /* checked icon */
+  input[type=checkbox]:checked + label:before {
+      letter-spacing: 5px;
+  }
+
+  .checkbox {
+    label {
+      font-size: 15px !important;
+      padding-left: 3px;
+    }
+
+    &.-push {
+      left: 50%;
+    }
+  }
+
+  .section-1 {
+    .input-group { padding-bottom: 28px; }
+
+    input[type=text] { font-family: $font-body-light; }
+
+    .input-group-addon {
+      border: none;
+      border-color: #ccc;
+      border-width: 1px;
+      background-color: transparent;
+      font-family: $font-body-light;
+      line-height: 19px;
+    }
+  }
+
+  .section-2 {
+    input[type=radio] + label:before {
+      display: inline-block;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1;
+      padding-right: 8px;
+      width: 23px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    input[type=radio] + label:before {
+      content: "\f10c"; /* Radio Unchecked */
+    }
+
+    input[type=radio]:checked + label:before {
+      content: "\f111"; /* Radio Checked */
+    }
+
+    .radio label {
+      padding-left: 15px;
+    }
+
+    .col-xs-4 {
+      border-right: 3px solid $white;
+      border-left: 3px solid $white;
+      height: 295px;
+    }
+
+    .form-group { margin-bottom: 5px; }
+
+    .form-inline { margin-top: -6px; }
+
+    .radio {
+      margin-top: 0px;
+      margin-bottom: 23px;
+    }
+
+    .radio input[type='radio'] {
+      display: none;
+      margin-left: 0px;
+    }
+
+    #current_status_input { width: 120px; }
+
+    #represent_status_input {
+      margin-left: 44px;
+      padding: 0px 0px;
+      width: 119px;
+    }
+  }
+
+  .section-2 {
+    h4 {
+      color: $light-grey;
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      font-size: 18px;
+    }
+  }
+
+  .section-3 {
+    .border-line {
+      border-right: 3px solid $white;
+      height: 302px;
+    }
+  }
+
+  .section-3 {
+    h4 a {
+      color: $light-grey;
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .upload {
+      margin-left: 5px;
+    }
+
+    .user_educations_from_study_date {
+      margin-left: -15px;
+    }
+  }
+
+  .details {
+    @include make-row;
+
+    margin-bottom: 10px;
+
+    .btn-default {
+      width: 60%;
+    }
+
+
+    .date-group > .form-group {
+      width: 30%;
+
+      .selectize-control {
+        display: inline-block;
+        width: 50px;
+        margin: 0px;
+      }
+    }
+
+    .col-xs-7 {
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 2px;
+    }
+
+    .selectize-inline > .selectize-input {
+      margin-top: 2px;
+      width: 150px;
+      height: 40px;
+    }
+
+    textarea {
+      height: 80px !important;
+    }
+  }
+
+  .cocoon-container hr.-thin {
+    &:first-child {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      border-top: 1px solid transparent;
+      background-color: transparent;
+    }
+  }
+
+  .add_fields {
+    margin-top: -33px;
+    margin-right: 20px;
+  }
+
+  #language-proficiencies {
+    hr { margin: 10px 0 }
+
+    .selectize-input {
+      min-height: 0;
+    }
+  }
+
+  #language-proficiencies-links {
+    .add_fields {
+      margin-top: 10px;
+    }
+  }
+
+  .has-feedback {
+    .selectize-input {
+      padding-left: 35px;
+
+      &:after {
+        border-style: none !important;
+      }
+    }
+  }
+
+  .item, .selectize-dropdown-content { text-transform: capitalize; }
+
+}
+

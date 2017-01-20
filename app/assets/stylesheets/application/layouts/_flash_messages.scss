@@ -1,0 +1,16 @@
+@import "application/variables";
+
+.alert {
+  position: fixed;
+  left: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 50%;
+  z-index: 2000;
+  text-align: center;
+}
+
+.inline-div {
+  display: inline;
+}

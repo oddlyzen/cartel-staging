@@ -1,0 +1,24 @@
+fieldset.nested-fields
+  hr.-thin
+  .row
+    .col-xs-4
+      .form-inline
+        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
+        span &ndash;
+        = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
+      .checkbox.-push
+        = f.check_box :current
+        = f.label :current, 'Present'
+    .col-xs-6
+      = f.input :position, label: false, placeholder: 'Position'
+      - if @user.artist?
+        = f.input :category, label: false, collection: Experience::OPTIONS_FOR_CATEGORY, prompt: 'Type', include_blank: false
+      - elsif @user.professional?
+        = f.input :job_type, label: false, collection: Experience::OPTIONS_FOR_JOB_TYPE, prompt: 'Type', include_blank: false
+      = f.association :company, label: false, prompt: 'Company', items: ['4'], wrapper: :selectize, input_html: { data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json), selected: '4' } }
+      = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: 'experience' } }
+      = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: 'experience' } }
+      = f.input :description, label: false, placeholder: 'Description', input_html: { maxlength: 200 }
+      = f.input :link, label: false, placeholder: 'Link'

@@ -1,0 +1,9 @@
+= render 'shared/discover'
+.row
+  = render partial: 'professional', collection: @professionals
+.row
+  .col-xs-12
+    .text-center
+      - unless @professionals.current_page == @professionals.total_pages
+        #load-more
+          = link_to 'Load More', professionals_path(page: @professionals.current_page + 1), remote: true, class: 'btn btn-default'

@@ -1,0 +1,38 @@
+= render 'shared/user_header', user: @artist
+.row
+  .col-xs-4
+    = link_to 'Back To All Series', artist_artworks_path(@artist), class: 'btn btn-default btn-block'
+  - if @artist == current_user
+    .col-xs-8
+      = link_to 'Edit Series', edit_portfolio_series_path, class: 'btn btn-default pull-right'
+
+br
+
+.row
+  .col-md-2
+    .series-details
+      .title-year
+        h1.title = @series.title
+        p.year = @series.year
+
+      p.description = @series.description
+
+      hr
+      - if @series.exhibition
+        b EXHIBITION:
+        p = 'Solo Exhibition' if @exhibition.in_solo?
+        br
+        .exhibitions
+          p
+           = @exhibition.title
+           br
+           = @exhibition.location
+           br
+           = @exhibition.start_year
+
+  .col-md-10
+    - if @artworks.empty?
+      .col-xs-12
+        h1.text-center No Artworks in Series
+    - else
+       = render partial: 'artwork', collection: @artworks

@@ -1,0 +1,17 @@
+.row
+  .col-xs-12
+    .item-box
+      .item
+        = link_to user_profile_path(feed_item.user) do
+          .user
+            = image_tag profile_image_url(feed_item.user, 50, 50, 'clip'), size: '50x50'
+            h3 = feed_item.user_name
+
+        .content
+          .row
+            .col-xs-12
+              p.title Profile updated
+
+          .row
+            .col-xs-12
+              p.timestamp = feed_item.time

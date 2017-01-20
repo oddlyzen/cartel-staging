@@ -1,0 +1,381 @@
+body.portfolio-series-index {
+
+  .cards {
+    @include make-row();
+    margin-top: 50px;
+  }
+
+  .card {
+    @include make-xs-column(3);
+    margin-bottom: 50px;
+
+    img { margin-bottom: 10px; }
+
+    b {
+      font-size: 20px;
+      font-family: $font-body-semibold;
+    }
+
+    p {
+      font-size: 14px;
+      font-family: $font-body-regular;
+    }
+  }
+
+}
+
+body.portfolio-series-show {
+
+  .col-xs-8 > .btn-default {
+    width: 160px;
+    float: right;
+    margin-right: 5px;
+  }
+
+  .series {
+    @include make-xs-column(4);
+    margin-top: 50px;
+
+    .title-year {
+      margin-bottom: 90px;
+    }
+
+    h1 {
+      font-family: $font-body-light;
+      font-size: 30px;
+      margin: 0px;
+    }
+
+    p, b {
+      font-family: $font-body-regular;
+    }
+
+    .exhibition {
+      margin-top: 20px;
+    }
+  }
+
+  .cards {
+    @include make-row();
+    margin-top: 50px;
+  }
+
+  .card {
+    @include make-xs-column(3);
+    margin-bottom: 50px;
+
+    img { margin-bottom: 10px; }
+
+    .text-center {
+      width: 160px;
+    }
+
+    input {
+      float: left;
+    }
+  }
+
+}
+
+body.portfolio-series-edit,
+body.portfolio-series-update,
+body.portfolio-series-publish {
+
+  aside {
+    @include make-xs-column(4);
+    margin-bottom: 50px;
+
+    .btn {
+      width: 100%;
+      margin: 0px;
+      margin-bottom: 10px;
+      height: 35px;
+    }
+
+    ul.tab-list {
+      @include inline-list;
+
+      li {
+        width: 48%;
+        padding: 0px;
+
+        &:first-of-type {
+          margin-right: 2%;
+        }
+      }
+
+      li.active > a {
+        @include default-btn-style;
+
+        border: 1px solid $brand-primary;
+        background-color: $dark-grey;
+      }
+    }
+
+
+    form {
+      min-height: 700px;
+
+      .checkbox input[type="checkbox"] {
+        margin-left: 0px;
+      }
+
+      ul {
+        @include inline-list;
+
+        &.links--apply {
+          margin-top: 70px;
+        }
+
+        li {
+          width: 48%;
+          padding: 0px;
+
+          &:first-of-type {
+            margin-right: 2%;
+          }
+
+          &.full { width: 100%; }
+        }
+      }
+
+      input[value='Save'] {
+        margin-top: 30px;
+      }
+    }
+
+    form.edit_series, form.new_series_update_form {
+      select.date { width: 100%; }
+    }
+
+    form.new_artwork {
+      select.date {
+        width: 48%;
+
+        &:first-of-type {
+          margin-right: 3%;
+        }
+      }
+
+      .form-inline.four-fields {
+        margin-bottom: 15px;
+
+        .form-group {
+          width: 20%;
+
+          .form-control { width: 100%; }
+        }
+
+        span { padding: 3%; }
+
+        .artwork_unit > select {
+          margin-left: 25%;
+        }
+      }
+
+      .form-inline.country-city {
+        .form-group {
+          width: 48%;
+
+          &:first-of-type {
+            margin-right: 3%;
+          }
+        }
+
+        .form-control { width: 100%; }
+      }
+
+    }
+  }
+
+  .js-new-exhibition {
+    display: none;
+  }
+
+  article {
+    @include make-xs-column(8);
+  }
+
+  .tooltip-arrow {
+    border-bottom-color: #F0F0F0;
+  }
+
+  .tooltip-inner {
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    background-color: #F0F0F0;
+    color: $light-grey;
+    letter-spacing: 1px;
+  }
+
+  .links--select {
+    @include make-xs-column(12);
+    height: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    ul { @include inline-list; }
+  }
+
+  .cards {
+    @include make-row();
+  }
+
+  .card {
+    @include make-xs-column(3);
+    margin-bottom: 50px;
+
+    img { margin-bottom: 10px; }
+
+    .text-center {
+      min-height: 30px;
+      width: 160px;
+
+      input[type="checkbox"] {
+        margin-top: 8px;
+      }
+
+      b {
+        font-size: 16px;
+        font-family: $font-body-semibold;
+      }
+    }
+
+    input {
+      float: left;
+    }
+
+  }
+
+  .btn-default {
+    width: 100%;
+  }
+
+  .btn-secondary {
+    background-color: $white;
+    color: $light-grey;
+    border: none;
+
+    &:hover {
+      background-color: $light-grey;
+      color: $white;
+    }
+  }
+
+  .btn-tertiary {
+    background-color: $white;
+    color: $light-grey;
+    padding: 40%;
+    border: none;
+    height: 160px;
+    width: 160px;
+    margin-bottom: 10px;
+
+    &:hover {
+      background-color: $light-grey;
+      color: $white;
+    }
+  }
+
+  .modal {
+    top: 16%;
+    z-index: 1500;
+
+    h4 {
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      color: $light-grey;
+      font-size: 35px;
+    }
+
+    p {
+      margin-bottom: 50px;
+    }
+
+    .btn { width: 230px; }
+
+    .modal-body {
+      border: none;
+    }
+  }
+
+  .modal-body {
+    background-color: white;
+    font-family: $font-body-regular;
+  }
+
+  ::-webkit-input-placeholder {color:$light-grey; font-family: $font-body-light;}
+  ::-moz-placeholder          {color:$light-grey; font-family: $font-body-light;} /* Firefox 19+ */
+  :-moz-placeholder           {color:$light-grey; font-family: $font-body-light;} /* Firefox 18- */
+  :-ms-input-placeholder      {color:$light-grey; font-family: $font-body-light;}
+
+  .modal-backdrop.fade {
+    background-color: white;
+    opacity: 0.7;
+  }
+
+}
+
+body.portfolio-series-rearrange {
+
+  h1 {
+    font-family: $font-heading;
+    font-size: 30px;
+  }
+
+  nav.actions {
+    @include make-row();
+
+    padding-left: 33px;
+    padding-right: 25px;
+    height: 50px;
+
+    .pull-left > .btn {
+      width: 260px;
+    }
+
+    .pull-right > .btn {
+      width: 150px;
+    }
+
+  }
+
+  .selectize-control {
+    text-align: center;
+  }
+
+  .selectize-input {
+    @include make-row();
+
+    input { color: transparent; }
+    border: none;
+    cursor: not-allowed;
+  }
+
+  .card {
+    @include make-xs-column(3);
+    background-color: white !important;
+    margin: 0px !important;
+    text-align: center;
+    height: 200px;
+
+    img {
+      width: 260px;
+      height: 160px;
+      margin-bottom: 10px;
+    }
+
+    b {
+      font-size: 20px;
+      font-family: $font-body-semibold;
+    }
+
+    p {
+      font-size: 14px;
+      font-family: $font-body-regular;
+    }
+
+  }
+
+}

@@ -1,0 +1,11 @@
+fieldset.nested-fields
+  hr.-thin
+  .row
+    .col-xs-4
+      .form-inline
+        = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+    .col-xs-6
+      = f.input :title, label: false, required: false, placeholder: 'Title'
+      = f.input :description, label: false, required: false, placeholder: 'Description'
+      = f.input :link, label: false, required: false, placeholder: 'Link'

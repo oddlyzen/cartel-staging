@@ -1,0 +1,58 @@
+section
+  .row
+    .col-md-6
+      .img-container
+        = image_tag @company.image_url
+    .col-md-6
+      h1.text-right = @company.name
+      h4.text-right = @company.organization_types.join(', ')
+      h4.text-right
+        - if @company.state && @company.country
+          | #{@company.state}, #{@company.country}
+      h4.text-right = "Established #{@company.established_in.year}"
+      ul.actions
+        - if current_user == @company.owner
+            li = link_to 'Edit', edit_my_company_path(@company), class: 'btn btn-default'
+            li = link_to 'Manage', my_company_path(@company), class: 'btn btn-default'
+  hr
+.row
+  .col-xs-9
+    ul.tab-lists
+      li.active role="presentation"
+        a aria-controls="home" data-toggle="tab" href="#artists" role="tab" Artists
+      li role="presentation"
+        a aria-controls="profile" data-toggle="tab" href="#professionals" role="tab" Professionals
+      li role="presentation"
+        a aria-controls="messages" data-toggle="tab" href="#about_us" role="tab" About Us
+    .tab-content
+      #artists.tab-pane.active role="tabpanel"
+        .row
+          = render partial: 'artist', collection: @company_presenter.artists, as: :user
+      #professionals.tab-pane role="tabpanel"
+        .row
+          = render partial: 'professional', collection: @company_presenter.professionals_with_experience, as: :user_map
+      #about_us.tab-pane role="tabpanel"
+        p = @company.about_us.presence || '-'
+  .col-xs-3
+    ul.company-details
+      li
+        h2 Address
+        - if !@company.address_1.blank? || !@company.address_2.blank?
+          p = @company.address_1
+          p = @company.address_2
+        - else
+          p -
+
+      li
+        h2 Opening Times
+        p = @company.opening_hours
+      li
+        h2.text-left Contact
+        p = @company.phone
+        p = @company.email
+      li
+        h2 Social Media
+        ul.social-links.col-xs-12
+          li = link_to_if @company&.facebook, fa_icon('facebook-official'), @company&.facebook
+          li = link_to_if @company&.twitter, fa_icon('twitter'), @company&.twitter
+          li = link_to_if @company&.instagram, fa_icon('instagram'), @company&.instagram

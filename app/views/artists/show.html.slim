@@ -1,0 +1,10 @@
+nav.row
+  = render 'networks/call_to_action', connection: @current_artist
+
+= render 'profile_header', user: @artist
+/ if i am the current artist, i can see my profile details or my friend profie details
+
+- if current_user.friends.include?(@current_artist) || current_user == @current_artist
+  = render 'profile_details', artist: @artist
+- else
+  h1.text-center Add #{@artist.full_name} To Your Network To See More

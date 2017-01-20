@@ -1,0 +1,18 @@
+- flash.each do |name, msg|
+  div class=("alert #{bootstrap_class_for(name)}")
+    = fa_icon flash_icon_for(name)
+    - if msg.is_a?(Array)
+      ul.list-unstyled id="flash_#{name}"
+        - msg.each do |m|
+          li
+            .panel-body
+              = fa_icon 'caret-right'
+              = " #{m}"
+    - else
+      = content_tag :div, msg, id: "flash_#{name}", class: 'inline-div'
+    button.close aria-hidden='true' data-dismiss='alert' type='button'  &times;
+
+- if defined?(resource) && resource && resource.errors.count > 0
+  .alert.alert-danger
+    = fa_icon flash_icon_for('error')
+    button.close aria-hidden='true' data-dismiss='alert' type='button'  &times;

@@ -1,0 +1,30 @@
+.modal.fade#artwork_preview
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+      .modal-body
+        .row
+          .col-xs-3
+            h2 Original Artwork
+            b.artist
+            p.year
+            b.description
+            ul
+              li
+                b Collaborators
+                p.collaborators No Collaborators
+              li
+              li
+                b Subject & Themes
+                p.themes No Subject & Themes
+              li
+                b Medium
+                p.medium No Medium
+              li
+                b Dimensions
+                p.dimensions No Dimensions
+          .col-xs-9
+            = image_tag ''
+      .modal-footer

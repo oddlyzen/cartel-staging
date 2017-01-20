@@ -1,0 +1,72 @@
+.nested-exhibitions-fields
+  .form-group
+    .row
+      .col-xs-12
+        = f.filepicker_field :pdf_url, button_text: 'Upload exhibition record in pdf', button_class: 'btn btn-default upload', extensions: '.pdf', multiple: false
+
+  .form-group
+    .row
+      .col-xs-2
+        label Duration
+      .col-xs-2
+        = f.input :start_year, collection: Year.collection_options, prompt: 'Year', label: false
+      .col-xs-1.dash
+        span &ndash;
+      .col-xs-2
+        = f.input :end_year, collection: Year.collection_options, prompt: 'Year', label: false
+
+  h5 OR fill out the details below
+
+  .form-group
+    .row
+      .col-xs-2
+        label Duration
+      .col-xs-2.flex-inline
+        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
+      .col-xs-1.dash
+        span &ndash;
+      .col-xs-2.flex-inline
+        = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
+        = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
+
+  .form-group
+    .row
+      .col-xs-2
+        label Exhibition Title
+      .col-xs-10
+        = f.input :title
+
+  .form-group
+    .row
+      .col-xs-2
+        label Type
+      .col-xs-10
+        = f.input :category, collection: Exhibition::OPTIONS_FOR_CATEGORY,
+        include_blank: false, prompt: 'Select Category'
+
+  .form-group
+    .row
+      .col-xs-2
+        label Venue
+      .col-xs-10
+        = f.input :venue_name, collection: Company.pluck(:name), include_blank: false, prompt: 'Venue', wrapper: :selectize, input_html: { data: { selectize_company: true } }
+
+  .form-group
+    .row
+      .col-xs-2
+        label Location
+      .col-xs-5
+        = f.input :country, as: :select, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize, input_html: { data: { selectize_country: 'registration-exhibition-new' } }
+      .col-xs-5
+        = f.input :state, as: :select, collection: {}, prompt: 'State', wrapper: :selectize, input_html: { data: { selectize_state: 'registration-exhibition-new' } }
+
+  .form-group
+    .row
+      .col-xs-2
+        label Link
+      .col-xs-10
+        = f.input :link
+
+  hr
+

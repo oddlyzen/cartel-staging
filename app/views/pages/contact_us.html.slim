@@ -1,0 +1,15 @@
+.container
+  .content
+    .row
+      .col-md-6
+        - unless current_user
+          = render 'shared/logo'
+
+      .col-md-6
+          h2.title Contact Us
+          = simple_form_for EnquiryForm.new, url: enquiry_path do |f|
+            = f.input :name, label: false, placeholder: 'Name', class: 'form-control'
+            = f.input :email, label: false, placeholder: 'Email', class: 'form-control'
+            = f.input :subject, label: false, placeholder: 'Subject', class: 'form-control'
+            = f.input :message, as: :text, label: false, placeholder: 'Message', class: 'form-control'
+            = f.submit 'Send', class: 'btn btn-default'

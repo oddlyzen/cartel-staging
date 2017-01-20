@@ -1,0 +1,21 @@
+.container
+  .header.logo
+    - if current_user.nil?
+      h1 = link_to 'Cartel', root_path
+      h3 Manage Your Art World
+  .content
+    .row
+      .col-md-12
+        h2.title About
+    .row
+      .col-md-6
+        p CARTEL (Contemporary Art Intel) is a professional platform for your art world needs. Manage your network and share your resume, your portfolio and your events. Stay on top of what’s going on around you and other art markets- start managing your art world today!
+          We’re only open to artists and professionals at the moment, so stay in touch if you’re a collector by registering your interest!
+
+      .col-md-6
+        = simple_form_for InterestForm.new, url: interest_path do |f|
+          = f.input :title, label: false, placeholder: 'Title', class: 'form-control'
+          = f.input :name, label: false, placeholder: 'Name', class: 'form-control'
+          = f.input :email, label: false, placeholder: 'Email', class: 'form-control'
+          = f.input :interest, as: :select, collection: ['Artist', 'Art Professional', 'Collector', 'Other'], prompt: 'Choose Your Interest', label: false, placeholder: 'Interest', class: 'form-control'
+          = f.submit 'Register Your Interest', class: 'btn btn-default pull-right'

@@ -1,0 +1,6 @@
+.col-md-3
+  .thumb
+    = link_to artist_artwork_path(artwork.user, artwork.id), remote: true, data: { toggle: 'modal', target: '#modal' } do
+      .img-series-artwork
+        = image_tag artwork.image_url
+    h5 = artwork.title

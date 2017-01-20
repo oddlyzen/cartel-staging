@@ -1,0 +1,11 @@
+= simple_form_for @series, url: portfolio_series_index_path  do |f|
+  .form-group
+    .row
+      .col-xs-6.col-xs-offset-3
+        = f.input :title, label: false, placeholder: 'Series Title', class: 'form-control'
+  .form-group
+    .row
+      .col-xs-6.col-xs-offset-3
+        = f.input :link, label: false, placeholder: 'Link', class: 'form-control'
+  .text-center
+    = f.submit 'Submit', class: 'btn btn-default'

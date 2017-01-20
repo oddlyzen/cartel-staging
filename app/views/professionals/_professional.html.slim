@@ -1,0 +1,15 @@
+.col-xs-3.text-center
+  .card
+    header
+      = link_to professional_path(professional)  do
+        .row
+          .col-xs-12
+            = image_tag profile_image_url(professional, 120, 120, 'clip'), size: '120x120'
+          .col-xs-12
+            h3.artist_name = professional.full_name
+            h4.artist_based = professional.display_based_in
+          .col-xs-12.tagline
+            p = professional.statement_snippet
+    footer
+      .networking
+        = render 'networks/call_to_action', connection: professional

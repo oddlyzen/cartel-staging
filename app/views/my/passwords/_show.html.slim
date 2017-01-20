@@ -1,0 +1,18 @@
+.row
+  .col-xs-6.col-xs-offset-3
+    h1.text-center Change password
+.row
+
+  = simple_form_for(@user, url: my_password_path, method: :put) do |f|
+    .form-inline
+      .col-xs-3 = f.label 'Current Password'
+      .col-xs-9 = f.input :current_password, label: false, class: 'form-control'
+    .form-inline
+      .col-xs-3 = f.label 'New Password'
+      .col-xs-9 = f.input :password, label: false, class: 'form-control'
+    .form-inline
+      .col-xs-3 = f.label 'Confirm New Password'
+      .col-xs-9 = f.input :password_confirmation, label: false, class: 'form-control'
+    .form-group.text-center
+      = f.submit 'Change Password', class: 'btn btn-primary'
+

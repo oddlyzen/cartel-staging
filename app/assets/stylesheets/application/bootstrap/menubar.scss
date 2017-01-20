@@ -1,0 +1,19 @@
+body.admin-users, body.admin-companies, body.admin-events, body.admin-feeds, body.admin-audits,
+body.my-settings, body.my-feeds, body.my-profiles, body.my-connections, body.my-companies, body.companies,
+body.admin-audits-media, body.admin-audits-subjects, body.admin-audits-specialisations {
+  .nav-pills > li > a {
+    color: $brand-primary;
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 4px 1px;
+  }
+
+  .nav-pills > li > a.active { background-color: $medium-white; }
+
+  .nav-pills > li > a:hover, .nav-pills > li > a:focus {
+    background-color: transparent;
+  }
+
+}

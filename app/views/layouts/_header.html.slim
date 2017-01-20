@@ -1,0 +1,92 @@
+nav.navbar.navbar-default
+  .container
+    - if current_user.present?
+      .dropdown
+        = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }, role: 'button',
+           aria: { haspopup: 'true', expanded: 'false' }
+          span.glyphicon.glyphicon-menu-hamburger.pull-left
+        ul.dropdown-menu.dropdown-menu--hamburger
+          li.title Discover
+          .discover-links
+            li = link_to 'Artists', artists_path
+            li = link_to 'Professionals', professionals_path
+            li = link_to 'Organisations', companies_path
+          hr
+          li.title Manage
+          .user-links
+            li = link_to 'Profile', profile_path(current_user)
+            - if current_user.artist?
+              li = link_to 'Portfolio', artist_artworks_path(current_user)
+            li = link_to 'Network', my_connections_path
+            li = link_to 'Pages', my_companies_path
+
+    = link_to 'Cartel', root_path, class: 'navbar-brand'
+
+    - if current_user.present?
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          = link_to '#', class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button',
+            'aria-haspopup': 'true', 'aria-expanded': 'false' do
+              = image_tag profile_image_url(current_user, 20, 20, 'clip'), size: '20x20', class: 'avatar'
+              = "#{current_user.first_name} #{current_user.last_name}"
+              = fa_icon 'caret-down'
+          ul.dropdown-menu.dropdown-menu--user
+            li = link_to 'Settings', my_settings_path
+            li = link_to 'Logout', logout_path, method: :delete
+            hr
+            li = link_to 'Invite Friends', '', data: { toggle: 'modal', target: '#js-modal-invitation' }
+            li = link_to 'Send Feedback', contact_us_path
+
+      ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            = link_to '#', data: { toggle: 'dropdown' }, aria: { has_popup: true, expanded: false },
+              class: 'dropdown-toggle' do
+                - if @header_presenter.pending_collaborations.empty?
+                  = fa_icon 'bell'
+                - else
+                  = fa_icon 'bell', class: 'count', data: { count: @header_presenter.pending_collaborations.count }
+            ul.dropdown-menu.dropdown-menu--notification
+              - if @header_presenter.pending_collaborations.empty?
+                li No new notifications
+              - else
+                ul
+                  - @header_presenter.pending_collaborations.each do |artwork|
+                    li
+                      = image_tag profile_image_url(artwork.user, 25, 25, 'clip'), size: '25x25'
+                      b #{artwork.creator.first_name}
+                      p has added you to #{link_to(artwork.title, artist_artworks_path(artist_id: artwork.user_id, tab: 'artworks', artwork_id: artwork.id))}
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          = link_to '#', data: { toggle: 'dropdown' }, aria: { has_popup: true, expanded: false },
+            class: 'dropdown-toggle' do
+              - if @header_presenter.notifications?
+                = fa_icon 'users', class: 'count', data: { count: @header_presenter.notification_count }
+              - else
+                = fa_icon 'users'
+          ul.dropdown-menu.dropdown-menu--connection
+            - unless @header_presenter.notifications?
+                li No new connections
+            - unless @header_presenter.pending_friend_requests.empty?
+              ul
+                - @header_presenter.pending_friend_requests.each do |friend|
+                  li
+                    = image_tag profile_image_url(friend, 25, 25, 'clip'), size: '25x25'
+                    p = link_to friend.first_name, profile_path(friend), target: '_blank'
+                    nav
+                      = link_to fa_icon('check'), accept_my_connection_path(friend), method: :put
+                      = link_to fa_icon('times'), reject_my_connection_path(friend), method: :put
+            - unless @header_presenter.pending_memberships.empty?
+              ul
+                - @header_presenter.pending_memberships.each do |membership|
+                  li
+                    = image_tag profile_image_url(membership.user, 25, 25, 'clip'), size: '25x25'
+                    p #{link_to membership.user.first_name, profile_path(membership.user), target: '_blank'} wants to join #{membership.company.name}
+                    nav
+                      = link_to fa_icon('check'), approve_my_company_membership_path(membership.company, membership), method: :patch
+                      = link_to fa_icon('times'), reject_my_company_membership_path(membership.company, membership), method: :patch
+    - else
+      ul.nav.navbar-nav.navbar-right
+        li = link_to 'Register', new_registration_path
+        li = link_to 'Login', root_path
+
+= render 'layouts/invite'

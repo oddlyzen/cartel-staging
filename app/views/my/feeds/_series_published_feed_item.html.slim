@@ -1,0 +1,36 @@
+.row
+  .col-xs-12
+    .item-box
+      .item
+        = link_to artist_path(feed_item.resource.user_id) do
+          .user
+            = image_tag profile_image_url(feed_item.user, 50, 50, 'clip'), size: '50x50'
+            h3 = feed_item.user_name
+
+        .content
+          .row
+            .col-xs-12
+              p.title Published #{series_path(feed_item.resource)}
+          .row
+            .col-xs-12
+              - if feed_item.resource.artwork_id.present?
+                = link_to artist_artwork_path(feed_item.user_id, feed_item.resource.artwork_id), remote: true, data: { toggle: 'modal', target: '#modal' } do
+                  = filepicker_image_tag(feed_item.resource.artwork.image_url, { fit: 'crop', align: 'faces' }, class: 'main-image')
+          .row
+            - ( feed_item.resource.artworks - [feed_item.resource.artwork]).each do |artwork|
+              .col-md-3
+                = link_to artist_artwork_path(artwork.user_id, artwork), remote: true, data: { toggle: 'modal', target: '#modal' } do
+                  .img-sm
+                    = image_tag artwork.image_url
+                    /= filepicker_image_tag(artwork.image_url, { fit: 'crop', align: 'faces' }, class: 'main-image thumbnail')
+
+          .row
+            .col-xs-12
+              p.description = truncate(feed_item.resource.description, length: 150)
+
+          .row
+            .col-xs-12
+              p.timestamp = feed_item.time
+
+
+

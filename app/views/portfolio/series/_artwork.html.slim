@@ -1,0 +1,8 @@
+.card
+  = filepicker_image_tag artwork.image_url, w: 160, h: 160, fit: 'crop', align: 'faces'
+  .text-center
+    - if defined?(f)
+      = check_box_tag "ids[#{artwork.id}]".to_sym, artwork.id
+      b = truncate(artwork.title, length: 15)
+    - else
+      b = truncate(artwork.title, length: 15)

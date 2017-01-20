@@ -1,0 +1,11 @@
+= simple_form_for @artwork_arrangement_form, url: set_order_portfolio_series_path, method: :patch do |f|
+  section.cards
+    nav.actions
+      .co-md-12
+        .pull-left
+          = link_to '< Done', edit_portfolio_series_path(@series), class: 'btn btn-default'
+        .pull-right
+          = f.submit 'Save', class: 'btn btn-default'
+          = link_to 'Cancel', edit_portfolio_series_path(@series), class: 'btn btn-tertiary'
+    h1.text-center Drag and Drop to re-position your artwork
+    = f.input_field :artworks_order, as: :text

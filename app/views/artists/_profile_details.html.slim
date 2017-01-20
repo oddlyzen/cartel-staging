@@ -1,0 +1,161 @@
+section.section-2
+  .row
+    .col-xs-6.col--left
+      - unless artist.educations.blank?
+        .item
+          h2 Education
+          ul.education
+            - artist.educations.each do |education|
+              li
+                b.year = date_in_range(education)
+                .details
+                  p #{education.education_level}, #{education.institution}, #{university_location(education)}
+                  p #{education.field_of_study},#{education.education_grade}
+                  p = education.education_description
+
+      - unless artist.awards.blank?
+        .item
+          h2 Grants, Fellowships & Awards
+          ul.awards
+            - artist.awards.each do |award|
+              li
+                b.year = single_date(award)
+                p.details #{award.title}, #{award.awarding_body}, #{award.state}
+
+      - unless artist.residencies.blank?
+        .item
+          h2 Artist Residencies
+          ul.education
+            - artist.residencies.each do |residency|
+              li
+                b.year = date_in_range(residency)
+                p.details #{residency.title}, #{residency.body}, #{residency.state}
+
+      - unless artist.experiences.blank?
+        .item
+          h2 Professional Experience
+          ul.professional
+            - artist.experiences.each do |professional|
+              li
+                b.year = date_in_range(professional)
+                .details
+                  p = professional.company_location
+                  p = professional.full_position
+                  p = professional.description
+                  b = external_link_with_name(professional, professional.link)
+
+      - unless artist.publications.blank?
+        .item.item--no-border
+          h2 Publications As Author
+          ul.publications
+            - artist.publications.each do |publication|
+              li
+                - if publication.category.blank?
+                  b = link_to ('PUBLICATIONS AS AUTHOR'), publication.pdf_url
+                - elsif publication.category == 'book' || publication.category == 'catalogue'
+                  p #{publication.title}, #{publication.publisher}, #{publication.year}
+                - else
+                  - if publication.link.blank?
+                      span  #{publication.title}
+                  - else
+                      b = external_link(publication)
+
+                  span , #{publication.publication_title}, no. #{publication.edition}, #{publication.state}, #{single_full_date(publication)}, pp. #{publication.page_numbers}
+                  br
+                  b = link_to ('PDF File'), publication.attachment_url
+
+    .col-xs-6.col--right
+      - unless artist.solo_exhibitions.blank?
+        - if artist.pdf_exhibitions.blank? && artist.group_exhibitions.blank?
+          .item
+        - else
+          .item.item--no-border
+
+            h2 Solo Exhibition
+            ul.solo
+              - artist.solo_exhibitions.each do |exhibition|
+                li
+                  b.year = date_in_range(exhibition)
+                  p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
+
+      - unless artist.group_exhibitions.blank?
+        - if artist.pdf_exhibitions.blank?
+          .item
+        - else
+          .item.item--no-border
+
+            h2 Group Exhibition
+            ul.group
+              - artist.group_exhibitions.each do |exhibition|
+                li
+                  b.year = date_in_range(exhibition)
+                  p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
+
+      - unless artist.pdf_exhibitions.blank?
+        .item
+          h2 Uploaded PDF
+          ul.group
+            - artist.pdf_exhibitions.each_with_index do |exhibition, index|
+              li
+                b = link_to ('Exhibition PDF'), exhibition.pdf_url
+
+      - unless artist.bibliographies.blank?
+        .item
+          h2 Bibliography
+          ul.bibliography
+            - artist.bibliographies.each do |bibliography|
+              li
+                - unless bibliography.source_type.blank?
+                  span #{bibliography.author},
+                  - if bibliography.link.blank?
+                    span  #{bibliography.full_title}
+
+                  - else
+                    b = external_link_with_name(bibliography, bibliography.full_title)
+
+                  - if bibliography.source_type == 'book' || bibliography.source_type == 'catalogue'
+
+                    span , #{bibliography.year}
+
+                  - else
+
+                    span , #{bibliography.publication_title}, no. #{bibliography.edition}, #{bibliography.publication_city}, single_date(bibliography), pp. #{bibliography.page_number}
+                  - unless bibliography.pdf_url.blank?
+                    br
+                    b = link_to ('PDF'), bibliography.pdf_url
+
+                - else
+                  b = link_to ('BIBLIOGRAPHY'), bibliography.attachment_url
+
+      - unless artist.collections.blank?
+        .item
+          h2 Collections
+          ul.collections
+            - artist.collections.each do |collection|
+              li = collection.name
+
+      - unless artist.memberships.blank?
+        .item
+          h2 Memberships & Affiliations
+          ul.memberships
+            - artist.memberships.each do |membership|
+              li = membership.name
+
+      - unless artist.media_features.blank?
+        .item.item--no-border
+          h2 Media Features
+          ul.media-features
+            - artist.media_features.each do |media_feature|
+              li
+                - if media_feature.link.blank?
+                  p #{media_feature.title}, #{media_feature.description}, #{single_date(media_feature)}
+                - else
+                  b = external_link(media_feature)
+                  span , #{media_feature.description}, #{single_date(media_feature)}
+
+
+
+
+
+
+

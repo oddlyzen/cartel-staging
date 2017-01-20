@@ -1,0 +1,31 @@
+= render 'shared/user_header', user: @user
+
+nav.links
+  .col-xs-12
+    .pull-left
+      = link_to "Back to #{@series.title}", edit_portfolio_series_path(@series), class: 'btn btn-default'
+    .pull-right
+      = link_to 'Delete Artwork', portfolio_series_artwork_path(series_id: @artwork.series_id, id: @artwork.id),
+        method: :delete, class: 'btn btn-primary'
+
+section
+  article
+    #js-artwork-active
+      = render partial: 'active', locals: { prev_id: @prev_id, artwork: @artwork, next_id: @next_id }
+    #js-artwork-gallery
+      = render partial: 'gallery', locals: { artworks: @artworks }
+  aside
+    #js-artwork-form
+      = render partial: 'form', locals: { artwork: @artwork }
+
+.modal.fade#js-modal-alert
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" #{fa_icon('times')}
+      .modal-title Are you sure?
+      .modal-body
+        .text-center
+          p Please save your changes before leaving the page!
+          = link_to 'Yes', '', class: 'btn btn-default'
+      .modal-footer

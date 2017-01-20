@@ -1,0 +1,251 @@
+body.registrations-new, body.registrations-finish-signup {
+
+  .form-selectize, .form-control {
+    margin-bottom: 20px;
+  }
+
+  .col-xs-1.dash {
+    width: 2.5rem;
+    padding: 10px;
+  }
+
+  height: 100%;
+
+  h4 {
+    font-family: $font-heading;
+    letter-spacing: 1.5px;
+    text-align: center;
+    color: $light-grey;
+    font-size: 35px;
+    margin-bottom: 50px;
+  }
+
+  input:focus, {
+    outline: none;
+  }
+
+  .radio-inline {
+    display: inline-flex;
+    padding-top: 3px;
+  }
+
+  .btn-primary {
+    border-color: darken($facebook, 10%);
+    padding: 12px 15px;
+    background-color: $facebook;
+    border-color: darken($facebook, 10%);
+    padding: 12px 15px;
+    font-size: 12px;
+    font-family: $font-body-regular;
+    line-height: 1.3;
+    height: 40px;
+    width: 230px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: 27px;
+    text-transform: uppercase;
+  }
+
+  .btn-default {
+    font-family: $font-body-semibold;
+    line-height: 1.3;
+    text-transform: uppercase;
+    font-size: 12px;
+    height: 40px;
+    width: 230px;
+  }
+
+  .modal {
+    top: 16%;
+    .modal-body {
+      border: none;
+    }
+  }
+
+  .modal-body {
+    background-color: white;
+    font-family: $font-body-regular;
+  }
+
+  .modal-header {
+    min-height: 28px;
+    .fa-times {
+      margin-top: 15px;
+    }
+  }
+
+  ::-webkit-input-placeholder {color:$light-grey; font-family: $font-body-light;}
+  ::-moz-placeholder          {color:$light-grey; font-family: $font-body-light;} /* Firefox 19+ */
+  :-moz-placeholder           {color:$light-grey; font-family: $font-body-light;} /* Firefox 18- */
+  :-ms-input-placeholder      {color:$light-grey; font-family: $font-body-light;}
+
+  .modal-backdrop.fade {
+    background-color: white;
+    opacity: 0.7;
+  }
+
+  #wrap {
+    padding-bottom: 65px;
+  }
+
+
+  #artist-question, #professional-question, #artist-no, #professional-no {
+    h4 {
+      padding-bottom: 20px;
+      letter-spacing: 1.5px;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding-bottom: 40px;
+      border: 0px;
+    }
+
+    .modal-body { padding-top: 50px; }
+
+    .text-center { padding-bottom: 20px; }
+
+  }
+
+    #artist-no, #professional-no, #thankyou-register {
+    h4 {
+      padding-bottom: 50px;
+      letter-spacing: 1.5px;
+      color: $brand-primary;
+      font-family: $font-heading;
+      letter-spacing: 1.5px;
+      line: 1.2;
+      font-size: 32px;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding-bottom: 40px;
+      outline: none;
+      border-radius: 0px;
+      box-shadow: 0 0 60px $light-grey;
+      height: 404px;
+      width: 666px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .modal-body { padding-top: 50px; }
+
+    .modal-text {
+      font-size: 18px;
+      line-height: 1.3;
+      font-family: $font-body-regular;
+      color: $brand-primary;
+    }
+
+    .modal-final-line { padding-bottom: 50px; }
+
+  }
+
+  .page-1 {
+
+    label {
+      font-family: $font-body-light;
+      font-size: 14px;
+      color: #B3B3B3;
+      text-align: left;
+      padding-left: 57px;
+    }
+
+    label.password, label.residency_status { margin-top: -9px; }
+
+    label.date_of_birth { margin-right: 15px; }
+
+    .registration_form_user_date_of_birth { margin-bottom: 4px; }
+
+    .select-button { padding-top: 30px; }
+
+  }
+
+  .page-artist, .page-professional {
+
+    .flex-inline {
+      display: inline-flex;
+
+      select.month {
+        width: 90%;
+      }
+    }
+
+    .form-control {
+      height: 40px;
+
+      &[order="month"] {
+        width: 50px;
+      }
+
+      &[order="year"] {
+        width: 70px;
+      }
+    }
+
+    .col-xs-2 > label {
+      font-family: $font-body-light;
+      font-size: 15px;
+      color: #B3B3B3;
+      text-align: left;
+      padding-top: 7px;
+    }
+
+    button.upload {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 30px;
+    }
+
+    h4 { padding-bottom: 30px; }
+
+    h5 {
+      text-align: center;
+      font-family: $font-body-regular;
+      color: $brand-primary;
+      padding-bottom: 20px;
+    }
+
+    hr {
+      margin-top: 30px;
+      margin-bottom: 50px;
+      height: 1px;
+      background-color: $brand-primary;
+    }
+
+    .registration_form_user_media_tags, .registration_form_user_subjects_tags { margin-left: 23px; }
+
+    .registration_form_user_specialisations_tags { margin-left: -58px; }
+
+    .form-group.check_boxes {
+
+      font-family: $font-body-regular;
+      font-size: 14px;
+      line-height: 1.4;
+
+      margin: 0 0 10px;
+      .checkbox {
+        width: 25%;
+        float: left;
+      }
+    }
+
+    .acknowledgement {
+      padding-bottom: 30px;
+      font-size: 14px;
+      line-height: 1.4;
+      font-family: $font-body-regular;
+
+      label { padding-left: 10px; }
+
+      #artist_acknowledgement, #professional_acknowledgement { margin-right: 10px; }
+    }
+
+    #status_text, #status_text_pro { margin-top: 5px; }
+
+    #medium, #subjects { margin-bottom: 26px; }
+  }
+
+}

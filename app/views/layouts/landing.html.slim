@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Cartel
+    = filepicker_js_include_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    - controller.js_assets.each do |asset|
+      = javascript_include_tag asset, 'data-turbolinks-track' => true
+    = Gon::Base.render_data({})
+    = csrf_meta_tags
+  body data=body_data class=body_css_class
+    #wrap
+      #messages
+        = render 'layouts/flash_messages'
+      .container
+        = yield
+      #push
+    = render 'layouts/footer'

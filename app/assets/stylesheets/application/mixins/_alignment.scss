@@ -1,0 +1,7 @@
+@mixin vertical-align($position: relative, $percentage: 50%) {
+  position: $position;
+  top: $percentage;
+  -webkit-transform: translateY(-$percentage);
+  -ms-transform: translateY(-$percentage);
+  transform: translateY(-$percentage);
+}

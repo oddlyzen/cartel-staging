@@ -1,0 +1,80 @@
+= render 'shared/user_header', user: @professional
+
+section.section-1
+  .row
+    .col-xs-8.col-xs-offset-2.text-center
+      .statement.col-xs-12
+        = user.statement
+
+      .user-status
+        .col-xs-12
+          - if user.current_status == 'Represented by'
+            ul.company-representation
+              li = user.current_status
+              - user.companies_with_approved_membership.each do |company|
+                li = link_to company.name, company_path(company)
+              - user.companies_with_pending_membership.each do |company|
+                li = company.name
+
+          - elsif user.current_status == 'Other'
+            p = user.other_status
+
+          - elsif user.current_status == 'Works at'
+              ul.company-representation
+                li = user.current_status
+                - user.companies_with_approved_membership.each do |company|
+                  li = link_to company.name, company_path(company)
+                - user.companies_with_pending_membership.each do |company|
+                  li = company.name
+          - else
+            = user.current_status
+
+        - if user.commission?
+          | Available for Commission
+
+      ul.social-links.col-xs-12
+        li = link_to_if user.facebook_link, fa_icon('facebook-official'), user.facebook_link
+        li = link_to_if user.twitter_link,  fa_icon('twitter'), user.twitter_link
+        li = link_to_if user.instagram_link, fa_icon('instagram'), user.instagram_link
+
+  .section-1-2.row
+    .col-xs-3
+      ul.status-current
+        li.location
+          span #{fa_icon('location-arrow')} Based in
+          b #{user.display_based_in}
+        li.based
+          span #{fa_icon('map-marker')}
+          b #{user.nationality_status}
+        li.link
+          span = link_to raw("#{fa_icon('globe')} #{user.link_to_website}"), user.link_to_website
+    - if user.artist?
+      .col-xs-9
+        ul.interest-skills
+          li
+            h2 Media
+            p = user.tag_list(:media)
+          li
+            h2 Themes
+            p = user.tag_list(:subjects)
+          li
+            h2 Skills
+            p = user.tag_list(:skills)
+          li
+            h2 Languages
+            p = user.languages_list
+    - if user.professional?
+      .col-xs-9
+        ul.interest-skills
+          li
+            h2 Specialties
+            p = user.tag_list(:specialisations)
+          li
+            h2 Services
+            p = user.tag_list(:services)
+          li
+            h2 Skills
+            p = user.tag_list(:skills)
+          li
+            h2 Languages
+            p = user.languages_list
