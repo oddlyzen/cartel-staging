@@ -1,0 +1,7 @@
+I"‚(function() {
+  Selectize.define('no-delete', function(options) {
+    this.deleteSelection = function() {};
+  });
+
+}).call(this);
+:ET

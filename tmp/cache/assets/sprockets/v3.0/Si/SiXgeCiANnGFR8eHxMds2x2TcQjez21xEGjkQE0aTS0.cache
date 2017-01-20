@@ -1,0 +1,62 @@
+I"µ(function() {
+  var get_selectize_city_field_from;
+
+  $(function() {
+    return window.prepare_country_city_selection = function(country_selector, container) {
+      var $select_city, $select_country, countries, country, i, len, results1;
+      countries = $(country_selector);
+      results1 = [];
+      for (i = 0, len = countries.length; i < len; i++) {
+        country = countries[i];
+        $select_country = $(country).selectize({
+          onChange: function(value) {
+            var city_field, select_city;
+            city_field = get_selectize_city_field_from(this.$input, container);
+            select_city = city_field[0].selectize;
+            if (!value.length) {
+              return;
+            }
+            select_city.clearOptions();
+            select_city.load(function(callback) {
+              var xhr;
+              xhr && xhr.abort();
+              xhr = $.ajax({
+                url: '/locations/' + value,
+                success: function(results) {
+                  var items;
+                  items = results.map(function(x) {
+                    return {
+                      item: x
+                    };
+                  });
+                  callback(items);
+                },
+                error: function() {
+                  callback();
+                }
+              });
+            });
+          }
+        });
+        results1.push($select_city = get_selectize_city_field_from(country, container).selectize({
+          labelField: 'item',
+          valueField: 'item',
+          searchField: 'item'
+        }));
+      }
+      return results1;
+    };
+  });
+
+  get_selectize_city_field_from = function(country_field, container) {
+    var partial_id;
+    partial_id = $(country_field).data('selectize-country');
+    if (container) {
+      return $(container).find("select[data-selectize-state=" + partial_id + "]");
+    } else {
+      return $("select[data-selectize-state=" + partial_id + "]");
+    }
+  };
+
+}).call(this);
+:ET

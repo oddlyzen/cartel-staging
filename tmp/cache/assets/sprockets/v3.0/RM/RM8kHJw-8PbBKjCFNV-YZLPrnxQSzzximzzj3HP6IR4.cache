@@ -1,0 +1,25 @@
+I"º(function() {
+  Controllers['my/settings'] = function() {
+    var MySettings;
+    return MySettings = (function() {
+      function MySettings() {}
+
+      MySettings.prototype.show = function(action) {
+        $(document).on('focus', '#reason_deactivating_input', function() {
+          return $('#other_radio').prop("checked", true);
+        });
+        $(document).on('keyup', '#reason_deactivating_input', function() {
+          return $('#other_radio').val($(this).val());
+        });
+        return $(document).on('click', 'label#other_label', function() {
+          return $('#reason_deactivating_input').focus();
+        });
+      };
+
+      return MySettings;
+
+    })();
+  };
+
+}).call(this);
+:ET

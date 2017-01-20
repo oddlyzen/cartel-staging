@@ -1,0 +1,11 @@
+I"ç(function() {
+  $.fn.inputs = function(action) {
+    if (action === 'enable') {
+      return this.prop('disabled', false);
+    } else if (action === 'disable') {
+      return this.prop('disabled', true);
+    }
+  };
+
+}).call(this);
+:ET

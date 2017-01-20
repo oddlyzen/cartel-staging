@@ -1,0 +1,12 @@
+I"
+(function() {
+  window.filepicker_init = function() {
+    return $('input[type=filepicker], input[type=filepicker-dragdrop]').each(function() {
+      if ($(this).is(':visible')) {
+        return filepicker.constructWidget(this);
+      }
+    });
+  };
+
+}).call(this);
+:ET

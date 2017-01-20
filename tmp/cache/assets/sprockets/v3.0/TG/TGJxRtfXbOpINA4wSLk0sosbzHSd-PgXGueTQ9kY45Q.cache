@@ -1,0 +1,26 @@
+I"(function() {
+  Controllers['my/connections'] = function() {
+    var MyConnections;
+    return MyConnections = (function() {
+      function MyConnections() {}
+
+      MyConnections.prototype.index = function(action) {
+        return $('#disconnect').on('show.bs.modal', function(e) {
+          var link, modal, text, user_id, user_name;
+          modal = $(e.relatedTarget);
+          user_id = modal.data('userid');
+          user_name = modal.data('friendname');
+          link = modal.data('disconnectlink');
+          $('#disconnect_btn').attr('href', link);
+          text = 'Are you sure you want to remove ' + user_name + ' from your network?';
+          return $('.modal-text p').replaceWith(text);
+        });
+      };
+
+      return MyConnections;
+
+    })();
+  };
+
+}).call(this);
+:ET
