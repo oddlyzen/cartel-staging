@@ -13,6 +13,8 @@ cd pan
 bundle install
 ```
 
+asdasdasd
+
 ## Setup Environment Variable
 ```
 cp .env.sample .env
