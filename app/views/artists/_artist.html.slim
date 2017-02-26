@@ -1,11 +1,11 @@
-.col-xs-3.text-center
+.col-xs-3.text-center 
   .card
     header
       = link_to artist_path(artist) do
         .row
-          .col-xs-12
+          .col-xs-12 
             = image_tag profile_image_url(artist, 120, 120, 'clip'), size: '120x120'
-          .col-xs-12
+          .col-xs-12 
             h3.artist_name = artist.full_name
             h4.artist_based = artist.display_based_in
           .col-xs-12.tagline

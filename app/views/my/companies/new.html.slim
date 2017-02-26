@@ -1,6 +1,6 @@
 .row
   .col-xs-10.col-xs-offset-1
-    h1 Create New Organisations
+    h1 Create New Organisation
     = simple_form_for @company_form, url: { action: 'create' }, method: 'post' do |f|
       = f.simple_fields_for :company do |company|
         .text-center

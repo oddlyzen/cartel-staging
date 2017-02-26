@@ -23,3 +23,21 @@
 [2017-01-20T11:20:21 (process) #96218][INFO] appsignal: Loading Rails (4.2.7.1) integration
 [2017-01-20T11:20:23 (process) #96218][ERROR] appsignal: Push api key not set after loading config
 [2017-01-20T11:20:23 (process) #96218][ERROR] Not starting, no valid config for this environment
+[2017-02-22T19:22:17 (process) #43131][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-02-22T19:22:23 (process) #43131][ERROR] appsignal: Push api key not set after loading config
+[2017-02-22T19:22:23 (process) #43131][ERROR] Not starting, no valid config for this environment
+[2017-02-22T19:24:36 (process) #43356][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-02-22T19:24:38 (process) #43356][ERROR] appsignal: Push api key not set after loading config
+[2017-02-22T19:24:38 (process) #43356][ERROR] Not starting, no valid config for this environment
+[2017-02-22T19:28:50 (process) #43457][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-02-22T19:28:52 (process) #43457][ERROR] appsignal: Push api key not set after loading config
+[2017-02-22T19:28:52 (process) #43457][ERROR] Not starting, no valid config for this environment
+[2017-02-22T19:29:43 (process) #43642][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-02-22T19:29:45 (process) #43642][ERROR] appsignal: Push api key not set after loading config
+[2017-02-22T19:29:45 (process) #43642][ERROR] Not starting, no valid config for this environment
+[2017-02-23T14:41:34 (process) #47812][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-02-23T14:41:38 (process) #47812][ERROR] appsignal: Push api key not set after loading config
+[2017-02-23T14:41:38 (process) #47812][ERROR] Not starting, no valid config for this environment
+[2017-02-26T14:10:28 (process) #72304][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-02-26T14:10:35 (process) #72304][ERROR] appsignal: Push api key not set after loading config
+[2017-02-26T14:10:35 (process) #72304][ERROR] Not starting, no valid config for this environment
