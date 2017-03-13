@@ -88,9 +88,9 @@ class User < ActiveRecord::Base
   has_paper_trail on: :update, skip: [:password]
 
 
-  def title
-    first_name + " " + last_name
-  end
+  #def title
+    #first_name + " " + last_name
+  #end
 
   # this adds my active and passive freinds
   def friends
