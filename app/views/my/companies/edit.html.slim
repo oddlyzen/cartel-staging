@@ -5,7 +5,7 @@
       = f.simple_fields_for :company do |company|
         .form-group
           .text-center
-            = image_tag image_url(company.object, 160, 160, 'clip'), size: '160x160'
+            = image_tag image_url(company.object, 160, 160, ''), size: '160x160'
           .col-xs-12.text-center
             .form-group
               = company.input_field :image_url, { type: 'filepicker-dragdrop',data: { fp_option_modal: false, fp_multiple: true,fp_mimetypes: 'image/*', fp_apikey: ENV["FILEPICKER_API_KEY"],fp_drag_class: 'upload-pane', fp_button_class: 'hidden', fp_drag_text: 'Upload Image' } }

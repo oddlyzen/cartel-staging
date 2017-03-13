@@ -4,7 +4,7 @@
       = link_to artist_path(friend) do
         .row
           .col-xs-12
-            = image_tag profile_image_url(friend, 120, 120, 'clip'), size: '120x120'
+            = image_tag profile_image_url(friend, 120, 120, ''), size: '120x120'
           .col-xs-12
             h3.artist_name = friend.full_name
             h4.artist_based = friend.role.capitalize
@@ -16,12 +16,12 @@
             ul
               - friend.media_tags.each do |m|
                 li.label = m
-    nav
-      .row
-        .col-xs-12
-          ul
-            li
-              b #{friend.series_count}
-              span Series |
-              b #{friend.artworks_count}
-              span Artworks
+    / nav
+    /   .row
+    /     .col-xs-12
+    /       ul
+    /         li
+    /           b #{friend.series_count}
+    /           span Series |
+    /           b #{friend.artworks_count}
+    /           span Artworks

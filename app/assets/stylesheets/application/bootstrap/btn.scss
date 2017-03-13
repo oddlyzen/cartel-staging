@@ -1,13 +1,15 @@
 @mixin default-btn-style {
   color: white;
   font-family: $font-body-semibold;
-  font-size: 12px;
+  font-size: 8px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   line-height: 1;
-  padding: 10px 15px;
+  padding: 10px 10px;
   border-radius: 2px;
-  margin-right: 10px;
+  align: center;
+  white-space: normal;
+
 }
 
 .btn.btn-link { color: $light-grey; }

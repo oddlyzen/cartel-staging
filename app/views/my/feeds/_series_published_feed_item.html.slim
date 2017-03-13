@@ -4,7 +4,7 @@
       .item
         = link_to artist_path(feed_item.resource.user_id) do
           .user
-            = image_tag profile_image_url(feed_item.user, 50, 50, 'clip'), size: '50x50'
+            = image_tag profile_image_url(feed_item.user, 50, 50, ''), size: '50x50'
             h3 = feed_item.user_name
 
         .content

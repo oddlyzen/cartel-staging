@@ -82,6 +82,8 @@ body.my-feeds-show {
         &.main-image { margin-top: 10px; }
         &.thumbnail {
           height: 130px;
+          max-height: 100%;
+          max-width: 100%;
         }
       }
     }

@@ -38,7 +38,7 @@ section.section-1
         li = link_to_if user.instagram_link, fa_icon('instagram'), user.instagram_link
 
   .section-1-2.row
-    .col-md-3.col-sm-3.col-xs-6
+    .col-md-3.col-sm-3.col-xs-12
       ul.status-current
         li.location
           span #{fa_icon('location-arrow')} Based in
@@ -51,15 +51,15 @@ section.section-1
           <div class=“clearfix”></div>
     / .col-md-3
       / ul.interest-skills
-    .col-md-3.col-sm-3.col-xs-6
+    .col-md-3.col-sm-3.col-xs-12
       h2 Media
       p = user.tag_list(:media)
-    .col-md-3.col-sm-3.col-xs-6
+    .col-md-3.col-sm-3.col-xs-12
       h2 Themes
       p = user.tag_list(:subjects)
-    .col-md-3.col-sm-3.col-xs-6
+    .col-md-3.col-sm-3.col-xs-12
       h2 Skills
       p = user.tag_list(:skills)
-    .col-md-3.col-sm-3.col-xs-6
+    .col-md-3.col-sm-3.col-xs-12
       h2 Languages
       p = user.languages_list

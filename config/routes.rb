@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/dbadmin', as: 'rails_admin'
   post 'oauth/callback' => 'oauths#callback'
   get 'oauth/callback' => 'oauths#callback' # for use with Facebook
   get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider

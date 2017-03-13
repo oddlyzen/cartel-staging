@@ -1,7 +1,7 @@
 .card
   .avatar
     = link_to profile_path(user_map[:professional]), target: '_blank' do
-      = image_tag profile_image_url(user_map[:professional], 160, 160, 'clip'), size: '160x160'
+      = image_tag profile_image_url(user_map[:professional], 160, 160, 'crop'), size: '160x160'
   .details
     h6 = user_map[:professional].full_name
     - if user_map[:experience].present?

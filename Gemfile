@@ -82,3 +82,6 @@ group :test do
   gem 'rubocop'
   gem 'webmock'
 end
+
+gem 'rails_admin'
+gem "rails-erd"

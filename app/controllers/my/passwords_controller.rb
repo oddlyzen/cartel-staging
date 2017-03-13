@@ -7,7 +7,7 @@ module My
 
     def update
       if @user.update(user_params.except(:current_password))
-        redirect_to my_settings_path, notice: 'User password changed!'
+        redirect_to my_settings_path, notice: 'Your password has been changed'
       else
         redirect_to my_settings_path, alert: 'Passwords do not match!'
       end

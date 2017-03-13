@@ -8,7 +8,7 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :language_proficiencies, reject_if: :all_blank, allow_destroy: true
 
   def media
-    Medium.approved.where(id: medium_ids).pluck(:name)
+    Medium.approved.where(id: medium_ids).pluck(:name) rescue []
   end
 
   def subjects
@@ -24,7 +24,7 @@ class Profile < ActiveRecord::Base
   end
 
   def specialisations
-    Specialisation.approved.where(id: specialisation_ids).pluck(:name)
+    Specialisation.approved.where(id: specialisation_ids).pluck(:name) rescue []
   end
 
   def services

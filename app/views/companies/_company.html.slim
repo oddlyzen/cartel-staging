@@ -1,5 +1,5 @@
-.col-xs-4
-  .card
+.col-xs-12.col-md-4
+  .card.organisation
     header
       = link_to company_path(company) do
         .row
@@ -7,7 +7,7 @@
             .img-sm
               = image_tag company.image_url
 
-          .col-xs-8.right-card
+          .col-xs-8.right-card.text-center
             h3.organisation_name = company.name
             p.organisation_location = company.location
             p.tagline = company.full_address

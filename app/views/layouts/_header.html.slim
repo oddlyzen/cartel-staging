@@ -1,5 +1,7 @@
+/ HEADER FOR EVERYTHING
 nav.navbar.navbar-default
-  .container-fluid
+  .container 
+  
     - if current_user.present?
       .dropdown
         = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }, role: 'button',
@@ -18,7 +20,7 @@ nav.navbar.navbar-default
             - if current_user.artist?
               li = link_to 'Portfolio', artist_artworks_path(current_user)
             li = link_to 'Network', my_connections_path
-            li = link_to 'Pages', my_companies_path
+            li = link_to 'Organisations', my_companies_path
             
           hr
           li.title Create
@@ -29,12 +31,12 @@ nav.navbar.navbar-default
 
     - if current_user.present?
       ul.nav.navbar-nav.navbar-right
-        li.dropdown
+        li.dropdown.pull-right
           = link_to '#', class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button',
             'aria-haspopup': 'true', 'aria-expanded': 'false' do
-              = image_tag profile_image_url(current_user, 20, 20, 'clip'), size: '20x20', class: 'avatar'
-              = "#{current_user.first_name} #{current_user.last_name}"
-              = fa_icon 'caret-down'
+              = image_tag profile_image_url(current_user, 20, 20, ''), size: '20x20', class: 'avatar'
+              span.hidden-xs.username= "#{current_user.first_name} #{current_user.last_name}"
+              
           ul.dropdown-menu.dropdown-menu--user
             li = link_to 'Settings', my_settings_path
             li = link_to 'Logout', logout_path, method: :delete
@@ -42,6 +44,8 @@ nav.navbar.navbar-default
             li = link_to 'Invite Friends', '', data: { toggle: 'modal', target: '#js-modal-invitation' }
             li = link_to 'Send Feedback', contact_us_path
 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      .navbar-collapse-1.collapse.navbar-collapse/
       ul.nav.navbar-nav.navbar-right
           li.dropdown
             = link_to '#', data: { toggle: 'dropdown' }, aria: { has_popup: true, expanded: false },
@@ -57,7 +61,7 @@ nav.navbar.navbar-default
                 ul
                   - @header_presenter.pending_collaborations.each do |artwork|
                     li
-                      = image_tag profile_image_url(artwork.user, 25, 25, 'clip'), size: '25x25'
+                      = image_tag profile_image_url(artwork.user, 25, 25, ''), size: '25x25'
                       b #{artwork.creator.first_name}
                       p has added you to #{link_to(artwork.title, artist_artworks_path(artist_id: artwork.user_id, tab: 'artworks', artwork_id: artwork.id))}
       ul.nav.navbar-nav.navbar-right
@@ -75,7 +79,7 @@ nav.navbar.navbar-default
               ul
                 - @header_presenter.pending_friend_requests.each do |friend|
                   li
-                    = image_tag profile_image_url(friend, 25, 25, 'clip'), size: '25x25'
+                    = image_tag profile_image_url(friend, 25, 25, ''), size: '25x25'
                     p = link_to friend.first_name, profile_path(friend), target: '_blank'
                     nav
                       = link_to fa_icon('check'), accept_my_connection_path(friend), method: :put
@@ -84,7 +88,7 @@ nav.navbar.navbar-default
               ul
                 - @header_presenter.pending_memberships.each do |membership|
                   li
-                    = image_tag profile_image_url(membership.user, 25, 25, 'clip'), size: '25x25'
+                    = image_tag profile_image_url(membership.user, 25, 25, ''), size: '25x25'
                     p #{link_to membership.user.first_name, profile_path(membership.user), target: '_blank'} wants to join #{membership.company.name}
                     nav
                       = link_to fa_icon('check'), approve_my_company_membership_path(membership.company, membership), method: :patch

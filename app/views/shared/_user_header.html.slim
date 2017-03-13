@@ -13,5 +13,4 @@ header.user-header
       - elsif user.professional? && user == current_user
         li class="#{active(:network)}" = link_to 'Network', professional_networks_path(user)
       - if !user.companies.blank? || user == current_user
-        li class="#{active(:page)}" = link_to 'Pages', pages_path(user)
-
+        li class="#{active(:page)}" = link_to 'Organisations', pages_path(user)
