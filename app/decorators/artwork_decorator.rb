@@ -32,7 +32,7 @@ class ArtworkDecorator < BaseDecorator
     if @model.height && @model.width && @model.unit
       "#{@model.height} x #{@model.width} #{@model.unit}"
     else
-      'Dimension not available'
+      '---'
     end
   end
 
@@ -40,12 +40,12 @@ class ArtworkDecorator < BaseDecorator
     if @model&.media.any?
       @model.media.join(', ')
     else
-      'Media not available'
+      '---'
     end
   end
 
   def subjects_themes
-    @model.subjects.join(', ').presence || 'No Subject & Themes'
+    @model.subjects.join(', ').presence || '---'
   end
 
 end

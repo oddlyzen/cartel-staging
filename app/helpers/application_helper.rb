@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def email_to_gravatar(email)
-    "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}.png?s=96&d=identicon"
+    "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}.png?s=96&d=mm"
   end
 
   def company_image(company)
@@ -78,7 +78,7 @@ module ApplicationHelper
   def string_for(flash_type)
     case flash_type.to_sym
     when :success, :notice
-      { icon: 'check', class: 'alert-success' }
+      { class: 'alert-success' }
     when :error, :alert
       { icon: 'ban', class: 'alert-danger' }
     when :info

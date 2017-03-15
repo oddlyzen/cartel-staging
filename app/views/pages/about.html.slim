@@ -6,13 +6,15 @@
   .content
     .row
       .col-md-12
-        h2.title About
+        h2.title About Us
     .row
-      .col-md-6
-        p CARTEL (Contemporary Art Intel) is a professional platform for your art world needs. Manage your network and share your resume, your portfolio and your events. Stay on top of what’s going on around you and other art markets- start managing your art world today!
-          We’re only open to artists and professionals at the moment, so stay in touch if you’re a collector by registering your interest!
+      .col-xs-12.col-sm-12.col-md-6
+        p CARTEL (Contemporary Art Intel) is a professional platform for your art world needs.
+        br
+        p2 Manage your network and share your resume, your portfolio and your events. Stay on top of what’s going on around you and other art markets- start managing your art world today!
+        p2 We’re only open to artists and professionals at the moment, so stay in touch if you’re a collector by registering your interest!
 
-      .col-md-6
+      .col-xs-12.col-sm-12.col-md-6
         = simple_form_for InterestForm.new, url: interest_path do |f|
           = f.input :title, label: false, placeholder: 'Title', class: 'form-control'
           = f.input :name, label: false, placeholder: 'Name', class: 'form-control'

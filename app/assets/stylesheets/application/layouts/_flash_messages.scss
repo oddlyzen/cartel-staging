@@ -9,8 +9,39 @@
   width: 50%;
   z-index: 2000;
   text-align: center;
+  font-family: $font-heading;
+  font-size: 1em;
+  color: black;
+  background-color: $medium-white;
+  border-width: 1px;
+  border-color: $grey;
 }
 
+.alert-success {
+  font-family: $font-heading;
+  font-size: 1em;
+  color: black;
+  background-color: $medium-white;
+  border-width: 1px;
+  border-color: $grey;
+}
+
+.alert-danger {
+  font-family: $font-heading;
+  font-size: 1em;
+  color: $brand-warning;
+  background-color: $medium-white;
+  border-width: 1px;
+  border-color: $grey;
+}
+.alert-warning{
+  font-family: $font-heading;
+  font-size: 1em;
+  color: $brand-warning;
+  background-color: $medium-white;
+  border-width: 1px;
+  border-color: $grey;
+}
 .inline-div {
   display: inline;
 }
