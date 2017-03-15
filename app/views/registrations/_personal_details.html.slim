@@ -3,8 +3,8 @@
   .form-group
     = user.label 'Salutations', class: 'col-xs-2 control-label'
     .col-xs-4
-      = user.input :title, collection: options_for_enum(User.titles), include_blank: false,
-      prompt: 'Please Select'
+      / = user.input :title, collection: options_for_enum(User.titles), include_blank: false,
+      / prompt: 'Please Select'
     = user.label 'Gender', class: 'col-xs-2 control-label'
     .col-xs-4
       = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline' }
@@ -50,4 +50,3 @@
     = user.label :password_confirmation, class: 'col-xs-2 control-label', label: 'Confirm Password'
     .col-xs-4
       = user.input :password_confirmation, placeholder: '........'
-
