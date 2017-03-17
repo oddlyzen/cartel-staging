@@ -38,6 +38,7 @@ gem 'aasm'
 gem 'filepicker-rails'
 
 gem 'appsignal'
+gem 'rollbar'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.1.0'
@@ -48,7 +49,6 @@ group :development, :test do
   gem 'email_spec'
   gem 'rspec-html-matchers'
   gem 'pry-rails'
-  gem 'rollbar'
 end
 
 group :production, :staging do

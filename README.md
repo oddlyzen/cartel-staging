@@ -41,6 +41,7 @@ rake slim_lint
 
 ## Deploy to Heroku
 Run on master branch `rake production deploy`
+If it gives permission denied error try  `git push heroku master`
 
 ## Branch Policy
 
