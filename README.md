@@ -13,8 +13,6 @@ cd pan
 bundle install
 ```
 
-asdasdasd
-
 ## Setup Environment Variable
 ```
 cp .env.sample .env
@@ -41,6 +39,10 @@ rubocop --auto-correct
 rake slim_lint
 ```
 
+## Deploy to Heroku
+Run on master branch `rake production deploy`
+If it gives permission denied error try  `git push heroku master`
+
 ## Branch Policy
 
 - `master` is the active development branch
@@ -54,6 +56,6 @@ Local development branch naming:
 After done with local development, push it:
 ```git push -u origin <local_branch>```
 
-# Tasks
+## Tasks
 - basecamp - PAN
 - get permission to https://docs.google.com/spreadsheets/d/1mSu-ORsC1HjXqFxE39a4jmxdrFbAF6a4n09KhK0iD5E/edit#gid=0
