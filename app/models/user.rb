@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile, reject_if: :all_blank
   accepts_nested_attributes_for :media_features, reject_if: :all_blank, allow_destroy: true
 
-  validates :email, :title, :first_name, :last_name, presence: true
+  validates :email, :first_name, :last_name, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :email, uniqueness: true
   validates :profile, presence: true, unless: :admin?
@@ -88,9 +88,9 @@ class User < ActiveRecord::Base
   has_paper_trail on: :update, skip: [:password]
 
 
-  def title
-    first_name + " " + last_name
-  end
+  #def title
+    #first_name + " " + last_name
+  #end
 
   # this adds my active and passive freinds
   def friends

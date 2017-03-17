@@ -26,11 +26,11 @@ development:
   # database: pan_development
   #
   # uncoment if need to test in database
-  url: postgres://ftfubzeiiugory:LXbsUE21NUpMdBMQY4xthVlZ85@ec2-54-83-36-203.compute-1.amazonaws.com:5432/d9164ltid8evlj
-  database: d9164ltid8evlj
-  password: LXbsUE21NUpMdBMQY4xthVlZ85
-  port: 5432
-  username: ftfubzeiiugory
+  # url: postgres://ftfubzeiiugory:LXbsUE21NUpMdBMQY4xthVlZ85@ec2-54-83-36-203.compute-1.amazonaws.com:5432/d9164ltid8evlj
+  # database: d9164ltid8evlj
+  # password: LXbsUE21NUpMdBMQY4xthVlZ85
+  # port: 5432
+  # username: ftfubzeiiugory
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

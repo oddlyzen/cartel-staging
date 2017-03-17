@@ -46,14 +46,14 @@ class ArtworkUpdateForm < BaseForm
 
   def artwork_is_valid?
     if @artwork.series.published? && !@artwork.valid?(:series_save)
-      errors.add(:artwork, 'is invalid')
+      errors.add(:artwork, 'Please check your forms again')
       @artwork.errors.each do |artwork_attribute, error|
-        errors.add('artwork: ' + artwork_attribute.to_s, error)
+        errors.add('Check the following: ' + artwork_attribute.to_s, error)
       end
     elsif !@artwork.valid?
-      errors.add(:artwork, 'is invalid')
+      errors.add(:artwork, 'Please check your forms again')
       @artwork.errors.each do |artwork_attribute, error|
-        errors.add('artwork: ' + artwork_attribute.to_s, error)
+        errors.add('Check the following: ' + artwork_attribute.to_s, error)
       end
     end
   end

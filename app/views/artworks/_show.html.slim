@@ -28,7 +28,7 @@
             = link_to @artwork.series.link, target: '_blank' do
               = @artwork.series_title
           - else
-            ' Series not available
+            ' Misc
 
         p.description
           = @artwork.description_snippet
@@ -40,12 +40,11 @@
             = link_to @artwork&.series&.exhibition&.link, target: '_blank' do
               = @artwork.exhibited_at
           - else
-            ' Exhibition not available
+            ' No previous exhibition
 
           br
 
           = @artwork.subjects_themes
 
     .col-xs-9
-      = filepicker_image_tag @artwork.image_url, w: 900, h: 784, fit: 'crop', align: 'faces'
-
+      = filepicker_image_tag @artwork.image_url, w: 900, h: 784, fit: 'clip', align: 'faces'

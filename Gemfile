@@ -24,7 +24,7 @@ gem 'selectize-rails'
 gem 'gon'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'responders', '~> 2.0'
-gem 'city-state'
+gem 'city-state', git: 'https://github.com/ocularch/city-state'
 gem 'kaminari'
 
 # authentication & authorization
@@ -48,11 +48,14 @@ group :development, :test do
   gem 'email_spec'
   gem 'rspec-html-matchers'
   gem 'pry-rails'
+  gem 'rollbar'
 end
 
 group :production, :staging do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+
+
 end
 
 group :development do

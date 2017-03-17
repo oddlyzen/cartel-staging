@@ -1,14 +1,11 @@
 = f.simple_fields_for :user do |user|
   = user.hidden_field :referrer_id, value: params[:referrer_id]
-  .form-group
-    = user.label 'Salutations', class: 'col-xs-2 control-label'
-    .col-xs-4
-      = user.input :title, collection: options_for_enum(User.titles), include_blank: false,
-      prompt: 'Please Select'
-    = user.label 'Gender', class: 'col-xs-2 control-label'
-    .col-xs-4
-      = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline' }
-
+  /.form-group
+  //  = user.label 'Salutations', class: 'col-xs-2 control-label'
+    /.col-xs-4
+      / = user.input :title, collection: options_for_enum(User.titles), include_blank: false,
+      / prompt: 'Please Select'
+    
   .form-group
     = user.label 'Full Name', class: 'col-xs-2 control-label'
     .col-xs-4
@@ -20,6 +17,11 @@
     = user.label 'Email', class: 'col-xs-2 control-label'
     .col-xs-10
       = user.input :email, placeholder: 'name@email.com'
+      
+  .form-group  
+      = user.label 'Gender', class: 'col-xs-2 control-label'
+      .col-xs-6
+        = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline' }
 
   .form-group
     = user.label :date_of_birth, class: 'col-xs-2 control-label date_of_birth', label: 'Date of Birth'
@@ -50,4 +52,3 @@
     = user.label :password_confirmation, class: 'col-xs-2 control-label', label: 'Confirm Password'
     .col-xs-4
       = user.input :password_confirmation, placeholder: '........'
-

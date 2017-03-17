@@ -154,7 +154,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     it do
       expect(email_to_gravatar(email)).to eq(
-        "https://gravatar.com/avatar/#{digested_email}.png?s=96&d=identicon"
+        "https://gravatar.com/avatar/#{digested_email}.png?s=96&d=mm"
       )
     end
   end

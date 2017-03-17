@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       login(@form.email, @form.password)
       redirect_to logged_in_path
     else
-      flash.now[:error] = 'We\'re sorry, but this user has not been registered on Cartel'
+      flash.now[:error] = 'Please try again'
       render :new
     end
   end

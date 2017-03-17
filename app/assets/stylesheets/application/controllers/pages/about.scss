@@ -7,6 +7,9 @@ body.pages-about {
     font-family: $font-heading;
     letter-spacing: 1.5px;
     color: $light-grey;
+    font-size: 2.5em;
+    align: left;
+    margin-botton: 30px;
   }
 
   .logo {
@@ -28,8 +31,11 @@ body.pages-about {
     .pull-right { margin-right: 0px; }
 
     p {
-      text-align: justify;
+      //text-align: justify;
+      font-family: $font-body-semibold;
+      font-size: 1em;
     }
+
   }
 
 }

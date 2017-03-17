@@ -13,7 +13,7 @@ class PasswordResetsController < ApplicationController
     @user = User.load_from_reset_password_token(params[:id])
 
     if @user.blank?
-      flash[:alert] = 'User does not exist'
+      flash[:alert] = 'Please try again'
       not_authenticated
     end
   end
@@ -23,7 +23,7 @@ class PasswordResetsController < ApplicationController
     @user = User.load_from_reset_password_token(params[:id])
 
     if @user.blank?
-      flash[:alert] = 'Sorry but this account is invalid'
+      flash[:alert] = 'Please try again'
       not_authenticated
       return
     end
@@ -32,7 +32,7 @@ class PasswordResetsController < ApplicationController
     if @user.change_password!(params[:user][:password])
       redirect_to root_path, notice: 'Your password has successfully been updated'
     else
-      flash[:alert] = 'User does not exist'
+      flash[:alert] = 'You have been unable to change your password'
       render :edit
     end
   end
