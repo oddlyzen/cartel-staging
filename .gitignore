@@ -57,6 +57,8 @@ bower.json
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
+/log/appsignal.log
+/log/development.log
 /log/*
 !/log/.keep
 /tmp
