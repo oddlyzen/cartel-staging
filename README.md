@@ -1,11 +1,10 @@
 # PAN
-add newer code
 
 [![Circle CI](https://circleci.com/gh/tinkerbox/pan.svg?style=svg&circle-token=6e54f3ceb9c3a2d4707fe06ba43362527370fe6f)](https://circleci.com/gh/tinkerbox/pan)
 [![Code Climate](https://codeclimate.com/repos/5636f5666956801ac0004e0d/badges/b82a5b2d4f73799bd70d/gpa.svg)](https://codeclimate.com/repos/5636f5666956801ac0004e0d/feed)
 [![Test Coverage](https://codeclimate.com/repos/5636f5666956801ac0004e0d/badges/b82a5b2d4f73799bd70d/coverage.svg)](https://codeclimate.com/repos/5636f5666956801ac0004e0d/coverage)
 
-
+TESTING 
 ## Setup
 ```
 git clone https://github.com/tinkerbox/pan.git
@@ -38,6 +37,16 @@ rake rspec
 rubocop --auto-correct
 rake slim_lint
 ```
+
+## development
+1 - Every new feature or fix should be in a branch
+2 - After creating a branch on SourceTree, and commiting fixes, you should push it to bitbucket.
+3 - Open that branch on bitbucket, and if you are happy press Merge
+4 - go back to master branch on your local machine, git pull the latest changes (the merged branch)
+5 - git push heroku master, to deploy the master branch to heroku.
+6 - You are done
+
+
 
 ## Deploy to Heroku
 Run on master branch `rake production deploy`
