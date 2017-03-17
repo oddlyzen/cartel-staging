@@ -48,12 +48,13 @@ group :development, :test do
   gem 'email_spec'
   gem 'rspec-html-matchers'
   gem 'pry-rails'
+  gem 'rollbar'
 end
 
 group :production, :staging do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
-  gem 'rollbar'
+
 
 end
 

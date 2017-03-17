@@ -80,6 +80,7 @@
           .modal-dialog.modal-lg
             .modal-content
               .modal-header
+                button.close type="button" data-dismiss="modal" #{fa_icon('times')}
               .modal-body
                 .row
                   .col-12
@@ -95,7 +96,7 @@
                 .row
                   .col-xs-12
                     .text-center
-                      = link_to 'About pan', about_path, class: 'btn btn-default about', type: 'button'
+                      = link_to 'About CARTEL', about_path, class: 'btn btn-default about', type: 'button'
                       = link_to 'Contact us', contact_us_path, class: 'btn btn-default contact', type: 'button'
 
   .row
@@ -118,7 +119,7 @@
                 .row
                   .col-xs-12
                     .text-center
-                      = link_to 'About pan', about_path, class: 'btn btn-default about', type: 'button'
+                      = link_to 'About CARTEL', about_path, class: 'btn btn-default about', type: 'button'
                       = link_to 'Contact us', contact_us_path, class: 'btn btn-default contact', type: 'button'
 
   .row
