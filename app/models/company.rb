@@ -13,7 +13,7 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true
   validates :name, uniqueness: true
-  validates :image_url, presence: true, on: :update
+  #validates :image_url, presence: true, on: :update
   validates :owner, presence: true, if: :owner_id
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, if: :email
   #validates :phone, format: { with: /\A^\+(?:[0-9] ?){6,14}[0-9]$\z/, message: 'Please format your phone number with a country code (ie. +44)' }, if: :phone
