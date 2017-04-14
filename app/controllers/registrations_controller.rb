@@ -14,7 +14,6 @@ class RegistrationsController < ApplicationController
       session.delete('oauth_info')
       auto_login(@registration_form.user)
     else
-      binding.pry
       flash.now[:error] = 'Please check your form again and re-submit'
     end
   end
