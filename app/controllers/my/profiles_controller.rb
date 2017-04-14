@@ -12,7 +12,7 @@ module My
       if update_service_call.success?
         redirect_to @user.artist? ? artist_path(@user) : professional_path(@user), notice: 'Your profile has been updated'
       else
-        flash[:error] = 'Something went wrong. Please try again!'
+        flash[:error] = @user.errors.full_messages
         redirect_to edit_my_profile_path
       end
     end

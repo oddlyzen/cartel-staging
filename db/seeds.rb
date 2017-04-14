@@ -150,6 +150,8 @@ end
   OrganizationType.create!(name: organization_type, user_id: user_admin.id, state: :approved, public_option: true)
 end
 
+# get from excel this list, row[0] = university name, row[1] = location
+
 %w(Brown\ University Camberwell\ College\ of\ Arts Central\ Saint\ Martins Chelsea\ College\ of\ Art\ and\ Design Christie's\ Education Columbia\ University Cornell\ University Courtauld\ Institute\ of\ Art Dasein\ Academy\ of\ Art De\ Ateliers Duke\ University Gerrit\ Rietveld\ Academie Goldsmiths\ College Harvard\ University LASALLE\ College\ of\ the\ Arts Malaysian\ Institute\ of\ Art Monash\ University  Nanyang\ Academy\ of\ Fine\ Arts NTU\ School\ of\ Art,\ Design\ and\ Media\ (ADM) National\ University\ of\ Singapore New\ York\ University Pratt\ Institute Princeton\ University Rijksakademie\ van\ beeldende\ kunsten Royal\ Academy\ of\ Arts Royal\ College\ of\ Art  Sandberg\ Instituut School\ of\ Oriental\ and\ African\ Studies\ (SOAS) Slade\ School\ of\ Art Sotheby's\ Institute\ of\ Art The\ Ruskin\ School\ of\ Fine\ Art\ and\ Drawing Universiti\ Teknologi\ MARA\ (UITM) University\ College\ London University\ of\ California,\ Los\ Angeles\ (UCLA) University\ of\ Cambridge University\ of\ Chicago University\ of\ Edinburgh University\ of\ Glasgow University\ of\ Hong\ Kong University\ of\ Oxford Warburg\ Institute Williams\ College Wimbledon\ College\ of\ Art Winchester\ School\ of\ Art Yale\ University).each do |univ|
   Institution.create!(name: univ)
 end

@@ -67,6 +67,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :email, uniqueness: true
   validates :profile, presence: true, unless: :admin?
+  # validates :educations, presence: true, unless: :admin?
   validates :password, confirmation: true, presence: true, if: :requires_password?
   validates :password_confirmation, presence: true, if: :requires_password?
   validates :acknowledgement, acceptance: true
@@ -87,10 +88,9 @@ class User < ActiveRecord::Base
 
   has_paper_trail on: :update, skip: [:password]
 
-
-  #def title
-    #first_name + " " + last_name
-  #end
+  def name
+    first_name + " " + last_name
+  end
 
   # this adds my active and passive freinds
   def friends

@@ -89,3 +89,36 @@
 [2017-03-13T10:57:21 (process) #9519][INFO] appsignal: Loading Rails (4.2.7.1) integration
 [2017-03-13T10:57:23 (process) #9519][ERROR] appsignal: Push api key not set after loading config
 [2017-03-13T10:57:23 (process) #9519][ERROR] Not starting, no valid config for this environment
+[2017-03-22T10:20:29 (process) #23432][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-03-22T10:20:36 (process) #23432][ERROR] appsignal: Push api key not set after loading config
+[2017-03-22T10:20:36 (process) #23432][ERROR] Not starting, no valid config for this environment
+[2017-03-22T10:45:19 (process) #24065][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-03-22T10:45:22 (process) #24065][ERROR] appsignal: Push api key not set after loading config
+[2017-03-22T10:45:22 (process) #24065][ERROR] Not starting, no valid config for this environment
+[2017-03-22T10:53:13 (process) #24221][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-03-22T10:53:16 (process) #24221][ERROR] appsignal: Push api key not set after loading config
+[2017-03-22T10:53:16 (process) #24221][ERROR] Not starting, no valid config for this environment
+[2017-03-22T10:58:05 (process) #24487][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-03-22T10:58:08 (process) #24487][ERROR] appsignal: Push api key not set after loading config
+[2017-03-22T10:58:08 (process) #24487][ERROR] Not starting, no valid config for this environment
+[2017-03-22T11:31:30 (process) #25530][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-03-22T11:31:33 (process) #25530][ERROR] appsignal: Push api key not set after loading config
+[2017-03-22T11:31:33 (process) #25530][ERROR] Not starting, no valid config for this environment
+[2017-04-14T10:37:39 (process) #24109][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-04-14T10:37:48 (process) #24109][ERROR] appsignal: Push api key not set after loading config
+[2017-04-14T10:37:48 (process) #24109][ERROR] Not starting, no valid config for this environment
+[2017-04-14T10:44:21 (process) #24314][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-04-14T10:44:23 (process) #24314][ERROR] appsignal: Push api key not set after loading config
+[2017-04-14T10:44:23 (process) #24314][ERROR] Not starting, no valid config for this environment
+[2017-04-14T10:44:39 (process) #24319][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-04-14T10:44:41 (process) #24319][ERROR] appsignal: Push api key not set after loading config
+[2017-04-14T10:44:41 (process) #24319][ERROR] Not starting, no valid config for this environment
+[2017-04-14T10:45:08 (process) #24331][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-04-14T10:45:10 (process) #24331][ERROR] appsignal: Push api key not set after loading config
+[2017-04-14T10:45:10 (process) #24331][ERROR] Not starting, no valid config for this environment
+[2017-04-14T10:45:25 (process) #24349][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-04-14T10:45:26 (process) #24349][ERROR] appsignal: Push api key not set after loading config
+[2017-04-14T10:45:26 (process) #24349][ERROR] Not starting, no valid config for this environment
+[2017-04-14T10:45:41 (process) #24359][INFO] appsignal: Loading Rails (4.2.7.1) integration
+[2017-04-14T10:45:42 (process) #24359][ERROR] appsignal: Push api key not set after loading config
+[2017-04-14T10:45:42 (process) #24359][ERROR] Not starting, no valid config for this environment

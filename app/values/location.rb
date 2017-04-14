@@ -15,4 +15,15 @@ class Location
       CS.states(country_code).values
     end
   end
+
+  # NOW you can use this anywhere, the same way you use state options for country
+  def self.cities_for_state(state, country)
+    if state.nil?
+      {}
+    else
+      CS.cities(state, country)
+    end
+  end
+
+
 end

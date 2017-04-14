@@ -14,8 +14,9 @@ fieldset.nested-fields
       = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: "residency-#{f.object.id || 'new'}"  } }
       = f.input :education_level, label: false, collection: options_for_enum(User.education_levels),
         include_blank: false, prompt: 'Degree'
-      = f.input :education_grade, label: false, placeholder: 'Grade'
+      = f.input :education_grade, label: false, placeholder: 'Grade', required: true
       = f.input :field_of_study, label: false, placeholder: 'Field of Study (eg. Fine Art/Art History)',
-      input_html: { class: 'form-control' }
+      input_html: { class: 'form-control'}, required: true 
       = f.input :education_description, as: :text, label: false, placeholder: 'Description',
       input_html: { class: 'form-control', maxlength: 200, rows: 10 }
+/ On change of institution, go to a list where it passes the insitution name and gives me a country.

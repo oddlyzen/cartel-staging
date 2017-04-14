@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/repos/5636f5666956801ac0004e0d/badges/b82a5b2d4f73799bd70d/gpa.svg)](https://codeclimate.com/repos/5636f5666956801ac0004e0d/feed)
 [![Test Coverage](https://codeclimate.com/repos/5636f5666956801ac0004e0d/badges/b82a5b2d4f73799bd70d/coverage.svg)](https://codeclimate.com/repos/5636f5666956801ac0004e0d/coverage)
 
-TESTING 
+TESTING
 ## Setup
 ```
 git clone https://github.com/tinkerbox/pan.git
@@ -64,6 +64,14 @@ Local development branch naming:
 
 After done with local development, push it:
 ```git push -u origin <local_branch>```
+
+## Tasks for April
+  1 - Create a new migration that Adds Location to Institution model.
+  2 - create a list in csv, with uni name and location.
+  3 - Improve the seeds file with locations and institution names, so that uses.
+
+
+
 
 ## Tasks
 - basecamp - PAN

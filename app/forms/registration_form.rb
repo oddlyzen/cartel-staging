@@ -10,9 +10,9 @@ class RegistrationForm < BaseForm
   delegate :professional?, to: :user, prefix: false
 
   validate :user_is_valid?
-  validate :atmost_one_current_work_experience?, if: :professional?
-  validate :work_experience_matches_with_current_status?, if: :professional?
-  validate :work_experiences_are_valid?, if: :professional?
+  # validate :atmost_one_current_work_experience?, if: :professional?
+  # validate :work_experience_matches_with_current_status?, if: :professional?
+  # validate :work_experiences_are_valid?, if: :professional?
 
   def initialize(params = {}, oauth_params = {})
     @user = User.find_by(id: params.delete(:id)) || User.new

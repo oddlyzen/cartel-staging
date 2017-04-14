@@ -15,4 +15,5 @@
 - if defined?(resource) && resource && resource.errors.count > 0
   .alert.alert-danger
     = fa_icon flash_icon_for('error')
+    h1= resource.errors.full_messages
     button.close aria-hidden='true' data-dismiss='alert' type='button'  &times;
