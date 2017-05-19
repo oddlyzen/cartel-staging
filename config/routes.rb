@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   root to: 'sessions#new'
 
+  # ** Routes for Errors **
+  match "/404", :to => "exception#not_found", :via => :all
+  match "/500", :to => "exception#internal_server_error", :via => :all
+
   # ** Routes for public visitors **
 
   post 'login', to: 'sessions#create'
