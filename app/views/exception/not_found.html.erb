@@ -1,1 +1,9 @@
-<h1>Page Not Found</h1>
+<div class="not-found-exception">
+  <h1>OH, NO! SOMETHING WENT WRONG!</h1>
+
+  <p>Thanks for being patient.</p>
+
+  <p>Let us know what happened by writing to <%= mail_to "admin@artcartel.io", "admin@artcartel.io" %>.</p>
+
+  <%= link_to "GO HOME", root_path, class: "btn btn-home" %>
+</div>
