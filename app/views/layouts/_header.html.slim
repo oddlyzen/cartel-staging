@@ -1,7 +1,7 @@
 / HEADER FOR EVERYTHING
 nav.navbar.navbar-default
-  .container 
-  
+  .container
+
     - if current_user.present?
       .dropdown
         = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }, role: 'button',
@@ -21,11 +21,11 @@ nav.navbar.navbar-default
               li = link_to 'Portfolio', artist_artworks_path(current_user)
             li = link_to 'Network', my_connections_path
             li = link_to 'Organisations', my_companies_path
-            
+
           hr
           li.title Create
           li= link_to 'Organisation', new_my_company_path
-          
+
 
     = link_to 'Cartel', root_path, class: 'navbar-brand'
 
@@ -36,7 +36,7 @@ nav.navbar.navbar-default
             'aria-haspopup': 'true', 'aria-expanded': 'false' do
               = image_tag profile_image_url(current_user, 20, 20, ''), size: '20x20', class: 'avatar'
               span.hidden-xs.username= "#{current_user.first_name} #{current_user.last_name}"
-              
+
           ul.dropdown-menu.dropdown-menu--user
             li = link_to 'Settings', my_settings_path
             li = link_to 'Logout', logout_path, method: :delete
@@ -95,7 +95,6 @@ nav.navbar.navbar-default
                       = link_to fa_icon('times'), reject_my_company_membership_path(membership.company, membership), method: :patch
     - else
       ul.nav.navbar-nav.navbar-right
-        li = link_to 'Register', new_registration_path
         li = link_to 'Login', root_path
 
 = render 'layouts/invite'

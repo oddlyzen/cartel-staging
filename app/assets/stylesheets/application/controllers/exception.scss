@@ -1,15 +1,12 @@
 .internal-server-error-exception, .not-found-exception {
   text-align: center;
-  line-height: 80px;
 
   h1 {
-    font-family: Bebas Neue;
     font-size: 40px;
     color: #BD0101;
   }
 
   p {
-    font-family: Roboto Condensed;
     font-size: 20px;
     color: black;
 
@@ -19,12 +16,12 @@
   }
 
   .btn-home {
-    font-family: Roboto Condensed;
     font-style: bold;
-    font-size: 30px;
+    font-size: 20px;
     color: black;
-    border: 5px solid black;
+    border: 3px solid black;
     border-radius: 0px;
+    margin-top: 25px;
   }
 
 }
