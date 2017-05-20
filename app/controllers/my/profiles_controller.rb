@@ -22,7 +22,7 @@ module My
     def user_params
       params.require(:my_profile_form).permit(
         user_attributes: [
-          :tagline, :profile_image_url, :statement, :link, :interest, :skills, :language, :language_level, :current_status, :commission, :facebook_link, :twitter_link, :instagram_link, :institution, :education_level, :education_grade, :exhibit_country, :based_state, :based_country, :nationality_country, :field_of_study, :residency_status, :other_status,
+          :tagline, :profile_image_url, :statement, :link, :interest, :skills, :language, :language_level, :current_status, :commission, :facebook_link, :twitter_link, :instagram_link, :institution, :education_level, :education_grade, :exhibit_country, :based_state, :based_country, :based_location, :nationality_country, :field_of_study, :residency_status, :other_status,
           artist_status_text: [],
           professional_status_text: [],
           representative_ids: [],

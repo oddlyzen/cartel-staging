@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519094101) do
+ActiveRecord::Schema.define(version: 20170520200658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -498,6 +498,7 @@ ActiveRecord::Schema.define(version: 20160519094101) do
     t.integer  "referrer_id"
     t.integer  "referrals_count",                 default: 0
     t.string   "profile_image_url"
+    t.string   "based_location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
