@@ -22,3 +22,4 @@
 #= require ./modules/base
 #= require ./controllers/base
 #= require imgLiquid
+#= require ./google_places_autocomplete.js
