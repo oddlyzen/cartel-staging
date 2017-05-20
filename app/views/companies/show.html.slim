@@ -6,9 +6,7 @@ section
     .col-md-6
       h1.text-right = @company.name
       h4.text-right = @company.organization_types.join(', ')
-      h4.text-right
-        - if @company.state && @company.country
-          | #{@company.state}, #{@company.country}
+      h4.text-right = @company.location
       h4.text-right = "Established #{@company.established_in.year}"
       ul.actions
         - if current_user == @company.owner

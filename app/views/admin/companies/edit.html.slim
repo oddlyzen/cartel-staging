@@ -25,7 +25,8 @@
         .col-md-6
           = f.input :name, placeholder: 'Company Name'
           = f.input :motto, placeholder: 'Company Message/Motto'
-          = f.input :location, placeholder: 'Location'
+          = f.input :location, placeholder: 'Location', input_html: { class: "google-places-autocomplete" }
+
           = f.input :established_in, as: :date
           = f.input :address_1, placeholder: 'Address Line 1', label: 'Address Line 1'
           = f.input :address_2, placeholder: 'Address Line 2', label: 'Address Line 2'

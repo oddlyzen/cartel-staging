@@ -31,10 +31,6 @@ class Company < ActiveRecord::Base
     !active?
   end
 
-  def location
-    state.blank? ? '' : state + ', ' + country
-  end
-
   def organization_types
     OrganizationType.approved.where(id: organization_type_ids).pluck(:name)
   end

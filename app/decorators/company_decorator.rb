@@ -6,10 +6,6 @@ class CompanyDecorator < BaseDecorator
     end
   end
 
-  def location
-    [@model.state, @model.country].reject(&:blank?).join(', ')
-  end
-
   def full_address
     "#{@model.address_1} #{@model.address_2}"
   end
