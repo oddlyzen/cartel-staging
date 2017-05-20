@@ -3,17 +3,10 @@ section.section-2
     .col-xs-3
       .row
         .col-xs-12
-          .has-feedback
+          .form-group.has-feedback
             label Where are you based?
             = fa_icon('location-arrow', class: 'form-control-feedback')
-            = f.input :based_country, collection: Location.options_for_country,
-              include_blank: false, input_html: { data: { selectize_country: 'based_in' } }, wrapper: :selectize
-      .row
-        .col-xs-12
-          .has-feedback
-            = fa_icon('location-arrow', class: 'form-control-feedback')
-            = f.input :based_state, collection: Location.state_options_for_country(f.object.based_country),
-              include_blank: false, input_html: { data: { selectize_state: 'based_in' } }, wrapper: :selectize
+            = f.input :based_location, placeholder: "Enter city or country", label: false
       .row
         .col-xs-12
           .form-group.has-feedback
