@@ -26,27 +26,27 @@ $facebook: #3c5a96;
 }
 
 @font-face {
-  font-family: 'Roboto-Light';
-  src: font-url('Roboto-Light.ttf');
+  font-family: 'RobotoCondensed-Light';
+  src: font-url('RobotoCondensed-Light.ttf');
   font-weight: light;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto-Regular';
-  src: font-url('Roboto-Regular.ttf');
+  font-family: 'RobotoCondensed-Regular';
+  src: font-url('RobotoCondensed-Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto-Medium';
-  src: font-url('Roboto-Medium.ttf');
+  font-family: 'RobotoCondensed-Bold';
+  src: font-url('RobotoCondensed-Bold.ttf');
   font-weight: normal;
   font-style: normal;
 }
 
 $font-heading: 'BebasNeue';
-$font-body-light: 'Roboto-Light';
-$font-body-regular: 'Roboto-Regular';
-$font-body-semibold: 'Roboto-Medium';
+$font-body-light: 'RobotoCondensed-Light';
+$font-body-regular: 'RobotoCondensed-Regular';
+$font-body-semibold: 'RobotoCondensed-Bold';
