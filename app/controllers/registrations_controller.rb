@@ -26,7 +26,7 @@ class RegistrationsController < ApplicationController
       user_attributes: [
         :email, :password, :password_confirmation, :first_name, :last_name, :exhibitions,
         :role, :title, :date_of_birth, :nationality_country, :residency_status, :gender,
-        :based_country, :based_state, :current_status, :commission, :professional_status_text,
+        :based_country, :based_state, :based_location, :current_status, :commission, :professional_status_text,
         :exhibit_title, :participation, :venue, :exhibit_country, :exhibit_state, :referrer_id,
         :link, :from_record_year, :to_record_year, :acknowledgement, :from_exhibit_date,
         :to_exhibit_date, :representation, :position, :company_name, :gallery_museum,
