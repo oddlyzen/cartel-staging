@@ -17,9 +17,7 @@ class UserDecorator < BaseDecorator
   end
 
   def display_based_in
-    if @model.based_state && @model.based_country
-      "#{!@model.based_state.blank? ? @model.based_state.humanize + ', ' : ''}#{@model.based_country}"
-    end
+    @model.based_location
   end
 
   def nationality_status
