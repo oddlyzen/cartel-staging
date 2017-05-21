@@ -5,7 +5,7 @@
     /.col-xs-4
       / = user.input :title, collection: options_for_enum(User.titles), include_blank: false,
       / prompt: 'Please Select'
-    
+
   .form-group
     = user.label 'Full Name', class: 'col-xs-2 control-label'
     .col-xs-4
@@ -17,8 +17,8 @@
     = user.label 'Email', class: 'col-xs-2 control-label'
     .col-xs-10
       = user.input :email, placeholder: 'name@email.com'
-      
-  .form-group  
+
+  .form-group
       = user.label 'Gender', class: 'col-xs-2 control-label'
       .col-xs-6
         = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline' }
@@ -38,12 +38,9 @@
       prompt: 'Please Select'
 
   .form-group
-    = user.label :based_country, class: 'col-xs-2 control-label', label: 'Based In'
+    = user.label 'Based In', class: 'col-xs-2 control-label'
     .col-xs-4
-      = user.input :based_country, as: :select, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize, input_html: { data: { selectize_country: 'based_country' } }
-    = user.label 'City/State', class: 'col-xs-2 control-label'
-    .col-xs-4
-      = user.input :based_state, as: :select, collection: {}, prompt: 'State', wrapper: :selectize, input_html: { data: { selectize_state: 'based_country' } }
+      = user.input :based_location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete" }
 
   .form-group
     = user.label 'Password', class: 'col-xs-2 control-label'
@@ -52,3 +49,6 @@
     = user.label :password_confirmation, class: 'col-xs-2 control-label', label: 'Confirm Password'
     .col-xs-4
       = user.input :password_confirmation, placeholder: '........'
+
+script src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_PLACES_API']}&libraries=places&callback=initAutocomplete"
+
