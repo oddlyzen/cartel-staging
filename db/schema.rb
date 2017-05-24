@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520200658) do
+ActiveRecord::Schema.define(version: 20170524111248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20170520200658) do
     t.time    "closing_time"
     t.string  "address_2"
     t.string  "image_url"
+    t.string  "postcode"
   end
 
   add_index "companies", ["organization_type_ids"], name: "index_companies_on_organization_type_ids", using: :gin

@@ -52,7 +52,7 @@ module My
 
     def company_attributes_whitelist
       [
-        :image_url, :name, :motto, :country, :state, :established_in, :address_1, :address_2, :contact, :about_us,
+        :image_url, :name, :motto, :country, :state, :established_in, :address_1, :address_2, :contact, :about_us, :postcode,
         :facebook, :twitter, :instagram, :description, :country, :state, :phone, :email, :location,
         :position, :website, :opening_time, :closing_time, organization_type_ids: []
       ]

@@ -12,6 +12,7 @@ label What type of organisation is this?
 = company.input :location, label: "City, Country", input_html: { class: "google-places-autocomplete", placeholder: "City, Country" }
 = company.hidden_field :country, class: "location-country"
 = company.hidden_field :state, class: "location-state"
+= company.input :postcode, label: 'Postcode'
 label Opening Hours
 .form-group
   .form-inline
