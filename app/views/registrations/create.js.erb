@@ -2,4 +2,10 @@
   $('#thankyou-register').modal('show');
 <% else %>
   $("#messages").html("<%= j render 'layouts/flash_messages' %>");
+
+  <% if @registration_form.errors["user: exhibitions.title"].present? %>
+    $("#registration_form_user_attributes_exhibitions_attributes_0_title").addClass("error");
+  <% else %>
+    $("#registration_form_user_attributes_exhibitions_attributes_0_title").removeClass("error");
+  <% end %>
 <% end %>
