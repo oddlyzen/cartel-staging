@@ -1,22 +1,28 @@
 Controllers['registrations'] = -> class Registrations
   new: (action) ->
     $('#artist').on 'click', ->
-      if $('.artist').data('involvement') == false
-        $('#artist-question').modal('show')
-      $('.page-1').attr 'hidden', ''
-      $('.page-artist').removeAttr 'hidden'
-      $('.page-professional').find('input, select, button').prop 'disabled', true
-      $('.page-artist').find('input, select, button').prop 'disabled', false
-      $('.register').prop 'disabled', true
+      if personalDetailsValid()
+        if $('.artist').data('involvement') == false
+          $('#artist-question').modal('show')
+        $('.page-1').attr 'hidden', ''
+        $('.page-artist').removeAttr 'hidden'
+        $('.page-professional').find('input, select, button').prop 'disabled', true
+        $('.page-artist').find('input, select, button').prop 'disabled', false
+        $('.register').prop 'disabled', true
+      else
+        $('#personal-details-validation').modal('show')
 
     $('#professional').on 'click', ->
-      if $('.professional').data('involvement') == false
-        $('#professional-question').modal('show')
-      $('.page-1').attr 'hidden', ''
-      $('.page-professional').removeAttr 'hidden'
-      $('.page-artist').find('input, select, button').prop 'disabled', true
-      $('.page-professional').find('input, select, button').prop 'disabled', false
-      $('.register').prop 'disabled', true
+      if personalDetailsValid()
+        if $('.professional').data('involvement') == false
+          $('#professional-question').modal('show')
+        $('.page-1').attr 'hidden', ''
+        $('.page-professional').removeAttr 'hidden'
+        $('.page-artist').find('input, select, button').prop 'disabled', true
+        $('.page-professional').find('input, select, button').prop 'disabled', false
+        $('.register').prop 'disabled', true
+      else
+        $('#personal-details-validation').modal('show')
 
     $('#back-artist, #back-pro').on 'click', ->
       $('.page-artist, .page-professional').attr 'hidden', ''
@@ -143,3 +149,15 @@ Controllers['registrations'] = -> class Registrations
       create: true
       render: option_create: (data, escape) ->
         '<div class="create">This is a new Company. Pending approval from admin. Click to add <strong>' + escape(data.input) + '</strong>&hellip;</div>'
+
+  personalDetailsValid = ->
+    first_name_field = $('#registration_form_user_attributes_first_name')
+    last_name_field = $('#registration_form_user_attributes_last_name')
+    email_field = $('#registration_form_user_attributes_email')
+    password_field = $('#registration_form_user_attributes_password')
+    password_confirmation_field = $('#registration_form_user_attributes_password_confirmation')
+
+    if first_name_field.val() && last_name_field.val() && email_field.val() && password_field.val() && password_confirmation_field.val() && password_field.val() == password_confirmation_field.val()
+      return true
+    else
+      return false

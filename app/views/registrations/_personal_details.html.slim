@@ -7,14 +7,14 @@
       / prompt: 'Please Select'
 
   .form-group
-    = user.label 'Full Name', class: 'col-xs-2 control-label'
+    = user.label 'Full Name *', class: 'col-xs-2 control-label'
     .col-xs-4
       = user.input :first_name, placeholder: 'First Name'
     .col-xs-4.pull-right
       = user.input :last_name, placeholder: 'Last Name'
 
   .form-group
-    = user.label 'Email', class: 'col-xs-2 control-label'
+    = user.label 'Email *', class: 'col-xs-2 control-label'
     .col-xs-10
       = user.input :email, placeholder: 'name@email.com'
 
@@ -45,10 +45,10 @@
       = user.hidden_field :based_country, class: "location-country"
 
   .form-group
-    = user.label 'Password', class: 'col-xs-2 control-label'
+    = user.label 'Password *', class: 'col-xs-2 control-label'
     .col-xs-4
       = user.input :password, placeholder: '........'
-    = user.label :password_confirmation, class: 'col-xs-2 control-label', label: 'Confirm Password'
+    = user.label :password_confirmation, class: 'col-xs-2 control-label', label: 'Confirm Password *'
     .col-xs-4
       = user.input :password_confirmation, placeholder: '........'
 
