@@ -7,6 +7,8 @@ section.section-2
             label Where are you based?
             = fa_icon('location-arrow', class: 'form-control-feedback')
             = f.input :based_location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete" }
+            = f.hidden_field :based_state, class: "location-state"
+            = f.hidden_field :based_country, class: "location-country"
       .row
         .col-xs-12
           .has-feedback

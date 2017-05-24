@@ -41,6 +41,8 @@
     = user.label 'Based In', class: 'col-xs-2 control-label'
     .col-xs-4
       = user.input :based_location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete" }
+      = user.hidden_field :based_state, class: "location-state"
+      = user.hidden_field :based_country, class: "location-country"
 
   .form-group
     = user.label 'Password', class: 'col-xs-2 control-label'
