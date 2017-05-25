@@ -12,6 +12,11 @@ class Company < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
   validates :name, presence: true
+  validates :address_1, presence: true
+  validates :location, presence: true
+  validates :postcode, presence: true
+  validates :organization_types, presence: true
+  validates :about_us, presence: true
   validates :name, uniqueness: true
   #validates :image_url, presence: true, on: :update
   validates :owner, presence: true, if: :owner_id
