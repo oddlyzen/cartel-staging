@@ -1,6 +1,6 @@
 section.section-2
   .row
-    .col-xs-3
+    .col-md-3
       .row
         .col-xs-12
           .has-feedback
@@ -52,30 +52,33 @@ section.section-2
           .checkbox
             = f.check_box :commission
             = f.label :commission, 'Available for commission'
-    .col-xs-9
-      ul.interests-skills
-        = f.simple_fields_for :profile do |profile|
-          li
-            label Media
-            .input-group
-              = profile.input :medium_ids, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', input_html: { multiple: true, data: { klass: 'Medium', url: my_tags_path(format: :json) } }, wrapper: :selectize
-          li
-            label Subjects & Themes
-            .input-group
-              = profile.input :subject_ids, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'Add a subject/themes', input_html: { multiple: true, data: { klass: 'Subject', url: my_tags_path(format: :json) } }, wrapper: :selectize
-          li
-            label Skills
-            .input-group
-              = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'Add a skill', input_html: { multiple: true, data: { klass: 'Skill', url: my_tags_path(format: :json) } }, wrapper: :selectize
-          li
-            label Languages
-            #language-proficiencies
-              = profile.simple_fields_for :language_proficiencies do |proficiency|
-                = render 'language_proficiency_fields', f: proficiency
+    .col-md-9
+      .row
+        .col-md-12
+          .interests-skills
+            = f.simple_fields_for :profile do |profile|
+              .row
+                .col-md-3
+                  label Media
+                  .input-group
+                    = profile.input :medium_ids, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', input_html: { multiple: true, data: { klass: 'Medium', url: my_tags_path(format: :json) } }, wrapper: :selectize
+                .col-md-3
+                  label Subjects & Themes
+                  .input-group
+                    = profile.input :subject_ids, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'Add a subject/themes', input_html: { multiple: true, data: { klass: 'Subject', url: my_tags_path(format: :json) } }, wrapper: :selectize
+                .col-md-3
+                  label Skills
+                  .input-group
+                    = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'Add a skill', input_html: { multiple: true, data: { klass: 'Skill', url: my_tags_path(format: :json) } }, wrapper: :selectize
+                .col-md-3
+                  label Languages
+                  #language-proficiencies
+                    = profile.simple_fields_for :language_proficiencies do |proficiency|
+                      = render 'language_proficiency_fields', f: proficiency
 
-            #language-proficiencies-links
-              = link_to_add_association 'Add more', profile, :language_proficiencies, class: 'btn btn-default', data: { association_insertion_node: '#language-proficiencies', association_insertion_method: 'append' }
-
+                  #language-proficiencies-links
+                    = link_to_add_association 'Add more', profile, :language_proficiencies, class: 'btn btn-default', data: { association_insertion_node: '#language-proficiencies', association_insertion_method: 'append' }
+      br
       .row
         .col-xs-12
           = f.input :statement, as: :text, label: false, placeholder: 'Write your artist statement here',

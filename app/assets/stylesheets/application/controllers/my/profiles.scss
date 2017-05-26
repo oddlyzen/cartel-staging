@@ -44,16 +44,12 @@ body.my-profiles-edit {
 
     input {
       margin: auto;
-      width: 400px;
+      max-width: 400px;
       text-align: center;
     }
   }
 
   .interests-skills {
-    @include no-style;
-    @include make-row;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
 
     label {
       margin-bottom: 0px;
@@ -66,7 +62,7 @@ body.my-profiles-edit {
     }
 
     .selectize-input {
-      width: 190px;
+      width: 175px;
       min-height: 85px;
     }
 

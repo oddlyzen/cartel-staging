@@ -1,20 +1,27 @@
 header.user-header
-  .col-xs-12.text-center
-    .form-group
-      .img-container
-        = image_tag @user.profile_image_url
+  .container
+    .row
+      .col-xs-12.text-center
+        .form-group
+          .img-container
+            = image_tag @user.profile_image_url
 
-      p Recommended size is 250x250
+          p Recommended size is 250x250
 
-  .col-xs-4.col-xs-offset-4
-    .form-group
-      = f.filepicker_field :profile_image_url,
-        button_text: 'Click to upload your profile picture',
-        button_class: 'btn btn-default btn-block', multiple: false,
-        onchange: 'onPhotoUpload(event)',
-        services: 'COMPUTER',
-        mimetypes: 'image/*'
+    .row
+      .col-xs-4
+      .col-xs-4
+        .form-group
+          = f.filepicker_field :profile_image_url,
+            button_text: 'Click to upload your profile picture',
+            button_class: 'btn btn-default btn-block', multiple: false,
+            onchange: 'onPhotoUpload(event)',
+            services: 'COMPUTER',
+            mimetypes: 'image/*'
+      .col-xs-4
 
     h1 = full_name(@user)
-    = f.input :tagline, label: false, placeholder: 'Tagline', input_html: { maxlength: 50 }
+    .row
+      .col-xs-12
+        = f.input :tagline, label: false, placeholder: 'Tagline', input_html: { maxlength: 50 }
 hr

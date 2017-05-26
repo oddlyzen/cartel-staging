@@ -20,6 +20,7 @@
                     = user.simple_fields_for :educations do |education|
                       = render 'education_fields', f: education
                   .row
+                    br
                     .col-xs-12
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :educations,
                         class: 'btn btn-default pull-right'
@@ -36,6 +37,7 @@
                     = user.simple_fields_for :awards do |award|
                       = render 'award_fields', f: award
                   .row
+                    br
                     .col-xs-12
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :awards, class: 'btn btn-default button-link pull-right'
             hr
@@ -52,6 +54,7 @@
                       = render 'residency_fields', f: residency
                   .row
                     .col-xs-12
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :residencies, class: 'btn btn-default button-link pull-right'
             hr
             .panel.panel-default
@@ -67,6 +70,7 @@
                       = render 'experience_fields', f: experience
                   .row
                     .col-xs-12
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :experiences, class: 'btn btn-default button-link pull-right'
             hr
             .panel.panel-default
@@ -82,6 +86,7 @@
                       = render 'exhibition_fields', f: exhibition
                   .row
                     .col-xs-12
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :exhibitions, class: 'btn btn-default button-link pull-right'
             hr
             .panel.panel-default
@@ -97,6 +102,8 @@
                       = render 'bibliography_fields', f: bibliography
                   .row
                     .col-xs-12
+                      br
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :bibliographies, class: 'btn btn-default button-link pull-right'
             hr
             .panel.panel-default
@@ -112,6 +119,8 @@
                       = render 'publication_fields', f: publication
                   .row
                     .col-xs-12
+                      br
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :publications, class: 'btn btn-default button-link pull-right'
             hr
             .panel.panel-default
@@ -127,6 +136,7 @@
                       = render 'collection_fields', f: collection
                   .row
                     .col-xs-12
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :collections, class: 'btn btn-default button-link pull-right'
             hr
             .panel.panel-default
@@ -142,6 +152,7 @@
                       = render 'membership_fields', f: membership
                   .row
                     .col-xs-12
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :memberships, class: 'btn btn-default button-link pull-right'
             hr
             .panel.panel-default
@@ -157,6 +168,7 @@
                       = render 'media_feature_fields', f: media_feature
                   .row
                     .col-xs-12
+                      br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :media_features, class: 'btn btn-default button-link pull-right'
   nav.row
     .cta
