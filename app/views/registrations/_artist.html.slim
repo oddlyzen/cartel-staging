@@ -3,7 +3,7 @@
   .form-group
     .row
       .col-xs-2
-        label Current Status
+        label Current Status *
       .col-xs-10
         = user.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_ARTIST),
         include_blank: false, prompt: 'Please Select'
@@ -25,7 +25,7 @@
     .form-group
       .row
         .col-xs-2
-          label Media
+          label Media *
         .col-xs-10
           = profile.input :medium_ids, as: :check_boxes, collection: Medium.where(set_display: true).pluck(:name, :id), label: false
       .row
@@ -35,7 +35,7 @@
     .form-group
       .row
         .col-xs-2
-          label Subjects & Themes
+          label Subjects & Themes *
         .col-xs-10
           = f.input_field :other_subjects_array, as: :select, collection: Subject.approved.pluck(:name), placeholder: 'Please fill in',
             multiple: true, include_blank: false

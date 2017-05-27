@@ -5,6 +5,9 @@ class Profile < ActiveRecord::Base
   has_many :language_proficiencies
   has_many :languages, through: :language_proficiencies
 
+  validates :medium_ids, presence: true
+  validates :subject_ids, presence: true
+
   accepts_nested_attributes_for :language_proficiencies, reject_if: :all_blank, allow_destroy: true
 
   def media

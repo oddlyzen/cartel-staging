@@ -8,7 +8,9 @@ class Exhibition < ActiveRecord::Base
 
   has_many :series
 
-  validates :title, presence: true, unless: :attachment_is_present?
+  validates :start_year, :end_year, presence: true
+
+  validates :title, :start_month, :end_month, :category, :venue_name, :country, :state, presence: true, unless: :attachment_is_present?
   validates :pdf_url, presence: true, if: -> { title.blank? }
 
   enum category: %w(in_solo two_person in_group award other)

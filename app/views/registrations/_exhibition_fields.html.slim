@@ -7,7 +7,7 @@
   .form-group
     .row
       .col-xs-2
-        label Duration
+        label Duration *
       .col-xs-2
         = f.input :start_year, collection: Year.collection_options, prompt: 'Year', label: false
       .col-xs-1.dash
@@ -20,7 +20,7 @@
   .form-group
     .row
       .col-xs-2
-        label Duration
+        label Duration *
       .col-xs-2.flex-inline
         = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
         = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
@@ -40,7 +40,7 @@
   .form-group
     .row
       .col-xs-2
-        label Type
+        label Type *
       .col-xs-10
         = f.input :category, collection: Exhibition::OPTIONS_FOR_CATEGORY,
         include_blank: false, prompt: 'Select Category'
@@ -48,14 +48,14 @@
   .form-group
     .row
       .col-xs-2
-        label Venue
+        label Venue *
       .col-xs-10
         = f.input :venue_name, collection: Company.pluck(:name), include_blank: false, prompt: 'Venue', wrapper: :selectize, input_html: { data: { selectize_company: true } }
 
   .form-group
     .row
       .col-xs-2
-        label Location
+        label Location *
       .col-xs-5
         = f.input :country, as: :select, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize, input_html: { data: { selectize_country: 'registration-exhibition-new' } }
       .col-xs-5
