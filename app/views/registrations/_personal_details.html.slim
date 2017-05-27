@@ -21,7 +21,7 @@
   .form-group
       = user.label 'Gender', class: 'col-xs-2 control-label'
       .col-xs-6
-        = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline' }
+        = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline gender' }
 
   .form-group
     = user.label :date_of_birth, class: 'col-xs-2 control-label date_of_birth', label: 'Date of Birth'

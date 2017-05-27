@@ -8,16 +8,19 @@
 = simple_form_for @registration_form, url: registrations_path, html: { class: 'form-horizontal' }, wrapper: :custom_form, remote: true do |f|
   .row
     section.page-1
-      .col-xs-9.col-xs-offset-3
+      .col-xs-12
         h4 Register
         .row
           .form-horizontal
             = render 'registrations/personal_details', f: f
-          .row.pull-right.select-button
-            = f.button :button, "I'm an artist", class: 'btn btn-default', 'id': 'artist', type: 'button',
-            name: 'user[role]', value: 'artist'
-            = f.button :button, "I'm a professional", class: 'btn btn-default', 'id': 'professional',
-            type: 'button', name: 'user[role]', value: 'professional'
+          .row.select-button
+            .col-xs-2
+            .col-xs-8
+              = f.button :button, "I'm an artist", class: 'btn btn-default', 'id': 'artist', type: 'button',
+              name: 'user[role]', value: 'artist'
+              = f.button :button, "I'm a professional", class: 'btn btn-default', 'id': 'professional',
+              type: 'button', name: 'user[role]', value: 'professional'
+            .col-xs-2
 
     section.page-artist hidden=''
       .col-xs-12
@@ -104,7 +107,7 @@
                   .col-xs-12
                     .text-center.modal-text
                       | We are sorry that we are unable to process your application at this time.
-                      |  Unfortunately, participating in a public exhibition is a criteria to join PAN.
+                      |  Unfortunately, participating in a public exhibition is a criteria to join CARTEL.
                     .text-center.modal-text.modal-final-line
                       |  Do not hesitate to contact us
                       |  if you like and we will get back to you as soon as we can.

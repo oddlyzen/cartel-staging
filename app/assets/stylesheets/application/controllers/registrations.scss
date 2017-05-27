@@ -144,22 +144,26 @@ body.registrations-new, body.registrations-finish-signup {
   }
 
   .page-1 {
+    margin: 10px;
 
     label {
       font-family: $font-body-light;
       font-size: 14px;
       color: #B3B3B3;
       text-align: left;
-      padding-left: 57px;
     }
 
-    label.password, label.residency_status { margin-top: -9px; }
-
-    label.date_of_birth { margin-right: 15px; }
+    label.date_of_birth, .gender label { margin-right: 15px; }
 
     .registration_form_user_date_of_birth { margin-bottom: 4px; }
 
-    .select-button { padding-top: 30px; }
+    .select-button {
+      padding-top: 30px;
+
+      .btn {
+        margin: 5px;
+      }
+    }
 
   }
 
