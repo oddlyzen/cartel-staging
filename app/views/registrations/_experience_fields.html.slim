@@ -11,16 +11,19 @@
     = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
   .col-xs-2
     = f.input :current, label: 'Present'
+br
 .row
   .col-xs-2
     label Position
   .col-xs-10
     = f.input :position, label: false, required: false, placeholder: 'Position'
+br
 .row
   .col-xs-2
     label Type
   .col-xs-10
     = f.input :job_type, collection: Experience::OPTIONS_FOR_JOB_TYPE, prompt: 'Select Type', include_blank: false
+br
 .row
   .col-xs-2
     label Company

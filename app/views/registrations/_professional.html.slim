@@ -10,12 +10,13 @@
       = user.input :professional_status_text, as: :select, collection: Company.pluck(:name), placeholder: 'Please fill in',
         class: 'hidden', include_blank: true, wrapper: :selectize
       = f.input :other_current_status_string, as: :string, class: 'form-control hidden', placeholder: 'Please fill in'
-
+  br
   .row
     .col-xs-2
       label Area of Specialisation
     .col-xs-10
-      = f.input_field :other_specialisations_array, as: :select, collection: Specialisation.approved.pluck(:name), placeholder: 'Please fill in', multiple: true, include_blank: false
+      .registration_form_profile_specialisation_ids
+        = f.input_field :other_specialisations_array, as: :select, collection: Specialisation.approved.pluck(:name), placeholder: 'Please fill in', multiple: true, include_blank: false
   hr
 
 

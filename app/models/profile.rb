@@ -5,8 +5,9 @@ class Profile < ActiveRecord::Base
   has_many :language_proficiencies
   has_many :languages, through: :language_proficiencies
 
-  validate :medium_ids_presence
-  validates :subject_ids, presence: true
+  validate :medium_ids_presence, if: Proc.new { |p| p.role == "artist" }
+  validates :subject_ids, presence: true, if: Proc.new { |p| p.role == "artist" }
+  validates :specialisation_ids, presence: true, if: Proc.new { |p| p.role == "professional" }
 
   accepts_nested_attributes_for :language_proficiencies, reject_if: :all_blank, allow_destroy: true
 

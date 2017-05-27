@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524111248) do
+ActiveRecord::Schema.define(version: 20170527225851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -333,6 +333,7 @@ ActiveRecord::Schema.define(version: 20170524111248) do
     t.integer  "interest_ids",       default: [],              array: true
     t.integer  "skill_ids",          default: [],              array: true
     t.integer  "service_ids",        default: [],              array: true
+    t.string   "role"
   end
 
   add_index "profiles", ["interest_ids"], name: "index_profiles_on_interest_ids", using: :gin

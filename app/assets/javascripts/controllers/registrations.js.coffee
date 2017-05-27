@@ -22,7 +22,7 @@ Controllers['registrations'] = -> class Registrations
         $('.page-professional').find('input, select, button').prop 'disabled', false
         $('.register').prop 'disabled', true
       else
-        $('#personal-details-validation').modal('show')
+        showPersonalDetailsValidations()
 
     $('#back-artist, #back-pro').on 'click', ->
       $('.page-artist, .page-professional').attr 'hidden', ''

@@ -98,4 +98,74 @@
     $(".exhibition-end-month-validation").remove()
   <% end %>
 
+  <% if @registration_form.errors["user: profile.specialisation_ids"].present? %>
+    $(".specialisations-validation").remove()
+    $(".registration_form_profile_specialisation_ids").append('<span class="error-help specialisations-validation"><i>Provide Specialisations</i></span>');
+  <% else %>
+    $(".specialisations-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.start_month"].present? %>
+    $(".start-month-validation").remove()
+    $(".registration_form_user_experiences_start_month").append('<span class="error-help start-month-validation"><i>Provide Start Month</i></span>');
+  <% else %>
+    $(".start-month-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.start_year"].present? %>
+    $(".start-year-validation").remove()
+    $(".registration_form_user_experiences_start_year").append('<span class="error-help start-year-validation"><i>Provide Start Year</i></span>');
+  <% else %>
+    $(".start-year-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.end_month"].present? %>
+    $(".end-month-validation").remove()
+    $(".registration_form_user_experiences_end_month").append('<span class="error-help end-month-validation"><i>Provide End Month</i></span>');
+  <% else %>
+    $(".end-month-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.end_year"].present? %>
+    $(".end-year-validation").remove()
+    $(".registration_form_user_experiences_end_year").append('<span class="error-help end-year-validation"><i>Provide End Year</i></span>');
+  <% else %>
+    $(".end-year-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.position"].present? %>
+    $(".position-validation").remove()
+    $(".registration_form_user_experiences_position").append('<span class="error-help position-validation"><i>Provide Position</i></span>');
+  <% else %>
+    $(".position-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.job_type"].present? %>
+    $(".job-type-validation").remove()
+    $(".registration_form_user_experiences_job_type").append('<span class="error-help job-type-validation"><i>Provide Job Type</i></span>');
+  <% else %>
+    $(".job-type-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.company_name"].present? %>
+    $(".company-name-validation").remove()
+    $(".registration_form_user_experiences_company_name").append('<span class="error-help company-name-validation"><i>Provide Company</i></span>');
+  <% else %>
+    $(".company-name-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.country"].present? %>
+    $(".country-validation").remove()
+    $(".registration_form_user_experiences_country").append('<span class="error-help country-validation"><i>Provide Country</i></span>');
+  <% else %>
+    $(".country-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: experiences.state"].present? %>
+    $(".state-validation").remove()
+    $(".registration_form_user_experiences_state").append('<span class="error-help state-validation"><i>Provide State</i></span>');
+  <% else %>
+    $(".state-validation").remove()
+  <% end %>
+
 <% end %>

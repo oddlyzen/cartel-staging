@@ -56,6 +56,8 @@ class RegistrationForm < BaseForm
   end
 
   def save
+    @profile.role = @user.role
+
     return false unless valid?
     ActiveRecord::Base.transaction do
       save_tags(@other_medium)

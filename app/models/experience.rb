@@ -11,8 +11,9 @@ class Experience < ActiveRecord::Base
   OPTIONS_FOR_CATEGORY = categories.keys.map { |k| [k =~ /\A(other)/ ? 'Other' : k.humanize, k] }
   OPTIONS_FOR_JOB_TYPE = job_types.keys.map { |k| [k =~ /\A(other)/ ? 'Other' : k.humanize, k] }
 
-  validates :position, presence: true, on: :update
-  validates :start_month, presence: true, on: :update
-  validates :start_year, presence: true, on: :update
+  validates :position, presence: true
+  validates :start_month, :end_month, presence: true
+  validates :start_year, :end_year, presence: true
+  validates :job_type, :country, :state, :company_name, presence: true
 
 end
