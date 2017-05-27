@@ -19,12 +19,12 @@
       = user.input :email, placeholder: 'name@email.com'
 
   .form-group
-      = user.label 'Gender', class: 'col-xs-2 control-label'
+      = user.label 'Gender *', class: 'col-xs-2 control-label'
       .col-xs-6
         = user.input :gender, as: :radio_buttons, collection: User.genders.keys, label: false, wrapper_html: { class: 'radio-inline gender' }
 
   .form-group
-    = user.label :date_of_birth, class: 'col-xs-2 control-label date_of_birth', label: 'Date of Birth'
+    = user.label :date_of_birth, class: 'col-xs-2 control-label date_of_birth', label: 'Date of Birth *'
     .col-xs-3
       = user.input :date_of_birth, as: :date, order: [:day, :month, :year], prompt: true, label: false, start_year: 1936, end_year: Date.today.year - 10
 
@@ -38,7 +38,7 @@
       prompt: 'Please Select'
 
   .form-group
-    = user.label 'Based In', class: 'col-xs-2 control-label'
+    = user.label 'Based In *', class: 'col-xs-2 control-label'
     .col-xs-4
       = user.input :based_location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete" }
       = user.hidden_field :based_state, class: "location-state"

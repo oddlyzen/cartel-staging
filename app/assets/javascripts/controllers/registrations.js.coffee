@@ -10,7 +10,7 @@ Controllers['registrations'] = -> class Registrations
         $('.page-artist').find('input, select, button').prop 'disabled', false
         $('.register').prop 'disabled', true
       else
-        $('#personal-details-validation').modal('show')
+        showPersonalDetailsValidations()
 
     $('#professional').on 'click', ->
       if personalDetailsValid()
@@ -156,8 +156,88 @@ Controllers['registrations'] = -> class Registrations
     email_field = $('#registration_form_user_attributes_email')
     password_field = $('#registration_form_user_attributes_password')
     password_confirmation_field = $('#registration_form_user_attributes_password_confirmation')
+    gender_male_field = $('#registration_form_user_attributes_gender_male')
+    gender_female_field = $('#registration_form_user_attributes_gender_female')
+    date_of_birth1_field = $('#registration_form_user_attributes_date_of_birth_1i')
+    date_of_birth2_field = $('#registration_form_user_attributes_date_of_birth_2i')
+    date_of_birth3_field = $('#registration_form_user_attributes_date_of_birth_3i')
+    based_location_field = $('#registration_form_user_attributes_based_location')
 
-    if first_name_field.val() && last_name_field.val() && email_field.val() && password_field.val() && password_confirmation_field.val() && password_field.val() == password_confirmation_field.val()
+    if first_name_field.val() && last_name_field.val() && email_field.val() && password_field.val() && password_confirmation_field.val() && (gender_male_field.val() || gender_female_field.val()) && date_of_birth1_field.val() && date_of_birth2_field.val() && date_of_birth3_field.val() && based_location_field.val() && password_field.val() == password_confirmation_field.val()
       return true
     else
       return false
+
+  showPersonalDetailsValidations = ->
+    first_name_field = $('#registration_form_user_attributes_first_name')
+    last_name_field = $('#registration_form_user_attributes_last_name')
+    email_field = $('#registration_form_user_attributes_email')
+    password_field = $('#registration_form_user_attributes_password')
+    password_confirmation_field = $('#registration_form_user_attributes_password_confirmation')
+    gender_male_field = $('#registration_form_user_attributes_gender_male')
+    gender_female_field = $('#registration_form_user_attributes_gender_female')
+    date_of_birth1_field = $('#registration_form_user_attributes_date_of_birth_1i')
+    date_of_birth2_field = $('#registration_form_user_attributes_date_of_birth_2i')
+    date_of_birth3_field = $('#registration_form_user_attributes_date_of_birth_3i')
+    based_location_field = $('#registration_form_user_attributes_based_location')
+
+    if !first_name_field.val()
+      first_name_field.addClass("error")
+      $(".first-name-validation").remove()
+      $(".registration_form_user_first_name").append('<span class="error-help first-name-validation"><i>Provide first name</i></span>')
+    else
+      first_name_field.removeClass("error")
+      $(".first-name-validation").remove()
+
+    if !last_name_field.val()
+      last_name_field.addClass("error")
+      $(".last-name-validation").remove()
+      $(".registration_form_user_last_name").append('<span class="error-help last-name-validation"><i>Provide last name</i></span>')
+    else
+      last_name_field.removeClass("error")
+      $(".last-name-validation").remove()
+
+    if !email_field.val()
+      email_field.addClass("error")
+      $(".email-validation").remove()
+      $(".registration_form_user_email").append('<span class="error-help email-validation"><i>Provide a valid email name</i></span>')
+    else
+      email_field.removeClass("error")
+      $(".email-validation").remove()
+
+    if !password_field.val()
+      password_field.addClass("error")
+      $(".password-validation").remove()
+      $(".registration_form_user_password").append('<span class="error-help password-validation"><i>Provide password</i></span>')
+    else
+      password_field.removeClass("error")
+      $(".password-validation").remove()
+
+    if !password_confirmation_field.val() || password_confirmation_field.val() != password_field.val()
+      password_confirmation_field.addClass("error")
+      $(".password-confirmation-validation").remove()
+      $(".registration_form_user_password_confirmation").append('<span class="error-help password-confirmation-validation"><i>Confirm matched password</i></span>')
+    else
+      password_confirmation_field.removeClass("error")
+      $(".password-confirmation-validation").remove()
+
+    if !gender_male_field.prop("checked") && !gender_female_field.prop("checked")
+      $(".gender-validation").remove()
+      $(".registration_form_user_gender").append('<div class="error-help gender-validation"><i>Provide gender</i></div>')
+    else
+      $(".gender-validation").remove()
+
+    if !date_of_birth1_field.val() || !date_of_birth2_field.val() || !date_of_birth3_field.val()
+      $(".dob-validation").remove()
+      $(".registration_form_user_date_of_birth").append('<span class="error-help dob-validation"><i>Provide full date of birth</i></span>')
+    else
+      $(".dob-validation").remove()
+
+    if !based_location_field.val()
+      based_location_field.addClass("error")
+      $(".location-validation").remove()
+      $(".registration_form_user_based_location").append('<span class="error-help location-validation"><i>Provide location</i></span>')
+    else
+      based_location_field.removeClass("error")
+      $(".location-validation").remove()
+
