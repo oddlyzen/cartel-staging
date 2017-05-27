@@ -18,6 +18,7 @@
                   .row.cocoon-container
                     = user.simple_fields_for :educations do |education|
                       = render 'education_fields', f: education
+                  br
                   .row
                     .col-xs-12
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :educations,
@@ -33,6 +34,7 @@
                   .row.cocoon-container
                     = user.simple_fields_for :awards do |award|
                       = render 'award_fields', f: award
+                  br
                   .row
                     .col-xs-12
                       = link_to_add_association 'add', user, :awards, class: 'btn btn-default button-link pull-right'
@@ -47,6 +49,7 @@
                   .row.cocoon-container
                     = user.simple_fields_for :participations do |participation|
                       = render 'participation_fields', f: participation
+                  br
                   .row
                     .col-xs-12
                       = link_to_add_association 'add', user, :participations, class: 'btn btn-default button-link pull-right'
@@ -61,6 +64,7 @@
                   .row.cocoon-container
                     = user.simple_fields_for :exhibitions do |exhibition|
                       = render 'exhibition_fields', f: exhibition
+                  br
                   .row
                     .col-xs-12
                       = link_to_add_association 'add', user, :exhibitions, class: 'btn btn-default button-link pull-right'
@@ -75,6 +79,7 @@
                   .row.cocoon-container
                     = user.simple_fields_for :experiences do |experience|
                       = render 'experience_fields', f: experience
+                  br
                   .row
                     .col-xs-12
                       = link_to_add_association 'add', user, :experiences, class: 'btn btn-default button-link pull-right'
@@ -89,6 +94,8 @@
                   .row.cocoon-container
                     = user.simple_fields_for :publications do |publication|
                       = render 'publication_fields', f: publication
+                  br
+                  br
                   .row
                     .col-xs-12
                       = link_to_add_association 'add', user, :publications, class: 'btn btn-default button-link pull-right'
@@ -117,6 +124,7 @@
                   .row.cocoon-container
                     = user.simple_fields_for :media_features do |media_feature|
                       = render 'media_feature_fields', f: media_feature
+                  br
                   .row
                     .col-xs-12
                       = link_to_add_association 'add', user, :media_features, class: 'btn btn-default button-link pull-right'

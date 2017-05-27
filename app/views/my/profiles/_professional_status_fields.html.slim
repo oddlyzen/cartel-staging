@@ -1,6 +1,6 @@
 section.section-2
   .row
-    .col-xs-3
+    .col-md-3
       .row
         .col-xs-12
           .form-group.has-feedback
@@ -46,29 +46,33 @@ section.section-2
           = f.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_PROFESSIONAL), include_blank: false
           = f.input :representative_ids, collection: Company.pluck(:name, :id), selected: f.object.joined_companies.pluck(:id), include_hidden: false, placeholder: 'Organisations', input_html: { multiple: true, data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) } }, wrapper: :selectize
           = f.input :other_status, label: false, placeholder: 'Other status'
-    .col-xs-9
-      ul.interests-skills
-        = f.simple_fields_for :profile do |profile|
-          li
-            label Specialities
-            .input-group
-              = profile.input :specialisation_ids, as: :select, collection: Specialisation.pluck(:name, :id), include_hidden: false, placeholder: 'Add a specialisation', input_html: { multiple: true, data: { klass: 'Specialisation', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
-          li
-            label Services
-            .input-group
-              = profile.input :service_ids, as: :select, collection: Service.pluck(:name, :id), include_hidden: false, placeholder: 'Add a service', input_html: { multiple: true, data: { klass: 'Service', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
-          li
-            label Skills
-            .input-group
-              = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'Add a skill', input_html: { multiple: true, data: { klass: 'Skill', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
-          li
-            label Languages
-            #language-proficiencies
-              = profile.simple_fields_for :language_proficiencies do |proficiency|
-                = render 'language_proficiency_fields', f: proficiency
+    .col-md-9
+      .row
+        .col-md-12
+          .interests-skills
+            = f.simple_fields_for :profile do |profile|
+              .row
+                .col-md-3
+                  label Specialities
+                  .input-group
+                    = profile.input :specialisation_ids, as: :select, collection: Specialisation.pluck(:name, :id), include_hidden: false, placeholder: 'Add a specialisation', input_html: { multiple: true, data: { klass: 'Specialisation', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+                .col-md-3
+                  label Services
+                  .input-group
+                    = profile.input :service_ids, as: :select, collection: Service.pluck(:name, :id), include_hidden: false, placeholder: 'Add a service', input_html: { multiple: true, data: { klass: 'Service', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+                .col-md-3
+                  label Skills
+                  .input-group
+                    = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'Add a skill', input_html: { multiple: true, data: { klass: 'Skill', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+                .col-md-3
+                  label Languages
+                  #language-proficiencies
+                    = profile.simple_fields_for :language_proficiencies do |proficiency|
+                      = render 'language_proficiency_fields', f: proficiency
 
-            #language-proficiencies-links
-              = link_to_add_association 'Add more', profile, :language_proficiencies, class: 'btn btn-default', data: { association_insertion_node: '#language-proficiencies', association_insertion_method: 'append' }
+                  #language-proficiencies-links
+                    = link_to_add_association 'Add more', profile, :language_proficiencies, class: 'btn btn-default', data: { association_insertion_node: '#language-proficiencies', association_insertion_method: 'append' }
+      br
       .row
         .col-xs-12
           = f.input :statement, as: :text, label: false, placeholder: 'Write your artist statement here',
