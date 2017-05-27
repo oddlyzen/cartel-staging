@@ -4,8 +4,98 @@
   $("#messages").html("<%= j render 'layouts/flash_messages' %>");
 
   <% if @registration_form.errors["user: exhibitions.title"].present? %>
+    $(".exhibition-title-validation").remove()
     $("#registration_form_user_attributes_exhibitions_attributes_0_title").addClass("error");
+    $(".registration_form_user_exhibitions_title").append('<span class="error-help exhibition-title-validation"><i>Provide the exhibition title</i></span>');
   <% else %>
     $("#registration_form_user_attributes_exhibitions_attributes_0_title").removeClass("error");
+    $(".exhibition-title-validation").remove()
   <% end %>
+
+  <% if @registration_form.errors["user: current_status"].present? %>
+    $(".current-status-validation").remove()
+    $(".registration_form_user_current_status").append('<span class="error-help current-status-validation"><i>Provide current status</i></span>');
+  <% else %>
+    $(".current-status-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: profile.subject_ids"].present? %>
+    $(".subjects-validation").remove()
+    $(".registration_form_profile_subject_ids").append('<span class="error-help subjects-validation"><i>Provide at least one subject</i></span>');
+    $("#registration_form_other_subjects_array-selectized").addClass("error");
+  <% else %>
+    $(".subjects-validation").remove()
+    $("#registration_form_other_subjects_array-selectized").removeClass("error");
+  <% end %>
+
+  <% if @registration_form.errors["user: profile.user: medium_ids"].present? %>
+    $(".media-validation").remove()
+    $(".registration_form_profile_medium_ids").append('<span class="error-help media-validation"><i>Provide at least one media option</i></span>');
+  <% else %>
+    $(".media-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.pdf_url"].present? %>
+    $(".pdf-url-validation").remove()
+    $(".registration_form_user_exhibitions_pdf_url").append('<span class="error-help pdf-url-validation"><i>Provide PDF URL</i></span>');
+  <% else %>
+    $(".pdf-url-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.state"].present? %>
+    $(".exhibition-state-validation").remove()
+    $(".registration_form_user_exhibitions_state").append('<span class="error-help exhibition-state-validation"><i>Provide State</i></span>');
+  <% else %>
+    $(".exhibition-state-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.country"].present? %>
+    $(".exhibition-country-validation").remove()
+    $(".registration_form_user_exhibitions_country").append('<span class="error-help exhibition-country-validation"><i>Provide Country</i></span>');
+  <% else %>
+    $(".exhibition-country-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.venue_name"].present? %>
+    $(".exhibition-venue-validation").remove()
+    $(".registration_form_user_exhibitions_venue_name").append('<span class="error-help exhibition-venue-validation"><i>Provide Venue</i></span>');
+  <% else %>
+    $(".exhibition-venue-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.category"].present? %>
+    $(".exhibition-type-validation").remove()
+    $(".registration_form_user_exhibitions_category").append('<span class="error-help exhibition-type-validation"><i>Provide Type</i></span>');
+  <% else %>
+    $(".exhibition-type-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.start_year"].present? %>
+    $(".exhibition-start-year-validation").remove()
+    $(".registration_form_user_exhibitions_start_year").append('<span class="error-help exhibition-start-year-validation"><i>Provide Start Year</i></span>');
+  <% else %>
+    $(".exhibition-start-year-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.end_year"].present? %>
+    $(".exhibition-end-year-validation").remove()
+    $(".registration_form_user_exhibitions_end_year").append('<span class="error-help exhibition-end-year-validation"><i>Provide End Year</i></span>');
+  <% else %>
+    $(".exhibition-end-year-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.start_month"].present? %>
+    $(".exhibition-start-month-validation").remove()
+    $(".registration_form_user_exhibitions_start_month").append('<span class="error-help exhibition-start-month-validation"><i>Provide Start Month</i></span>');
+  <% else %>
+    $(".exhibition-start-month-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.end_month"].present? %>
+    $(".exhibition-end-month-validation").remove()
+    $(".registration_form_user_exhibitions_end_month").append('<span class="error-help exhibition-end-month-validation"><i>Provide End Month</i></span>');
+  <% else %>
+    $(".exhibition-end-month-validation").remove()
+  <% end %>
+
 <% end %>

@@ -37,8 +37,8 @@
         .col-xs-2
           label Subjects & Themes *
         .col-xs-10
-          = f.input_field :other_subjects_array, as: :select, collection: Subject.approved.pluck(:name), placeholder: 'Please fill in',
-            multiple: true, include_blank: false
+          div.registration_form_profile_subject_ids
+            = f.input_field :other_subjects_array, as: :select, collection: Subject.approved.pluck(:name), placeholder: 'Please fill in', multiple: true, include_blank: false
 
   hr
 

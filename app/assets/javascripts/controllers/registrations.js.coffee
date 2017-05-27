@@ -163,7 +163,7 @@ Controllers['registrations'] = -> class Registrations
     date_of_birth3_field = $('#registration_form_user_attributes_date_of_birth_3i')
     based_location_field = $('#registration_form_user_attributes_based_location')
 
-    if first_name_field.val() && last_name_field.val() && email_field.val() && password_field.val() && password_confirmation_field.val() && (gender_male_field.val() || gender_female_field.val()) && date_of_birth1_field.val() && date_of_birth2_field.val() && date_of_birth3_field.val() && based_location_field.val() && password_field.val() == password_confirmation_field.val()
+    if first_name_field.val() && last_name_field.val() && email_field.val() && password_field.val() && password_confirmation_field.val() && (gender_male_field.prop("checked") || gender_female_field.prop("checked")) && date_of_birth1_field.val() && date_of_birth2_field.val() && date_of_birth3_field.val() && based_location_field.val() && password_field.val() == password_confirmation_field.val()
       return true
     else
       return false

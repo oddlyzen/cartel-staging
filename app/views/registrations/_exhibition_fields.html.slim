@@ -2,7 +2,8 @@
   .form-group
     .row
       .col-xs-12
-        = f.filepicker_field :pdf_url, button_text: 'Upload exhibition record in pdf', button_class: 'btn btn-default upload', extensions: '.pdf', multiple: false
+        .registration_form_user_exhibitions_pdf_url
+          = f.filepicker_field :pdf_url, button_text: 'Upload exhibition record in pdf', button_class: 'btn btn-default upload', extensions: '.pdf', multiple: false
 
   .form-group
     .row
