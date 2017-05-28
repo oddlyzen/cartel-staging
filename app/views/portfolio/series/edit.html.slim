@@ -1,6 +1,6 @@
 = render 'shared/user_header', user: @user
 .row
-  aside
+  .col-md-3.aside
     = link_to '< Done', '', data: { toggle: 'modal', target: '#js-modal-alert', url: artist_series_path(@user, @series) },
       class: 'btn btn-default'
     ul.tab-list
@@ -77,7 +77,7 @@
             li = link_to 'Cancel', '', class: 'btn btn-secondary',
                  data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_path(@series) }
 
-  article
+  .col-md-9
     = simple_form_for @series, url: bulk_destroy_portfolio_series_artworks_path(@series), method: :delete do |f|
       - unless @series.artworks.empty?
         .row
