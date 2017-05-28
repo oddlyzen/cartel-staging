@@ -11,7 +11,7 @@ class Exhibition < ActiveRecord::Base
   validates :start_year, :end_year, presence: true
 
   validates :title, :start_month, :end_month, :venue_name, :country, :state, presence: true, unless: :attachment_is_present?
-  validates :category, presence: true, if: -> { user.role == "artist" && !attachment_is_present? }
+  validates :category, presence: true, if: -> { user.try(:role) == "artist" && !attachment_is_present? }
   validates :pdf_url, presence: true, if: -> { title.blank? }
 
   enum category: %w(in_solo two_person in_group award other)

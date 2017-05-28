@@ -43,8 +43,8 @@ class RegistrationForm < BaseForm
     @experiences_attributes = user_params.delete(:experiences_attributes)
 
     @user.assign_attributes(user_params)
-    assign_exhibitions(exhibitions_attributes)
-    assign_experiences(@experiences_attributes)
+    assign_exhibitions(exhibitions_attributes) if @user.role == "artist"
+    assign_experiences(@experiences_attributes) if @user.role == "professional"
     initialize_blank_password_if_nil
     set_nil_password_for_oauth_users
 
