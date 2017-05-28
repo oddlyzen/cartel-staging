@@ -14,8 +14,8 @@ class ArtistsController < ApplicationController
   private
 
   def set_pagination
-    artists = User.artist.includes(:profile).map { |a| UserDecorator.new(a) }
-    @artists = Kaminari.paginate_array(artists).page(params[:page]).per(9)
+    artists = User.artist.includes(:profile).map { |a| UserDecorator.new(a) }.sort_by(&:name)
+    @artists = Kaminari.paginate_array(artists).page(params[:page]).per(12)
   end
 
 end

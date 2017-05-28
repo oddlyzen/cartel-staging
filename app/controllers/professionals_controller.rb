@@ -14,7 +14,7 @@ class ProfessionalsController < ApplicationController
   private
 
   def set_pagination
-    professionals = User.professional.map { |a| UserDecorator.new(a) }
-    @professionals = Kaminari.paginate_array(professionals).page(params[:page]).per(9)
+    professionals = User.professional.map { |a| UserDecorator.new(a) }.sort_by(&:name)
+    @professionals = Kaminari.paginate_array(professionals).page(params[:page]).per(12)
   end
 end
