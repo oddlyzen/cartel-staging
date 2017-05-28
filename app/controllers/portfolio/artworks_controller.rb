@@ -15,7 +15,7 @@ module Portfolio
         redirect_to portfolio_series_artworks_path(@artwork_update_form.artwork.series), notice: 'Update successful'
       else
         flash[:error] = 'Please check your form again and re-submit'
-        redirect_to portfolio_series_artworks_path(@series)
+        redirect_to portfolio_series_artworks_path(@series, errors: @artwork_update_form.errors.messages)
       end
     end
 

@@ -1,14 +1,14 @@
 = simple_form_for artwork, url: portfolio_series_artwork_path(series_id: artwork.series_id, id: artwork.id) do |f|
-  = f.input :title, placeholder: 'Artwork Title', label: false
-  = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
-  = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+  = f.input :title, placeholder: 'Artwork Title', label: false, input_html: { class: "#{'error' if params[:errors] && params[:errors]["Check the following: title"].present?}" }
+  = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors] && params[:errors]["Check the following: month"].present?}" }
+  = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors] && params[:errors]["Check the following: year"].present?}" }
   = f.input :description, as: :text, placeholder: 'Description', label: false, input_html: { rows: 10 }
   .form-inline.four-fields
-    = f.input :height, placeholder: 'HH', label: false, input_html: { min: 1 }
+    = f.input :height, placeholder: 'HH', label: false, input_html: { min: 1, class: "#{'error' if params[:errors] && params[:errors]["Check the following: height"].present?}"}
     span &times
-    = f.input :width, placeholder: 'WW', label: false, input_html: { min: 1 }
+    = f.input :width, placeholder: 'WW', label: false, input_html: { min: 1,  class: "#{'error' if params[:errors] && params[:errors]["Check the following: width"].present?}" }
     span &times
-    = f.input :length, placeholder: 'LL', label: false, input_html: { min: 1 }
+    = f.input :length, placeholder: 'LL', label: false, input_html: { min: 1,  class: "#{'error' if params[:errors] && params[:errors]["Check the following: length"].present?}" }
     = f.input :unit, as: :select, collection: Artwork.units.collect { |t| [t[0], t[0]] }, label: false,
       include_blank: false
   = f.input :medium_ids, as: :select, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', label: 'Media', input_html: { multiple: true, data: { klass: 'Medium', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize

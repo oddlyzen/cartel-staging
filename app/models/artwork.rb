@@ -20,6 +20,14 @@ class Artwork < ActiveRecord::Base
   validate :atleast_one_media?, on: :series_save
   validate :atleast_one_subject?, on: :series_save
 
+  validates :month, :year, :length, :width, :height, :unit, :title, presence: true, on: :update
+  validate :atleast_one_media?, on: :update
+  validate :atleast_one_subject?, on: :update
+
+  validates :month, :year, :length, :width, :height, :unit, :title, presence: true, on: :create
+  validate :atleast_one_media?, on: :create
+  validate :atleast_one_subject?, on: :create
+
   enum unit: %w(cm inch foot)
 
   def media
