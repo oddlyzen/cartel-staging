@@ -21,12 +21,12 @@ fieldset.nested-fields
     .row
       .col-xs-4
         .form-inline
-          = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
-          = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year'
+          = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{ 'error' if params[:errors] && params[:errors]['bibliographies.month'].present?}" }
+          = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['bibliographies.year'].present?}" }
       .col-xs-6
-        = f.input :title, label: false, required: false, placeholder: 'Title'
+        = f.input :title, label: false, required: false, placeholder: 'Title', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['bibliographies.title'].present?}" }
         = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title'
-        = f.input :publisher, label: false, required: false, placeholder: 'Publisher'
+        = f.input :publisher, label: false, required: false, placeholder: 'Publisher', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['bibliographies.publisher'].present?}" }
         = f.input :edition, label: false, required: false, placeholder: 'Edition'
         = f.input :author, label: false, required: false, placeholder: 'Author'
         = f.input :page_number, label: false, required: false, placeholder: 'Page Number'

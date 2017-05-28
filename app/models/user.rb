@@ -63,10 +63,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile, reject_if: :all_blank
   accepts_nested_attributes_for :media_features, reject_if: :all_blank, allow_destroy: true
 
-  validates :email, :first_name, :last_name, :date_of_birth, :based_location, :gender, :current_status, presence: true
+  validates :email, :first_name, :last_name, :date_of_birth, :based_location, :current_status, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :email, uniqueness: true
   validates :profile, presence: true, unless: :admin?
+  validates :gender, presence: true, on: :create
   # validates :educations, presence: true, unless: :admin?
   validates :password, confirmation: true, presence: true, if: :requires_password?
   validates :password_confirmation, presence: true, if: :requires_password?
