@@ -29,7 +29,7 @@
                 h4.panel-title
                   a.collapsed aria-controls='collapse-awards' aria-expanded='true' data-parent='#accordion' Grants/Fellowships/Awards
                   = fa_icon 'chevron-up', class: 'indicator pull-right'
-              #collapse-awards.panel-collapse.collapse aria-labelledby='heading-awards' role='tabpanel'
+              #collapse-awards.panel-collapse.collapse class=("in" if params[:errors].present?) aria-labelledby='heading-awards' role='tabpanel'
                 #partial-award.panel-body
                   .row.cocoon-container
                     = user.simple_fields_for :awards do |award|
@@ -44,7 +44,7 @@
                 h4.panel-title
                   a.collapsed aria-controls='collapse-participations' aria-expanded='true' data-parent='#accordion' Professional & Community Participation
                   = fa_icon 'chevron-up', class: 'indicator pull-right'
-              #collapse-participations.panel-collapse.collapse aria-labelledby='heading-participations' role='tabpanel'
+              #collapse-participations.panel-collapse.collapse class=("in" if params[:errors].present?) aria-labelledby='heading-participations' role='tabpanel'
                 .panel-body
                   .row.cocoon-container
                     = user.simple_fields_for :participations do |participation|
@@ -59,7 +59,7 @@
                 h4.panel-title
                   a.collapsed aria-controls='collapse-exhibition' aria-expanded='false' data-parent='#accordion' Exhibition Record
                   = fa_icon 'chevron-up', class: 'indicator pull-right'
-              #collapse-exhibition.panel-collapse.collapse aria-labelledby='heading-exhibition' role='tabpanel'
+              #collapse-exhibition.panel-collapse.collapse class=("in" if params[:errors].present?) aria-labelledby='heading-exhibition' role='tabpanel'
                 #partial-exhibition.panel-body
                   .row.cocoon-container
                     = user.simple_fields_for :exhibitions do |exhibition|
@@ -74,7 +74,7 @@
                 h4.panel-title
                   a.collapsed aria-controls='collapse-experience' aria-expanded='false' data-parent='#accordion' Professional Experience
                   = fa_icon 'chevron-up', class: 'indicator pull-right'
-              #collapse-experience.panel-collapse.collapse aria-labelledby='heading-experience' role='tabpanel'
+              #collapse-experience.panel-collapse.collapse class=("in" if params[:errors].present?) aria-labelledby='heading-experience' role='tabpanel'
                 #partial-experience.panel-body
                   .row.cocoon-container
                     = user.simple_fields_for :experiences do |experience|
@@ -89,7 +89,7 @@
                 h4.panel-title
                   a.collapsed aria-controls='collapse-publications' aria-expanded='false' data-parent='#accordion' Scholarly & Professional Publications
                   = fa_icon 'chevron-up', class: 'indicator pull-right'
-              #collapse-publications.panel-collapse.collapse aria-labelledby='heading-publications' role='tabpanel'
+              #collapse-publications.panel-collapse.collapse class=("in" if params[:errors].present?) aria-labelledby='heading-publications' role='tabpanel'
                 #partial-publication.panel-body
                   .row.cocoon-container
                     = user.simple_fields_for :publications do |publication|
@@ -105,7 +105,7 @@
                 h4.panel-title
                   a.collapsed aria-controls='collapse-memberships' aria-expanded='false' data-parent='#accordion' Professional Affliations/Memberships
                   = fa_icon 'chevron-up', class: 'indicator pull-right'
-              #collapse-memberships.panel-collapse.collapse aria-labelledby='heading-memberships' role='tabpanel'
+              #collapse-memberships.panel-collapse.collapse class=("in" if params[:errors].present?) aria-labelledby='heading-memberships' role='tabpanel'
                 .panel-body
                   .row.cocoon-container
                     = user.simple_fields_for :memberships do |membership|
@@ -119,7 +119,7 @@
                 h4.panel-title
                   a.collapsed aria-controls='collapse-media' aria-expanded='false' data-parent='#accordion' Media Features
                   = fa_icon 'chevron-up', class: 'indicator pull-right'
-              #collapse-media.panel-collapse.collapse aria-labelledby='heading-media' role='tabpanel'
+              #collapse-media.panel-collapse.collapse class=("in" if params[:errors].present?) aria-labelledby='heading-media' role='tabpanel'
                 .panel-body
                   .row.cocoon-container
                     = user.simple_fields_for :media_features do |media_feature|

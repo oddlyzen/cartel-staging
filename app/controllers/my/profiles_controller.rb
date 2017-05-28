@@ -12,8 +12,8 @@ module My
       if update_service_call.success?
         redirect_to @user.artist? ? artist_path(@user) : professional_path(@user), notice: 'Your profile has been updated'
       else
-        flash[:error] = @user.errors.full_messages
-        redirect_to edit_my_profile_path
+        flash[:error] = " Please review your form and make sure all fields marked as red are not empty"
+        redirect_to edit_my_profile_path(errors: @user.errors.messages)
       end
     end
 

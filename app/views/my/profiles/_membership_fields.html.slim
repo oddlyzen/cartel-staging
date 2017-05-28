@@ -2,4 +2,4 @@ fieldset.nested-fields
   hr.-thin
   .row
     .col-xs-6
-      = f.input :name, label: false, required: false, placeholder: 'Institution'
+      = f.input :name, label: false, required: false, placeholder: 'Institution', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['memberships.name'].present?}" }

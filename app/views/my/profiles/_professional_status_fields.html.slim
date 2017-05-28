@@ -6,7 +6,7 @@ section.section-2
           .form-group.has-feedback
             label Where are you based?
             = fa_icon('location-arrow', class: 'form-control-feedback')
-            = f.input :based_location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete" }
+            = f.input :based_location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete #{ 'error' if params[:errors] && params[:errors][:based_location].present?}" }
             = f.hidden_field :based_state, class: "location-state"
             = f.hidden_field :based_country, class: "location-country"
       .row
@@ -43,7 +43,7 @@ section.section-2
       .row
         .col-xs-12
           label Current Status
-          = f.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_PROFESSIONAL), include_blank: false
+          = f.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_PROFESSIONAL), include_blank: false, input_html: { class: "#{ 'error' if params[:errors] && params[:errors][:current_status].present?}" }
           = f.input :representative_ids, collection: Company.pluck(:name, :id), selected: f.object.joined_companies.pluck(:id), include_hidden: false, placeholder: 'Organisations', input_html: { multiple: true, data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) } }, wrapper: :selectize
           = f.input :other_status, label: false, placeholder: 'Other status'
     .col-md-9

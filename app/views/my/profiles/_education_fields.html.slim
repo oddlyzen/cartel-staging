@@ -3,20 +3,19 @@ fieldset.nested-fields
   .row
     .col-xs-4
       .form-inline
-        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
-        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
+        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{ 'error' if params[:errors].present? && params[:errors]['educations.start_month'].present?}" }
+        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.start_year'].present?}" }
         span &ndash;
-        = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
-        = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
+        = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{ 'error' if params[:errors].present? && params[:errors]['educations.end_month'].present?}" }
+        = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.end_year'].present?}" }
     .col-xs-6
-      = f.input :institution, collection: Institution.all.pluck(:name), label: false, prompt: 'University',include_blank: false,  input_html: { class: 'form-control' }
+      = f.input :institution, collection: Institution.all.pluck(:name), label: false, prompt: 'University',include_blank: false, input_html: { class: "form-control #{ 'error' if params[:errors].present? && params[:errors]['educations.institution'].present?}" }
       = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: "residency-#{f.object.id || 'new'}" } }
       = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: "residency-#{f.object.id || 'new'}"  } }
       = f.input :education_level, label: false, collection: options_for_enum(User.education_levels),
-        include_blank: false, prompt: 'Degree'
-      = f.input :education_grade, label: false, placeholder: 'Grade', required: true
-      = f.input :field_of_study, label: false, placeholder: 'Field of Study (eg. Fine Art/Art History)',
-      input_html: { class: 'form-control'}, required: true 
+        include_blank: false, prompt: 'Degree', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.education_level'].present?}" }
+      = f.input :education_grade, label: false, placeholder: 'Grade', required: true, input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.education_grade'].present?}" }
+      = f.input :field_of_study, label: false, placeholder: 'Field of Study (eg. Fine Art/Art History)', input_html: { class: "form-control #{'error' if params[:errors].present? && params[:errors]['educations.field_of_study'].present?}" }, required: true
       = f.input :education_description, as: :text, label: false, placeholder: 'Description',
       input_html: { class: 'form-control', maxlength: 200, rows: 10 }
 / On change of institution, go to a list where it passes the insitution name and gives me a country.
