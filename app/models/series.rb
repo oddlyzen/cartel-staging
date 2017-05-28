@@ -11,6 +11,7 @@ class Series < ActiveRecord::Base
   validates :title, presence: true
 
   validates :description, :year, presence: true, on: :publish
+  validates :acknowledgement, acceptance: true, on: :publish
 
   enum status: [:unpublished, :published]
 

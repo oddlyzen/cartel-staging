@@ -9,14 +9,15 @@ nav.links
         method: :delete, class: 'btn btn-primary'
 
 section
-  article
-    #js-artwork-active
-      = render partial: 'active', locals: { prev_id: @prev_id, artwork: @artwork, next_id: @next_id }
-    #js-artwork-gallery
-      = render partial: 'gallery', locals: { artworks: @artworks }
-  aside
-    #js-artwork-form
-      = render partial: 'form', locals: { artwork: @artwork }
+  .row
+    article.col-md-8
+      #js-artwork-active
+        = render partial: 'active', locals: { prev_id: @prev_id, artwork: @artwork, next_id: @next_id }
+      #js-artwork-gallery
+        = render partial: 'gallery', locals: { artworks: @artworks }
+    aside.col-md-4
+      #js-artwork-form
+        = render partial: 'form', locals: { artwork: @artwork }
 
 .modal.fade#js-modal-alert
   .modal-dialog
