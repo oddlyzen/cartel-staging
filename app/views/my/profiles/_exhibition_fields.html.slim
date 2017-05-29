@@ -37,5 +37,6 @@ fieldset.nested-fields
           = f.input :category, label: false, collection: Exhibition::OPTIONS_FOR_CATEGORY, prompt: 'Type',
             include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.category'].present?}" }
         = f.association :venue, label: false, prompt: 'Venue', wrapper: :selectize, input_html: { data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) }, class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.venue'].present?}" }
-        = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: 'exhibition' }, class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.country'].present?}" }
-        = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: 'exhibition' }, class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.state'].present?}" }
+        = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-exhibition" }
+        = f.hidden_field :state, class: "location-state-exhibition"
+        = f.hidden_field :country, class: "location-country-exhibition"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529211053) do
+ActiveRecord::Schema.define(version: 20170529231407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170529211053) do
     t.integer "year"
     t.string  "country"
     t.string  "state"
+    t.string  "location"
   end
 
   add_index "awards", ["user_id"], name: "index_awards_on_user_id", using: :btree
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(version: 20170529211053) do
     t.integer "month"
     t.integer "year"
     t.string  "attachment_url"
+    t.string  "location"
   end
 
   add_index "bibliographies", ["user_id"], name: "index_bibliographies_on_user_id", using: :btree
@@ -177,6 +179,7 @@ ActiveRecord::Schema.define(version: 20170529211053) do
     t.integer  "end_year"
     t.string   "state"
     t.string   "country"
+    t.string   "location"
   end
 
   add_index "educations", ["user_id"], name: "index_educations_on_user_id", using: :btree
@@ -202,6 +205,7 @@ ActiveRecord::Schema.define(version: 20170529211053) do
     t.integer  "end_month"
     t.integer  "record_start_year"
     t.integer  "record_end_year"
+    t.string   "location"
   end
 
   add_index "exhibitions", ["representation_id"], name: "index_exhibitions_on_representation_id", using: :btree
@@ -223,6 +227,7 @@ ActiveRecord::Schema.define(version: 20170529211053) do
     t.integer "end_month"
     t.integer "end_year"
     t.boolean "current",     default: false
+    t.string  "location"
   end
 
   add_index "experiences", ["company_id"], name: "index_experiences_on_company_id", using: :btree
@@ -365,6 +370,7 @@ ActiveRecord::Schema.define(version: 20170529211053) do
     t.integer "year"
     t.integer "month"
     t.integer "day"
+    t.string  "location"
   end
 
   create_table "residencies", force: :cascade do |t|
@@ -378,6 +384,7 @@ ActiveRecord::Schema.define(version: 20170529211053) do
     t.integer "end_month"
     t.integer "end_year"
     t.boolean "current",     default: false
+    t.string  "location"
   end
 
   create_table "series", force: :cascade do |t|

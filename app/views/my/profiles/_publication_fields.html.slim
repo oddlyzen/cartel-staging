@@ -29,8 +29,9 @@ fieldset.nested-fields
         = f.input :category, label: false, collection: options_for_enum(Publication.categories), prompt: 'Type', include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.category'].present?}" }
         = f.input :title, label: false, required: false, placeholder: 'Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.title'].present?}" }
         = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.publication_title'].present?}" }
-        = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: 'publication' } }
-        = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: 'publication' } }
+        = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-publication" }
+        = f.hidden_field :state, class: "location-state-publication"
+        = f.hidden_field :country, class: "location-country-publication"
         = f.input :publisher, label: false, required: false, placeholder: 'Publisher'
         = f.input :edition, label: false, required: false, placeholder: 'Edition'
         = f.input :editor, label: false, required: false, placeholder: 'Editor'

@@ -14,5 +14,6 @@ fieldset.nested-fields
     .col-xs-6
       = f.input :body, label: false, placeholder: 'Residency Body', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.body'].present?}" }
       = f.input :title, label: false, placeholder: 'Residency Title', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.title'].present?}" }
-      = f.input :country, collection: Location.options_for_country, prompt: 'Country', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_country: "residency-#{f.object.id || 'new'}" } }
-      = f.input :state, collection: Location.state_options_for_country(f.object.country), prompt: 'State', include_blank: false, wrapper: :selectize, input_html: { data: { selectize_state: "residency-#{f.object.id || 'new'}"  } }
+      = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-residency" }
+      = f.hidden_field :state, class: "location-state-residency"
+      = f.hidden_field :country, class: "location-country-residency"

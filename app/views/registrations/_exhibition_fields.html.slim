@@ -57,10 +57,10 @@
     .row
       .col-xs-2
         label Location *
-      .col-xs-5
-        = f.input :country, as: :select, collection: Location.options_for_country, prompt: 'Country', wrapper: :selectize, input_html: { data: { selectize_country: 'registration-exhibition-new' } }
-      .col-xs-5
-        = f.input :state, as: :select, collection: {}, prompt: 'State', wrapper: :selectize, input_html: { data: { selectize_state: 'registration-exhibition-new' } }
+      .col-xs-10
+        = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-exhibition" }
+        = f.hidden_field :state, class: "location-state-exhibition"
+        = f.hidden_field :country, class: "location-country-exhibition"
 
   .form-group
     .row

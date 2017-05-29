@@ -42,18 +42,11 @@
     $(".pdf-url-validation").remove()
   <% end %>
 
-  <% if @registration_form.errors["user: exhibitions.state"].present? %>
-    $(".exhibition-state-validation").remove()
-    $(".registration_form_user_exhibitions_state").append('<span class="error-help exhibition-state-validation"><i>Provide State</i></span>');
+  <% if @registration_form.errors["user: exhibitions.location"].present? %>
+    $(".exhibition-location-validation").remove()
+    $(".registration_form_user_exhibitions_location").append('<span class="error-help exhibition-location-validation"><i>Provide Location</i></span>');
   <% else %>
-    $(".exhibition-state-validation").remove()
-  <% end %>
-
-  <% if @registration_form.errors["user: exhibitions.country"].present? %>
-    $(".exhibition-country-validation").remove()
-    $(".registration_form_user_exhibitions_country").append('<span class="error-help exhibition-country-validation"><i>Provide Country</i></span>');
-  <% else %>
-    $(".exhibition-country-validation").remove()
+    $(".exhibition-location-validation").remove()
   <% end %>
 
   <% if @registration_form.errors["user: exhibitions.venue_name"].present? %>
@@ -168,18 +161,11 @@
     $(".company-name-validation").remove()
   <% end %>
 
-  <% if @registration_form.errors["user: experiences.country"].present? %>
-    $(".country-validation").remove()
-    $(".registration_form_user_experiences_country").append('<span class="error-help country-validation"><i>Provide Country</i></span>');
+  <% if @registration_form.errors["user: experiences.location"].present? %>
+    $(".location-validation").remove()
+    $(".registration_form_user_experiences_location").append('<span class="error-help location-validation"><i>Provide Location</i></span>');
   <% else %>
-    $(".country-validation").remove()
-  <% end %>
-
-  <% if @registration_form.errors["user: experiences.state"].present? %>
-    $(".state-validation").remove()
-    $(".registration_form_user_experiences_state").append('<span class="error-help state-validation"><i>Provide State</i></span>');
-  <% else %>
-    $(".state-validation").remove()
+    $(".location-validation").remove()
   <% end %>
 
 <% end %>

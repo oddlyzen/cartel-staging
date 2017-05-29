@@ -34,10 +34,10 @@ br
     label Location *
   .col-xs-10
     .row
-      .col-xs-6
-        = f.input :country, as: :select, collection: Location.options_for_country, prompt: 'Please Select', wrapper: :selectize, input_html: { data: { selectize_country: 'registration-experience-new' } }
-      .col-xs-6
-        = f.input :state, as: :select, collection: {}, prompt: 'Please Select', wrapper: :selectize, input_html: { data: { selectize_state: 'registration-experience-new' } }
+      .col-xs-12
+        = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-experience" }
+        = f.hidden_field :state, class: "location-state-experience"
+        = f.hidden_field :country, class: "location-country-experience"
 .row
   .col-xs-2
     label Description

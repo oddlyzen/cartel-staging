@@ -33,11 +33,11 @@ class RegistrationsController < ApplicationController
         media_tags: [], subjects_tags: [], specialisations_tags: [], artist_status_text: [],
         exhibitions_attributes: [
           :record_start_year, :record_end_year, :start_month, :end_month, :title, :venue_name, :state, :country, :category,
-          :start_year, :end_year, :involvement, :representation, :link, :pdf_url
+          :start_year, :end_year, :involvement, :representation, :link, :pdf_url, :location
         ],
         experiences_attributes: [
           :start_month, :start_year, :end_month, :end_year, :current, :position, :job_type,
-          :company_name, :state, :country, :description, :link, :category
+          :company_name, :state, :country, :description, :link, :category, :location
         ]
       ],
       profile_attributes: [
