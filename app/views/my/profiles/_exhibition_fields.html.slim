@@ -4,9 +4,9 @@ fieldset.nested-fields
     .row
       .col-xs-4
         .form-inline
-          = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.start_year'].present?}" }
+          = f.input :record_start_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.record_start_year'].present?}" }
           span &ndash;
-          = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.end_year'].present?}" }
+          = f.input :record_end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.record_end_year'].present?}" }
       .col-xs-6
         .exhibition-upload
           p File Name:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527225851) do
+ActiveRecord::Schema.define(version: 20170529211053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -200,6 +200,8 @@ ActiveRecord::Schema.define(version: 20170527225851) do
     t.integer  "end_year"
     t.integer  "start_month"
     t.integer  "end_month"
+    t.integer  "record_start_year"
+    t.integer  "record_end_year"
   end
 
   add_index "exhibitions", ["representation_id"], name: "index_exhibitions_on_representation_id", using: :btree

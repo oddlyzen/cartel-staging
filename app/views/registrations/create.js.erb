@@ -84,6 +84,20 @@
     $(".exhibition-end-year-validation").remove()
   <% end %>
 
+  <% if @registration_form.errors["user: exhibitions.record_start_year"].present? %>
+    $(".exhibition-record-start-year-validation").remove()
+    $(".registration_form_user_exhibitions_record_start_year").append('<span class="error-help exhibition-record-start-year-validation"><i>Provide Start Year</i></span>');
+  <% else %>
+    $(".exhibition-record-start-year-validation").remove()
+  <% end %>
+
+  <% if @registration_form.errors["user: exhibitions.record_end_year"].present? %>
+    $(".exhibition-record-end-year-validation").remove()
+    $(".registration_form_user_exhibitions_record_end_year").append('<span class="error-help exhibition-record-end-year-validation"><i>Provide End Year</i></span>');
+  <% else %>
+    $(".exhibition-record-end-year-validation").remove()
+  <% end %>
+
   <% if @registration_form.errors["user: exhibitions.start_month"].present? %>
     $(".exhibition-start-month-validation").remove()
     $(".registration_form_user_exhibitions_start_month").append('<span class="error-help exhibition-start-month-validation"><i>Provide Start Month</i></span>');

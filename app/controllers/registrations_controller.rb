@@ -32,7 +32,7 @@ class RegistrationsController < ApplicationController
         :to_exhibit_date, :representation, :position, :company_name, :gallery_museum,
         media_tags: [], subjects_tags: [], specialisations_tags: [], artist_status_text: [],
         exhibitions_attributes: [
-          :start_month, :end_month, :title, :venue_name, :state, :country, :category,
+          :record_start_year, :record_end_year, :start_month, :end_month, :title, :venue_name, :state, :country, :category,
           :start_year, :end_year, :involvement, :representation, :link, :pdf_url
         ],
         experiences_attributes: [

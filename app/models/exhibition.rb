@@ -8,9 +8,8 @@ class Exhibition < ActiveRecord::Base
 
   has_many :series
 
-  validates :start_year, :end_year, presence: true
-
-  validates :title, :start_month, :end_month, :venue_name, :country, :state, presence: true, unless: :attachment_is_present?
+  validates :title, :start_month, :start_year, :end_month, :end_year, :venue_name, :country, :state, presence: true, unless: :attachment_is_present?
+  validates :record_start_year, :record_end_year, presence: true, if: :attachment_is_present?
   validates :category, presence: true, if: -> { user.try(:role) == "artist" && !attachment_is_present? }
   validates :pdf_url, presence: true, if: -> { title.blank? }
 

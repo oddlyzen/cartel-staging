@@ -30,7 +30,7 @@ module My
           awards_attributes: [:title, :month, :year, :country, :state, :awarding_body, :prize, :pdf_url, :id, :_destroy],
           residencies_attributes: [:start_month, :start_year, :end_month, :end_year, :current, :body, :title, :country, :state, :id, :_destroy],
           experiences_attributes: [:start_month, :start_year, :end_month, :end_year, :current, :position, :company_id, :state, :country, :category, :job_type, :description, :link, :id, :_destroy],
-          exhibitions_attributes: [:start_month, :end_month, :start_year, :end_year, :title, :category, :venue_id, :state, :country, :pdf_url, :id, :_destroy],
+          exhibitions_attributes: [:record_start_year, :record_end_year, :start_month, :end_month, :start_year, :end_year, :title, :category, :venue_id, :state, :country, :pdf_url, :id, :_destroy],
           bibliographies_attributes: [:title, :publication_title, :publisher, :edition, :author, :page_number, :source_type, :link, :participation, :publication_city, :publication_country, :editor, :issue, :pdf_url, :attachment_url, :month, :year, :id, :_destroy],
           publications_attributes: [:participation, :category, :title, :publication_title, :country, :state, :day, :month, :year, :publisher, :edition, :editor, :issue, :page_numbers, :link, :pdf_url, :attachment_url, :id, :_destroy],
           participations_attributes: [:month, :year, :title, :description, :link, :id, :_destroy],

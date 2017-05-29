@@ -8,13 +8,13 @@
   .form-group
     .row
       .col-xs-2
-        label Duration *
+        label Uploaded Record Duration *
       .col-xs-2
-        = f.input :start_year, collection: Year.collection_options, prompt: 'Year', label: false
+        = f.input :record_start_year, collection: Year.collection_options, prompt: 'Year', label: false
       .col-xs-1.dash
         span &ndash;
       .col-xs-2
-        = f.input :end_year, collection: Year.collection_options, prompt: 'Year', label: false
+        = f.input :record_end_year, collection: Year.collection_options, prompt: 'Year', label: false
 
   h5 OR fill out the details below
 
