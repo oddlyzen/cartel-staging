@@ -200,7 +200,7 @@ Controllers['registrations'] = -> class Registrations
     if !email_field.val()
       email_field.addClass("error")
       $(".email-validation").remove()
-      $(".registration_form_user_email").append('<span class="error-help email-validation"><i>Provide a valid email name</i></span>')
+      $(".registration_form_user_email").append('<span class="error-help email-validation"><i>Provide a valid email address</i></span>')
     else
       email_field.removeClass("error")
       $(".email-validation").remove()

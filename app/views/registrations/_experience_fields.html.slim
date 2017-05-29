@@ -1,6 +1,6 @@
 .row
   .col-xs-2
-    label Duration
+    label Duration *
   .col-xs-2.flex-inline
     = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
     = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year'
@@ -14,24 +14,24 @@
 br
 .row
   .col-xs-2
-    label Position
+    label Position *
   .col-xs-10
     = f.input :position, label: false, required: false, placeholder: 'Position'
 br
 .row
   .col-xs-2
-    label Type
+    label Type *
   .col-xs-10
     = f.input :job_type, collection: Experience::OPTIONS_FOR_JOB_TYPE, prompt: 'Select Type', include_blank: false
 br
 .row
   .col-xs-2
-    label Company
+    label Company *
   .col-xs-10
     = f.input :company_name, label: false, collection: Company.pluck(:name), include_blank: false, prompt: 'Company', wrapper: :selectize, input_html: { data: { selectize_company: true } }
 .row
   .col-xs-2
-    label Location
+    label Location *
   .col-xs-10
     .row
       .col-xs-6

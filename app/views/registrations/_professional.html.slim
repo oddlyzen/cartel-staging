@@ -2,7 +2,7 @@
   = user.input :role, as: :hidden, input_html: { value: 'professional' }
   .row
     .col-xs-2
-      label Current Status
+      label Current Status *
     .col-xs-10
       = user.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_PROFESSIONAL), include_blank: false, class: 'form-control', prompt: 'Please Select'
   .row
@@ -13,7 +13,7 @@
   br
   .row
     .col-xs-2
-      label Area of Specialisation
+      label Area of Specialisation*
     .col-xs-10
       .registration_form_profile_specialisation_ids
         = f.input_field :other_specialisations_array, as: :select, collection: Specialisation.approved.pluck(:name), placeholder: 'Please fill in', multiple: true, include_blank: false
