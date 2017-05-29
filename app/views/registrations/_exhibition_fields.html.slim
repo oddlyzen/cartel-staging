@@ -21,6 +21,13 @@
   .form-group
     .row
       .col-xs-2
+        label Exhibition Title *
+      .col-xs-10
+        = f.input :title
+
+  .form-group
+    .row
+      .col-xs-2
         label Duration *
       .col-xs-2.flex-inline
         = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
@@ -30,13 +37,6 @@
       .col-xs-2.flex-inline
         = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: 'month' }
         = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year'
-
-  .form-group
-    .row
-      .col-xs-2
-        label Exhibition Title *
-      .col-xs-10
-        = f.input :title
 
   .form-group
     .row

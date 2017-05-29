@@ -1,28 +1,10 @@
 Controllers['registrations'] = -> class Registrations
   new: (action) ->
     $('#artist').on 'click', ->
-      if personalDetailsValid()
-        if $('.artist').data('involvement') == false
-          $('#artist-question').modal('show')
-        $('.page-1').attr 'hidden', ''
-        $('.page-artist').removeAttr 'hidden'
-        $('.page-professional').find('input, select, button').prop 'disabled', true
-        $('.page-artist').find('input, select, button').prop 'disabled', false
-        $('.register').prop 'disabled', true
-      else
-        showPersonalDetailsValidations()
+      $('#artist-question').modal('show')
 
     $('#professional').on 'click', ->
-      if personalDetailsValid()
-        if $('.professional').data('involvement') == false
-          $('#professional-question').modal('show')
-        $('.page-1').attr 'hidden', ''
-        $('.page-professional').removeAttr 'hidden'
-        $('.page-artist').find('input, select, button').prop 'disabled', true
-        $('.page-professional').find('input, select, button').prop 'disabled', false
-        $('.register').prop 'disabled', true
-      else
-        showPersonalDetailsValidations()
+      $('#professional-question').modal('show')
 
     $('#back-artist, #back-pro').on 'click', ->
       $('.page-artist, .page-professional').attr 'hidden', ''
@@ -90,10 +72,26 @@ Controllers['registrations'] = -> class Registrations
     $('#artist-question .yes').on 'click', ->
       $('.modal').modal 'hide'
       $('.artist').data('involvement', 'true')
+      if personalDetailsValid()
+        $('.page-1').attr 'hidden', ''
+        $('.page-artist').removeAttr 'hidden'
+        $('.page-professional').find('input, select, button').prop 'disabled', true
+        $('.page-artist').find('input, select, button').prop 'disabled', false
+        $('.register').prop 'disabled', true
+      else
+        showPersonalDetailsValidations()
 
     $('#professional-question .yes').on 'click', ->
       $('.modal').modal 'hide'
       $('.professional').data('involvement', 'true')
+      if personalDetailsValid()
+        $('.page-1').attr 'hidden', ''
+        $('.page-professional').removeAttr 'hidden'
+        $('.page-artist').find('input, select, button').prop 'disabled', true
+        $('.page-professional').find('input, select, button').prop 'disabled', false
+        $('.register').prop 'disabled', true
+      else
+        showPersonalDetailsValidations()
 
     $('.artist-no').on 'click', ->
       $('#artist-question').modal 'hide'
