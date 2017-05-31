@@ -1,6 +1,6 @@
 .cta
   - if current_user.id == connection.id
-    = link_to 'Edit Profile', edit_my_profile_path, class: 'btn btn-primary' if action_name == 'show'
+    = link_to 'Edit Profile', edit_my_profile_path, class: 'btn btn-primary'
   - elsif current_user.friends_with? connection
     .btn.btn-primary Already In Your Network
   - elsif current_user.pending_friends.exists? connection.id
