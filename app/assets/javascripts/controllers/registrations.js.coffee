@@ -214,7 +214,7 @@ Controllers['registrations'] = -> class Registrations
     if !password_confirmation_field.val() || password_confirmation_field.val() != password_field.val()
       password_confirmation_field.addClass("error")
       $(".password-confirmation-validation").remove()
-      $(".registration_form_user_password_confirmation").append('<span class="error-help password-confirmation-validation"><i>Confirm matched password</i></span>')
+      $(".registration_form_user_password_confirmation").append('<span class="error-help password-confirmation-validation"><i>Confirm password matches</i></span>')
     else
       password_confirmation_field.removeClass("error")
       $(".password-confirmation-validation").remove()
