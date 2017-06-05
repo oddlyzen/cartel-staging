@@ -17,7 +17,8 @@ Controllers['my/profiles'] = -> class MyProfiles
       filepicker.processImage(
         file.fpfile.url,
         {
-          conversions: ['rotate', 'crop', 'filter']
+          conversions: ['rotate', 'crop', 'filter'],
+          cropRatio: 1/1
         },
         (Blob) ->
           console.log(JSON.stringify(Blob));
