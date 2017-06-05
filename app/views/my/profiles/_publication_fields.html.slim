@@ -9,8 +9,10 @@ fieldset.nested-fields
             = f.filepicker_field :pdf_url, button_text: 'Upload Your Full Publication Here in PDF',
               button_class: 'btn btn-default btn-block', extensions: '.pdf',
               multiple: false, onchange: 'publicationsUpload(event)'
+            = f.hidden_field :pdf_filename, class: "publication-pdf-filename"
+
           - else
-            = link_to "PDF: #{f.object.pdf_url.split('/').last}", f.object.pdf_url, target: '_blank'
+            = link_to "PDF: #{f.object.pdf_filename}", f.object.pdf_url, target: '_blank'
     - if f.object.new_record?
       .row
         .col-xs-6.col-xs-push-4

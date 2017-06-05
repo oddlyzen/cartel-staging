@@ -9,11 +9,16 @@ fieldset.nested-fields
           = f.input :record_end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.record_end_year'].present?}" }
       .col-xs-6
         .exhibition-upload
-          p File Name:
+          - if f.object.pdf_url.blank?
+            p File Name:
+          - else
+            p
+              = link_to "File Name: #{f.object.pdf_filename}", f.object.pdf_url
           = f.filepicker_field :pdf_url,
             button_text: (f.object.pdf_url.blank? ? 'Upload New PDF' : 'Replace Current PDF'),
             button_class: 'btn btn-default btn-block', extensions: '.pdf', multiple: false,
             onchange: 'exhibitionUpload(event)'
+          = f.hidden_field :pdf_filename, class: "exhibition-pdf-filename"
 
     - if f.object.new_record?
       .row

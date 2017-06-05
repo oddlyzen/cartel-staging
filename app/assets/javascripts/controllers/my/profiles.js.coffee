@@ -3,12 +3,15 @@ Controllers['my/profiles'] = -> class MyProfiles
 
     window.exhibitionUpload = (file) ->
       $('.exhibition-upload p').text 'File Name: ' + file.fpfile.filename
+      $('.exhibition-pdf-filename').val(file.fpfile.filename)
 
     window.bibliographyUpload = (file) ->
       $('.bibliography-upload p').text 'File Name: ' + file.fpfile.filename
+      $('.bibliography-pdf-filename').val(file.fpfile.filename)
 
     window.publicationsUpload = (file) ->
       $('.publications-upload p').text 'File Name: ' + file.fpfile.filename
+      $('.publication-pdf-filename').val(file.fpfile.filename)
 
     window.onPhotoUpload = (file) ->
       $('.img-container').css("background-image", "url(#{file.fpfile.url})")

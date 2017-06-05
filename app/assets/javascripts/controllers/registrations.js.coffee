@@ -1,5 +1,9 @@
 Controllers['registrations'] = -> class Registrations
   new: (action) ->
+    window.exhibitionUpload = (file) ->
+      $('.exhibition-upload p').text 'File Name: ' + file.fpfile.filename
+      $('.exhibition-pdf-filename').val(file.fpfile.filename)
+
     $('#artist').on 'click', ->
       $('#artist-question').modal('show')
 
