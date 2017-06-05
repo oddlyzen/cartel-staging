@@ -14,8 +14,17 @@ Controllers['my/profiles'] = -> class MyProfiles
       $('.publication-pdf-filename').val(file.fpfile.filename)
 
     window.onPhotoUpload = (file) ->
-      $('.img-container').css("background-image", "url(#{file.fpfile.url})")
-      $('.profile-image').attr('src', file.fpfile.url)
+      filepicker.processImage(
+        file.fpfile.url,
+        {
+          conversions: ['rotate', 'crop', 'filter']
+        },
+        (Blob) ->
+          console.log(JSON.stringify(Blob));
+          $('.img-container').css("background-image", "url(#{Blob.url})")
+          $('.profile-image').attr('src', Blob.url)
+          $('#my_profile_form_user_attributes_profile_image_url').val(Blob.url)
+      );
 
 
 
