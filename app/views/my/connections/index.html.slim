@@ -1,7 +1,9 @@
 = render 'shared/user_header', user: @user
 
-.cards
-  = render partial: 'friend', collection: @friends
+
+- @friends.each_slice(4) do |friends|
+  .cards.row
+    = render partial: 'friend', collection: friends
 
 = render 'disconnect'
 

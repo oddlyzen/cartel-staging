@@ -2,7 +2,7 @@ class NetworksController < ApplicationController
   before_action :set_user, only: [:index]
 
   def index
-    @friends = @user.friends.map { |user| UserDecorator.new(user) }
+    @friends = @user.friends.map { |user| UserDecorator.new(user) }.sort_by(&:name)
   end
 
   private

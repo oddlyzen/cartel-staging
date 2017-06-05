@@ -4,7 +4,7 @@ module My
 
     def index
       @user = UserDecorator.new(@user)
-      @friends = current_user.friends.map { |u| UserDecorator.new(u) }
+      @friends = current_user.friends.map { |u| UserDecorator.new(u) }.sort_by(&:name)
       @requests = current_user.pending_friends.map { |p| UserDecorator.new(p) }
     end
 
