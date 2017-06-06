@@ -25,7 +25,6 @@ function initAutocompleteExhibition() {
     autocompleteExhibition.addListener('place_changed', function() {
 
       var place = autocompleteExhibition.getPlace();
-      console.log("new")
 
       $('.location-state-exhibition').val(place.address_components[0].long_name);
       $('.location-country-exhibition').val(place.address_components[place.address_components.length - 1].long_name);

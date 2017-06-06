@@ -12,7 +12,6 @@ $(document).on 'ready', ->
   $body = $(document.body)
   window.$debug = $body.attr('data-debug')
   view = $body.attr('data-view')
-  console.log('view:', view) if $debug
   [controller, action] = view.split('#')
 
   if (loader = Controllers[controller])

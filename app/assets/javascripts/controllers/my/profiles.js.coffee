@@ -21,7 +21,6 @@ Controllers['my/profiles'] = -> class MyProfiles
           cropRatio: 1/1
         },
         (Blob) ->
-          console.log(JSON.stringify(Blob));
           $('.img-container').css("background-image", "url(#{Blob.url})")
           $('.profile-image').attr('src', Blob.url)
           $('#my_profile_form_user_attributes_profile_image_url').val(Blob.url)
