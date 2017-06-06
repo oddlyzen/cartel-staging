@@ -1,7 +1,7 @@
 .card
   = f.check_box :series, {}, series.id, nil
   - if series.artwork
-    = link_to filepicker_image_tag(series.artwork.image_url, { w: 160, h: 160, fit: 'crop', align: 'faces' }, class: 'series'), artist_series_path(artist_id: series.user.id, id: series.id)
+    = link_to filepicker_image_tag(series.artwork.image_url, { w: 160, h: 160, fit: 'crop', align: 'faces' }, class: 'series'), edit_portfolio_series_path(id: series.id)
   - else
     = image_tag 'artwork_160x160.png', size: '160x160', class: 'series'
   .text-center
