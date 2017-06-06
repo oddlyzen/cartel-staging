@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
 
+  before_action :check_if_unauthentication
+
   JS_ASSETS = %w(application registrations).freeze
 
   layout 'landing'
@@ -57,6 +59,10 @@ class RegistrationsController < ApplicationController
 
   def oauth_params
     session['oauth_info']
+  end
+
+  def check_if_unauthentication
+    redirect_to root_path if current_user.present?
   end
 
 end
