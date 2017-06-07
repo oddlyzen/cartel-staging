@@ -26,6 +26,10 @@ body.portfolio-series-index {
 
 body.portfolio-series-show {
 
+  .col-xs-4 > .btn-default {
+    width: 160px;
+  }
+
   .col-xs-8 > .btn-default {
     width: 160px;
     float: right;
