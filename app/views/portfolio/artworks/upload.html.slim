@@ -8,6 +8,15 @@ header
 
 .row
   .col-xs-12
+    = simple_form_for @bulk_upload, url: bulk_upload_portfolio_artworks_path do |f|
+      = f.input_field :image_urls, { type: 'filepicker-dragdrop',
+        data: { fp_option_modal: false, fp_multiple: true,
+        fp_mimetypes: 'image/*', fp_apikey: ENV["FILEPICKER_API_KEY"],
+        fp_drag_class: 'upload-pane', fp_button_class: 'hidden' } }
+      = f.submit 'Upload', class: 'btn btn-default pull-right'
+
+.row
+  .col-xs-12
     h3 Series
 = simple_form_for @bulk_group, url: bulk_group_portfolio_artworks_path(@series) do |f|
   section.cards.all-series
@@ -31,15 +40,5 @@ header
     .col-xs-12
       section.cards.cards--artworks
         = render partial: 'artwork', collection: @unassorted_artworks, locals: { f: f }
-
-
-.row
-  .col-xs-12
-    = simple_form_for @bulk_upload, url: bulk_upload_portfolio_artworks_path do |f|
-      = f.input_field :image_urls, { type: 'filepicker-dragdrop',
-        data: { fp_option_modal: false, fp_multiple: true,
-        fp_mimetypes: 'image/*', fp_apikey: ENV["FILEPICKER_API_KEY"],
-        fp_drag_class: 'upload-pane', fp_button_class: 'hidden' } }
-      = f.submit 'Upload', class: 'btn btn-default pull-right'
 
 
