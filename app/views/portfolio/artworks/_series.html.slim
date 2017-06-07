@@ -1,5 +1,4 @@
 .card
-  = f.check_box :series, {}, series.id, nil
   - if series.artwork
     = link_to filepicker_image_tag(series.artwork.image_url, { w: 160, h: 160, fit: 'crop', align: 'faces' }, class: 'series'), edit_portfolio_series_path(id: series.id)
   - else

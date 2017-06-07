@@ -25,6 +25,7 @@ header
       .text-center
         b Add New Series
     = render partial: 'series', collection: @all_series, locals: { f: f }
+    = f.hidden_field :series
 
   .row.upload-artworks
     .col-xs-12
@@ -36,7 +37,17 @@ header
           li |
           li = link_to 'Select None', 'javascript:void(0)', id: 'js-select-series-none'
       .col-xs-9
-        = f.submit 'Add to Series', class: 'btn btn-default group-submit pull-right', disabled: true, title: 'Select artwork and series'
+        .btn-group.group-submit.pull-right.add-to-series-dropdown
+          .btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            = "Add to Series "
+            span.caret.pull-right
+          ul.dropdown-menu.no-artwork-selected.hidden
+            li
+              a href="#" Please select artwork(s)
+          ul.dropdown-menu.artwork-selected
+            - @all_series.each do |series|
+              li
+                = link_to series.title, "#", class: "artwork-series", data: { series: series.id }
     .col-xs-12
       section.cards.cards--artworks
         = render partial: 'artwork', collection: @unassorted_artworks, locals: { f: f }

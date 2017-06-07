@@ -236,7 +236,7 @@ body.portfolio-artworks-upload {
   .btn-default {
     min-width: 200px;
     &:before {
-      content: '< '
+      content: ''
     }
     &:disabled {
       pointer-events: auto;
@@ -301,6 +301,10 @@ body.portfolio-artworks-upload {
     ul {
       @include inline-list;
     }
+  }
+
+  .add-to-series-dropdown ul {
+    width: 100%;
   }
 
   .upload-pane {

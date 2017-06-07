@@ -25,22 +25,12 @@ Controllers['portfolio/artworks'] = -> class PortfolioArtworks
 
   upload: (action) ->
     changeGroupButtonStatus =->
-      if ( $('.cards.all-series .card input:checked').length <= 0 || $('.cards.cards--artworks .card input:checked').length <= 0)
-        $('.new_bulk_group_form input.group-submit').prop('disabled', 'disabled')
+      if ($('.cards.cards--artworks .card input:checked').length <= 0)
+        $('.new_bulk_group_form .no-artwork-selected').removeClass('hidden')
+        $('.new_bulk_group_form .artwork-selected').addClass('hidden')
       else
-        $('.new_bulk_group_form input.group-submit').removeProp('disabled')
-      return
-
-    $('.cards.all-series .card input[type="checkbox"]').on 'change', ->
-      cbox = $(this)
-      cards = cbox.parents('.cards')
-      cards.find('input[type=checkbox]').prop('checked', false)
-
-      if cbox.is(':checked')
-        cbox.prop('checked', false)
-      else
-        cbox.prop('checked', true)
-      changeGroupButtonStatus()
+        $('.new_bulk_group_form .no-artwork-selected').addClass('hidden')
+        $('.new_bulk_group_form .artwork-selected').removeClass('hidden')
       return
 
     $('#js-select-series-all').click ->
@@ -48,6 +38,12 @@ Controllers['portfolio/artworks'] = -> class PortfolioArtworks
         @checked = true
         changeGroupButtonStatus()
         return
+
+    $('.artwork-series').click ->
+      event.preventDefault()
+      series_id = $(this).data('series')
+      $("#bulk_group_form_series").val(series_id)
+      $("#new_bulk_group_form").submit()
 
     $('#js-select-series-none').click ->
       $('.cards--artworks .card input[type="checkbox"]').each ->
@@ -57,3 +53,5 @@ Controllers['portfolio/artworks'] = -> class PortfolioArtworks
 
     $('.cards.cards--artworks .card input[type="checkbox"]').on 'change', ->
       changeGroupButtonStatus()
+
+    changeGroupButtonStatus()
