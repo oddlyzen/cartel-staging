@@ -13,7 +13,6 @@
       include_blank: false
   = f.input :medium_ids, as: :select, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', label: 'Media', input_html: { multiple: true, data: { klass: 'Medium', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
   = f.input :subject_ids, as: :select, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'Add a subject or theme', label: 'Subject & Themes', input_html: { multiple: true, data: { klass: 'Subject', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
-  = f.input :collaborator_ids, as: :select, collection: User.artist.pluck(:first_name, :id), selected: artwork.collaborators.pluck(:id), include_hidden: false, placeholder: 'Add a collaborator', input_html: { multiple: true, data: { selectize_collaborator: true } }, wrapper: :selectize
   = f.input :series_id, label: false, collection: @user.series.select(:title, :id), include_blank: false
   .form-inline.two-fields
     = f.input :edition, placeholder: 'Edition', label: false, input_html: { min: 1 }
