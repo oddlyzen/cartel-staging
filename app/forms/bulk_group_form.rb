@@ -27,7 +27,7 @@ class BulkGroupForm < BaseForm
   def update_artworks
     @user.artworks.where(id: @artwork_ids).each do |artwork|
       series_changed = artwork.series != @series
-      artwork.update(series: @series)
+      artwork.update_attribute(:series, @series)
       trigger_new_series_artwork_feed_item(artwork: artwork) if series_changed && artwork.series.published?
     end
   end
