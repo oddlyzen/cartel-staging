@@ -9,6 +9,8 @@ class Company < ActiveRecord::Base
 
   has_many :approved_members, -> { where company_memberships: { state: 1 } }, through: :company_memberships, source: :user
 
+  has_many :events
+
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
   validates :name, presence: true
