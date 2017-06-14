@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   # ** Routes for users with accounts **
 
+  resources :events
+
   resources :artists, only: [:index, :show] do
     resources :series, only: [:show]
     resources :artworks, only: [:show, :index]

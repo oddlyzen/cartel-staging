@@ -1,0 +1,9 @@
+.row
+  .col-xs-10.col-xs-offset-1
+    h1 Create New Event
+    = simple_form_for @event, url: { action: 'create' }, method: 'post' do |f|
+      .text-center
+        .form-group
+          = f.input_field :cover_image_url, { type: 'filepicker-dragdrop',data: { fp_option_modal: false, fp_multiple: true,fp_mimetypes: 'image/*', fp_apikey: ENV["FILEPICKER_API_KEY"],fp_drag_class: 'upload-pane', fp_button_class: 'hidden', fp_drag_text: 'Upload Image' } }
+      = render 'form', f: f
+      = f.submit 'Submit', class: 'btn btn-default'

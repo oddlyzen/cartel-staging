@@ -1,0 +1,8 @@
+= f.input :name, label: false, label: "Name of Event"
+= f.input :website_link
+= f.input :facebook_link
+= f.input :twitter_link
+= f.input :instagram_link
+= f.input :location, label: "City, Country *", input_html: { class: "google-places-autocomplete", placeholder: "City, Country" }
+= f.hidden_field :country, class: "location-country"
+= f.hidden_field :city, class: "location-state"
