@@ -33,7 +33,11 @@
 
   li.dropdown {
 
-    a.dropdown-toggle {
+    a.profile-header-section {
+      margin-left: 10px;
+    }
+
+    a.dropdown-toggle, a.profile-header-section {
       font-family: $font-heading;
       letter-spacing: 1.5px;
       font-size: 23px;
@@ -72,9 +76,9 @@
   letter-spacing: 1px;
   border-radius: 0px;
   background-color: white;
-  font-size: 20px;
+  font-size: 15px;
   margin-left:0;
-  margin-top: 65px;
+  margin-top: 55px;
   margin-right: 15px;
   padding: 10px;
   float: left;
@@ -87,10 +91,11 @@
 
   .title {
     color: $light-grey;
-    font-size: 24px; }
+    font-size: 24px;
+  }
 
   li {
-    padding: 10px;
+    padding: 6px;
   }
 
   .discover-links, .user-links {
@@ -101,11 +106,11 @@
   }
 }
 
-.dropdown-menu--connection, .dropdown-menu--notification, .dropdown-menu--user {
+.dropdown-menu--connection, .dropdown-menu--notification, .dropdown-menu--user, .dropdown-menu--setting {
   font-family: $font-heading;
   letter-spacing: 1.5px;
   background-color: white;
-  font-size: 14px;
+  font-size: 12px;
   padding: 15px;
   text-align: center;
 
