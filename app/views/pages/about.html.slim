@@ -21,4 +21,5 @@
           = f.input :name, label: false, placeholder: 'Name', class: 'form-control'
           = f.input :email, label: false, placeholder: 'Email', class: 'form-control'
           = f.input :interest, as: :select, collection: ['Artist', 'Art Professional', 'Collector', 'Other'], prompt: 'Choose Your Interest', label: false, placeholder: 'Interest', class: 'form-control'
-          = f.submit 'Register Your Interest', class: 'btn btn-default pull-right'
+          .register-interest-button
+            = f.submit 'Register Your Interest', class: 'btn btn-default'
