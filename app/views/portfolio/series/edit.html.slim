@@ -41,12 +41,12 @@
             = series.input :acknowledgement, as: :boolean, label: Exhibition::NOTICE, boolean_style: :inline,
               input_html: { checked_value: true, unchecked_value: false }
           ul.links--apply
-            li = f.submit 'Apply Details', class: 'btn btn-default'
+            li = f.submit 'Save Details', class: 'btn btn-default'
             li = link_to 'Cancel', '', class: 'btn btn-secondary',
                  data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_path(@series) }
             li.full = link_to 'Delete Series', portfolio_series_path(@series), method: :delete, class: 'btn btn-primary'
             - if @series.unpublished?
-              li.full = link_to 'Publish Series', publish_portfolio_series_path(@series), method: :patch, class: 'btn btn-default', id: 'publish-series'
+              li.full = link_to 'Make Public', publish_portfolio_series_path(@series), method: :patch, class: 'btn btn-default', id: 'publish-series'
             - elsif @series.published?
               li.full = link_to 'Unpublish Series', unpublish_portfolio_series_path(@series), method: :patch, class: 'btn btn-primary'
 
@@ -73,7 +73,7 @@
           = f.input :for_sale, as: :boolean, label: 'Is this artwork for sale?', boolean_style: :inline,
             input_html: { checked_value: true, unchecked_value: false }
           ul.links--apply
-            li = f.submit 'Apply Details', class: 'btn btn-default'
+            li = f.submit 'Save Details', class: 'btn btn-default'
             li = link_to 'Cancel', '', class: 'btn btn-secondary',
                  data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_path(@series) }
 
