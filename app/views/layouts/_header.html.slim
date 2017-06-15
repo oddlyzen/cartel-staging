@@ -33,7 +33,7 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav.navbar-right
         li.dropdown.pull-right
           = link_to edit_my_profile_path, class: 'profile-header-section' do
-              = image_tag profile_image_url(current_user, 20, 20, ''), size: '20x20', class: 'avatar'
+              = image_tag profile_image_url(current_user, 20, 20, ''), size: '25x25', class: 'avatar'
               span.hidden-xs.username= "#{current_user.first_name} #{current_user.last_name}"
 
       <!-- Collect the nav links, forms, and other content for toggling -->
