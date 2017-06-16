@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
   private
 
   def interest_params
-    params.require(:interest_form).permit(:title, :name, :email, :interest)
+    params.require(:interest_form).permit(:title, :name, :email, :interest, :message, :attachment)
   end
 
   def enquiry_params

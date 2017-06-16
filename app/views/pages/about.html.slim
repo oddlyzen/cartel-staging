@@ -10,16 +10,25 @@
           h2.title CARTEL (Contemporary Art Intel) is a professional platform that increases visibility and productivity for artists, art professionals and collectors.
 
         div
-          div At CARTEL, we understand the importance of relationships in the art world, Our platform works to bring together all the information of your network's events, opportunities and artwork into one place.
+          div At CARTEL, we understand the importance of relationships in the art world. Our platform works to bring together all the information of your network's events, opportunities and artwork into one place.
           br
           div Stay on top of what's going on around you and other art markets, and start managing your art world today!
           br
 
       .col-xs-12.col-sm-12.col-md-6
         = simple_form_for InterestForm.new, url: interest_path do |f|
-          = f.input :title, label: false, placeholder: 'Title', class: 'form-control'
-          = f.input :name, label: false, placeholder: 'Name', class: 'form-control'
-          = f.input :email, label: false, placeholder: 'Email', class: 'form-control'
-          = f.input :interest, as: :select, collection: ['Artist', 'Art Professional', 'Collector', 'Other'], prompt: 'Choose Your Interest', label: false, placeholder: 'Interest', class: 'form-control'
+          = f.input :title, label: false, placeholder: 'Title *', class: 'form-control'
+          = f.input :name, label: false, placeholder: 'Name *', class: 'form-control'
+          = f.input :email, label: false, placeholder: 'Email *', class: 'form-control'
+          = f.input :interest, as: :select, collection: ['Artist', 'Art Professional', 'Collector', 'Other'], prompt: 'Choose Your Interest *', label: false, placeholder: 'Interest *', class: 'form-control'
+          .about-us-attachment.hidden
+            p File Name:
+            = f.filepicker_field :attachment,
+              button_text: 'Upload Your CV',
+              button_class: 'btn btn-default btn-block', extensions: '.pdf',
+              multiple: false, onchange: 'aboutPageAttachmentUpload(event)'
+          br
+          = f.text_area :message, label: false, placeholder: 'Your Message *', class: 'form-control', rows: 5
+          br
           .register-interest-button
             = f.submit 'Register Your Interest', class: 'btn btn-default'

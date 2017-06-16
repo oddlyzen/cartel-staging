@@ -1,0 +1,17 @@
+Hi
+
+<p>
+  <b><%= @name %> (<%= @email %>)</b> is interested in joining cartel as <b><%= @interest %></b>
+</p>
+
+<% if ["Artist", "Art Professional"].include?(@interest) %>
+  <p>
+    Here is a link to his CV:
+    <%= link_to @attachment, @attachment %>
+  </p>
+<% end %>
+
+<p>
+  <b>Message:</b>
+  <% @message %>
+</p>
