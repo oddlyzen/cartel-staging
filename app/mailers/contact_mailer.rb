@@ -7,7 +7,7 @@ class ContactMailer < ApplicationMailer
     @email = params[:email]
     @message = params[:message]
 
-    mail from: params[:email], to: "hassanmir92@gmail.com", subject: "[Interest Form] #{params[:interest]} - #{params[:title]} #{params[:name]}"
+    mail from: params[:email], to: "admin@artcartel.io", subject: "[Interest Form] #{params[:interest]} - #{params[:title]} #{params[:name]}"
   end
 
   def enquiry(params = {})
