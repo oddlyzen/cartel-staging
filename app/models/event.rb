@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   TYPES = ["Exhibition", "Art Fair", "Book Launch", "Other"]
+  EXHIBITION_TYPES = ["Solo", "Two Person", "Group", "Award", "Other"]
   belongs_to :company
   has_many :opening_times
 
@@ -7,8 +8,8 @@ class Event < ActiveRecord::Base
 
   validates :name, presence: true
   validates :event_type, presence: true
-  validates :exhibition_type, presence: true, if: :exhibition_event?
-  validates :other_type, presence: true, if: :other_event?
+  validates :type_exhibition, presence: true, if: :exhibition_event?
+  validates :type_other, presence: true, if: :other_event?
   validates :city, :country, :location, :description, :start_date, :end_date, presence: true
   validates :company_id, presence: true
 
