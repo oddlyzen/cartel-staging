@@ -1,0 +1,5 @@
+Hi <%= @user.name %>,
+
+Thanks for registering! To confirm your registration click the URL below:
+
+<%= "https://www.artcartel.io#{confirm_email_registration_path(@user.confirmation_token)}" %>

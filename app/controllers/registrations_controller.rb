@@ -13,10 +13,24 @@ class RegistrationsController < ApplicationController
   def create
     @registration_form = RegistrationForm.new(user_params, oauth_params)
     if @registration_form.save
-      session.delete('oauth_info')
-      auto_login(@registration_form.user)
+      UserMailer.registration_confirmation(@registration_form.user).deliver
+      flash.now[:success] = 'Profile has been create. Please check your email for your confirmation link.'
+      redirect_to root_path
     else
       flash.now[:error] = 'Please check your form again and re-submit'
+    end
+  end
+
+  def confirm_email
+    user = User.find_by_confirmation_token(params[:id])
+
+    if user
+      user.email_activate
+      flash[:success] = "Your email has been confirmed. Please sign in to continue."
+      redirect_to root_path
+    else
+      flash[:error] = "Sorry, confirmation link does not exist"
+      redirect_to root_path
     end
   end
 

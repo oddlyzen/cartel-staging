@@ -12,8 +12,13 @@ class SessionsController < ApplicationController
   def create
     @form = LoginForm.new(login_params)
     if @form.valid?
-      login(@form.email, @form.password)
-      redirect_to logged_in_path
+      if @form.user.email_confirmed
+        login(@form.email, @form.password)
+        redirect_to logged_in_path
+      else
+        flash[:error] = "Please confirm your email before signing in."
+        redirect_to root_path
+      end
     else
       flash.now[:error] = 'Please try again'
       render :new

@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   post 'interest', to: 'contacts#interest'
   post 'enquiry', to: 'contacts#enquiry'
 
-  resources :registrations, only: [:new, :create]
+  resources :registrations, only: [:new, :create] do
+    get :confirm_email, on: :member
+  end
 
   resources :password_resets, only: [:create, :edit, :update]
 

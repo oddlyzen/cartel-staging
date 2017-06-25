@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170625173155) do
+ActiveRecord::Schema.define(version: 20170625202526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -525,16 +525,16 @@ ActiveRecord::Schema.define(version: 20170625173155) do
     t.string   "exhibit_description"
     t.date     "from_record_year"
     t.date     "to_record_year"
-    t.text     "specialisations_tags",            default: [],                array: true
-    t.text     "media_tags",                      default: [],                array: true
-    t.text     "subjects_tags",                   default: [],                array: true
-    t.text     "skills",                          default: [],                array: true
+    t.text     "specialisations_tags",            default: [],                 array: true
+    t.text     "media_tags",                      default: [],                 array: true
+    t.text     "subjects_tags",                   default: [],                 array: true
+    t.text     "skills",                          default: [],                 array: true
     t.integer  "grade"
     t.string   "gallery_museum"
     t.integer  "gender"
     t.integer  "membership_id"
-    t.text     "artist_status_text",              default: [],                array: true
-    t.text     "professional_status_text",        default: [],                array: true
+    t.text     "artist_status_text",              default: [],                 array: true
+    t.text     "professional_status_text",        default: [],                 array: true
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
@@ -545,6 +545,8 @@ ActiveRecord::Schema.define(version: 20170625173155) do
     t.integer  "referrals_count",                 default: 0
     t.string   "profile_image_url"
     t.string   "based_location"
+    t.boolean  "email_confirmed",                 default: false
+    t.string   "confirmation_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

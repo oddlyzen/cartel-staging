@@ -89,6 +89,9 @@ class User < ActiveRecord::Base
 
   has_paper_trail on: :update, skip: [:password]
 
+  # Callbacks
+  before_create :generate_confirmation_token
+
   def name
     first_name + " " + last_name
   end
@@ -102,7 +105,19 @@ class User < ActiveRecord::Base
     active_friends.exists?(connection.id) || passive_friends.exists?(connection.id)
   end
 
+  def email_activate
+    self.email_confirmed = true
+    self.confirmation_token = nil
+    save!(:validate => false)
+  end
+
   private
+
+  def generate_confirmation_token
+    if self.confirmation_token.blank?
+        self.confirmation_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
 
   def requires_password?
     # we allow password to be nil in case of user registration using external authentication
