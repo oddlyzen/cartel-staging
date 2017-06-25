@@ -66,30 +66,24 @@ section.section-2
 
     .col-xs-6.col--right
       - unless artist.solo_exhibitions.blank?
-        - if artist.pdf_exhibitions.blank? && artist.group_exhibitions.blank?
-          .item
-        - else
-          .item.item--no-border
+        .item.item--no-border
 
-            h2 Solo Exhibition
-            ul.solo
-              - artist.solo_exhibitions.each do |exhibition|
-                li
-                  b.year = date_in_range(exhibition)
-                  p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
+          h2 Solo Exhibition
+          ul.solo
+            - artist.solo_exhibitions.each do |exhibition|
+              li
+                b.year = date_in_range(exhibition)
+                p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
 
       - unless artist.group_exhibitions.blank?
-        - if artist.pdf_exhibitions.blank?
-          .item
-        - else
-          .item.item--no-border
+        .item.item--no-border
 
-            h2 Group Exhibition
-            ul.group
-              - artist.group_exhibitions.each do |exhibition|
-                li
-                  b.year = date_in_range(exhibition)
-                  p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
+          h2 Group Exhibition
+          ul.group
+            - artist.group_exhibitions.each do |exhibition|
+              li
+                b.year = date_in_range(exhibition)
+                p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
 
       - unless artist.pdf_exhibitions.blank?
         .item
