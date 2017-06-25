@@ -3,6 +3,31 @@ body.artworks-index {
   .details {
     text-align: center;
     text-transform: uppercase;
+    position: relative;
+    bottom: 175px;
+    font-size: 19px;
+    left: 10px;
+    display: none;
+  }
+
+  .series-card {
+    max-height: 315px !important;
+  }
+
+  .series-card:hover{
+    max-height: 315px !important;
+
+    a {
+      text-decoration: none;
+    }
+
+    .cover-image {
+      opacity: 0.4;
+    }
+
+    .details {
+      display: block;
+    }
   }
 
   .tab-content{

@@ -30,10 +30,9 @@
 }
 
 .cover-image {
-  width: 555px;
-  height: 300px;
+  min-width: 350px;
+  min-height: 300px;
   margin: 10px;
-  display: inline-block;
 }
 
 .company-sm-image {

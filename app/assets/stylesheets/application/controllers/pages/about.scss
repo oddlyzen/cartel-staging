@@ -1,20 +1,29 @@
 body.pages-about {
 
-  h2.title {
-    @include make-row();
-    @include make-xs-column(12);
+  font-family: "RobotoCondensed-Bold";
 
+  .register-interest-button {
+    width: 100%;
+    text-align: center;
+
+    .btn {
+      font-size: 12px;
+      padding: 17px 75px;
+    }
+  }
+
+  h2.title {
     font-family: $font-heading;
     letter-spacing: 1.5px;
     color: $light-grey;
-    font-size: 2.5em;
-    align: left;
-    margin-botton: 30px;
+    font-size: 27px;
+    margin-bottom: 30px;
   }
 
   .logo {
     text-align: center;
     margin-top: 80px;
+    margin-bottom: 50px;
 
     h1 {
       font-size: 140px;
@@ -30,10 +39,9 @@ body.pages-about {
 
     .pull-right { margin-right: 0px; }
 
-    p {
+    div {
       //text-align: justify;
-      font-family: $font-body-semibold;
-      font-size: 1em;
+      font-size: 16px;
     }
 
   }

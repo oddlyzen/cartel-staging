@@ -9,6 +9,10 @@ body.artists-show, body.artists-index {
 
 body.artists-show, body.professionals-show {
 
+  .img-container {
+    border-radius: 125px;
+  }
+
   p {
     font-family: $font-body-regular;
   }
@@ -154,6 +158,10 @@ body.artists-show, body.professionals-show {
 }
 
 body.artists-index {
+
+  img.img_responsive {
+    border-radius: 100px;
+  }
 
   ul.list-inline {
     font-family: "BebasNeue";

@@ -1,13 +1,15 @@
 .internal-server-error-exception, .not-found-exception {
+  margin-top: 50px;
   text-align: center;
 
   h1 {
-    font-size: 40px;
+    font-size: 50px;
     color: #BD0101;
     margin: 20px;
   }
 
   p {
+    letter-spacing: -1px;
     font-size: 20px;
     color: black;
 

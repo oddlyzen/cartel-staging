@@ -9,7 +9,7 @@
 br
 
 .row
-  .col-md-2
+  .col-md-4
     .series-details
       .title-year
         h1.title = @series.title
@@ -30,7 +30,7 @@ br
            br
            = @exhibition.start_year
 
-  .col-md-10
+  .col-md-8
     - if @artworks.empty?
       .col-xs-12
         h1.text-center No Artworks in Series

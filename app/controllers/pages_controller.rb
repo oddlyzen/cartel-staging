@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  JS_ASSETS = %w(application pages).freeze
+
   layout :set_layout
 
   def about

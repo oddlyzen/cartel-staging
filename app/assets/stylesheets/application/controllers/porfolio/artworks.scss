@@ -32,11 +32,6 @@ body.portfolio-artworks-index {
   .fa-caret-left:before {
     font-size: xx-large;
     margin-right: 30px;
-    position: absolute;
-    top: auto;
-    bottom: 205px;
-    right: auto;
-    left: -30px;
   }
 
  .fa-caret-right:before {
@@ -65,6 +60,7 @@ body.portfolio-artworks-index {
       display: flex;
       justify-content: flex-start;
       flex-wrap: wrap;
+      margin-left: 40px;
 
       .item {
         margin-right: 14px;

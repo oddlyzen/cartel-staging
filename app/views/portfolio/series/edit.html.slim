@@ -1,6 +1,6 @@
 = render 'shared/user_header', user: @user
 .row
-  .col-md-3.aside
+  .col-md-4.aside
     = link_to '< Done', '', data: { toggle: 'modal', target: '#js-modal-alert', url: artist_series_path(@user, @series) },
       class: 'btn btn-default'
     ul.tab-list
@@ -41,12 +41,12 @@
             = series.input :acknowledgement, as: :boolean, label: Exhibition::NOTICE, boolean_style: :inline,
               input_html: { checked_value: true, unchecked_value: false }
           ul.links--apply
-            li = f.submit 'Apply Details', class: 'btn btn-default'
+            li = f.submit 'Save Details', class: 'btn btn-default'
             li = link_to 'Cancel', '', class: 'btn btn-secondary',
                  data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_path(@series) }
             li.full = link_to 'Delete Series', portfolio_series_path(@series), method: :delete, class: 'btn btn-primary'
             - if @series.unpublished?
-              li.full = link_to 'Publish Series', publish_portfolio_series_path(@series), method: :patch, class: 'btn btn-default', id: 'publish-series'
+              li.full = link_to 'Make Public', publish_portfolio_series_path(@series), method: :patch, class: 'btn btn-default', id: 'publish-series'
             - elsif @series.published?
               li.full = link_to 'Unpublish Series', unpublish_portfolio_series_path(@series), method: :patch, class: 'btn btn-primary'
 
@@ -73,11 +73,11 @@
           = f.input :for_sale, as: :boolean, label: 'Is this artwork for sale?', boolean_style: :inline,
             input_html: { checked_value: true, unchecked_value: false }
           ul.links--apply
-            li = f.submit 'Apply Details', class: 'btn btn-default'
+            li = f.submit 'Save Details', class: 'btn btn-default'
             li = link_to 'Cancel', '', class: 'btn btn-secondary',
                  data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_path(@series) }
 
-  .col-md-9
+  .col-md-8
     = simple_form_for @series, url: bulk_destroy_portfolio_series_artworks_path(@series), method: :delete do |f|
       - unless @series.artworks.empty?
         .row

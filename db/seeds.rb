@@ -13,7 +13,7 @@ user_artist1 = User.create(email: 'user@pan.com', password: '123123123', passwor
   Ut rhoncus feugiat finibus. Quisque id mi sodales lorem rhoncus commodo. Nam ac lacus vitae nibh tincidunt tempus. Integer sed sapien quis velit dictum ornare.
   Suspendisse ut ligula ipsum. Aenean nisi odio, dictum ut purus at, aliquet placerat nulla. Nulla facilisi. Vestibulum pretium pharetra suscipit. Pellentesque ullamcorper
   ante eget augue scelerisque, at fermentum neque vehicula. Sed vel tellus sed.", skill: "Photoshop", link: "www.ronaldhunt.com", facebook_link: "www.ronaldhunt.com",
-  instagram_link: "www.ronaldhunt.com", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01') do |user|
+  instagram_link: "www.ronaldhunt.com", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom") do |user|
 
   user.build_profile
 
@@ -72,7 +72,7 @@ user_artist2 = User.create!(email: 'artist@pan.com', password: '123123123', pass
   Ut rhoncus feugiat finibus. Quisque id mi sodales lorem rhoncus commodo. Nam ac lacus vitae nibh tincidunt tempus. Integer sed sapien quis velit dictum ornare.
   Suspendisse ut ligula ipsum. Aenean nisi odio, dictum ut purus at, aliquet placerat nulla. Nulla facilisi. Vestibulum pretium pharetra suscipit. Pellentesque ullamcorper
   ante eget augue scelerisque, at fermentum neque vehicula. Sed vel tellus sed.", skill: "Photoshop", link: "", facebook_link: "",
-  instagram_link: "", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01') do |user|
+  instagram_link: "", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom") do |user|
 
   user.build_profile
 
@@ -111,12 +111,12 @@ user_pro1 = User.create(email: 'userpro@pan.com', password: '123123123', passwor
   Suspendisse ut ligula ipsum. Aenean nisi odio, dictum ut purus at, aliquet placerat nulla. Nulla facilisi. Vestibulum pretium pharetra suscipit. Pellentesque ullamcorper
   ante eget augue scelerisque, at fermentum neque vehicula. Sed vel tellus sed.", skill: "Photoshop", link: "www.ronaldhunt.com", facebook_link: "www.ronaldhunt.com",
   instagram_link: "www.ronaldhunt.com", twitter_link: "www.ronaldhunt.com", position: 'Junior Artist', company_name: 'Museum Company', exhibit_description: 'Lorem ipsum dolor sit amet, convallis quam.
-', from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01') do |user|
+', from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom") do |user|
 
   user.build_profile
 end
 
-user_admin = User.create!(email: 'admin@pan.com', password: '123123123', password_confirmation: '123123123', first_name: 'PAN', last_name: 'Admin', title: 'mr', role: :admin)
+user_admin = User.create!(email: 'admin@pan.com', password: '123123123', password_confirmation: '123123123', first_name: 'PAN', last_name: 'Admin', title: 'mr', role: :admin, gender: "male", based_location: "London, United Kingdom", date_of_birth: '1990-09-09', current_status: "Seeking Representation")
 
 %w(Acrylic\ Paint Bronze Ceramics Chalk Charcoal Clay Conté Crayon Gouache Graphite Marble Marker Oil\ Paint Pastel Pen\ and\ ink Pencil Stone Watercolour Wood Other).each do |medium|
   Medium.create!(name: medium, user_id: user_admin.id, state: :approved, set_display: true)
@@ -160,8 +160,8 @@ user_artist1.connections.build(friend: user_artist2).save
 user_artist1.connections.build(friend: user_pro1).save
 user_artist2.connections.build(friend: user_pro1).save
 
-company1 = Company.create!(name: 'Art Galleria', email: 'art@galleria.com', phone: '+60196467110', website: 'www.artgalleria.com', country: 'Malaysia', state: 'Penang', motto: 'Arts is life', established_in: 5.years.ago, address_1: 'Address Line 1', address_2: 'Address Line 2', location: 'Location1') do |company|
-  company.owner = company.members.build(email: 'pro1@pan.com', password: '123123123', password_confirmation: '123123123', first_name: 'pro', last_name: 'final', title: 'mr', role: :professional) do |member|
+company1 = Company.create!(name: 'Art Galleria', email: 'art@galleria.com', phone: '+60196467110', website: 'www.artgalleria.com', country: 'Malaysia', state: 'Penang', motto: 'Arts is life', established_in: 5.years.ago, address_1: 'Address Line 1', address_2: 'Address Line 2', location: 'Location1', about_us: "Test", postcode: "AB12 5JX", organization_type_ids: [OrganizationType.first.id]) do |company|
+  company.owner = company.members.build(email: 'pro1@pan.com', password: '123123123', password_confirmation: '123123123', first_name: 'pro', last_name: 'final', title: 'mr', role: :professional, gender: "male", based_location: "London, United Kingdom", date_of_birth: '1990-09-09', current_status: "Seeking Representation") do |member|
     member.build_profile
   end
 
@@ -170,7 +170,7 @@ company1 = Company.create!(name: 'Art Galleria', email: 'art@galleria.com', phon
 end
 
 
-company2 = Company.create!(name: 'Lisson Gallery', email: 'art@lisson.com', phone: '+60196333110', website: 'www.lisson.com', country: 'Singapore', state: 'Bugis', motto: 'Age Quod Agis', established_in: 5.years.ago, address_1: 'Address Line 1', address_2: 'Address Line 2', location: 'Location1')
+company2 = Company.create!(name: 'Lisson Gallery', email: 'art@lisson.com', phone: '+60196333110', website: 'www.lisson.com', country: 'Singapore', state: 'Bugis', motto: 'Age Quod Agis', established_in: 5.years.ago, address_1: 'Address Line 1', address_2: 'Address Line 2', location: 'Location1', about_us: "Test", postcode: "AB12 5JX", organization_type_ids: [OrganizationType.first.id])
 
 CompanyMembership.create!(user_id: user_artist1.id, company_id: company1.id)
 CompanyMembership.create!(user_id: user_artist2.id, company_id: company1.id)

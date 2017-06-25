@@ -4,7 +4,7 @@
       = link_to professional_path(professional)  do
         .row
           .col-xs-12
-            = image_tag profile_image_url(professional,120,120, 'crop'), size:"120x120"
+            = image_tag profile_image_url(professional,120,120, 'crop'), size:"120x120", :class => "img_responsive"
         .row
           .col-xs-12
             h3.artist_name = professional.full_name

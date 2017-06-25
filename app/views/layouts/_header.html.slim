@@ -32,20 +32,23 @@ nav.navbar.navbar-default
     - if current_user.present?
       ul.nav.navbar-nav.navbar-right
         li.dropdown.pull-right
-          = link_to '#', class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button',
-            'aria-haspopup': 'true', 'aria-expanded': 'false' do
-              = image_tag profile_image_url(current_user, 20, 20, ''), size: '20x20', class: 'avatar'
+          = link_to edit_my_profile_path, class: 'profile-header-section' do
+              = image_tag profile_image_url(current_user, 20, 20, ''), size: '25x25', class: 'avatar'
               span.hidden-xs.username= "#{current_user.first_name} #{current_user.last_name}"
-
-          ul.dropdown-menu.dropdown-menu--user
-            li = link_to 'Settings', my_settings_path
-            li = link_to 'Logout', logout_path, method: :delete
-            hr
-            li = link_to 'Invite Friends', '', data: { toggle: 'modal', target: '#js-modal-invitation' }
-            li = link_to 'Send Feedback', contact_us_path
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       .navbar-collapse-1.collapse.navbar-collapse/
+      ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            = link_to '#', data: { toggle: 'dropdown' }, aria: { has_popup: true, expanded: false },
+              class: 'dropdown-toggle' do
+                = fa_icon 'cog'
+            ul.dropdown-menu.dropdown-menu--setting
+              li = link_to 'Settings', my_settings_path
+              li = link_to 'Logout', logout_path, method: :delete
+              hr
+              li = link_to 'Send Feedback', contact_us_path
+
       ul.nav.navbar-nav.navbar-right
           li.dropdown
             = link_to '#', data: { toggle: 'dropdown' }, aria: { has_popup: true, expanded: false },
@@ -93,6 +96,8 @@ nav.navbar.navbar-default
                     nav
                       = link_to fa_icon('check'), approve_my_company_membership_path(membership.company, membership), method: :patch
                       = link_to fa_icon('times'), reject_my_company_membership_path(membership.company, membership), method: :patch
+            hr
+            li = link_to 'Invite Friends', '', data: { toggle: 'modal', target: '#js-modal-invitation' }
     - else
       ul.nav.navbar-nav.navbar-right
         li = link_to 'Login', root_path

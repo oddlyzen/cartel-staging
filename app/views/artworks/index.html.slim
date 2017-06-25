@@ -14,8 +14,9 @@ ul.tab-list
   .col-md-12
     .tab-content
       #all-series.tab-pane.active role="tabpanel"
-        .row
-          = render partial: 'series', collection: @series
+        - @series.each_slice(3) do |series|
+          .row
+            = render partial: 'series', collection: series
       #all-artworks.tab-pane role="tabpanel"
         .row
           = render partial: 'artwork', collection: @artworks
