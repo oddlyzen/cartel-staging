@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  JS_ASSETS = %w(application events).freeze
+
   before_action :require_login
   before_action :set_pagination, only: [:index]
 
@@ -12,6 +14,13 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.opening_times.new(weekday: 0)
+    @event.opening_times.new(weekday: 1)
+    @event.opening_times.new(weekday: 2)
+    @event.opening_times.new(weekday: 3)
+    @event.opening_times.new(weekday: 4)
+    @event.opening_times.new(weekday: 5)
+    @event.opening_times.new(weekday: 6)
   end
 
   def create
@@ -48,7 +57,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :opening_time_ids => [])
+    params.require(:event).permit(:name, :type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :start_date, :end_date, :opening_time_ids => [], :opening_times_attributes => [:weekday, :start_time, :end_time])
   end
 
 end

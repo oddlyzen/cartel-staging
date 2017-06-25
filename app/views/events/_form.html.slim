@@ -1,8 +1,26 @@
-= f.input :name, label: false, label: "Name of Event"
+= f.input :name, label: "Name of Event *"
+= f.input :company_id, collection: current_user.companies, label: "Organisation *"
+= f.input :event_type, label: "Type *", collection: Event::TYPES, include_blank: true, input_html: { class: "" }
+.type-other.hidden
+  = f.input :type_other
+.type-exhibition.hidden
+  = f.input :type_exhibition
+= f.input :description, label: "Description *"
+= f.input :start_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "Start Date *"
+= f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "End Date *"
+= f.input :location, label: "City, Country *", input_html: { class: "google-places-autocomplete", placeholder: "City, Country" }
+= f.hidden_field :country, class: "location-country"
+= f.hidden_field :city, class: "location-state"
+br
+h3 Opening Hours
+hr
+= f.fields_for :opening_times do |ot|
+  = ot.hidden_field :weekday
+  h3 = Date::DAYNAMES[ot.object.weekday]
+  = ot.input :start_time, as: :time, start: 0
+  = ot.input :end_time, as: :time, start: 0
+hr
 = f.input :website_link
 = f.input :facebook_link
 = f.input :twitter_link
 = f.input :instagram_link
-= f.input :location, label: "City, Country *", input_html: { class: "google-places-autocomplete", placeholder: "City, Country" }
-= f.hidden_field :country, class: "location-country"
-= f.hidden_field :city, class: "location-state"
