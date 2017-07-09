@@ -41,7 +41,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if @event.save
+    if @event.update_attributes(event_params)
       flash[:success] = "#{@event.name} Updated Successfully!"
       redirect_to events_path
     else
@@ -57,7 +57,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :event_type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :start_date, :end_date, :opening_time_ids => [], :opening_times_attributes => [:weekday, :start_time, :end_time])
+    params.require(:event).permit(:name, :event_type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :address_1, :address_2, :postcode, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :start_date, :end_date, :opening_times_attributes => [:id, :weekday, :start_time, :end_time])
   end
 
 end

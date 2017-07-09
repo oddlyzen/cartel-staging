@@ -8,9 +8,12 @@
 = f.input :description, label: "Description *"
 = f.input :start_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "Start Date *"
 = f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "End Date *"
+= f.input :address_1, label: "Address Line 1 *"
+= f.input :address_2, label: "Address Line 2"
 = f.input :location, label: "City, Country *", input_html: { class: "google-places-autocomplete", placeholder: "City, Country" }
 = f.hidden_field :country, class: "location-country"
 = f.hidden_field :city, class: "location-state"
+= f.input :postcode, label: "Postcode *"
 br
 h3 Opening Hours
 hr

@@ -1,0 +1,35 @@
+.event-header {
+
+  .text-center {
+    height: 270px;
+  }
+}
+
+.img-container-cover {
+  img {
+    width: 100%;
+  }
+
+  a {
+    position: relative;
+    left: 400px;
+    bottom: 50px;
+    font-size: 12px !important;
+  }
+
+  .event-name {
+    position: relative;
+    bottom: 250px;
+    color: #111;
+  }
+
+  .event-dates {
+    position: relative;
+    bottom: 250px;
+    color: #111;
+  }
+}
+
+.cover-transparent {
+  opacity: 0.5;
+}

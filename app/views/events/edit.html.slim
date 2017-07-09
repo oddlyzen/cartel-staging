@@ -1,12 +1,12 @@
 .row
   .col-xs-10.col-xs-offset-1
-    h1 Create New Event
+    h1 Update Event
     .row
       .col-xs-12.text-center
         .form-group
           .img-container-cover
             = image_tag @event.cover_image_url
-    = simple_form_for @event, url: { action: 'create' }, method: 'post' do |f|
+    = simple_form_for @event, url: event_path(@event), method: 'put' do |f|
       .text-center
         .form-group
           = f.filepicker_field :cover_image_url,
