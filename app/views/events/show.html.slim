@@ -18,19 +18,32 @@
         p
           = @event.description
       .col-xs-4
-        h2 Address
+        h2 Address & Website
         = "#{@event.address_1} #{@event.address_2}"
         br
         = @event.location
         br
         = @event.postcode
         br
-        br
+        = @event.website_link
+        hr
 
         h2 Opening Times
         - @event.opening_times.each do |opening_time|
           = opening_time.to_s
           br
+        hr
+
+        h2 Social Media
+        h3
+          - if @event.facebook_link.present?
+            = link_to " <i class='fa fa-facebook'></i> ".html_safe, @event.facebook_link
+
+          - if @event.instagram_link.present?
+            = link_to " <i class='fa fa-instagram'></i> ".html_safe, @event.instagram_link
+
+          - if @event.twitter_link.present?
+            = link_to " <i class='fa fa-twitter'></i> ".html_safe, @event.twitter_link
 
 
 
