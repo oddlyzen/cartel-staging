@@ -28,6 +28,13 @@ Controllers['my/profiles'] = -> class MyProfiles
 
 
 
+    $(document).on 'change', '.institution-name', (e) ->
+      if $(this).val() == "Other"
+        $(this).parent().siblings(".my_profile_form_user_educations_other_institution").children().removeClass("hidden")
+      else
+        $(this).parent().siblings(".my_profile_form_user_educations_other_institution").children().addClass("hidden")
+
+
     $('form.simple_form.new_my_profile_form').on 'keypress', (e) ->
       if e.keyCode == 13
         e.preventDefault()

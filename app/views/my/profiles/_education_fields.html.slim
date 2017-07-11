@@ -9,7 +9,8 @@ fieldset.nested-fields
         = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{ 'error' if params[:errors].present? && params[:errors]['educations.end_month'].present?}" }
         = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.end_year'].present?}" }
     .col-xs-6
-      = f.input :institution, collection: Institution.all.pluck(:name), label: false, prompt: 'University',include_blank: false, input_html: { class: "form-control #{ 'error' if params[:errors].present? && params[:errors]['educations.institution'].present?}" }
+      = f.input :institution, collection: Institution.all.pluck(:name), label: false, prompt: 'University',include_blank: false, input_html: { class: "form-control institution-name #{ 'error' if params[:errors].present? && params[:errors]['educations.institution'].present?}" }
+      = f.input :other_institution, placeholder: "University Name", label: false, input_html: { class: "#{'hidden' if f.object.institution != 'Other'} #{ 'error' if params[:errors].present? && params[:errors]['educations.other_institution'].present?}" }
       = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-education" }
       = f.hidden_field :state, class: "location-state-education"
       = f.hidden_field :country, class: "location-country-education"
