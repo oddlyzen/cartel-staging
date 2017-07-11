@@ -9,7 +9,7 @@ section.section-2
               li
                 b.year = date_in_range(education)
                 .details
-                  p #{education.education_level}, #{education.institution}, #{university_location(education)}
+                  p #{education.education_level}, #{education.institution == "Other" ? education.other_institution : education.institution}, #{university_location(education)}
                   p #{education.field_of_study},#{education.education_grade}
                   p = education.education_description
       - unless @professional.awards.blank?
