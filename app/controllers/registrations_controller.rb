@@ -14,8 +14,7 @@ class RegistrationsController < ApplicationController
     @registration_form = RegistrationForm.new(user_params, oauth_params)
     if @registration_form.save
       UserMailer.registration_confirmation(@registration_form.user).deliver
-      flash.now[:success] = 'Profile has been create. Please check your email for your confirmation link.'
-      redirect_to root_path
+      session.delete('oauth_info')
     else
       flash.now[:error] = 'Please check your form again and re-submit'
     end
