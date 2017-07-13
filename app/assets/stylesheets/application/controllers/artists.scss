@@ -8,6 +8,11 @@ body.artists-show, body.artists-index {
 }
 
 body.artists-show, body.professionals-show {
+  font-family: $font-body-regular;
+
+  b {
+    font-family: $font-body-semibold;
+  }
 
   .img-container {
     border-radius: 125px;
@@ -90,6 +95,8 @@ body.artists-show, body.professionals-show {
     }
 
     .user-status {
+      font-family:  $font-body-semibold;
+
       margin-bottom: 10px;
       font-weight: bold;
     }
