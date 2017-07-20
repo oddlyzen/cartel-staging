@@ -1,4 +1,5 @@
 fieldset.nested-fields
+  = f.hidden_field :_destroy, value: false, class: "destroy-me"
   hr.-thin
   .row
     .col-xs-4
@@ -23,3 +24,5 @@ fieldset.nested-fields
       = f.hidden_field :country, class: "location-country-experience"
       = f.input :description, label: false, placeholder: 'Description', input_html: { maxlength: 200 }
       = f.input :link, label: false, placeholder: 'Link'
+      = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f
+

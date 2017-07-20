@@ -1,6 +1,8 @@
 fieldset.nested-fields
+  = f.hidden_field :_destroy, value: false, class: "destroy-me"
   hr.-thin
   .row
     .col-xs-7
       = f.input :name, label: false, required: false, placeholder: 'Name'
+      = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f
     .col-xs-3

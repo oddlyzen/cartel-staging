@@ -1,4 +1,5 @@
 fieldset.nested-fields
+  = f.hidden_field :_destroy, value: false, class: "destroy-me"
   hr.-thin
   - if f.object.new_record? || f.object.pdf_url.present?
     .row
@@ -44,3 +45,5 @@ fieldset.nested-fields
           = f.filepicker_field :attachment_url, button_text: 'Upload PDF', button_class: 'btn btn-default btn-block', extensions: '.pdf', multiple: false
         - else
           = link_to 'PDF Link', f.object.attachment_url, target: '_blank'
+  = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f
+

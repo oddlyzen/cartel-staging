@@ -1,4 +1,5 @@
 fieldset.nested-fields
+  = f.hidden_field :_destroy, value: false, class: "destroy-me"
   hr.-thin
   .row
     .col-xs-4
@@ -17,3 +18,5 @@ fieldset.nested-fields
       = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-residency" }
       = f.hidden_field :state, class: "location-state-residency"
       = f.hidden_field :country, class: "location-country-residency"
+      = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f
+

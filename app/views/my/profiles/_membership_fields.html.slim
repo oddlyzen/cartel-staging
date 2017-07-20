@@ -1,5 +1,8 @@
 fieldset.nested-fields
+  = f.hidden_field :_destroy, value: false, class: "destroy-me"
   hr.-thin
   .row
     .col-xs-6
       = f.input :name, label: false, required: false, placeholder: 'Institution', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['memberships.name'].present?}" }
+      = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f
+

@@ -1,4 +1,5 @@
 fieldset.nested-fields
+  = f.hidden_field :_destroy, value: false, class: "destroy-me"
   hr.-thin
   .row
     .col-xs-4
@@ -20,4 +21,6 @@ fieldset.nested-fields
       = f.input :field_of_study, label: false, placeholder: 'Field of Study (eg. Fine Art/Art History)', input_html: { class: "form-control #{'error' if params[:errors].present? && params[:errors]['educations.field_of_study'].present?}" }, required: true
       = f.input :education_description, as: :text, label: false, placeholder: 'Description',
       input_html: { class: 'form-control', maxlength: 200, rows: 10 }
+      = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f
+
 / On change of institution, go to a list where it passes the insitution name and gives me a country.
