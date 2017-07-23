@@ -31,7 +31,9 @@ Rails.application.routes.draw do
 
   # ** Routes for users with accounts **
 
-  resources :events
+  resources :events do
+    patch :add_to_profile, on: :member
+  end
 
   resources :artists, only: [:index, :show] do
     resources :series, only: [:show]

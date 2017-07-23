@@ -24,4 +24,8 @@ class HeaderPresenter
     pending_friend_requests.blank? && pending_memberships.blank? ? false : true
   end
 
+  def pending_event_notifications
+    @user.event_notifications.pending
+  end
+
 end

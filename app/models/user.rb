@@ -50,6 +50,9 @@ class User < ActiveRecord::Base
   has_many :collaborated_artworks, through: :artwork_collaborators, source: :artwork
   has_many :pending_collaborations, -> { where artwork_collaborators: { status: 0 } }, through: :artwork_collaborators, source: :artwork
 
+  has_many :event_participations
+  has_many :event_notifications
+
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :bibliographies, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :awards, reject_if: :all_blank, allow_destroy: true

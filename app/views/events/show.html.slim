@@ -6,8 +6,12 @@
           .img-container-cover
             .cover-transparent
               = image_tag @event.cover_image_url
-            if @event.company.owner == current_user
+            - if @event.company.owner == current_user
               = link_to "Edit Event", edit_event_path(@event), class: "btn btn-primary"
+
+            - if @event.event_type == "Exhibition" && @my_participation.present? && !@my_participation.added_to_profile?
+              = link_to "Add To Profile", add_to_profile_event_path(@event), method: :patch, class: "btn btn-primary"
+
             h1.event-name.center
               = @event.name
             h3.event-dates.center

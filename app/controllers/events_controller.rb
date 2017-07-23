@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @my_participation = @event.event_participations.where(user_id: current_user.id).last
   end
 
   def new
@@ -54,6 +55,30 @@ class EventsController < ApplicationController
       flash[:error] = @event.errors.full_messages.to_sentence
       render :edit
     end
+  end
+
+  def add_to_profile
+    @event = Event.find(params[:id])
+
+    return if @event.event_type != "Exhibition"
+
+    @my_participation = @event.event_participations.where(user_id: current_user.id).last
+
+    new_exhibition = current_user.exhibitions.new
+    new_exhibition.title = @event.name
+    new_exhibition.start_month = @event.start_date.month
+    new_exhibition.start_year = @event.start_date.year
+    new_exhibition.end_month = @event.end_date.month
+    new_exhibition.end_year = @event.end_date.year
+    new_exhibition.category = @event.type_exhibition
+    new_exhibition.location = @event.location
+    new_exhibition.involvement = @my_participation.involvement
+    new_exhibition.venue_id = @event.company_id
+    if new_exhibition.save
+      @my_participation.update_attributes(added_to_profile: true)
+    end
+
+    redirect_to event_path(@event)
   end
 
   private

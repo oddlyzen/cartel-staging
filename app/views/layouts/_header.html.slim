@@ -56,12 +56,12 @@ nav.navbar.navbar-default
           li.dropdown
             = link_to '#', data: { toggle: 'dropdown' }, aria: { has_popup: true, expanded: false },
               class: 'dropdown-toggle' do
-                - if @header_presenter.pending_collaborations.empty?
+                - if @header_presenter.pending_collaborations.empty? && @header_presenter.pending_event_notifications.empty?
                   = fa_icon 'bell'
                 - else
-                  = fa_icon 'bell', class: 'count', data: { count: @header_presenter.pending_collaborations.count }
+                  = fa_icon 'bell', class: 'count', data: { count: @header_presenter.pending_collaborations.count + @header_presenter.pending_event_notifications.count }
             ul.dropdown-menu.dropdown-menu--notification
-              - if @header_presenter.pending_collaborations.empty?
+              - if @header_presenter.pending_collaborations.empty? && @header_presenter.pending_event_notifications.empty?
                 li No new notifications
               - else
                 ul
@@ -70,6 +70,11 @@ nav.navbar.navbar-default
                       = image_tag profile_image_url(artwork.user, 25, 25, ''), size: '25x25'
                       b #{artwork.creator.first_name}
                       p has added you to #{link_to(artwork.title, artist_artworks_path(artist_id: artwork.user_id, tab: 'artworks', artwork_id: artwork.id))}
+                  - @header_presenter.pending_event_notifications.each do |event_notification|
+                    li
+                      b You have been added as a participator to #{link_to(event_notification.event_participation.event.name, event_path(event_notification.event_participation.event))}
+
+
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           = link_to '#', data: { toggle: 'dropdown' }, aria: { has_popup: true, expanded: false },
