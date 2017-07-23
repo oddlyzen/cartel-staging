@@ -27,3 +27,15 @@ hr
 = f.input :facebook_link
 = f.input :twitter_link
 = f.input :instagram_link
+hr
+h3 Participants
+.panel-body
+  .row.cocoon-container
+  = f.fields_for :event_participations do |p|
+    = render 'event_participation_fields', f: p
+  .row
+    br
+    .col-xs-12
+    = link_to_add_association fa_icon('plus').html_safe + ' add', f, :event_participations, class: 'btn btn-default pull-right'
+  hr
+

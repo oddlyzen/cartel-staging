@@ -21,6 +21,10 @@ class EventsController < ApplicationController
     @event.opening_times.new(weekday: 4)
     @event.opening_times.new(weekday: 5)
     @event.opening_times.new(weekday: 6)
+
+    @event.event_participations.new
+
+    @participation_users = User.where("role = ? OR role = ?", 1, 2)
   end
 
   def create
@@ -36,6 +40,8 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @event.event_participations.new if @event.event_participations.empty?
+    @participation_users = User.where("role = ? OR role = ?", 1, 2)
   end
 
   def update
@@ -57,7 +63,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :event_type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :address_1, :address_2, :postcode, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :start_date, :end_date, :opening_times_attributes => [:id, :weekday, :start_time, :end_time])
+    params.require(:event).permit(:name, :event_type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :address_1, :address_2, :postcode, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :start_date, :end_date, :opening_times_attributes => [:id, :weekday, :start_time, :end_time], :event_participations_attributes => [:id, :involvement, :user_id])
   end
 
 end

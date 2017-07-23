@@ -14,7 +14,6 @@ class Exhibition < ActiveRecord::Base
   validates :pdf_url, presence: true, if: -> { title.blank? }
 
   enum category: %w(in_solo two_person in_group award other)
-  enum involvement: %w(curator director)
   enum grade: [:a, :b, :c, :d]
 
   scope :with_attachment, -> { where(category: nil) }

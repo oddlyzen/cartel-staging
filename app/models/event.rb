@@ -3,8 +3,10 @@ class Event < ActiveRecord::Base
   EXHIBITION_TYPES = ["Solo", "Two Person", "Group", "Award", "Other"]
   belongs_to :company
   has_many :opening_times
+  has_many :event_participations
 
   accepts_nested_attributes_for :opening_times
+  accepts_nested_attributes_for :event_participations
 
   validates :name, presence: true
   validates :event_type, presence: true
