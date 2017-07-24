@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723204457) do
+ActiveRecord::Schema.define(version: 20170724113346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,8 +235,8 @@ ActiveRecord::Schema.define(version: 20170723204457) do
     t.string   "state"
     t.string   "country"
     t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "involvement"
     t.string   "pdf_url"
     t.string   "representation"
@@ -252,6 +252,7 @@ ActiveRecord::Schema.define(version: 20170723204457) do
     t.string   "location"
     t.string   "pdf_filename"
     t.integer  "category"
+    t.string   "involvement_string"
   end
 
   add_index "exhibitions", ["representation_id"], name: "index_exhibitions_on_representation_id", using: :btree

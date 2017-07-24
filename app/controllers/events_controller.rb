@@ -58,7 +58,18 @@ class EventsController < ApplicationController
   end
 
   def add_to_profile
+    if params[:status].present? && params[:event_notification_id].present?
+      event_notification = EventNotification.find(params[:event_notification_id])
+      event_notification.update_attributes(status: params[:status])
+
+    end
+
     @event = Event.find(params[:id])
+
+    if params[:status] == "ignored"
+      redirect_to event_path(@event)
+      return
+    end
 
     return if @event.event_type != "Exhibition"
 
@@ -72,7 +83,7 @@ class EventsController < ApplicationController
     new_exhibition.end_year = @event.end_date.year
     new_exhibition.category = @event.type_exhibition
     new_exhibition.location = @event.location
-    new_exhibition.involvement = @my_participation.involvement
+    new_exhibition.involvement_string = @my_participation.involvement
     new_exhibition.venue_id = @event.company_id
     if new_exhibition.save
       @my_participation.update_attributes(added_to_profile: true)

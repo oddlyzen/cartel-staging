@@ -73,6 +73,8 @@ nav.navbar.navbar-default
                   - @header_presenter.pending_event_notifications.each do |event_notification|
                     li
                       b You have been added as a participator to #{link_to(event_notification.event_participation.event.name, event_path(event_notification.event_participation.event))}
+                      b = link_to fa_icon('check') + "Add to Profile",add_to_profile_event_path(event_notification.event_participation.event, event_notification_id: event_notification.id, status: "accepted"), method: :patch
+                      b = link_to fa_icon('times') + "Ignore", add_to_profile_event_path(event_notification.event_participation.event, event_notification_id: event_notification.id, status: "ignored"), method: :patch
 
 
       ul.nav.navbar-nav.navbar-right
