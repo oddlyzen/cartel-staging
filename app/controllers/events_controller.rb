@@ -41,6 +41,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    return redirect_to event_path(@event) if @event.company.owner != current_user
     @event.event_participations.new if @event.event_participations.empty?
     @participation_users = User.where("role = ? OR role = ?", 1, 2)
   end

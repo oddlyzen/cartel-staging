@@ -1,0 +1,6 @@
+.row
+  .col-xs-10.col-xs-offset-1
+    h1 Create New Opportunity
+    = simple_form_for @opportunity, url: { action: 'create' }, method: 'post' do |f|
+      = render 'form', f: f
+      = f.submit 'Submit', class: 'btn btn-default'

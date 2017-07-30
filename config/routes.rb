@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:create, :edit, :update]
 
   # ** Routes for users with accounts **
+  resources :opportunities
 
   resources :events do
     patch :add_to_profile, on: :member

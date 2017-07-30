@@ -14,6 +14,7 @@ nav.navbar.navbar-default
             li = link_to 'Professionals', professionals_path
             li = link_to 'Organisations', companies_path
             li = link_to 'Events', events_path
+            li = link_to 'Opportunities', opportunities_path
           hr
           li.title Manage
           .user-links
@@ -28,6 +29,7 @@ nav.navbar.navbar-default
           li= link_to 'Organisation', new_my_company_path
           - if current_user.companies.count > 0
             li= link_to 'Events', new_event_path
+          li= link_to "Opportunity", new_opportunity_path
 
 
     = link_to 'Cartel', root_path, class: 'navbar-brand'

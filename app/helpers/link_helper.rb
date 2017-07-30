@@ -7,7 +7,8 @@ module LinkHelper
     artist: ['artists#index'],
     professional: ['professionals#index'],
     company: ['companies#index'],
-    event: ['events#index']
+    event: ['events#index'],
+    opportunity: ['opportunities#index']
   }.freeze
 
   def active(page)

@@ -1,0 +1,4 @@
+= f.input :title, label: "Title *"
+= f.input :status, label: "Status *", collection: [["Open", "open"], ["Closed", "closed"]]
+= f.input :description, label: "Description *", input_html: { rows: 10 }
+= f.hidden_field :created_by_id, value: current_user.id
