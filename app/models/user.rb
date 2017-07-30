@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :approved_membership_companies, through: :company_memberships, source: :company
   has_many :joined_companies, through: :company_memberships, source: :company
 
+  has_many :company_followers
+  has_many :following_companies, through: :company_followers, source: :company
+
   has_many :artworks
   has_many :series
   has_many :educations

@@ -11,6 +11,9 @@ class Company < ActiveRecord::Base
 
   has_many :events
 
+  has_many :company_followers
+  has_many :followers, through: :company_followers, source: :user
+
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
   validates :name, presence: true

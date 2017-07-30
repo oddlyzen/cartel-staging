@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724113346) do
+ActiveRecord::Schema.define(version: 20170730153543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,13 @@ ActiveRecord::Schema.define(version: 20170724113346) do
   end
 
   add_index "companies", ["organization_type_ids"], name: "index_companies_on_organization_type_ids", using: :gin
+
+  create_table "company_followers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "company_memberships", force: :cascade do |t|
     t.integer  "company_id"

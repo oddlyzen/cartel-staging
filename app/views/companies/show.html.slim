@@ -10,8 +10,13 @@ section
       h4.text-right = "Established #{@company.established_in.year}"
       ul.actions
         - if current_user == @company.owner
-            li = link_to 'Edit', edit_my_company_path(@company), class: 'btn btn-default'
-            li = link_to 'Manage', my_company_path(@company), class: 'btn btn-default'
+          li = link_to 'Edit', edit_my_company_path(@company), class: 'btn btn-default'
+          li = link_to 'Manage', my_company_path(@company), class: 'btn btn-default'
+        - else
+          - if current_user.following_companies.collect(&:id).include?(@company.id)
+            li = link_to 'Unfollow', unfollow_company_path(@company), method: :patch, class: 'btn btn-default'
+          - else
+            li = link_to 'Follow', follow_company_path(@company), method: :patch, class: 'btn btn-default'
   hr
 .row
   .col-xs-9

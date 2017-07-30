@@ -50,6 +50,8 @@ Rails.application.routes.draw do
   resources :companies, only: [:index, :show], path: 'organisations/' do
     patch :join, on: :member
     patch :leave, on: :member
+    patch :follow, on: :member
+    patch :unfollow, on: :member
   end
 
   resources :locations, only: [:show]
