@@ -53,13 +53,19 @@ body.registrations-new, body.registrations-finish-signup {
     font-size: 12px;
     height: 40px;
     width: 230px;
+    margin: 5px;
   }
 
   .modal {
     top: 16%;
     .modal-body {
+      padding: 20px;
       border: none;
     }
+  }
+
+  .modal-content {
+    border: 2px solid black;
   }
 
   .modal-body {
@@ -80,8 +86,8 @@ body.registrations-new, body.registrations-finish-signup {
   :-ms-input-placeholder      {color:$light-grey; font-family: $font-body-light;}
 
   .modal-backdrop.fade {
-    background-color: white;
-    opacity: 0.7;
+    background-color: $light-grey;
+    opacity: 0.9;
   }
 
   #wrap {
@@ -98,10 +104,8 @@ body.registrations-new, body.registrations-finish-signup {
     .modal-content {
       background-color: white;
       padding-bottom: 40px;
-      border: 0px;
+      border: 2px solid black;
     }
-
-    .modal-body { padding-top: 50px; }
 
     .text-center { padding-bottom: 20px; }
 
@@ -129,8 +133,6 @@ body.registrations-new, body.registrations-finish-signup {
       margin-left: auto;
       margin-right: auto;
     }
-
-    .modal-body { padding-top: 50px; }
 
     .modal-text {
       font-size: 18px;

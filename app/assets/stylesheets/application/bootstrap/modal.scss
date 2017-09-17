@@ -5,6 +5,7 @@
 
 .modal-content {
   border-radius: 0px;
+  border: 2px solid black;
 }
 
 .modal-header {
@@ -53,8 +54,8 @@
 .modal-footer { border-top: none }
 
 .modal-backdrop.fade {
-  background-color: white;
-  opacity: 0.7;
+  background-color: $light-grey;
+  opacity: 0.9;
 }
 
 //.modal-lg {width: 1292px;}
