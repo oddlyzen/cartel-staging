@@ -1,14 +1,14 @@
 h1 {
   font-family: $font-heading;
-  letter-spacing: 1.5px;
-  font-size: 44px;
-  color: $dark-grey;
+  letter-spacing: 1px;
+  font-size: 25px;
+  color: $brand-primary;
 }
 
 h2 {
   font-family: $font-heading;
-  letter-spacing: 1.5px;
-  font-size: 18px;
+  letter-spacing: 1px;
+  font-size: 25px;
   color: $light-grey;
   margin-top: 2px;
 
@@ -16,9 +16,9 @@ h2 {
 }
 
 h3 {
-  font-family: $font-heading;
-  letter-spacing: 1.5px;
-  font-size: 25px;
+  font-family: $font-body-regular;
+  letter-spacing: 1.2px;
+  font-size: 20px;
   color: $brand-primary;
   line-height: 18px;
 }
@@ -29,8 +29,10 @@ h4 {
   color: $dark-grey;
   line-height: 19px;
 }
+
 p {
-  font-family: $font-body-light;
+  font-family: $font-body-regular;
+  font-size: 15px;
 }
 
 // span {

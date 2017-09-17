@@ -24,15 +24,6 @@ body.sessions {
       width: 100px;
     }
 
-    .btn-primary {
-      border-color: darken($facebook, 10%);
-      background-color: $facebook;
-      line-height: 1.2;
-      padding: 12px 15px;
-      height: 40px;
-      width: 230px;
-    }
-
     .form-group { margin-bottom: 20px; }
 
     .form-inline.pull-right{ padding-right: 13px; }
@@ -55,7 +46,7 @@ body.sessions {
   }
 
   .register-interest a {
-    background-color: $secondary-color !important;
+    background-color: $btn-primary-color !important;
     font-size: 15px !important;
     line-height: 1.5 !important;
     padding: 14px 15px !important;

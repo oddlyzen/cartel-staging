@@ -26,13 +26,21 @@
   }
 }
 
+.btn.btn-default:hover {
+  color: $light-grey;
+}
+
 .btn.btn-primary {
 
   @include default-btn-style;
 
-  border: 1px solid $secondary-color;
-  background-color: $secondary-color;
+  border: 1px solid $btn-primary-color;
+  background-color: $btn-primary-color;
 
+}
+
+.btn.btn-primary:hover {
+  color: $btn-primary-color-active;
 }
 
 .btn-secondary {
