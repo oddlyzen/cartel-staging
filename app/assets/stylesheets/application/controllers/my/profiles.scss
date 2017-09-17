@@ -8,11 +8,11 @@ body.my-profiles-edit {
     color: #a94442;
   }
 
-  hr {
+  hr.accordion-hr {
     background-color: $white;
     height: 3px;
-    margin-top: 35px;
-    margin-bottom: 35px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 
     &.-transparent {
       border: none;

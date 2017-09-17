@@ -24,7 +24,7 @@
                     .col-xs-12
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :educations,
                         class: 'btn btn-default pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-awards.panel-heading role='tab' data-toggle='collapse' href='#collapse-awards'
                 h4.panel-title
@@ -40,7 +40,7 @@
                     br
                     .col-xs-12
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :awards, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-residencies.panel-heading role='tab' data-toggle='collapse' href='#collapse-residencies'
                 h4.panel-title
@@ -56,7 +56,7 @@
                     .col-xs-12
                       br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :residencies, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-experience.panel-heading role='tab' data-toggle='collapse' href='#collapse-experience'
                 h4.panel-title
@@ -72,7 +72,7 @@
                     .col-xs-12
                       br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :experiences, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-exhibition.panel-heading role='tab' data-toggle='collapse' href='#collapse-exhibition'
                 h4.panel-title
@@ -88,7 +88,7 @@
                     .col-xs-12
                       br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :exhibitions, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-bibliography.panel-heading role='tab' data-toggle='collapse' href='#collapse-bibliography'
                 h4.panel-title
@@ -105,7 +105,7 @@
                       br
                       br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :bibliographies, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-publications.panel-heading role='tab' data-toggle='collapse' href='#collapse-publications'
                 h4.panel-title
@@ -122,7 +122,7 @@
                       br
                       br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :publications, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-collections.panel-heading role='tab' data-toggle='collapse' href='#collapse-collections'
                 h4.panel-title
@@ -138,7 +138,7 @@
                     .col-xs-12
                       br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :collections, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-memberships.panel-heading role='tab' data-toggle='collapse' href='#collapse-memberships'
                 h4.panel-title
@@ -154,7 +154,7 @@
                     .col-xs-12
                       br
                       = link_to_add_association fa_icon('plus').html_safe + ' add', user, :memberships, class: 'btn btn-default button-link pull-right'
-            hr
+            hr.accordion-hr
             .panel.panel-default
               #heading-media.panel-heading role='tab' data-toggle='collapse' href='#collapse-media'
                 h4.panel-title
