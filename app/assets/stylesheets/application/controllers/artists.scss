@@ -5,6 +5,18 @@ body.artists-show, body.artists-index {
 
   #network, #pages { color: $light-grey; }
 
+  .btn-user-action {
+    color: #a41b1b;
+  }
+
+  .btn-user-connected {
+    color: #7d6b67;
+  }
+
+  .btn-user-action:hover {
+    color: #c69898 ;
+  }
+
 }
 
 body.artists-show, body.professionals-show {

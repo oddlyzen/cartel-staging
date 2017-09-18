@@ -1,9 +1,9 @@
 .cta
   - if current_user.id == connection.id
-    = link_to 'Edit Profile', edit_my_profile_path, class: 'btn btn-primary'
+    = link_to 'Edit Profile', edit_my_profile_path, class: 'btn-user-action'
   - elsif current_user.friends_with? connection
-    .btn.btn-primary Already In Your Network
+    .btn.btn-primary Connected
   - elsif current_user.pending_friends.exists? connection.id
-    = link_to 'Connection Request Sent', my_connections_path, class: 'btn btn-primary'
+    = link_to 'Connected', my_connections_path, class: 'btn-user-connected'
   - else
-    = link_to 'Add To Network', my_connections_path(id: connection), method: :post, class: 'btn btn-primary'
+    = link_to 'Add To Network', my_connections_path(id: connection), method: :post, class: 'btn-user-action'
