@@ -20,6 +20,10 @@ body.registrations-new, body.registrations-finish-signup {
     margin-bottom: 50px;
   }
 
+  h3 {
+    font-family: $font-heading;
+  }
+
   input:focus, {
     outline: none;
   }

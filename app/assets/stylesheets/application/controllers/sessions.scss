@@ -3,7 +3,10 @@ body.sessions {
   .logo{
     margin-top: 295px;
     h1 { font-size: 150px; }
-    h3 { font-size: 39px; }
+    h3 {
+      font-size: 39px;
+      font-family: $font-heading;
+    }
   }
 
   form.new_login_form {
