@@ -2,13 +2,25 @@
   .card
     header
       = link_to professional_path(professional)  do
-        .row
-          .col-xs-12
-            = image_tag profile_image_url(professional,120,120, 'crop'), size:"120x120", :class => "img_responsive"
-        .row
-          .col-xs-12
-            h3.artist_name = professional.full_name
-            h4.artist_based = professional.display_based_in
+        .card-back-facing.hidden
+          .row
+            .col-xs-12
+              h2 SPECIALTIES
+              p = professional.tag_list(:specialisations)
+          br
+          .row
+            .col-xs-12
+              h2 SERVICES
+              p = professional.tag_list(:services)
+
+        .card-front-facing
+          .row
+            .col-xs-12
+              = image_tag profile_image_url(professional,120,120, 'crop'), size:"120x120", :class => "img_responsive"
+          .row
+            .col-xs-12
+              h3.artist_name = professional.full_name.upcase
+              h4.artist_based = professional.display_based_in
     footer
       .networking
         = render 'networks/call_to_action', connection: professional

@@ -11,6 +11,30 @@ body.professionals-index {
 
 body.professionals-index {
 
+  .card:hover {
+    header {
+      position: relative;
+
+      .card-front-facing {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.1;
+      }
+
+      .card-back-facing {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block !important;
+      }
+    }
+  }
+
   img.img_responsive {
     border-radius: 100px;
   }
