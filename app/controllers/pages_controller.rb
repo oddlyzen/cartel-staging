@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   layout :set_layout
 
   def about
+    @form = InterestForm.new
   end
 
   def contact_us

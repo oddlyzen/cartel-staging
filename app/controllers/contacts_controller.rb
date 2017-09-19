@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  JS_ASSETS = %w(application contacts).freeze
 
   def interest
     @form = InterestForm.new(interest_params)
@@ -6,8 +7,8 @@ class ContactsController < ApplicationController
       ContactMailer.interest(interest_params).deliver_later
       redirect_to root_path, notice: 'Thank you for your interest. We will get back to you shortly'
     else
-      flash[:error] = @form.errors.full_messages
-      redirect_to about_path
+      flash[:error] = @form.errors.full_messages.to_sentence
+      render 'pages/about'
     end
   end
 

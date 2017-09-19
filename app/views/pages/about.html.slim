@@ -16,12 +16,12 @@
           br
 
       .col-xs-12.col-sm-12.col-md-6
-        = simple_form_for InterestForm.new, url: interest_path do |f|
+        = simple_form_for @form, url: interest_path do |f|
           = f.input :title, label: false, placeholder: 'Title *', class: 'form-control'
           = f.input :name, label: false, placeholder: 'Name *', class: 'form-control'
           = f.input :email, label: false, placeholder: 'Email *', class: 'form-control'
           = f.input :interest, as: :select, collection: ['Artist', 'Art Professional', 'Collector', 'Other'], prompt: 'Choose Your Interest *', label: false, placeholder: 'Interest *', class: 'form-control'
-          .about-us-attachment.hidden
+          .about-us-attachment class=('hidden' if @form.interest.in?(["Collector", "Other"]))
             p File Name:
             = f.filepicker_field :attachment,
               button_text: 'Upload Your CV',
