@@ -2,7 +2,7 @@
   - if current_user.id == connection.id
     = link_to 'Edit Profile', edit_my_profile_path, class: 'btn-user-action'
   - elsif current_user.friends_with? connection
-    .btn.btn-primary Connected
+    .btn-user-connected Connected
   - elsif current_user.pending_friends.exists? connection.id
     = link_to 'Connected', my_connections_path, class: 'btn-user-connected'
   - else
