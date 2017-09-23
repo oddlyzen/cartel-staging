@@ -70,25 +70,6 @@ body.companies-show {
     border-right: 3px solid $white;
   }
 
-  .card {
-    @include make-xs-column(4);
-
-    margin-bottom: 30px;
-
-    h6, p { margin: 0px; }
-
-    h6 {
-      font-family: $font-heading;
-      letter-spacing: 1.5px;
-      font-size: 16px;
-      color: $dark-grey;
-    }
-
-    .details {
-      margin-top: 10px;
-    }
-  }
-
   .company-details {
     @include no-style;
 
@@ -117,6 +98,22 @@ body.companies-show {
 }
 
 body.companies-index {
+
+  a:hover { text-decoration: none; }
+
+  #network, #pages { color: $light-grey; }
+
+  .btn-user-action {
+    color: #a41b1b;
+  }
+
+  .btn-user-connected {
+    color: #7d6b67;
+  }
+
+  .btn-user-action:hover {
+    color: #c69898 ;
+  }
 
   .img-sm {
     border-radius: 50px;

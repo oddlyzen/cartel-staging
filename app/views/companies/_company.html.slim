@@ -1,12 +1,21 @@
-.col-xs-12.col-md-4
-  .card.organisation
+.col-xs-12.col-md-3.col-lg-3.text-center
+  .card
     header
       = link_to company_path(company) do
         .row
-          .col-xs-4
-            .img-sm
-              = image_tag company.image_url
-
-          .col-xs-8.right-card.text-center
+          .col-xs-12
+            = image_tag company.image_url, width: 120, height: 120
+        .row
+          .col-xs-12
             h3.organisation_name = company.name
-            p.organisation_location = company.location
+            h4.organisation_location = company.location
+    footer
+      .networking
+        - if current_user == company.owner
+          = link_to 'Edit', edit_my_company_path(company), class: 'btn-user-action'
+        - else
+          - if current_user.following_companies.collect(&:id).include?(company.id)
+            = link_to 'Unfollow', unfollow_company_path(company), method: :patch, class: 'btn-user-action-connected'
+          - else
+            = link_to 'Follow', follow_company_path(company), method: :patch, class: 'btn-user-action'
+
