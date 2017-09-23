@@ -34,11 +34,9 @@ section
       #about_us.tab-pane.active role="tabpanel"
         p = @company.about_us.presence || '-'
       #events.tab-pane role="tabpanel"
-        .row
-          = render partial: 'events', collection: @company.events
+        = render partial: 'events'
       #opportunities.tab-pane role="tabpanel"
-        .row
-          = render partial: 'opportunities', collection: @company.events
+        = render partial: 'opportunities'
   .col-xs-3.well
     ul.company-details
       li

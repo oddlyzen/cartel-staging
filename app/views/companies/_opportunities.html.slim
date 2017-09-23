@@ -1,0 +1,14 @@
+h1 Opportunities
+.row
+  .col-xs-12
+    #accordion.panel-group aria-multiselectable='true' role='tablist'
+      - @company.opportunities.each_with_index do |opportunity, index|
+        .panel.panel-default
+          .panel-heading role='tab' data-toggle='collapse' href="#collapse-opportunity-#{index}" id="heading-opportunity-#{index}"
+            h4.panel-title
+              a aria-controls="collapse-opportunity-#{index}" aria-expanded='true' data-parent='#accordion'
+                label = opportunity.title
+                .indicator.pull-right = opportunity.status.upcase
+          .panel-collapse.collapse aria-labelledby='heading-opportunity' role='tabpanel' id="collapse-opportunity-#{index}"
+            .panel-body
+              p = simple_format opportunity.description
