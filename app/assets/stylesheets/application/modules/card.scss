@@ -89,15 +89,13 @@ body.opportunities-index {
 
 }
 
-body.artists-index,
-body.companies-index,
-body.my-companies-index {
+body.artists-index {
   .card {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     border-radius: 3px;
-    max-height: 274px;
+    max-height: 340px;
     max-width: 13em;
     margin: 20px auto;
     background-color: #f7f7f7;
@@ -156,6 +154,107 @@ body.my-companies-index {
     > footer {
       .networking {
         margin-top: 14px;
+      }
+    }
+
+    > nav {
+      font-family: $font-body-regular;
+
+      .col-xs-12 > ul {
+        @include no-style();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > li {
+
+          > .btn:only-of-type { margin-right: 0px; }
+
+          > span {
+            padding-right: 5px;
+            padding-left: 5px;
+            color: $light-grey;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+body.companies-index,
+body.my-companies-index {
+  .card {
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 3px;
+    height: 310px;
+    max-width: 13em;
+    margin: 20px auto;
+    background-color: #f7f7f7;
+
+    .img-container {
+      width: 120px;
+      height: 120px;
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    > header {
+      height: 200px;
+
+      h3 {
+        font-family: $font-body-regular;
+        letter-spacing: 10%;
+        font-size: 14px;
+        line-height: 25px;
+      }
+      h3.artist_name {
+        margin-bottom: 0px;
+      }
+      h4.artist_based{
+        letter-spacing: 10%;
+        margin-top: 0px;
+        font-size: 12px;
+      }
+
+      p {
+        font-family: $font-body-light;
+        font-size: 12px;
+        margin: 0px;
+      }
+    }
+
+    > article {
+      min-height: 130px;
+
+      p {
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+
+      ul {
+        @include inline-list();
+        max-height: 70px;
+
+        li.label {
+          overflow: hidden;
+          margin: 0px 3px 3px 0px;
+          padding: 10px;
+          background-color: $white;
+          color: $brand-primary;
+        }
+      }
+    }
+
+    > hr {
+      margin-top: 5px;
+    }
+
+    > footer {
+      .networking {
+        margin-top: 54px;
       }
     }
 

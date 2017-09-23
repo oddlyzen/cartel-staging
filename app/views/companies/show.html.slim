@@ -1,10 +1,10 @@
 section
-  .row
+  .row.well
     .col-md-6
       .img-container
         = image_tag @company.image_url
     .col-md-6
-      h1.text-right = @company.name
+      h1.text-right.company-title = @company.name
       h4.text-right = @company.organization_types.join(', ')
       h4.text-right = @company.location
       h4.text-right = "Established #{@company.established_in.year}"
@@ -17,26 +17,29 @@ section
             li = link_to 'Unfollow', unfollow_company_path(@company), method: :patch, class: 'btn btn-default'
           - else
             li = link_to 'Follow', follow_company_path(@company), method: :patch, class: 'btn btn-default'
-  hr
 .row
-  .col-xs-9
-    ul.tab-lists
+  .col-xs-2.well
+    ul.tab-lists.company-navigation
       li.active role="presentation"
-        a aria-controls="home" data-toggle="tab" href="#artists" role="tab" Artists
-      li role="presentation"
-        a aria-controls="profile" data-toggle="tab" href="#professionals" role="tab" Professionals
-      li role="presentation"
-        a aria-controls="messages" data-toggle="tab" href="#about_us" role="tab" About Us
+        h2
+          a aria-controls="home" data-toggle="tab" href="#about_us" role="tab" About Us
+      li
+        h2
+          a aria-controls="home" data-toggle="tab" href="#events" role="tab" Events
+      li
+        h2
+          a aria-controls="home" data-toggle="tab" href="#opportunities" role="tab" Opportunities
+  .col-xs-7
     .tab-content
-      #artists.tab-pane.active role="tabpanel"
-        .row
-          = render partial: 'artist', collection: @company_presenter.artists, as: :user
-      #professionals.tab-pane role="tabpanel"
-        .row
-          = render partial: 'professional', collection: @company_presenter.professionals_with_experience, as: :user_map
-      #about_us.tab-pane role="tabpanel"
+      #about_us.tab-pane.active role="tabpanel"
         p = @company.about_us.presence || '-'
-  .col-xs-3
+      #events.tab-pane role="tabpanel"
+        .row
+          = render partial: 'events', collection: @company.events
+      #opportunities.tab-pane role="tabpanel"
+        .row
+          = render partial: 'opportunities', collection: @company.events
+  .col-xs-3.well
     ul.company-details
       li
         h2 Address
