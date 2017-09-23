@@ -10,6 +10,7 @@ class Company < ActiveRecord::Base
   has_many :approved_members, -> { where company_memberships: { state: 1 } }, through: :company_memberships, source: :user
 
   has_many :events
+  has_many :opportunities
 
   has_many :company_followers
   has_many :followers, through: :company_followers, source: :user
