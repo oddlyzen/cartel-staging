@@ -182,6 +182,85 @@ body.artists-index {
   }
 }
 
+body.events-index {
+ .card {
+   min-height: 180px;
+   min-width: 300px;
+   padding: 15px;
+   border-radius: 3px;
+   margin: 10px auto;
+
+   .img-container {
+      width: 110px;
+      height: 180px;
+      display: inline-block;
+      margin: -15px;
+      background-size: cover !important;
+   }
+
+   > header {
+       height: 100px;
+
+       .tagline {
+         margin-top: 30px;
+       }
+
+       img {
+         width: 40%;
+         height: auto;
+       }
+
+       // h3.event_name = event.name
+       // h4.event_location = event.location
+       // h4.event_company = event.company.try(:name)
+       // h4.event_type = event.event_type
+       // h4.event_date = "#{event.start_date} - #{event.end_date}"
+
+       h3.event_name {
+         font-family: $font-body-regular;
+         font-size: 14px;
+         letter-spacing: 1px;
+         margin-top: 5px;
+         margin-bottom: 0px;
+         text-transform: uppercase;
+       }
+
+       h4.event_location {
+         font-family: $font-body-regular;
+         font-size: 12px;
+         margin-top: 0px;
+       }
+
+       h4.event_company {
+        font-family: $font-body-regular;
+        font-size: 11px;
+        margin-top: 0px;
+        text-transform: uppercase;
+       }
+
+       h4.event_type {
+        font-family: $font-body-regular;
+        font-size: 10px;
+        margin-top: 0px;
+       }
+
+       h4.event_date {
+        font-family: $font-body-semibold;
+        font-size: 11px;
+        margin-top: 0px;
+       }
+
+       .right-card{
+         padding-left: 30px;
+       }
+   }
+   > article {
+     min-height: 50px;
+   }
+ }
+}
+
+
 body.opportunities-index {
   .card {
     min-height: 150px;
