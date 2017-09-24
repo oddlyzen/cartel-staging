@@ -1,4 +1,3 @@
-h1 Opportunities
 .row
   .col-xs-12
     #accordion.panel-group aria-multiselectable='true' role='tablist'
@@ -7,8 +6,8 @@ h1 Opportunities
           .panel-heading role='tab' data-toggle='collapse' href="#collapse-opportunity-#{opportunity.id}" id="heading-opportunity-#{opportunity.id}"
             h4.panel-title
               a aria-controls="collapse-opportunity-#{opportunity.id}" aria-expanded='true' data-parent='#accordion'
-                label = opportunity.title
-                .indicator.pull-right = opportunity.status.upcase
+                label.opportunity-title = opportunity.title
+                .indicator.pull-right.opportunity-status = opportunity.status
           .panel-collapse.collapse aria-labelledby='heading-opportunity' role='tabpanel' id="collapse-opportunity-#{opportunity.id}"
             .panel-body
               p = simple_format opportunity.description

@@ -29,7 +29,7 @@ section
       li.opportunities-tab
         h2
           a aria-controls="home" data-toggle="tab" href="#opportunities" role="tab" Opportunities
-  .col-xs-7
+  .col-xs-8
     .tab-content
       #about_us.tab-pane.active role="tabpanel"
         p = @company.about_us.presence || '-'
@@ -37,7 +37,7 @@ section
         = render partial: 'events'
       #opportunities.tab-pane role="tabpanel"
         = render partial: 'opportunities'
-  .col-xs-3.well
+  .col-xs-2.well
     ul.company-details
       li
         h2 Address

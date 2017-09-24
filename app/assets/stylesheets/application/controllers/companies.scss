@@ -13,7 +13,7 @@ body.companies-show {
 
   p {
     font-family: $font-body-regular;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     color: $dark-grey;
   }
@@ -46,7 +46,10 @@ body.companies-show {
     }
 
   }
-
+  .opportunity-title, .opportunity-status {
+    font-family: $font-body-regular;
+    text-transform: uppercase;
+  }
   .tab-lists {
     @include no-style;
 
@@ -65,8 +68,8 @@ body.companies-show {
     }
   }
 
-  .row > .col-xs-8 {
-    border-right: 3px solid $white;
+  .company-navigation {
+    margin: 0;
   }
 
   .company-details {
@@ -78,6 +81,7 @@ body.companies-show {
     li { margin-bottom: 30px; }
   }
   .social-links {
+      text-align: center;
       margin-top: 10px;
       @include inline-list;
 

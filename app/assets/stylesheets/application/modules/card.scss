@@ -273,14 +273,15 @@ body.my-companies-index {
 
       h3 {
         font-family: $font-body-regular;
+        text-transform: uppercase;
         letter-spacing: 10%;
         font-size: 14px;
         line-height: 25px;
       }
-      h3.artist_name {
+      h3.organisation_name {
         margin-bottom: 0px;
       }
-      h4.artist_based{
+      h4.organisation_location{
         letter-spacing: 10%;
         margin-top: 0px;
         font-size: 12px;
