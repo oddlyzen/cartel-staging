@@ -182,6 +182,73 @@ body.artists-index {
   }
 }
 
+body.opportunities-index {
+  .card {
+    min-height: 150px;
+    min-width: 320px;
+    padding: 15px;
+    border-radius: 3px;
+    margin: 10px auto;
+
+    .img-container {
+      width: 120px;
+      height: 120px;
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    > header {
+        height: 100px;
+
+        .tagline {
+          margin-top: 30px;
+        }
+
+        img {
+          width: 40%;
+          height: auto;
+        }
+
+        h3.opportunity_name {
+          font-family: $font-body-regular;
+          font-size: 14px;
+          letter-spacing: 1px;
+          margin-top: 5px;
+          margin-bottom: 0px;
+          text-align: left;
+        }
+
+        h3.organisation_name {
+          font-family: $font-body-regular;
+          font-size: 14px;
+          letter-spacing: 1px;
+          margin-top: 5px;
+          margin-bottom: 0px;
+          text-align: right;
+        }
+
+        h4.organisation_location {
+          font-family: $font-body-regular;
+          font-size: 12px;
+          margin-top: 0px;
+          text-align: right;
+        }
+
+        p.opportunity_description {
+          font-family: $font-body-regular;
+          font-size: 10px;
+          text-align: left;
+        }
+        .right-card{
+          padding-left: 30px;
+        }
+    }
+    > article {
+      min-height: 50px;
+    }
+  }
+}
+
 body.companies-index,
 body.my-companies-index {
   .card {

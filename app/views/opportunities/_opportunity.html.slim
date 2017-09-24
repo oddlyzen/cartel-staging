@@ -1,7 +1,17 @@
-.col-xs-12.col-md-3.col-lg-3.text-center
-  .card
+.col-xs-12.col-md-4.col-lg-4.text-center
+  .card.well
     header
       = link_to company_path(opportunity.company, anchor: "opportunities-#{opportunity.id}") do
         .row
+          / .col-xs-6
+          /   .img-container
+          /     = image_tag opportunity.company.image_url
           .col-xs-12
-            h3.artist_name = opportunity.title
+            .row
+              .col-xs-4
+                h3.opportunity_name = opportunity.title
+              .col-xs-8
+                h3.organisation_name = opportunity.company.name
+                h4.organisation_location = opportunity.company.location
+
+            p.opportunity_description = opportunity.description[0..100] + '...'
