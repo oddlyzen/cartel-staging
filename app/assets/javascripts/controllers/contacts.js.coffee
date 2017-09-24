@@ -1,4 +1,4 @@
-Controllers['contacts'] = -> class Pages
+Controllers['contacts'] = -> class Contacts
   interest: (action) ->
     window.aboutPageAttachmentUpload = (file) ->
       $('.about-us-attachment p').text('File Name: ' + file.fpfile.filename)

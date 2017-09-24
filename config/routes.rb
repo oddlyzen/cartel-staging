@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'about', to: 'pages#about'
+  get 'interest', to: 'pages#about'
   get 'contact-us', to: 'pages#contact_us'
   get 'privacy-policy', to: 'pages#privacy_policy'
   get 'terms-and-conditions', to: 'pages#terms_and_conditions'

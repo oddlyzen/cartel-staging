@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  JS_ASSETS = %w(application companies).freeze
+
   before_action :require_login
   before_action :prepare_company, only: [:show, :join, :leave, :follow, :unfollow]
 

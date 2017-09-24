@@ -4,11 +4,13 @@ h1 Opportunities
     #accordion.panel-group aria-multiselectable='true' role='tablist'
       - @company.opportunities.each_with_index do |opportunity, index|
         .panel.panel-default
-          .panel-heading role='tab' data-toggle='collapse' href="#collapse-opportunity-#{index}" id="heading-opportunity-#{index}"
+          .panel-heading role='tab' data-toggle='collapse' href="#collapse-opportunity-#{opportunity.id}" id="heading-opportunity-#{opportunity.id}"
             h4.panel-title
-              a aria-controls="collapse-opportunity-#{index}" aria-expanded='true' data-parent='#accordion'
+              a aria-controls="collapse-opportunity-#{opportunity.id}" aria-expanded='true' data-parent='#accordion'
                 label = opportunity.title
                 .indicator.pull-right = opportunity.status.upcase
-          .panel-collapse.collapse aria-labelledby='heading-opportunity' role='tabpanel' id="collapse-opportunity-#{index}"
+          .panel-collapse.collapse aria-labelledby='heading-opportunity' role='tabpanel' id="collapse-opportunity-#{opportunity.id}"
             .panel-body
               p = simple_format opportunity.description
+              - if opportunity.created_by == current_user
+                = link_to "Edit Opportunity", edit_opportunity_path(opportunity), class: "btn btn-default"
