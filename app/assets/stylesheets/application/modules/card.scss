@@ -3,7 +3,8 @@ body.networks-index,
 body.my-connections-index,
 body.organisations-index,
 body.events-index,
-body.opportunities-index {
+body.opportunities-index,
+.company-events-index {
 
   .card {
     padding: 20px;
@@ -182,7 +183,8 @@ body.artists-index {
   }
 }
 
-body.events-index {
+body.events-index,
+.company-events-index, {
  .card {
    min-height: 180px;
    min-width: 300px;

@@ -1,0 +1,17 @@
+.company-events-index
+  .row
+    - @company.events.each do |event|
+      .col-xs-12.col-md-6.col-lg-6.text-center
+        .card
+          header
+            = link_to event_path(event) do
+              .row
+                .col-xs-4
+                  .img-container
+                    = image_tag event.cover_image_url
+                .col-xs-8
+                  h3.event_name = event.name
+                  h4.event_location = event.location
+                  h4.event_company = event.company.try(:name)
+                  h4.event_type = event.event_type
+                  h4.event_date = "#{event.start_date} - #{event.end_date}"
