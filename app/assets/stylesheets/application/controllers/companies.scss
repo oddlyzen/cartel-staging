@@ -69,7 +69,33 @@ body.companies-show {
   }
 
   .company-navigation {
-    margin: 0;
+
+    h2 a {
+      font-family: $font-body-regular;
+      font-size: 18px;
+      color: $secondary-color;
+      text-transform: uppercase;
+    }
+
+    .tab-lists {
+      margin: 0;
+    }
+  }
+
+  .well {
+    border: 1px !important;
+  }
+
+  .company-header {
+    h4 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+  #about_us {
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .company-details {
@@ -79,6 +105,15 @@ body.companies-show {
     // border-left: 3px solid $white;
 
     li { margin-bottom: 30px; }
+    h2 {
+      color: $brand-primary;
+      font-size: 21px;
+      margin-bottom: 0px;
+    }
+
+    p {
+      margin-bottom: 0px;
+    }
   }
   .social-links {
       text-align: center;

@@ -1,5 +1,5 @@
 section
-  .row.well
+  .row.company-header.well
     .col-md-6
       .img-container
         = image_tag @company.image_url
@@ -11,15 +11,16 @@ section
       ul.actions
         - if current_user == @company.owner
           li = link_to 'Edit', edit_my_company_path(@company), class: 'btn btn-default'
-          li = link_to 'Manage', my_company_path(@company), class: 'btn btn-default'
+          - if false
+            li = link_to 'Manage', my_company_path(@company), class: 'btn btn-default'
         - else
           - if current_user.following_companies.collect(&:id).include?(@company.id)
             li = link_to 'Unfollow', unfollow_company_path(@company), method: :patch, class: 'btn btn-default'
           - else
             li = link_to 'Follow', follow_company_path(@company), method: :patch, class: 'btn btn-default'
 .row
-  .col-xs-2.well
-    ul.tab-lists.company-navigation
+  .col-xs-2.company-navigation.well
+    ul.tab-lists
       li.about-us-tab.active role="presentation"
         h2
           a aria-controls="home" data-toggle="tab" href="#about_us" role="tab" About Us
@@ -51,12 +52,15 @@ section
         h2 Opening Times
         p = @company.opening_hours
       li
-        h2.text-left Contact
+        h2 Contact
         p = @company.phone
         p = @company.email
       li
-        h2 Social Media
         ul.social-links.col-xs-12
-          li = link_to_if @company&.facebook, fa_icon('facebook-official'), @company&.facebook
-          li = link_to_if @company&.twitter, fa_icon('twitter'), @company&.twitter
-          li = link_to_if @company&.instagram, fa_icon('instagram'), @company&.instagram
+          - if @company&.facebook.present?
+            li = link_to_if @company&.facebook, fa_icon('facebook-official'), @company&.facebook
+          - if @company&.twitter.present?
+            li = link_to_if @company&.twitter, fa_icon('twitter'), @company&.twitter
+
+          - if @company&.instagram.present?
+            li = link_to_if @company&.instagram, fa_icon('instagram'), @company&.instagram
