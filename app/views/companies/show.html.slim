@@ -19,7 +19,7 @@ section
           - else
             li = link_to 'Follow', follow_company_path(@company), method: :patch, class: 'btn btn-default'
 .row
-  .col-xs-2.company-navigation.well
+  .col-xs-12.col-md-2.company-navigation.well
     ul.tab-lists
       li.about-us-tab.active role="presentation"
         h2
@@ -30,7 +30,7 @@ section
       li.opportunities-tab
         h2
           a aria-controls="home" data-toggle="tab" href="#opportunities" role="tab" Opportunities
-  .col-xs-8
+  .col-xs-12.col-md-8
     .tab-content
       #about_us.tab-pane.active role="tabpanel"
         p = @company.about_us.presence || '-'
@@ -38,7 +38,7 @@ section
         = render partial: 'events'
       #opportunities.tab-pane role="tabpanel"
         = render partial: 'opportunities'
-  .col-xs-2.well
+  .col-xs-12.col-md-2.well
     ul.company-details
       li
         h2 Address
