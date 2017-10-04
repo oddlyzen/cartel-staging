@@ -186,21 +186,22 @@ body.artists-index {
 body.events-index,
 .company-events-index, {
  .card {
-   min-height: 180px;
-   min-width: 300px;
+   min-height: 280px;
+   min-width: 200px;
    padding: 15px;
    border-radius: 3px;
    margin: 10px auto;
 
    .img-container {
-      width: 110px;
-      height: 180px;
+      width: 200px;
+      height: 100px;
       display: inline-block;
       margin: -15px;
       background-size: cover !important;
    }
 
    > header {
+
        height: 100px;
 
        .tagline {
@@ -222,7 +223,7 @@ body.events-index,
          font-family: $font-body-regular;
          font-size: 14px;
          letter-spacing: 1px;
-         margin-top: 5px;
+         margin-top: 15px;
          margin-bottom: 0px;
          text-transform: uppercase;
        }
@@ -255,6 +256,7 @@ body.events-index,
        .right-card{
          padding-left: 30px;
        }
+
    }
    > article {
      min-height: 50px;
