@@ -11,44 +11,41 @@
 
             - if @event.event_type == "Exhibition" && @my_participation.present? && !@my_participation.added_to_profile?
               = link_to "Add To Profile", add_to_profile_event_path(@event), method: :patch, class: "btn btn-primary"
-
-            h1.event-name.center
-              = @event.name
-            h3.event-dates.center
-              = "#{@event.start_date.strftime('%e %b %Y')} - #{@event.end_date.strftime('%e %b %Y')}"
-    hr
     .row
-      .col-xs-8
-        h1 About
+      .col-xs-12.col-md-9
+        h1.event-name
+          = @event.name
+          br
+          = "#{@event.start_date.strftime('%d.%m.%Y')} - #{@event.end_date.strftime('%d.%m.%Y')}"
+        h3.event-type
+          = @event.event_type
+        br
         p
           = @event.description
-      .col-xs-4
-        h2 Address & Website
-        = "#{@event.address_1} #{@event.address_2}"
-        br
-        = @event.location
-        br
-        = @event.postcode
-        br
-        = @event.website_link
-        hr
+      .col-xs-12.col-md-3.well
+        ul.event-details
+          li
+            h2 Address & Website
+            p = "#{@event.address_1} #{@event.address_2}"
+            p = @event.location
+            p = @event.postcode
+            p = @event.website_link
+          li
+            h2 Opening Times
+            - @event.opening_times.each do |opening_time|
+              p = opening_time.to_s
+          li
+            h2 Social Media
+          li
+            ul.social-links.col-xs-12
+              - if @event.facebook_link.present?
+                li = link_to " <i class='fa fa-facebook'></i> ".html_safe, @event.facebook_link
 
-        h2 Opening Times
-        - @event.opening_times.each do |opening_time|
-          = opening_time.to_s
-          br
-        hr
+              - if @event.instagram_link.present?
+                li = link_to " <i class='fa fa-instagram'></i> ".html_safe, @event.instagram_link
 
-        h2 Social Media
-        h3
-          - if @event.facebook_link.present?
-            = link_to " <i class='fa fa-facebook'></i> ".html_safe, @event.facebook_link
-
-          - if @event.instagram_link.present?
-            = link_to " <i class='fa fa-instagram'></i> ".html_safe, @event.instagram_link
-
-          - if @event.twitter_link.present?
-            = link_to " <i class='fa fa-twitter'></i> ".html_safe, @event.twitter_link
+              - if @event.twitter_link.present?
+                li = link_to " <i class='fa fa-twitter'></i> ".html_safe, @event.twitter_link
 
 
 
