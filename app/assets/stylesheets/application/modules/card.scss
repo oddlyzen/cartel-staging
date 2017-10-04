@@ -9,7 +9,7 @@ body.opportunities-index,
   .card {
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 2px solid black;
     border-radius: 3px;
     max-height: 340px;
     max-width: 13em;
@@ -94,7 +94,7 @@ body.artists-index {
   .card {
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 2px solid black;
     border-radius: 3px;
     max-height: 340px;
     max-width: 13em;
@@ -193,7 +193,7 @@ body.events-index,
    margin: 10px auto;
 
    .img-container {
-      width: 200px;
+      width: 196px;
       height: 100px;
       display: inline-block;
       margin: -15px;
@@ -212,12 +212,6 @@ body.events-index,
          width: 40%;
          height: auto;
        }
-
-       // h3.event_name = event.name
-       // h4.event_location = event.location
-       // h4.event_company = event.company.try(:name)
-       // h4.event_type = event.event_type
-       // h4.event_date = "#{event.start_date} - #{event.end_date}"
 
        h3.event_name {
          font-family: $font-body-regular;
@@ -337,7 +331,7 @@ body.my-companies-index {
   .card {
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 2px solid black;
     border-radius: 3px;
     height: 310px;
     max-width: 13em;
@@ -438,7 +432,7 @@ body.professionals-index {
   .card {
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 2px solid black;
     border-radius: 3px;
     max-height: 340px;
     max-width: 13em;
