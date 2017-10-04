@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923213307) do
+ActiveRecord::Schema.define(version: 20171004191557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -510,6 +510,16 @@ ActiveRecord::Schema.define(version: 20170923213307) do
     t.date     "action_date"
     t.date     "name_edit_date"
     t.integer  "user_with_same_tags", default: [],              array: true
+  end
+
+  create_table "sub_events", force: :cascade do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "description"
+    t.integer  "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "subjects", force: :cascade do |t|

@@ -39,3 +39,14 @@ h3 Participants
     = link_to_add_association fa_icon('plus').html_safe + ' add', f, :event_participations, class: 'btn btn-default pull-right'
   hr
 
+h3 Sub-Events
+.panel-body
+  .row.cocoon-container
+  = f.fields_for :sub_events do |p|
+    = render 'sub_event_fields', f: p
+  .row
+    br
+    .col-xs-12
+    = link_to_add_association fa_icon('plus').html_safe + ' add', f, :sub_events, class: 'btn btn-default pull-right'
+  hr
+
