@@ -78,3 +78,14 @@
 .cover-transparent {
   opacity: 0.5;
 }
+
+.events-edit, .events-new {
+  #accordion {
+    .section-name {
+      margin: 0;
+    }
+    .fa-chevron-down {
+      margin-top: -18px !important;
+    }
+  }
+}
