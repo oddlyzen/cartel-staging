@@ -7,7 +7,7 @@
             a aria-controls="collapse-event-basic-info" aria-expanded='true' data-parent='#accordion'
             p.section-name Basic Information
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
-        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-basic-info" class=(@event.new_record? ? 'in' : '')
+        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-basic-info" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.input :name, label: "Name of Event *"
             = f.input :company_id, collection: current_user.companies, label: "Organisation *"
@@ -27,7 +27,7 @@
             a aria-controls="collapse-event-logistics" aria-expanded='true' data-parent='#accordion'
             p.section-name Logistics
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
-        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-logistics" class=(@event.new_record? ? 'in' : '')
+        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-logistics" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.input :address_1, label: "Address Line 1 *"
             = f.input :address_2, label: "Address Line 2"
@@ -44,7 +44,7 @@
             a aria-controls="collapse-event-opening-times" aria-expanded='true' data-parent='#accordion'
             p.section-name Opening Hours
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
-        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-opening-times" class=(@event.new_record? ? 'in' : '')
+        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-opening-times" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.fields_for :opening_times do |ot|
               = ot.hidden_field :weekday
@@ -60,7 +60,7 @@
             a aria-controls="collapse-event-description" aria-expanded='true' data-parent='#accordion'
             p.section-name Description
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
-        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-description" class=(@event.new_record? ? 'in' : '')
+        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-description" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.input :description, label: "Description *"
 
@@ -73,7 +73,7 @@
             a aria-controls="collapse-event-extra-links" aria-expanded='true' data-parent='#accordion'
             p.section-name Extra Links
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
-        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-extra-links" class=(@event.new_record? ? 'in' : '')
+        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-extra-links" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.input :website_link
             = f.input :facebook_link
@@ -88,7 +88,7 @@
             a aria-controls="collapse-event-participations" aria-expanded='true' data-parent='#accordion'
             p.section-name Participations
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
-        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-participations" class=(@event.new_record? ? 'in' : '')
+        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-participations" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.fields_for :event_participations do |p|
               = render 'event_participation_fields', f: p
@@ -104,7 +104,7 @@
             a aria-controls="collapse-event-sub-events" aria-expanded='true' data-parent='#accordion'
             p.section-name Sub-Events
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
-        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-sub-events" class=(@event.new_record? ? 'in' : '')
+        .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-sub-events" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.fields_for :sub_events do |p|
                 = render 'sub_event_fields', f: p
