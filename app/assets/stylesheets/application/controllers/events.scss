@@ -36,10 +36,18 @@
 .event-details {
   @include no-style;
 
-  // padding-left: 50px;
-  // border-left: 3px solid $white;
+  li {
+    margin-bottom: 30px;
+  }
 
-  li { margin-bottom: 30px; }
+  li.event-company {
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+  }
+
   h2 {
     color: $brand-primary;
     font-size: 21px;

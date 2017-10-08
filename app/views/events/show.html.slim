@@ -29,6 +29,9 @@
               = render "sub_event", sub_event: sub_event
       .col-xs-12.col-md-3.well
         ul.event-details
+          li.event-company
+            = image_tag @event.company.image_url
+            h1 = @event.company.name
           li
             h2 Address & Website
             p = "#{@event.address_1} #{@event.address_2}"
@@ -40,7 +43,9 @@
             - @event.opening_times.each do |opening_time|
               p = opening_time.to_s
           li
-            h2 Social Media
+            h2 Contact
+            p = @event.company.email
+            p = @event.company.phone
           li
             ul.social-links.col-xs-12
               - if @event.facebook_link.present?
@@ -55,7 +60,7 @@
     .row.cards
       - @event.event_participations.joins(:user).where("users.role = ?", 1).each do |event_participation|
           = render "artist_card", artist: event_participation.user
-    h1 Professionals
+    h1 Team
     .row.cards
       - @event.event_participations.joins(:user).where("users.role = ?", 2).each do |event_participation|
           = render "professional_card", professional: event_participation.user
