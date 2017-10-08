@@ -54,7 +54,7 @@ class EventsController < ApplicationController
 
     if @event.update_attributes(event_params)
       flash[:success] = "#{@event.name} Updated Successfully!"
-      redirect_to events_path
+      redirect_to event_path(@event)
     else
       flash[:error] = @event.errors.full_messages.to_sentence
       render :edit

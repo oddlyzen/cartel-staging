@@ -5,6 +5,25 @@
   }
 }
 
+.sub_event_row {
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 3px solid #eeeeee;
+    width: 97%;
+  }
+
+  .sub_event_date {
+    text-align: right;
+  }
+}
+
 .event-name, .event-dates {
   font-family: $font-heading;
   font-size: 35px;
@@ -42,7 +61,7 @@
   a {
     position: relative;
     margin-right: 10px;
-    left: 430px;
+    left: 370px;
     bottom: 50px;
     font-size: 12px !important;
   }

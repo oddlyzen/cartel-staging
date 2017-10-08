@@ -1,0 +1,11 @@
+.col-xs-12.col-md-3.col-lg-3.text-center
+  .card-professional
+    header
+      = link_to professional_path(professional) do
+        .row
+          .col-xs-12
+            = image_tag profile_image_url(professional, 120, 120, 'crop'), :class => "img_responsive"
+        .row
+          .col-xs-12
+            h3.artist_name = professional.name.upcase
+            h4.artist_based = professional.based_location

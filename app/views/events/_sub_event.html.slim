@@ -1,0 +1,6 @@
+.row.sub_event_row
+  hr
+  .col-xs-8.sub_event_name
+    h1 = sub_event.name
+  .col-xs-4.sub_event_date
+    = "#{sub_event.start_date.strftime('%d.%m.%Y')} - #{sub_event.end_date.strftime('%d.%m.%Y')}"

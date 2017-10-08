@@ -22,6 +22,11 @@
         br
         p
           = @event.description
+        br
+        .row
+          .col-xs-12
+            - @event.sub_events.each do |sub_event|
+              = render "sub_event", sub_event: sub_event
       .col-xs-12.col-md-3.well
         ul.event-details
           li
@@ -46,7 +51,13 @@
 
               - if @event.twitter_link.present?
                 li = link_to " <i class='fa fa-twitter'></i> ".html_safe, @event.twitter_link
-
-
+    h1 Artists
+    .row.cards
+      - @event.event_participations.joins(:user).where("users.role = ?", 1).each do |event_participation|
+          = render "artist_card", artist: event_participation.user
+    h1 Professionals
+    .row.cards
+      - @event.event_participations.joins(:user).where("users.role = ?", 2).each do |event_participation|
+          = render "professional_card", professional: event_participation.user
 
 

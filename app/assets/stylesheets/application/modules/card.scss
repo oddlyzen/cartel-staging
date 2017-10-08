@@ -4,9 +4,10 @@ body.my-connections-index,
 body.organisations-index,
 body.events-index,
 body.opportunities-index,
+body.events-show,
 .company-events-index {
 
-  .card {
+  .card, .card-artist, .card-professional {
     padding: 20px;
     margin-bottom: 20px;
     border: 2px solid black;
@@ -92,8 +93,9 @@ body.opportunities-index,
 
 body.artists-index,
 body.networks-index,
+body.events-show,
 body.my-connections-index {
-  .card {
+  .card, .card-artist {
     padding: 20px;
     margin-bottom: 20px;
     border: 2px solid black;
@@ -102,6 +104,10 @@ body.my-connections-index {
     max-width: 13em;
     margin: 20px auto;
     background-color: #f7f7f7;
+
+    img.img_responsive {
+      border-radius: 100px;
+    }
 
     > header {
       height: 200px;
@@ -430,8 +436,9 @@ body.my-companies-index {
   }
 }
 
-body.professionals-index {
-  .card {
+body.professionals-index,
+body.events-show {
+  .card, .card-professional {
     padding: 20px;
     margin-bottom: 20px;
     border: 2px solid black;
@@ -440,6 +447,10 @@ body.professionals-index {
     max-width: 13em;
     margin: 20px auto;
     background-color: #f3ecec;
+
+    img.img_responsive {
+      border-radius: 100px;
+    }
 
     > header {
       height: 200px;

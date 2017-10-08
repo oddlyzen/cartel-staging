@@ -1,0 +1,11 @@
+.col-xs-12.col-md-3.col-lg-3.text-center
+  .card-artist
+    header
+      = link_to artist_path(artist) do
+        .row
+          .col-xs-12
+            = image_tag profile_image_url(artist, 120, 120, 'crop'), :class => "img_responsive"
+        .row
+          .col-xs-12
+            h3.artist_name = artist.name.upcase
+            h4.artist_based = artist.based_location
