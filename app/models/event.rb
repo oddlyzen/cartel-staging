@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   validates :event_type, presence: true
   validates :type_exhibition, presence: true, if: :exhibition_event?
   validates :type_other, presence: true, if: :other_event?
-  validates :city, :country, :location, :description, :start_date, :end_date, :address_1, :postcode, presence: true
+  validates :city, :country, :location, :description, :start_date, :address_1, :postcode, presence: true
   validates :company_id, presence: true
 
   def exhibition_event?
