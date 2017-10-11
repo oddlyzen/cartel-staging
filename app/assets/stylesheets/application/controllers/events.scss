@@ -81,6 +81,10 @@
 
 .events-edit, .events-new {
   #accordion {
+    .fields-row, .add-new-item-row {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
     .section-name {
       margin: 0;
     }

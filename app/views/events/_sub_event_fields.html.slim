@@ -1,5 +1,8 @@
-hr
-= f.input :name, label: "Name *"
-= f.input :description, label: "Description *"
-= f.input :start_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "Start Date *"
-= f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "End Date *"
+fieldset.nested-fields
+  = f.hidden_field :_destroy, value: false, class: "destroy-me"
+  hr
+  = f.input :name, label: "Name *"
+  = f.input :description, label: "Description *", input_html: { rows: 5 }
+  = f.input :start_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "Start Date *"
+  = f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "End Date *"
+  = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f

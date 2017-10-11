@@ -56,6 +56,10 @@ class EventsController < ApplicationController
       flash[:success] = "#{@event.name} Updated Successfully!"
       redirect_to event_path(@event)
     else
+      @event.event_participations.new if @event.event_participations.empty?
+      @event.sub_events.new if @event.sub_events.empty?
+      @participation_users = User.where("role = ? OR role = ?", 1, 2)
+
       flash[:error] = @event.errors.full_messages.to_sentence
       render :edit
     end
@@ -103,7 +107,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :event_type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :address_1, :address_2, :postcode, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :start_date, :end_date, :opening_times_attributes => [:id, :weekday, :start_time, :end_time], :event_participations_attributes => [:id, :involvement, :user_id], :sub_events_attributes => [:id, :name, :description, :start_date, :end_date])
+    params.require(:event).permit(:name, :event_type, :type_other, :type_exhibition, :cover_image_url, :location, :city, :country, :address_1, :address_2, :postcode, :description, :website_link, :facebook_link, :instagram_link, :twitter_link, :company_id, :start_date, :end_date, :opening_times_attributes => [:id, :weekday, :start_time, :end_time], :event_participations_attributes => [:id, :involvement, :user_id, :_destroy], :sub_events_attributes => [:id, :name, :description, :start_date, :end_date, :_destroy])
   end
 
 end

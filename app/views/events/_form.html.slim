@@ -15,7 +15,7 @@
             .type-other.hidden
               = f.input :type_other
             .type-exhibition class="#{'hidden' if @event.event_type != 'Exhibition'}"
-              = f.input :type_exhibition, label: "Type Exhibition *", collection: Exhibition::OPTIONS_FOR_CATEGORY, include_blank: true
+              = f.input :type_exhibition, label: "Type Exhibition *", collection: Event::EXHIBITION_TYPES, include_blank: true
             = f.input :start_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "Start Date *"
             = f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "End Date *"
 .row
@@ -62,7 +62,7 @@
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
         .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-description" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
-            = f.input :description, label: "Description *"
+            = f.input :description, label: "Description *", input_html: { rows: 10 }
 
 .row
   .col-xs-12
@@ -90,11 +90,13 @@
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
         .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-participations" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
-            = f.fields_for :event_participations do |p|
-              = render 'event_participation_fields', f: p
-            br
-            .col-xs-12
-            = link_to_add_association fa_icon('plus').html_safe + ' add', f, :event_participations, class: 'btn btn-default pull-right'
+            .row.cocoon-container.fields-row
+              = f.fields_for :event_participations do |p|
+                = render 'event_participation_fields', f: p
+            .row.add-new-item-row
+              br
+              .col-xs-12
+              = link_to_add_association fa_icon('plus').html_safe + ' add', f, :event_participations, class: 'btn btn-default pull-right'
 .row
   .col-xs-12
     #accordion.panel-group aria-multiselectable='true' role='tablist'
@@ -106,8 +108,10 @@
             i.fa.fa-chevron-down.pull-right aria-hidden="true"
         .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-sub-events" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
-            = f.fields_for :sub_events do |p|
-                = render 'sub_event_fields', f: p
-            br
-            .col-xs-12
-            = link_to_add_association fa_icon('plus').html_safe + ' add', f, :sub_events, class: 'btn btn-default pull-right'
+            .row.cocoon-container.fields-row
+              = f.fields_for :sub_events do |p|
+                  = render 'sub_event_fields', f: p
+            .row.add-new-item-row
+              br
+              .col-xs-12
+              = link_to_add_association fa_icon('plus').html_safe + ' add', f, :sub_events, class: 'btn btn-default pull-right'

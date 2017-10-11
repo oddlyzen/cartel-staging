@@ -4,7 +4,7 @@ class EventParticipation < ActiveRecord::Base
 
   has_many :event_notifications
 
-  validates :user, :involvement, presence: true
+  validates :involvement, presence: true, if: Proc.new { |e| e.user.present? }
 
   after_create :create_notification, if: Proc.new { |e| e.event.event_type == "Exhibition" }
 
