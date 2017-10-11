@@ -53,7 +53,7 @@
                 .closed-checkbox
                   = ot.label :closed, 'Closed?'
                   = ot.check_box :closed, class: "opening-time-closed"
-                .start-end-times
+                .start-end-times class="#{'hidden' if ot.object.closed? }"
                   = ot.input :start_time, as: :time, start: 0, :minute_step => 15
                   = ot.input :end_time, as: :time, start: 0, :minute_step => 15
 .row
