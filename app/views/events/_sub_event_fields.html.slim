@@ -4,5 +4,6 @@ fieldset.nested-fields
   = f.input :name, label: "Name *"
   = f.input :description, label: "Description *", input_html: { rows: 5 }
   = f.input :start_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "Start Date *"
-  = f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "End Date *"
+  = f.input :start_time, as: :time, start: 0, :minute_step => 15
+  = f.input :end_time, as: :time, start: 0, :minute_step => 15
   = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f

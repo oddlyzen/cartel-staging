@@ -2,5 +2,11 @@
   hr
   .col-xs-8.sub_event_name
     h1 = sub_event.name
-  .col-xs-4.sub_event_date
-    = "#{sub_event.start_date.strftime('%d.%m.%Y')} - #{sub_event.end_date.strftime('%d.%m.%Y')}"
+  .col-xs-2.sub_event_date
+    = "#{sub_event.start_date.strftime('%d.%m.%Y')}"
+  .col-xs-2.sub_event_time
+    = "#{sub_event.start_time.strftime('%H:%M')} - #{sub_event.end_time.strftime('%H:%M')}"
+.row.sub_event_row
+  br
+  .col-xs-12
+    = simple_format sub_event.description
