@@ -47,10 +47,15 @@
         .panel-collapse.collapse aria-labelledby='heading-event' role='tabpanel' id="collapse-event-opening-times" class=((@event.new_record? || @event.invalid?) ? 'in' : '')
           .panel-body
             = f.fields_for :opening_times do |ot|
-              = ot.hidden_field :weekday
-              h3 = Date::DAYNAMES[ot.object.weekday]
-              = ot.input :start_time, as: :time, start: 0
-              = ot.input :end_time, as: :time, start: 0
+              .opening-time
+                = ot.hidden_field :weekday
+                h3 = Date::DAYNAMES[ot.object.weekday]
+                .closed-checkbox
+                  = ot.label :closed, 'Closed?'
+                  = ot.check_box :closed, class: "opening-time-closed"
+                .start-end-times
+                  = ot.input :start_time, as: :time, start: 0
+                  = ot.input :end_time, as: :time, start: 0
 .row
   .col-xs-12
     #accordion.panel-group aria-multiselectable='true' role='tablist'

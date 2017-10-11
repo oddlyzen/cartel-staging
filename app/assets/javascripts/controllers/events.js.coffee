@@ -11,6 +11,12 @@ Controllers['events'] = -> class Events
         $(".type-other").addClass("hidden")
         $(".type-exhibition").addClass("hidden")
 
+    $('.opening-time-closed').on 'change', ->
+      if ($(this).is(":checked"))
+        $(this).parent().siblings(".start-end-times").addClass("hidden");
+      else
+        $(this).parent().siblings(".start-end-times").removeClass("hidden");
+
     window.onPhotoUpload = (file) ->
       filepicker.processImage(
         file.fpfile.url,
@@ -33,6 +39,12 @@ Controllers['events'] = -> class Events
       else
         $(".type-other").addClass("hidden")
         $(".type-exhibition").addClass("hidden")
+
+    $('.opening-time-closed').on 'change', ->
+      if ($(this).is(":checked"))
+        $(this).parent().siblings(".start-end-times").addClass("hidden");
+      else
+        $(this).parent().siblings(".start-end-times").removeClass("hidden");
 
     window.onPhotoUpload = (file) ->
       filepicker.processImage(
