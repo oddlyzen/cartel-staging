@@ -16,7 +16,10 @@
         h1.event-name
           = @event.name
           br
-          = "#{@event.start_date.strftime('%d.%m.%Y')} - #{@event.end_date.strftime('%d.%m.%Y')}"
+          - if @event.end_date.present?
+            = "#{@event.start_date.strftime('%d.%m.%Y')} - #{@event.end_date.strftime('%d.%m.%Y')}"
+          - else
+            = "#{@event.start_date.strftime('%d.%m.%Y')}"
         h3.event-type
           = @event.event_type
         br
