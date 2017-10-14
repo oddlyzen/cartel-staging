@@ -17,7 +17,7 @@
             .type-exhibition class="#{'hidden' if @event.event_type != 'Exhibition'}"
               = f.input :type_exhibition, label: "Type Exhibition *", collection: Event::EXHIBITION_TYPES, include_blank: true
             = f.input :start_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, label: "Start Date *"
-            = f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, :include_blank => true, label: "End Date"
+            = f.input :end_date, as: :date, order: [:day, :month, :year], start_year: Date.today.year, end_year: Date.today.year + 10, :include_blank => true, label: "End Date *"
 .row
   .col-xs-12
     #accordion.panel-group aria-multiselectable='true' role='tablist'
