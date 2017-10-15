@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user_admin = User.create!(email: 'admin@pan.com', password: '123123123', password_confirmation: '123123123', first_name: 'PAN', last_name: 'Admin', title: 'mr', role: :admin, gender: "male", based_location: "London, United Kingdom", date_of_birth: '1990-09-09', current_status: "Seeking Representation")
+user_admin = User.create!(email: 'admin@pan.com', password: '123123123', password_confirmation: '123123123', first_name: 'PAN', last_name: 'Admin', title: 'mr', role: :admin, gender: "male", based_location: "London, United Kingdom", date_of_birth: '1990-09-09', current_status: "Seeking Representation", active: true)
 
 %w(Acrylic\ Paint Bronze Ceramics Chalk Charcoal Clay Conté Crayon Gouache Graphite Marble Marker Oil\ Paint Pastel Pen\ and\ ink Pencil Stone Watercolour Wood Other).each do |medium|
   Medium.create!(name: medium, user_id: user_admin.id, state: :approved, set_display: true)
@@ -52,7 +52,7 @@ user_artist1 = User.create(email: 'user@pan.com', password: '123123123', passwor
   Ut rhoncus feugiat finibus. Quisque id mi sodales lorem rhoncus commodo. Nam ac lacus vitae nibh tincidunt tempus. Integer sed sapien quis velit dictum ornare.
   Suspendisse ut ligula ipsum. Aenean nisi odio, dictum ut purus at, aliquet placerat nulla. Nulla facilisi. Vestibulum pretium pharetra suscipit. Pellentesque ullamcorper
   ante eget augue scelerisque, at fermentum neque vehicula. Sed vel tellus sed.", skill: "Photoshop", link: "www.ronaldhunt.com", facebook_link: "www.ronaldhunt.com",
-  instagram_link: "www.ronaldhunt.com", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom") do |user|
+  instagram_link: "www.ronaldhunt.com", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom", active: true) do |user|
 
   user.build_profile
 
@@ -120,7 +120,7 @@ user_artist2 = User.create!(email: 'artist@pan.com', password: '123123123', pass
   Ut rhoncus feugiat finibus. Quisque id mi sodales lorem rhoncus commodo. Nam ac lacus vitae nibh tincidunt tempus. Integer sed sapien quis velit dictum ornare.
   Suspendisse ut ligula ipsum. Aenean nisi odio, dictum ut purus at, aliquet placerat nulla. Nulla facilisi. Vestibulum pretium pharetra suscipit. Pellentesque ullamcorper
   ante eget augue scelerisque, at fermentum neque vehicula. Sed vel tellus sed.", skill: "Photoshop", link: "", facebook_link: "",
-  instagram_link: "", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom") do |user|
+  instagram_link: "", twitter_link: "www.ronaldhunt.com", from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom", active: true) do |user|
 
   user.build_profile
 
@@ -165,7 +165,7 @@ user_pro1 = User.create(email: 'userpro@pan.com', password: '123123123', passwor
   Suspendisse ut ligula ipsum. Aenean nisi odio, dictum ut purus at, aliquet placerat nulla. Nulla facilisi. Vestibulum pretium pharetra suscipit. Pellentesque ullamcorper
   ante eget augue scelerisque, at fermentum neque vehicula. Sed vel tellus sed.", skill: "Photoshop", link: "www.ronaldhunt.com", facebook_link: "www.ronaldhunt.com",
   instagram_link: "www.ronaldhunt.com", twitter_link: "www.ronaldhunt.com", position: 'Junior Artist', company_name: 'Museum Company', exhibit_description: 'Lorem ipsum dolor sit amet, convallis quam.
-', from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom") do |user|
+', from_exhibit_date: '2015-11-01', to_exhibit_date: '2015-11-01', gender: "male", based_location: "London, United Kingdom", active: true) do |user|
 
   user.build_profile
 end
