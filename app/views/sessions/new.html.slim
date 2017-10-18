@@ -1,24 +1,27 @@
 .row
 
-  .col-xs-8.logo
+  .col-xs-12.col-sm-6.col-lg-offset-0.col-lg-4.logo.col-lg-offset-1.col-sm-6
     h1 Cartel
     h3 Manage Your Art World
 
-  .col-xs-4
+  .col-xs-12.col-sm-6.col-sm-offset-0.col-lg-4.col-lg-offset-2
 
     = simple_form_for @form, url: login_path do |f|
 
       .row
-        = f.input :email, placeholder: 'Email', label: false, error: false
-        = f.input :password, as: :password, placeholder: 'Password', label: false, error: false
+        .col-xs-12
+          = f.input :email, placeholder: 'Email', label: false, error: false
+          = f.input :password, as: :password, placeholder: 'Password', label: false, error: false
 
-        .pull-right = link_to 'Forgot Password', '', data: { toggle: 'modal', target: '#js-modal-forgot-password' }, class: 'btn btn-link'
+          .pull-right = link_to 'Forgot Password', '', data: { toggle: 'modal', target: '#js-modal-forgot-password' }, class: 'btn btn-link'
 
-      .row.pull-right
-        = f.submit 'Log in', class: 'btn btn-default'
+      .row
+        .col-xs-12
+          = f.submit 'Log in', class: 'btn btn-default'
 
       .row.register-interest
-        = link_to "Register with us", about_path, class: "btn btn-primary"
+        .col-xs-12
+          = link_to "Register with us", about_path, class: "btn btn-primary"
 
 #js-modal-forgot-password.modal.fade.in role="dialog"
   .modal-dialog

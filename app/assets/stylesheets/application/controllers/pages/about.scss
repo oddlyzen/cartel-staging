@@ -1,6 +1,15 @@
 body.pages-about {
 
-  font-family: "RobotoCondensed-Bold";
+  font-family: "RobotoCondensed-Regular";
+
+  .hero {
+    padding-top: 33.33%;
+    background-image: url('hero-about.jpg');
+    background-size: cover;
+    background-position: bottom;
+    margin-bottom: 50px;
+    background-repeat: no-repeat;
+  }
 
   .register-interest-button {
     width: 100%;
@@ -20,11 +29,14 @@ body.pages-about {
     margin-bottom: 30px;
   }
 
+  .invitation {
+    text-align: center;
+  }
+
   .logo {
     text-align: center;
-    margin-top: 80px;
-    margin-bottom: 50px;
-
+    margin-bottom: 30px;
+    margin-top: 0;
     h1 {
       font-size: 140px;
     }
@@ -33,16 +45,22 @@ body.pages-about {
       font-size: 36px;
       font-family: $font-heading;
     }
+    @media only screen and (max-width: 767px) {
+      h1 { font-size: 100px; }
+      h3 {
+        font-size: 26px;
+      }
+    }
   }
 
   .content {
-    @include make-row();
+    // @include make-row();
 
     .pull-right { margin-right: 0px; }
 
     div {
       //text-align: justify;
-      font-size: 16px;
+      font-size: 20px;
     }
 
   }
