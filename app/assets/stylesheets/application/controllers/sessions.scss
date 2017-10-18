@@ -32,7 +32,7 @@ body.sessions {
 
     .btn-default {
       width: 100%;
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .form-group { margin-bottom: 20px; }
@@ -71,12 +71,28 @@ body.sessions {
     }
   }
 
-  .register-interest a {
-    background-color: #960303 !important;
-    font-size: 14px !important;
-    width: 100%;
-    margin-top: 50px;
-    padding: 12px 0 !important;
+  .register-interest {
+    text-align: center;
+    a {
+      margin-top: 50px;
+      display: inline-block;
+      font-size: 22px;
+      text-transform: uppercase;
+      position: relative;
+      &:after {
+        content: "";
+        display: block;
+        height: 2px;
+        background-color: black;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        left: 0;
+      }
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+      }
+    }
   }
 
 }
