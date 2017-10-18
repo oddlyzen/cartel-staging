@@ -1,34 +1,35 @@
-.container
-  .header.logo
-    - if current_user.nil?
-      h1 = link_to 'Cartel', root_path
-      h3 Manage Your Art World
-  .content
-    .row
-      .col-xs-12.col-sm-12.col-md-6
-        div
-          h2.title CARTEL (Contemporary Art Intel) is a professional platform that increases visibility and productivity for artists, art professionals and collectors.
+.hero
+.content
+  .row
+    .col-xs-12.col-sm-12.col-md-6
+      - if current_user.nil?
+        .header.logo
+          h1 = link_to 'Cartel', root_path
+          h3 Manage Your Art World
 
-        div
-          div At CARTEL, we understand the importance of relationships in the art world. Our platform works to bring together all the information of your network's events, opportunities and artwork into one place.
-          br
-          div Stay on top of what's going on around you and other art markets, and start managing your art world today!
-          br
+      div
+        div At CARTEL, we understand the importance of relationships in the art world. Our platform works to bring together all the information of your network’s events, opportunities and artwork into one place. We want to bring visibility to artists and professionals, so that you can spend more time on things that matter.
 
-      .col-xs-12.col-sm-12.col-md-6
-        = simple_form_for @form, url: interest_path do |f|
-          = f.input :title, label: false, placeholder: 'Title *', class: 'form-control'
-          = f.input :name, label: false, placeholder: 'Name *', class: 'form-control'
-          = f.input :email, label: false, placeholder: 'Email *', class: 'form-control'
-          = f.input :interest, as: :select, collection: ['Artist', 'Art Professional', 'Collector', 'Other'], prompt: 'Choose Your Interest *', label: false, placeholder: 'Interest *', class: 'form-control'
-          .about-us-attachment class=('hidden' if @form.interest.in?(["Collector", "Other"]))
-            p File Name:
-            = f.filepicker_field :attachment,
-              button_text: 'Upload Your CV',
-              button_class: 'btn btn-default btn-block', extensions: '.pdf',
-              multiple: false, onchange: 'aboutPageAttachmentUpload(event)'
-          br
-          = f.text_area :message, label: false, placeholder: 'Your Message *', class: 'form-control', rows: 5
-          br
-          .register-interest-button
-            = f.submit 'Register Your Interest', class: 'btn btn-default'
+        br
+        div Stay on top of what's going on around you, and start managing your art world today!
+        br
+
+    .col-xs-12.col-sm-12.col-md-6
+      div.invitation Let us send you an invitation!
+      br
+      = simple_form_for @form, url: interest_path do |f|
+        = f.input :title, label: false, placeholder: 'Title *', class: 'form-control'
+        = f.input :name, label: false, placeholder: 'Name *', class: 'form-control'
+        = f.input :email, label: false, placeholder: 'Email *', class: 'form-control'
+        = f.input :interest, as: :select, collection: ['Artist', 'Art Professional', 'Collector', 'Other'], prompt: 'Choose Your Interest *', label: false, placeholder: 'Interest *', class: 'form-control'
+        .about-us-attachment class=('hidden' if @form.interest.in?(["Collector", "Other"]))
+          p File Name:
+          = f.filepicker_field :attachment,
+            button_text: 'Upload Your CV',
+            button_class: 'btn btn-default btn-block', extensions: '.pdf',
+            multiple: false, onchange: 'aboutPageAttachmentUpload(event)'
+        br
+        = f.text_area :message, label: false, placeholder: 'Your Message *', class: 'form-control', rows: 5
+        br
+        .register-interest-button
+          = f.submit 'Register Your Interest', class: 'btn btn-default'
