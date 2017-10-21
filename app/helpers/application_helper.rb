@@ -32,6 +32,10 @@ module ApplicationHelper
     obj.link ? (link_to name, 'http://' + obj.link) : ''
   end
 
+  def external_link_to_venue(obj, name)
+    link_to name, 'http://' + obj.website, target: '_blank'
+  end
+
   def active_if(paths)
     if paths.any? { |path| current_page?(path) }
       'active'
