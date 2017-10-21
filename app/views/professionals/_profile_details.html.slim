@@ -9,8 +9,13 @@ section.section-2
               li
                 b.year = date_in_range(education)
                 .details
-                  p #{education.education_level}, #{education.institution == "Other" ? education.other_institution : education.institution}, #{university_location(education)}
-                  p #{education.field_of_study},#{education.education_grade}
+                  p
+                    b #{education.institution == "Other" ? education.other_institution : education.institution}
+                  p
+                    span #{university_location(education)}
+                  p
+                    em> = education.education_level
+                    span #{education.field_of_study}, #{education.education_grade}
                   p = education.education_description
       - unless @professional.awards.blank?
         .item
@@ -19,7 +24,9 @@ section.section-2
             - @professional.awards.each do |award|
               li
                 b.year = single_date(award)
-                p.details #{award.title}, #{award.awarding_body}, #{award.state}
+                .details
+                  p #{award.awarding_body}, #{award.state}
+                  em #{award.title}
       - unless @professional.participations.blank?
         .item
           h2 Professional & Community Participation
@@ -27,11 +34,13 @@ section.section-2
             - @professional.participations.each do |participation|
               li
                 b.year = single_date(participation)
-                p.details
-                  - if participation.link.blank?
-                    = participation.title
-                  - else
-                    = link_to participation.title, external_url(participation.link), target: '_blank'
+                .details
+                  p
+                    - if participation.link.blank?
+                      = participation.title
+                    - else
+                      = link_to participation.title, external_url(participation.link), target: '_blank'
+                  p = participation.description
       - unless @professional.all_exhibitions.blank?
         .item.item--no-border
           h2 Exhibition Record
@@ -40,7 +49,9 @@ section.section-2
               li
                 b.year = date_in_range(exhibition)
                 p.details
-                  span #{exhibition.title} #{exhibition.venue.try(:name)} #{exhibition.state}
+                  span #{exhibition.title}
+                  em , #{exhibition.title}
+                  span , #{external_link_to_venue(exhibition.venue, exhibition.venue.try(:name))}, #{exhibition.state}
     .col-xs-6.col--right
       - unless @professional.experiences.blank?
         .item
@@ -90,4 +101,3 @@ section.section-2
                 - else
                   b = external_link(media_feature)
                   span , #{media_feature.description}, #{single_date(media_feature)}
-
