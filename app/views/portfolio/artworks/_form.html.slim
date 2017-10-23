@@ -52,4 +52,21 @@
           li = f.submit 'Apply', class: 'btn btn-default'
           li = link_to 'Cancel', '', class: 'btn btn-tertiary',
                data: { toggle: 'modal', target: '#js-modal-alert', url: edit_portfolio_series_path(@series) }
+#documentation-parent.panel-group
+  .panel.panel-default
+    .panel-heading
+      = link_to '#documentation-fields', data: { parent: '#documentation-parent', toggle: 'collapse' }, class: 'collapsed' do
+        h4.panel-title Documentation
+        = fa_icon 'chevron-up'
+    #documentation-fields.panel-collapse.collapse
+      = simple_form_for @document_bulk_upload, url: document_bulk_upload_portfolio_series_artworks_path do |f|
+        = f.input_field :urls, { type: 'filepicker-dragdrop', onchange: 'documentBulkUpload(event)',
+          data: { fp_option_modal: false, fp_multiple: true,
+          fp_mimetypes: 'image/*', fp_apikey: ENV['FILEPICKER_API_KEY'],
+          fp_drag_class: 'upload-pane', fp_button_class: 'hidden' } }
+        = f.hidden_field :titles
+        = f.hidden_field :artwork_id, value: params[:id]
+        = f.submit 'Upload', class: 'btn btn-default pull-right'
+            li = link_to 'Cancel', '', class: 'btn btn-tertiary',
+                 data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_artworks_path(id: params[:id]) }
 
