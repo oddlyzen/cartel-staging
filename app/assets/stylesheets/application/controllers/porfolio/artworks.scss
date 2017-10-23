@@ -196,6 +196,34 @@ body.portfolio-artworks-index {
       }
     }
   }
+
+  .upload-pane {
+    @include make-row();
+    @include make-xs-column(12);
+    border: 3px dashed $light-grey !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 20px !important;
+    height: 150px;
+    font-size: 30px !important;
+    font-family: $font-body-regular;
+    color: $light-grey !important;
+    text-align: center;
+    margin: 0 !important;
+  }
+
+  .document-bulk-upload-submit-button {
+    clear: both;
+    width: 100%;
+  }
+
+  .documentations {
+    margin-top: 200px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
 }
 
 body.portfolio-artworks-upload {

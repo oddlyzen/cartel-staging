@@ -61,12 +61,15 @@
     #documentation-fields.panel-collapse.collapse
       = simple_form_for @document_bulk_upload, url: document_bulk_upload_portfolio_series_artworks_path do |f|
         = f.input_field :urls, { type: 'filepicker-dragdrop', onchange: 'documentBulkUpload(event)',
-          data: { fp_option_modal: false, fp_multiple: true,
-          fp_mimetypes: 'image/*', fp_apikey: ENV['FILEPICKER_API_KEY'],
+          data: { fp_option_modal: false, fp_multiple: true, fp_apikey:  ENV['FILEPICKER_API_KEY'],
           fp_drag_class: 'upload-pane', fp_button_class: 'hidden' } }
         = f.hidden_field :titles
         = f.hidden_field :artwork_id, value: params[:id]
-        = f.submit 'Upload', class: 'btn btn-default pull-right'
+        = f.submit 'Upload', class: 'btn btn-default pull-right document-bulk-upload-submit-button'
             li = link_to 'Cancel', '', class: 'btn btn-tertiary',
                  data: { toggle: 'modal', target: '#js-modal-alert', url: portfolio_series_artworks_path(id: params[:id]) }
+
+      .row.documentations
+        - artwork.documents.each_with_index do |document, index|
+          div = link_to "#{index+1}. #{truncate document.title}", document.url
 
