@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011211553) do
+ActiveRecord::Schema.define(version: 20171023202152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,14 @@ ActiveRecord::Schema.define(version: 20171011211553) do
     t.integer "status"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string   "url"
+    t.string   "title"
+    t.string   "artwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "educations", force: :cascade do |t|
     t.string   "name"
     t.boolean  "done"
@@ -244,6 +252,7 @@ ActiveRecord::Schema.define(version: 20171011211553) do
     t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "category"
     t.integer  "involvement"
     t.string   "pdf_url"
     t.string   "representation"
@@ -258,7 +267,6 @@ ActiveRecord::Schema.define(version: 20171011211553) do
     t.integer  "record_end_year"
     t.string   "location"
     t.string   "pdf_filename"
-    t.integer  "category"
     t.string   "involvement_string"
   end
 

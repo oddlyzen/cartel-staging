@@ -11,6 +11,7 @@ class Artwork < ActiveRecord::Base
   has_many :collaborators, through: :artwork_collaborators, source: :collaborator
   has_many :approved_collaborators, -> { where artwork_collaborators: { status: 1 } }, through: :artwork_collaborators, source: :collaborator
   has_many :pending_collaborators, -> { where artwork_collaborators: { status: 0 } }, through: :artwork_collaborators, source: :collaborator
+  has_many :documents, dependent: :destroy
 
   scope :unassorted, -> { where(series_id: nil) }
 
