@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   TYPES = ["Exhibition", "Art Fair", "Book Launch", "Other"]
-  EXHIBITION_TYPES = ["Solo", "Group"]
+  EXHIBITION_TYPES = [["Solo", "in_solo"], ["Group", "in_group"]]
+
   belongs_to :company
   has_many :opening_times
   has_many :event_participations

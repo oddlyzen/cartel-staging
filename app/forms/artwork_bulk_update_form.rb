@@ -4,7 +4,7 @@ class ArtworkBulkUpdateForm < BaseForm
 
   def initialize(params = {})
     @ids = prepare_ids(params[:ids])
-    @artwork_params = params.except(:ids)
+    @artwork_params = params.except(:ids).reject {|key, value| value.blank? }
     @artworks = artwork_assign_attributes
   end
 
@@ -15,7 +15,7 @@ class ArtworkBulkUpdateForm < BaseForm
           if artwork.series.published?
             artwork.save(context: :series_save)
           else
-            artwork.save
+            artwork.save(validate: false)
           end
         end
       end
@@ -34,7 +34,7 @@ class ArtworkBulkUpdateForm < BaseForm
   end
 
   def artwork_assign_attributes
-    artworks = Artwork.find(@ids)
+    artworks = Artwork.where(id: @ids)
     artworks.each { |artwork| artwork.assign_attributes(@artwork_params) }
   end
 
