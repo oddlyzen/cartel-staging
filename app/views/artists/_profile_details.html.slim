@@ -92,9 +92,9 @@ section.section-2
               li
                 b.year = date_in_range(exhibition)
                 p.details
-                  em> #{exhibition.title},
-                  span> #{external_link_to_venue(exhibition.venue, exhibition.venue&.name)},
-                  span = exhibition.state
+                  em #{exhibition.title}
+                  span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
+                  span , #{exhibition.state}
 
       - unless artist.group_exhibitions.blank?
         .item
@@ -104,10 +104,12 @@ section.section-2
             - artist.group_exhibitions.each do |exhibition|
               li
                 b.year = date_in_range(exhibition)
-                p.details
-                  em> #{exhibition.title},
-                  span> #{external_link_to_venue(exhibition.venue, exhibition.venue&.name)},
-                  span exhibition.state
+                .details
+                  p
+                    em #{exhibition.title}
+                    span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
+                    span , #{exhibition.state}
+                  p = exhibition.involvement_string
 
       - unless artist.pdf_exhibitions.blank?
         .item
@@ -167,5 +169,5 @@ section.section-2
                 - if media_feature.link.blank?
                   p #{media_feature.title}, #{media_feature.description}, #{single_date(media_feature)}
                 - else
-                  span = external_link(media_feature)
+                  em = external_link(media_feature)
                   span , #{media_feature.description}, #{single_date(media_feature)}

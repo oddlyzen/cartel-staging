@@ -49,9 +49,10 @@ section.section-2
               li
                 b.year = date_in_range(exhibition)
                 p.details
-                  span #{exhibition.title}
+                  span = exhibition.involvement_string
                   em , #{exhibition.title}
-                  span , #{external_link_to_venue(exhibition.venue, exhibition.venue.try(:name))}, #{exhibition.state}
+                  span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
+                  span , #{exhibition.state}
     .col-xs-6.col--right
       - unless @professional.experiences.blank?
         .item
@@ -99,5 +100,5 @@ section.section-2
                 - if media_feature.link.blank?
                   p #{media_feature.title}, #{media_feature.description}, #{single_date(media_feature)}
                 - else
-                  b = external_link(media_feature)
+                  em = external_link(media_feature)
                   span , #{media_feature.description}, #{single_date(media_feature)}

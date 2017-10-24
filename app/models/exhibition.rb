@@ -13,7 +13,7 @@ class Exhibition < ActiveRecord::Base
   validates :category, presence: true, if: -> { user.try(:role) == "artist" && !attachment_is_present? }
   validates :pdf_url, presence: true, if: -> { title.blank? }
 
-  enum category: %w(in_solo two_person in_group award other)
+  enum category: %w(in_solo in_group)
   enum grade: [:a, :b, :c, :d]
 
   scope :with_attachment, -> { where(category: nil) }
