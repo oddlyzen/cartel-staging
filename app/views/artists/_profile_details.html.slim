@@ -9,8 +9,12 @@ section.section-2
               li
                 b.year = date_in_range(education)
                 .details
-                  p #{education.education_level}, #{education.institution == "Other" ? education.other_institution : education.institution}, #{university_location(education)}
-                  p #{education.field_of_study},#{education.education_grade}
+                  p
+                    strong #{education.institution == "Other" ? education.other_institution : education.institution}
+                  p #{university_location(education)}
+                  p
+                    em> = education.education_level
+                    span #{education.field_of_study}, #{education.education_grade}
                   p = education.education_description
 
       - unless artist.awards.blank?
@@ -20,7 +24,12 @@ section.section-2
             - artist.awards.each do |award|
               li
                 b.year = single_date(award)
-                p.details #{award.title}, #{award.awarding_body}, #{award.state}
+                .details
+                  p
+                    strong> #{award.awarding_body},
+                    span = award.title
+                  p
+                    em = award.state
 
       - unless artist.residencies.blank?
         .item
@@ -29,7 +38,12 @@ section.section-2
             - artist.residencies.each do |residency|
               li
                 b.year = date_in_range(residency)
-                p.details #{residency.title}, #{residency.body}, #{residency.state}
+                .details
+                  p
+                    strong> #{residency.body},
+                    span = residency.state
+                  p
+                    em = residency.title
 
       - unless artist.experiences.blank?
         .item
@@ -39,10 +53,14 @@ section.section-2
               li
                 b.year = date_in_range(professional)
                 .details
-                  p = professional.company_location
-                  p = professional.full_position
+                  p
+                    strong> #{professional.company&.name},
+                    span = professional.state
+                  p
+                    em> #{professional.position},
+                    span = professional.category&.capitalize
                   p = professional.description
-                  b = external_link_with_name(professional, professional.link)
+                  p = external_link_with_name(professional, professional.link)
 
       - unless artist.publications.blank?
         .item.item--no-border
@@ -73,17 +91,25 @@ section.section-2
             - artist.solo_exhibitions.each do |exhibition|
               li
                 b.year = date_in_range(exhibition)
-                p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
+                p.details
+                  em #{exhibition.title}
+                  span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
+                  span , #{exhibition.state}
 
       - unless artist.group_exhibitions.blank?
-        .item.item--no-border
+        .item
 
           h2 Group Exhibition
           ul.group
             - artist.group_exhibitions.each do |exhibition|
               li
                 b.year = date_in_range(exhibition)
-                p.details #{exhibition.title}, #{exhibition.venue&.name}, #{exhibition.state}
+                .details
+                  p
+                    em #{exhibition.title}
+                    span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
+                    span , #{exhibition.state}
+                  p = exhibition.involvement_string
 
       - unless artist.pdf_exhibitions.blank?
         .item
@@ -100,19 +126,18 @@ section.section-2
             - artist.bibliographies.each do |bibliography|
               li
                 - unless bibliography.source_type.blank?
-                  span #{bibliography.author},
+                  span> #{bibliography.author},
                   - if bibliography.link.blank?
                     span  #{bibliography.full_title}
 
                   - else
-                    b = external_link_with_name(bibliography, bibliography.full_title)
+                    em = external_link_with_name(bibliography, bibliography.full_title)
 
                   - if bibliography.source_type == 'book' || bibliography.source_type == 'catalogue'
 
                     span , #{bibliography.year}
 
                   - else
-
                     span , #{bibliography.publication_title}, no. #{bibliography.edition}, #{bibliography.publication_city}, single_date(bibliography), pp. #{bibliography.page_number}
                   - unless bibliography.pdf_url.blank?
                     br
@@ -144,12 +169,5 @@ section.section-2
                 - if media_feature.link.blank?
                   p #{media_feature.title}, #{media_feature.description}, #{single_date(media_feature)}
                 - else
-                  b = external_link(media_feature)
+                  em = external_link(media_feature)
                   span , #{media_feature.description}, #{single_date(media_feature)}
-
-
-
-
-
-
-

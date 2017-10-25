@@ -25,11 +25,15 @@ module ApplicationHelper
   end
 
   def external_link(obj)
-    obj.link ? (link_to obj.title || 'Untitled', 'http://' + obj.link) : obj.title
+    obj.link ? (link_to obj.title || 'Untitled', 'http://' + obj.link, target: '_blank') : obj.title
   end
 
   def external_link_with_name(obj, name)
-    obj.link ? (link_to name, 'http://' + obj.link) : ''
+    obj.link ? (link_to name, 'http://' + obj.link, target: '_blank') : ''
+  end
+
+  def external_link_to_venue(obj, name)
+    link_to name, 'http://' + obj.website, target: '_blank'
   end
 
   def active_if(paths)

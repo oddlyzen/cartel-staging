@@ -22,7 +22,7 @@ class UserDecorator < BaseDecorator
 
   def nationality_status
     if @model.nationality_country && @model.residency_status
-      "#{@model.nationality_country} #{@model.residency_status.humanize}"
+      "#{@model.nationality_country}, #{@model.residency_status.humanize}"
     end
   end
 

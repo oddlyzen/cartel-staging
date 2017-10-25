@@ -22,7 +22,7 @@ body.artists-show, body.artists-index {
 body.artists-show, body.professionals-show {
   font-family: $font-body-regular;
 
-  b {
+  b, strong {
     font-family: $font-body-semibold;
   }
 
