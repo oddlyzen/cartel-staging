@@ -1,5 +1,5 @@
 .row
   .col-xs-12
-    = link_to fa_icon('caret-left'), portfolio_series_artworks_path(id: prev_id), remote: true
+    = link_to fa_icon('caret-left'), portfolio_series_artworks_path(id: prev_id)
     = filepicker_image_tag artwork.image_url, w: 685, h: 570, fit: 'crop', align: 'faces'
-    = link_to fa_icon('caret-right'), portfolio_series_artworks_path(id: next_id), remote: true
+    = link_to fa_icon('caret-right'), portfolio_series_artworks_path(id: next_id)

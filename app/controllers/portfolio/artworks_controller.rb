@@ -6,6 +6,7 @@ module Portfolio
     before_action :reindex_artworks, only: [:index]
 
     def index
+      @document_bulk_upload = DocumentBulkUploadForm.new
       render :reload if request.xhr?
     end
 
@@ -34,6 +35,17 @@ module Portfolio
       @unassorted_artworks = @user.artworks.unassorted
       @bulk_upload = BulkUploadForm.new
       @bulk_group = BulkGroupForm.new
+    end
+
+    def document_bulk_upload
+      @document_bulk_upload = DocumentBulkUploadForm.new(document_bulk_upload_params)
+
+      if @document_bulk_upload.save
+        redirect_to :back, notice: 'Documentations Uploaded'
+      else
+        flash[:alert] = 'Please check your form again and re-submit'
+        redirect_to :back
+      end
     end
 
     def bulk_upload
@@ -88,6 +100,10 @@ module Portfolio
 
     def bulk_upload_params
       params.require(:bulk_upload_form).permit(:image_urls)
+    end
+
+    def document_bulk_upload_params
+      params.require(:document_bulk_upload_form).permit(:urls, :artwork_id, :titles)
     end
 
     def bulk_group_params

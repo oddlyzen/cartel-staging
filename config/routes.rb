@@ -106,6 +106,7 @@ Rails.application.routes.draw do
       resources :artworks, only: [:index, :update, :destroy] do
         delete :bulk_destroy, on: :collection
         patch :bulk_update, on: :collection
+        post :document_bulk_upload, on: :collection
       end
     end
 
