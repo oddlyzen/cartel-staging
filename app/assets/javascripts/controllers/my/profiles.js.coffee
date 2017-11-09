@@ -26,7 +26,50 @@ Controllers['my/profiles'] = -> class MyProfiles
           $('#my_profile_form_user_attributes_profile_image_url').val(Blob.url)
       );
 
+    source_type_selects = $('select[id*="publications_attributes"][name*="category"], select[id*="bibliographies_attributes"][name*="source_type"]')
 
+    hide_show_fields = (el) ->
+      el = $(el)
+      type = el.val();
+      fieldset = el.closest('fieldset')
+
+      publication_title = fieldset.find('[name*="publication_title"]')
+      publisher = fieldset.find('[name*="publisher"]')
+      edition = fieldset.find('[name*="edition"]')
+      issue = fieldset.find('[name*="issue"]')
+      page_number = fieldset.find('[name*="page_number"]')
+
+      switch type
+        when 'book', 'catalogue'
+          publisher.show()
+          publication_title.hide()
+          edition.hide()
+          issue.hide()
+          page_number.hide()
+        when 'article', 'review', 'paper'
+          publication_title.show()
+          publisher.hide()
+          edition.show()
+          issue.show()
+          page_number.show()
+        when 'essay'
+          publication_title.show()
+          publisher.show()
+          edition.show()
+          issue.show()
+          page_number.show()
+        else
+          publication_title.show()
+          publisher.show()
+          edition.show()
+          issue.show()
+          page_number.show()
+
+
+    $.each source_type_selects, (i, select) ->
+      hide_show_fields(select)
+
+    $(document).on 'change', 'select[id*="publications_attributes"][name*="category"], select[id*="bibliographies_attributes"][name*="source_type"]', (e) -> hide_show_fields(e.target)
 
     $(document).on 'change', '.institution-name', (e) ->
       if $(this).val() == "Other"

@@ -93,7 +93,8 @@ section.section-2
                 b.year = date_in_range(exhibition)
                 p.details
                   em #{exhibition.title}
-                  span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
+                  - unless exhibition.venue.blank?
+                    span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
                   span , #{exhibition.state}
 
       - unless artist.group_exhibitions.blank?
@@ -109,7 +110,7 @@ section.section-2
                     em #{exhibition.title}
                     span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
                     span , #{exhibition.state}
-                  p = exhibition.involvement_string
+                  / p = exhibition.involvement_string
 
       - unless artist.pdf_exhibitions.blank?
         .item
@@ -126,19 +127,27 @@ section.section-2
             - artist.bibliographies.each do |bibliography|
               li
                 - unless bibliography.source_type.blank?
-                  span> #{bibliography.author},
+                  span #{bibliography.author}
                   - if bibliography.link.blank?
-                    span  #{bibliography.full_title}
+                    span , #{bibliography.full_title}
 
                   - else
-                    em = external_link_with_name(bibliography, bibliography.full_title)
+                    em , #{external_link_with_name(bibliography, bibliography.full_title)}
 
                   - if bibliography.source_type == 'book' || bibliography.source_type == 'catalogue'
 
                     span , #{bibliography.year}
 
                   - else
-                    span , #{bibliography.publication_title}, no. #{bibliography.edition}, #{bibliography.publication_city}, single_date(bibliography), pp. #{bibliography.page_number}
+                    - unless bibliography.publication_title.blank?
+                      span , #{bibliography.publication_title}
+                    - unless bibliography.edition.blank?
+                      span , no. #{bibliography.edition}
+                    - unless bibliography.publication_city.blank?
+                      span , #{bibliography.publication_city}
+                    span , #{single_date(bibliography)}
+                    - unless bibliography.page_number.blank?
+                      span  , pp. #{bibliography.page_number}
                   - unless bibliography.pdf_url.blank?
                     br
                     b = link_to ('PDF'), bibliography.pdf_url
@@ -167,7 +176,12 @@ section.section-2
             - artist.media_features.each do |media_feature|
               li
                 - if media_feature.link.blank?
-                  p #{media_feature.title}, #{media_feature.description}, #{single_date(media_feature)}
+                  b #{media_feature.title}
+                  - unless media_feature.description.blank?
+                    span , #{media_feature.description}
+                  span , #{single_date(media_feature)}
                 - else
-                  em = external_link(media_feature)
-                  span , #{media_feature.description}, #{single_date(media_feature)}
+                  b.underline = external_link(media_feature)
+                  - unless media_feature.description.blank?
+                    span , #{media_feature.description}
+                  span , #{single_date(media_feature)}
