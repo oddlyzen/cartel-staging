@@ -5,7 +5,9 @@ class Publication < ActiveRecord::Base
   enum participation: %w(editor writer)
   enum category: %w(book catalogue article essay review paper)
 
-  validates :category, :title, :publication_title, :day, :month, :year, presence: true, unless: :attachment_is_present?
+  validates :category, :title, :day, :month, :year, presence: true, unless: :attachment_is_present?
+  validates :publication_title, presence: true, if: -> { category != "book" && category != "catalogue" && !attachment_is_present? }
+
   validates :participation, presence: true, if: -> { user.role == "professional" && !attachment_is_present? }
 
   def attachment_is_present?

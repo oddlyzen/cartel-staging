@@ -71,16 +71,28 @@ section.section-2
                 - if publication.category.blank?
                   b = link_to ('PUBLICATIONS AS AUTHOR'), publication.pdf_url
                 - elsif publication.category == 'book' || publication.category == 'catalogue'
-                  p #{publication.title}, #{publication.publisher}, #{publication.year}
+                  p
+                    span #{publication.title}
+                    - unless publication.publisher.blank?
+                      span , #{publication.publisher}
+                    span , #{publication.year}
                 - else
                   - if publication.link.blank?
                       span  #{publication.title}
                   - else
                       b = external_link(publication)
-
-                  span , #{publication.publication_title}, no. #{publication.edition}, #{publication.state}, #{single_full_date(publication)}, pp. #{publication.page_numbers}
-                  br
-                  b = link_to ('PDF File'), publication.attachment_url
+                  - unless publication.publication_title.blank?
+                    em , #{publication.publication_title}
+                  - unless publication.edition.blank?
+                    span , no. #{publication.edition}
+                  - unless publication.state.blank?
+                    span , #{publication.state}
+                  span , #{single_full_date(publication)}
+                  - unless publication.page_numbers.blank?
+                    span , pp. #{publication.page_numbers}
+                  - unless publication.attachment_url.blank?
+                    br
+                    b = link_to ('PDF File'), publication.attachment_url
 
     .col-xs-6.col--right
       - unless artist.solo_exhibitions.blank?
@@ -135,7 +147,8 @@ section.section-2
                     em , #{external_link_with_name(bibliography, bibliography.full_title)}
 
                   - if bibliography.source_type == 'book' || bibliography.source_type == 'catalogue'
-
+                    - unless bibliography.publisher.blank?
+                      span , #{bibliography.publisher}
                     span , #{bibliography.year}
 
                   - else
@@ -147,7 +160,7 @@ section.section-2
                       span , #{bibliography.publication_city}
                     span , #{single_date(bibliography)}
                     - unless bibliography.page_number.blank?
-                      span  , pp. #{bibliography.page_number}
+                      span , pp. #{bibliography.page_number}
                   - unless bibliography.pdf_url.blank?
                     br
                     b = link_to ('PDF'), bibliography.pdf_url
