@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(version: 20171011211553) do
     t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "category"
     t.integer  "involvement"
     t.string   "pdf_url"
     t.string   "representation"
@@ -258,7 +259,6 @@ ActiveRecord::Schema.define(version: 20171011211553) do
     t.integer  "record_end_year"
     t.string   "location"
     t.string   "pdf_filename"
-    t.integer  "category"
     t.string   "involvement_string"
   end
 
