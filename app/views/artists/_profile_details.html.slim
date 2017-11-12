@@ -67,32 +67,114 @@ section.section-2
           h2 Publications As Author
           ul.publications
             - artist.publications.each do |publication|
+              / li
+              /   - if publication.category.blank?
+              /     b = link_to ('PUBLICATIONS AS AUTHOR'), publication.pdf_url
+              /   - elsif publication.category == 'book' || publication.category == 'catalogue'
+              /     p
+              /       span #{publication.title}
+              /       - unless publication.publisher.blank?
+              /         span , #{publication.publisher}
+              /       span , #{publication.year}
+              /   - else
+              /     - if publication.link.blank?
+              /         span  #{publication.title}
+              /     - else
+              /         b = external_link(publication)
+              /     - unless publication.publication_title.blank?
+              /       em , #{publication.publication_title}
+              /     - unless publication.edition.blank?
+              /       span , no. #{publication.edition}
+              /     - unless publication.state.blank?
+              /       span , #{publication.state}
+              /     span , #{single_full_date(publication)}
+              /     - unless publication.page_numbers.blank?
+              /       span , pp. #{publication.page_numbers}
+              /     - unless publication.attachment_url.blank?
+              /       br
+              /       b = link_to ('PDF File'), publication.attachment_url
+
               li
-                - if publication.category.blank?
-                  b = link_to ('PUBLICATIONS AS AUTHOR'), publication.pdf_url
-                - elsif publication.category == 'book' || publication.category == 'catalogue'
-                  p
-                    span #{publication.title}
-                    - unless publication.publisher.blank?
-                      span , #{publication.publisher}
-                    span , #{publication.year}
-                - else
-                  - if publication.link.blank?
-                      span  #{publication.title}
+                - unless publication.category.blank?
+                  - if publication.category == 'book' || publication.category == 'catalogue'
+                    - if publication.link.blank?
+                      em #{publication.full_title}
+                    - else
+                      em #{external_link_with_name(publication, publication.full_title)}
+
+                  - elsif publication.category == 'paper'
+                    span #{publication.year}
+                    em . #{publication.full_title}
+
                   - else
-                      b = external_link(publication)
-                  - unless publication.publication_title.blank?
+                    - if publication.link.blank?
+                      span "#{publication.full_title}"
+                    - else
+                      span "#{external_link_with_name(publication, publication.full_title)}"
+
+                  - if publication.category == 'book'
+                    span , #{publication.publisher}
+                    - unless publication.editor.blank?
+                      span , Ed. #{publication.editor}
+                    - unless publication.edition.blank?
+                      span , #{publication.edition}
+                    - unless publication.state.blank?
+                      span , #{publication.state}
+                    - unless publication.page_numbers.blank?
+                      span , #{publication.page_numbers}
+                    span , #{publication.year}
+
+                  - elsif publication.category == 'catalogue'
+                    span , exhibition catalogue
+                    - unless publication.editor.blank?
+                      span , Ed. #{publication.editor}
+                    span , #{single_full_date(publication)}
+                    - unless publication.state.blank?
+                      span , #{publication.state}
+                    span , #{publication.publisher}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - elsif publication.category == 'article'
                     em , #{publication.publication_title}
-                  - unless publication.edition.blank?
-                    span , no. #{publication.edition}
-                  - unless publication.state.blank?
-                    span , #{publication.state}
-                  span , #{single_full_date(publication)}
-                  - unless publication.page_numbers.blank?
-                    span , pp. #{publication.page_numbers}
-                  - unless publication.attachment_url.blank?
+                    - unless publication.volume.blank?
+                      span , vol. #{publication.volume}
+                    - unless publication.issue.blank?
+                      span , no. #{publication.issue}
+                    span , #{single_date(publication)}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - elsif publication.category == 'essay'
+                    em , #{publication.publication_title}
+                    - unless publication.editor.blank?
+                      span , Ed. #{publication.editor}
+                    - unless publication.edition.blank?
+                      span , #{publication.edition}
+                    - unless publication.state.blank?
+                      span , #{publication.state}
+                    span , #{publication.year}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - elsif publication.category == 'review'
+                    - unless publication.review_of.blank?
+                      span . Review of #{publication.review_of}
+                    em , #{publication.publication_title}
+                    - unless publication.volume.blank?
+                      span , vol. #{publication.volume}
+                    - unless publication.issue.blank?
+                      span , no. #{publication.issue}
+                    span , #{single_full_date(publication)}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - unless publication.pdf_url.blank?
                     br
-                    b = link_to ('PDF File'), publication.attachment_url
+                    b = link_to ('PDF'), publication.pdf_url
+
+                - else
+                  b = link_to ('Publications as author'), publication.attachment_url
 
     .col-xs-6.col--right
       - unless artist.solo_exhibitions.blank?
@@ -140,33 +222,85 @@ section.section-2
               li
                 - unless bibliography.source_type.blank?
                   span #{bibliography.author}
-                  - if bibliography.link.blank?
-                    span , #{bibliography.full_title}
+                  - if bibliography.source_type == 'book' || bibliography.source_type == 'catalogue'
+                    - if bibliography.link.blank?
+                      em , #{bibliography.full_title}
+                    - else
+                      em , #{external_link_with_name(bibliography, bibliography.full_title)}
+
+                  - elsif bibliography.source_type == 'paper'
+                    span , #{bibliography.year}
+                    em . #{bibliography.full_title}
 
                   - else
-                    em , #{external_link_with_name(bibliography, bibliography.full_title)}
+                    - if bibliography.link.blank?
+                      span , "#{bibliography.full_title}"
+                    - else
+                      span , "#{external_link_with_name(bibliography, bibliography.full_title)}"
 
-                  - if bibliography.source_type == 'book' || bibliography.source_type == 'catalogue'
-                    - unless bibliography.publisher.blank?
-                      span , #{bibliography.publisher}
+                  - if bibliography.source_type == 'book'
+                    span , #{bibliography.publisher}
+                    - unless bibliography.editor.blank?
+                      span , Ed. #{bibliography.editor}
+                    - unless bibliography.edition.blank?
+                      span , #{bibliography.edition}
+                    - unless bibliography.location.blank?
+                      span , #{bibliography.location}
+                    - unless bibliography.page_number.blank?
+                      span , #{bibliography.page_number}
                     span , #{bibliography.year}
 
-                  - else
-                    - unless bibliography.publication_title.blank?
-                      span , #{bibliography.publication_title}
-                    - unless bibliography.edition.blank?
-                      span , no. #{bibliography.edition}
-                    - unless bibliography.publication_city.blank?
-                      span , #{bibliography.publication_city}
+                  - elsif bibliography.source_type == 'catalogue'
+                    span , exhibition catalogue
+                    - unless bibliography.editor.blank?
+                      span , Ed. #{bibliography.editor}
+                    span , #{single_date(bibliography)}
+                    - unless bibliography.location.blank?
+                      span , #{bibliography.location}
+                    span , #{bibliography.publisher}
+                    - unless bibliography.page_number.blank?
+                      span , pg. #{bibliography.page_number}
+
+                  - elsif bibliography.source_type == 'article'
+                    em , #{bibliography.publication_title}
+                    - unless bibliography.volume.blank?
+                      span , vol. #{bibliography.volume}
+                    - unless bibliography.issue.blank?
+                      span , no. #{bibliography.issue}
                     span , #{single_date(bibliography)}
                     - unless bibliography.page_number.blank?
-                      span , pp. #{bibliography.page_number}
+                      span , pg. #{bibliography.page_number}
+
+                  - elsif bibliography.source_type == 'essay'
+                    em , #{bibliography.publication_title}
+                    - unless bibliography.editor.blank?
+                      span , Ed. #{bibliography.editor}
+                    - unless bibliography.edition.blank?
+                      span , #{bibliography.edition}
+                    - unless bibliography.location.blank?
+                      span , #{bibliography.location}
+                    span , #{bibliography.year}
+                    - unless bibliography.page_number.blank?
+                      span , pg. #{bibliography.page_number}
+
+                  - elsif bibliography.source_type == 'review'
+                    - unless bibliography.review_of.blank?
+                      span . Review of #{bibliography.review_of}
+                    em , #{bibliography.publication_title}
+                    - unless bibliography.volume.blank?
+                      span , vol. #{bibliography.volume}
+                    - unless bibliography.issue.blank?
+                      span , no. #{bibliography.issue}
+                    span , #{single_date(bibliography)}
+                    - unless bibliography.page_number.blank?
+                      span , pg. #{bibliography.page_number}
+
                   - unless bibliography.pdf_url.blank?
                     br
                     b = link_to ('PDF'), bibliography.pdf_url
 
                 - else
-                  b = link_to ('BIBLIOGRAPHY'), bibliography.attachment_url
+                  b = link_to ('Bibliography'), bibliography.attachment_url
 
       - unless artist.collections.blank?
         .item

@@ -33,38 +33,61 @@ Controllers['my/profiles'] = -> class MyProfiles
       type = el.val();
       fieldset = el.closest('fieldset')
 
+      title = fieldset.find('[name*="title"]')
+      author = fieldset.find('[name*="author"]')
+      link = fieldset.find('[name*="link"]')
+      participation = fieldset.find('[name*="participation"]')
+
+
       publication_title = fieldset.find('[name*="publication_title"]')
       publisher = fieldset.find('[name*="publisher"]')
       edition = fieldset.find('[name*="edition"]')
+      editor = fieldset.find('[name*="editor"]')
+      location = fieldset.find('[name*="location"]')
       issue = fieldset.find('[name*="issue"]')
       page_number = fieldset.find('[name*="page_number"]')
+      volume = fieldset.find('[name*="volume"]')
+      review_of = fieldset.find('[name*="review_of"]')
 
-      switch type
-        when 'book', 'catalogue'
-          publisher.show()
-          publication_title.hide()
-          edition.hide()
-          issue.hide()
-          page_number.hide()
-        when 'article', 'review', 'paper'
-          publication_title.show()
-          publisher.hide()
-          edition.show()
-          issue.show()
-          page_number.show()
-        when 'essay'
-          publication_title.show()
-          publisher.show()
-          edition.show()
-          issue.show()
-          page_number.show()
-        else
-          publication_title.show()
-          publisher.show()
-          edition.show()
-          issue.show()
-          page_number.show()
+      fields = {
+        book: {
+          show: [publisher, edition, editor, location, title, author, link, participation],
+          hide: [publication_title, issue, page_number, volume, review_of]
+        },
+        catalogue: {
+          show: [publisher, editor, page_number, location, title, author, link, participation],
+          hide: [publication_title, issue, edition, volume, review_of]
+        },
+        article: {
+          show: [publication_title, volume, issue, page_number, title, author, link, participation],
+          hide: [publisher, edition, location, editor, review_of]
+        },
+        essay: {
+          show: [publication_title, edition, editor, location, page_number, title, author, link, participation],
+          hide: [publisher, volume, issue, review_of]
+        },
+        review: {
+          show: [publication_title, review_of, volume, issue, editor, page_number, title, author, link, participation],
+          hide: [publisher, edition, location]
+        },
+        paper: {
+          show: [title, author, link, participation],
+          hide: [publication_title, review_of, volume, issue, editor, page_number, publisher, edition, location]
+        },
+        all: {
+          show: []
+          hide: [publication_title, review_of, volume, issue, editor, page_number, publisher, edition, location, title, author, link, participation],
+        }
+      }
 
+      if !type
+        type = 'all'
+
+      $.each fields[type].show, (i, field) ->
+        $(field).show()
+
+      $.each fields[type].hide, (i, field) ->
+        $(field).hide()
 
     $.each source_type_selects, (i, select) ->
       hide_show_fields(select)

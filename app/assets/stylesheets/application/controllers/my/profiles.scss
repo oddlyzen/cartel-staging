@@ -131,6 +131,14 @@ body.my-profiles-edit {
     font-size: 12px;
   }
 
+  .bibliography-fields {
+    .form-group:not(:first-of-type) {
+      > * {
+        display: none;
+      }
+    }
+  }
+
   .panel { box-shadow: none; }
 
   .panel-default { border: 0px none transparent; }
@@ -417,4 +425,3 @@ body.my-profiles-edit {
   .item, .selectize-dropdown-content { text-transform: capitalize; }
 
 }
-
