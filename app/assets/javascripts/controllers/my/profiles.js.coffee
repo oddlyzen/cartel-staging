@@ -49,22 +49,27 @@ Controllers['my/profiles'] = -> class MyProfiles
       volume = fieldset.find('[name*="volume"]')
       review_of = fieldset.find('[name*="review_of"]')
 
+      day = fieldset.find('[name*="day"]')
+      month = fieldset.find('[name*="month"]')
+      year = fieldset.find('[name*="year"]')
+      date_fields = [day, month, year]
+
       fields = {
         book: {
-          show: [publisher, edition, editor, location, title, author, link, participation],
-          hide: [publication_title, issue, page_number, volume, review_of]
+          show: [publisher, edition, editor, location, title, author, link, participation, page_number],
+          hide: [publication_title, issue, volume, review_of]
         },
         catalogue: {
-          show: [publisher, editor, page_number, location, title, author, link, participation],
-          hide: [publication_title, issue, edition, volume, review_of]
+          show: [publisher, page_number, location, title, author, link, participation],
+          hide: [publication_title, issue, edition, volume, review_of, editor]
         },
         article: {
           show: [publication_title, volume, issue, page_number, title, author, link, participation],
           hide: [publisher, edition, location, editor, review_of]
         },
         essay: {
-          show: [publication_title, edition, editor, location, page_number, title, author, link, participation],
-          hide: [publisher, volume, issue, review_of]
+          show: [publication_title, edition, editor, location, page_number, title, author, link, participation, publisher],
+          hide: [volume, issue, review_of]
         },
         review: {
           show: [publication_title, review_of, volume, issue, editor, page_number, title, author, link, participation],
@@ -80,8 +85,34 @@ Controllers['my/profiles'] = -> class MyProfiles
         }
       }
 
+      if type == 'book' || type == 'catalogue'
+        publisher.attr('placeholder', 'Publisher*')
+      else
+        publisher.attr('placeholder', 'Publisher')
+
+      if type == 'article' || type == 'essay'
+        publication_title.attr('placeholder', 'Publication Title*')
+      else
+        publication_title.attr('placeholder', 'Publication Title')
+
+      if type != 'catalogue'
+        author.attr('placeholder', 'Author*')
+      else
+        author.attr('placeholder', 'Author')
+
       if !type
         type = 'all'
+
+      $.each date_fields, (i, field) ->
+        $(field).hide()
+
+      switch type
+        when 'book', 'essay', 'paper'
+          year.show()
+        when 'article', 'review', 'catalogue'
+          day.show()
+          month.show()
+          year.show()
 
       $.each fields[type].show, (i, field) ->
         $(field).show()

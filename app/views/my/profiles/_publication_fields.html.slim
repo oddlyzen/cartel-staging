@@ -20,7 +20,7 @@ fieldset.nested-fields
           p.text-center OR fill in the details below
   - if f.object.new_record? || f.object.pdf_url.blank?
     .row
-      .col-xs-4
+      .col-xs-4.bibliography-dates
         .form-inline
           = f.input :day, label: false, collection: 1..31, prompt: 'Date', input_html: { class: "date #{'error' if params[:errors].present? && params[:errors]['publications.day'].present?}" }
           = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['publications.month'].present?}" }
@@ -28,20 +28,16 @@ fieldset.nested-fields
 
       .col-xs-6.bibliography-fields
         = f.input :category, label: false, collection: options_for_enum(Publication.categories), prompt: 'Type', include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.category'].present?}" }
-        - if @user.professional?
-          = f.input :participation, label: false, collection: options_for_enum(Publication.participations), prompt: 'Participation', include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.participation'].present?}" }
-        = f.input :title, label: false, required: false, placeholder: 'Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.title'].present?}" }
-        = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.publication_title'].present?}" }
-        = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-publication" }
-        = f.hidden_field :state, class: "location-state-publication"
-        = f.hidden_field :country, class: "location-country-publication"
-        = f.input :publisher, label: false, required: false, placeholder: 'Publisher'
+        / - if @user.professional?
+        /   = f.input :participation, label: false, collection: options_for_enum(Publication.participations), prompt: 'Participation', include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.participation'].present?}" }
+        = f.input :title, label: false, required: false, placeholder: 'Title*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.title'].present?}" }
         = f.input :review_of, label: false, required: false, placeholder: 'Review of'
+        = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.publication_title'].present?}" }
+        = f.input :location, label: false, required: false, placeholder: 'Location'
+        = f.input :publisher, label: false, required: false, placeholder: 'Publisher'
         = f.input :volume, label: false, required: false, placeholder: 'Volume'
         = f.input :issue, label: false, required: false, placeholder: 'Issue'
         = f.input :edition, label: false, required: false, placeholder: 'Edition'
-        = f.input :editor, label: false, required: false, placeholder: 'Editor'
-        = f.input :page_numbers, label: false, required: false, placeholder: 'Page Number'
         = f.input :link, label: false, required: false, placeholder: 'Link'
         - if f.object.attachment_url.blank?
           = f.filepicker_field :attachment_url, button_text: 'Upload PDF', button_class: 'btn btn-default btn-block', extensions: '.pdf', multiple: false

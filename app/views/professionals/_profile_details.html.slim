@@ -72,19 +72,80 @@ section.section-2
           ul.publications
             - @professional.publications.each do |publication|
               li
-                - if publication.category.blank?
-                  b = link_to ('PUBLICATIONS AS AUTHOR'), publication.pdf_url
-                - elsif publication.category == 'book' || publication.category == 'catalogue'
-                  p #{publication.title}, #{publication.publisher}, #{publication.year}
-                - else
-                  - if publication.link.blank?
-                      span  #{publication.title}
-                  - else
-                      b = external_link(publication)
+                - unless publication.category.blank?
+                  - if publication.category == 'book' || publication.category == 'catalogue'
+                    - if publication.link.blank?
+                      em #{publication.full_title}
+                    - else
+                      em #{external_link_with_name(publication, publication.full_title)}
 
-                  span , #{publication.publication_title}, no. #{publication.edition}, #{publication.state}, #{single_full_date(publication)}, pp. #{publication.page_numbers}
-                  br
-                  b = link_to ('PDF File'), publication.attachment_url
+                  - elsif publication.category == 'paper'
+                    span #{publication.year}
+                    em . #{publication.full_title}
+
+                  - else
+                    - if publication.link.blank?
+                      span "#{publication.full_title}"
+                    - else
+                      span "#{external_link_with_name(publication, publication.full_title)}"
+
+                  - if publication.category == 'book'
+                    span , #{publication.publisher}
+                    - unless publication.edition.blank?
+                      span , #{publication.edition}
+                    - unless publication.state.blank?
+                      span , #{publication.state}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+                    span , #{publication.year}
+
+                  - elsif publication.category == 'catalogue'
+                    span , exhibition catalogue
+                    span , #{single_full_date(publication)}
+                    - unless publication.state.blank?
+                      span , #{publication.state}
+                    span , #{publication.publisher}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - elsif publication.category == 'article'
+                    em , #{publication.publication_title}
+                    - unless publication.volume.blank?
+                      span , vol. #{publication.volume}
+                    - unless publication.issue.blank?
+                      span , no. #{publication.issue}
+                    span , #{single_date(publication)}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - elsif publication.category == 'essay'
+                    em , #{publication.publication_title}
+                    - unless publication.edition.blank?
+                      span , #{publication.edition}
+                    - unless publication.state.blank?
+                      span , #{publication.state}
+                    span , #{publication.year}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - elsif publication.category == 'review'
+                    - unless publication.review_of.blank?
+                      span . Review of #{publication.review_of}
+                    em , #{publication.publication_title}
+                    - unless publication.volume.blank?
+                      span , vol. #{publication.volume}
+                    - unless publication.issue.blank?
+                      span , no. #{publication.issue}
+                    span , #{single_full_date(publication)}
+                    - unless publication.page_numbers.blank?
+                      span , pg. #{publication.page_numbers}
+
+                  - unless publication.pdf_url.blank?
+                    br
+                    b = link_to ('PDF'), publication.pdf_url
+
+                - else
+                  b = link_to ('Publications as author'), publication.attachment_url
       - unless @professional.memberships.blank?
         .item
           h2 Professional Affiliations/Memberships

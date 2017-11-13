@@ -131,6 +131,13 @@ body.my-profiles-edit {
     font-size: 12px;
   }
 
+  .bibliography-dates {
+    .form-group {
+      > * {
+        display: none;
+      }
+    }
+  }
   .bibliography-fields {
     .form-group:not(:first-of-type) {
       > * {

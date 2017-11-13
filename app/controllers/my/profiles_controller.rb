@@ -31,7 +31,7 @@ module My
           residencies_attributes: [:location, :start_month, :start_year, :end_month, :end_year, :current, :body, :title, :country, :state, :id, :_destroy],
           experiences_attributes: [:location, :start_month, :start_year, :end_month, :end_year, :current, :position, :company_id, :state, :country, :category, :job_type, :description, :link, :id, :company_name, :_destroy],
           exhibitions_attributes: [:pdf_filename, :location, :involvement_string, :record_start_year, :record_end_year, :start_month, :end_month, :start_year, :end_year, :title, :category, :venue_id, :state, :country, :pdf_url, :id, :_destroy],
-          bibliographies_attributes: [:pdf_filename, :volume, :review_of, :location, :title, :publication_title, :publisher, :edition, :author, :page_number, :source_type, :link, :participation, :publication_city, :publication_country, :editor, :issue, :pdf_url, :attachment_url, :month, :year, :id, :_destroy],
+          bibliographies_attributes: [:pdf_filename, :volume, :review_of, :location, :title, :publication_title, :publisher, :edition, :author, :page_number, :source_type, :link, :participation, :publication_city, :publication_country, :editor, :issue, :pdf_url, :attachment_url, :day, :month, :year, :id, :_destroy],
           publications_attributes: [:pdf_filename, :location, :volume, :review_of, :participation, :category, :title, :publication_title, :country, :state, :day, :month, :year, :publisher, :edition, :editor, :issue, :page_numbers, :link, :pdf_url, :attachment_url, :id, :_destroy],
           participations_attributes: [:month, :year, :title, :description, :link, :id, :_destroy],
           collections_attributes: [:name, :id, :_destroy],

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112185423) do
+ActiveRecord::Schema.define(version: 20171113213936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20171112185423) do
     t.string  "pdf_filename"
     t.string  "volume"
     t.string  "review_of"
+    t.integer "day"
   end
 
   add_index "bibliographies", ["user_id"], name: "index_bibliographies_on_user_id", using: :btree

@@ -2,10 +2,10 @@ class Bibliography < ActiveRecord::Base
 
   belongs_to :user, touch: true
 
-  validates :title, :month, :year, presence: true, if: -> { pdf_url.blank? }
+  validates :author, presence: true, if: -> { source_type != "catalogue" && pdf_url.blank? }
+  validates :title, :year, presence: true, if: -> { pdf_url.blank? }
   validates :publisher, presence: true, if: -> { (source_type == "book" || source_type == "catalogue") && pdf_url.blank? }
-
-  validates :publication_title, presence: true, if: -> { (source_type == "article" || source_type == "essay" || source_type == "review") && pdf_url.blank? }
+  validates :publication_title, presence: true, if: -> { (source_type == "article" || source_type == "essay") && pdf_url.blank? }
 
   enum source_type: %w(book catalogue article essay review paper)
 

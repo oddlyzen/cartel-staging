@@ -114,20 +114,16 @@ section.section-2
 
                   - if publication.category == 'book'
                     span , #{publication.publisher}
-                    - unless publication.editor.blank?
-                      span , Ed. #{publication.editor}
                     - unless publication.edition.blank?
                       span , #{publication.edition}
                     - unless publication.state.blank?
                       span , #{publication.state}
                     - unless publication.page_numbers.blank?
-                      span , #{publication.page_numbers}
+                      span , pg. #{publication.page_numbers}
                     span , #{publication.year}
 
                   - elsif publication.category == 'catalogue'
                     span , exhibition catalogue
-                    - unless publication.editor.blank?
-                      span , Ed. #{publication.editor}
                     span , #{single_full_date(publication)}
                     - unless publication.state.blank?
                       span , #{publication.state}
@@ -147,8 +143,6 @@ section.section-2
 
                   - elsif publication.category == 'essay'
                     em , #{publication.publication_title}
-                    - unless publication.editor.blank?
-                      span , Ed. #{publication.editor}
                     - unless publication.edition.blank?
                       span , #{publication.edition}
                     - unless publication.state.blank?
@@ -240,8 +234,6 @@ section.section-2
 
                   - if bibliography.source_type == 'book'
                     span , #{bibliography.publisher}
-                    - unless bibliography.editor.blank?
-                      span , Ed. #{bibliography.editor}
                     - unless bibliography.edition.blank?
                       span , #{bibliography.edition}
                     - unless bibliography.location.blank?
@@ -252,8 +244,6 @@ section.section-2
 
                   - elsif bibliography.source_type == 'catalogue'
                     span , exhibition catalogue
-                    - unless bibliography.editor.blank?
-                      span , Ed. #{bibliography.editor}
                     span , #{single_date(bibliography)}
                     - unless bibliography.location.blank?
                       span , #{bibliography.location}
@@ -273,8 +263,6 @@ section.section-2
 
                   - elsif bibliography.source_type == 'essay'
                     em , #{bibliography.publication_title}
-                    - unless bibliography.editor.blank?
-                      span , Ed. #{bibliography.editor}
                     - unless bibliography.edition.blank?
                       span , #{bibliography.edition}
                     - unless bibliography.location.blank?
