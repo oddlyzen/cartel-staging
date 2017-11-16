@@ -26,6 +26,13 @@ body.artists-show, body.professionals-show {
     font-family: $font-body-semibold;
   }
 
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .underline {
     text-decoration: underline;
   }

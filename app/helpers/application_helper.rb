@@ -29,7 +29,11 @@ module ApplicationHelper
   end
 
   def external_link_with_name(obj, name)
-    obj.link ? (link_to name, 'http://' + obj.link, target: '_blank') : ''
+    if obj.link.start_with?('http://', 'https://')
+      obj.link ? (link_to name, obj.link, target: '_blank') : ''
+    else
+      obj.link ? (link_to name, 'http://' + obj.link, target: '_blank') : ''
+    end
   end
 
   def external_link_to_venue(obj, name)

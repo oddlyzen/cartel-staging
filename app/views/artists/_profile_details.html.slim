@@ -67,50 +67,26 @@ section.section-2
           h2 Publications As Author
           ul.publications
             - artist.publications.each do |publication|
-              / li
-              /   - if publication.category.blank?
-              /     b = link_to ('PUBLICATIONS AS AUTHOR'), publication.pdf_url
-              /   - elsif publication.category == 'book' || publication.category == 'catalogue'
-              /     p
-              /       span #{publication.title}
-              /       - unless publication.publisher.blank?
-              /         span , #{publication.publisher}
-              /       span , #{publication.year}
-              /   - else
-              /     - if publication.link.blank?
-              /         span  #{publication.title}
-              /     - else
-              /         b = external_link(publication)
-              /     - unless publication.publication_title.blank?
-              /       em , #{publication.publication_title}
-              /     - unless publication.edition.blank?
-              /       span , no. #{publication.edition}
-              /     - unless publication.state.blank?
-              /       span , #{publication.state}
-              /     span , #{single_full_date(publication)}
-              /     - unless publication.page_numbers.blank?
-              /       span , pp. #{publication.page_numbers}
-              /     - unless publication.attachment_url.blank?
-              /       br
-              /       b = link_to ('PDF File'), publication.attachment_url
-
               li
                 - unless publication.category.blank?
                   - if publication.category == 'book' || publication.category == 'catalogue'
                     - if publication.link.blank?
-                      em #{publication.full_title}
+                      em #{publication.title}
                     - else
-                      em #{external_link_with_name(publication, publication.full_title)}
+                      em #{external_link_with_name(publication, publication.title)}
 
                   - elsif publication.category == 'paper'
                     span #{publication.year}
-                    em . #{publication.full_title}
+                    - if publication.link.blank?
+                      em , "#{publication.title}"
+                    - else
+                      em , "#{external_link_with_name(publication, publication.title)}"
 
                   - else
                     - if publication.link.blank?
-                      span "#{publication.full_title}"
+                      span "#{publication.title}"
                     - else
-                      span "#{external_link_with_name(publication, publication.full_title)}"
+                      span "#{external_link_with_name(publication, publication.title)}"
 
                   - if publication.category == 'book'
                     span , #{publication.publisher}
@@ -163,12 +139,12 @@ section.section-2
                     - unless publication.page_numbers.blank?
                       span , pg. #{publication.page_numbers}
 
-                  - unless publication.pdf_url.blank?
+                  - unless publication.attachment_url.blank?
                     br
-                    b = link_to ('PDF'), publication.pdf_url
+                    span = link_to ('PDF Link'), publication.attachment_url, target: "blank"
 
                 - else
-                  b = link_to ('Publications as author'), publication.attachment_url
+                  span = link_to ('Publications as author'), publication.pdf_url, target: "blank"
 
     .col-xs-6.col--right
       - unless artist.solo_exhibitions.blank?
@@ -218,19 +194,22 @@ section.section-2
                   span #{bibliography.author}
                   - if bibliography.source_type == 'book' || bibliography.source_type == 'catalogue'
                     - if bibliography.link.blank?
-                      em , #{bibliography.full_title}
+                      em , #{bibliography.title}
                     - else
-                      em , #{external_link_with_name(bibliography, bibliography.full_title)}
+                      em , #{external_link_with_name(bibliography, bibliography.title)}
 
                   - elsif bibliography.source_type == 'paper'
                     span , #{bibliography.year}
-                    em . #{bibliography.full_title}
+                    - if bibliography.link.blank?
+                      em , "#{bibliography.title}"
+                    - else
+                      em , "#{external_link_with_name(bibliography, bibliography.title)}"
 
                   - else
                     - if bibliography.link.blank?
-                      span , "#{bibliography.full_title}"
+                      span , "#{bibliography.title}"
                     - else
-                      span , "#{external_link_with_name(bibliography, bibliography.full_title)}"
+                      span , "#{external_link_with_name(bibliography, bibliography.title)}"
 
                   - if bibliography.source_type == 'book'
                     span , #{bibliography.publisher}
@@ -283,12 +262,12 @@ section.section-2
                     - unless bibliography.page_number.blank?
                       span , pg. #{bibliography.page_number}
 
-                  - unless bibliography.pdf_url.blank?
+                  - unless bibliography.attachment_url.blank?
                     br
-                    b = link_to ('PDF'), bibliography.pdf_url
+                    span = link_to ('PDF Link'), bibliography.attachment_url, target: "_blank"
 
                 - else
-                  b = link_to ('Bibliography'), bibliography.attachment_url
+                  span = link_to ('Bibliography'), bibliography.pdf_url, target: "_blank"
 
       - unless artist.collections.blank?
         .item
