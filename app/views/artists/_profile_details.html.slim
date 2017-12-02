@@ -57,8 +57,8 @@ section.section-2
                     strong> #{professional.company&.name},
                     span = professional.state
                   p
-                    em> #{professional.position},
-                    span = professional.category&.capitalize
+                    em> #{professional.position}
+                    / span = , professional.category&.capitalize
                   p = professional.description
                   p = external_link_with_name(professional, professional.link)
 
@@ -141,7 +141,7 @@ section.section-2
 
                   - unless publication.attachment_url.blank?
                     br
-                    span = link_to ('PDF Link'), publication.attachment_url, target: "blank"
+                    span = link_to ('View PDF'), publication.attachment_url, target: "blank", class: "pdf_link"
 
                 - else
                   span = link_to ('Publications as author'), publication.pdf_url, target: "blank"
@@ -264,7 +264,7 @@ section.section-2
 
                   - unless bibliography.attachment_url.blank?
                     br
-                    span = link_to ('PDF Link'), bibliography.attachment_url, target: "_blank"
+                    span = link_to ('View PDF'), bibliography.attachment_url, target: "_blank", class: "pdf_link"
 
                 - else
                   span = link_to ('Bibliography'), bibliography.pdf_url, target: "_blank"

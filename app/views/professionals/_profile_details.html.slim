@@ -75,19 +75,22 @@ section.section-2
                 - unless publication.category.blank?
                   - if publication.category == 'book' || publication.category == 'catalogue'
                     - if publication.link.blank?
-                      em #{publication.full_title}
+                      em #{publication.title}
                     - else
-                      em #{external_link_with_name(publication, publication.full_title)}
+                      em #{external_link_with_name(publication, publication.title)}
 
                   - elsif publication.category == 'paper'
                     span #{publication.year}
-                    em . #{publication.full_title}
+                    - if publication.link.blank?
+                      em . #{publication.title}
+                    - else
+                      em . #{external_link_with_name(publication, publication.title)}
 
                   - else
                     - if publication.link.blank?
-                      span "#{publication.full_title}"
+                      span "#{publication.title}"
                     - else
-                      span "#{external_link_with_name(publication, publication.full_title)}"
+                      span "#{external_link_with_name(publication, publication.title)}"
 
                   - if publication.category == 'book'
                     span , #{publication.publisher}
@@ -140,9 +143,9 @@ section.section-2
                     - unless publication.page_numbers.blank?
                       span , pg. #{publication.page_numbers}
 
-                  - unless publication.pdf_url.blank?
+                  - unless publication.attachment_url.blank?
                     br
-                    b = link_to ('PDF'), publication.pdf_url
+                    span = link_to ('View PDF'), publication.attachment_url, target: "blank", class: "pdf_link"
 
                 - else
                   b = link_to ('Publications as author'), publication.attachment_url

@@ -26,7 +26,7 @@ module My
           artist_status_text: [],
           professional_status_text: [],
           representative_ids: [],
-          educations_attributes: [:location, :start_month, :start_year, :end_month, :end_year, :institution, :other_institution, :education_level, :education_grade, :field_of_study, :education_description, :state, :country, :id, :_destroy],
+          educations_attributes: [:current, :location, :start_month, :start_year, :end_month, :end_year, :institution, :other_institution, :education_level, :education_grade, :field_of_study, :education_description, :state, :country, :id, :_destroy],
           awards_attributes: [:location, :title, :month, :year, :country, :state, :awarding_body, :prize, :pdf_url, :id, :_destroy],
           residencies_attributes: [:location, :start_month, :start_year, :end_month, :end_year, :current, :body, :title, :country, :state, :id, :_destroy],
           experiences_attributes: [:location, :start_month, :start_year, :end_month, :end_year, :current, :position, :company_id, :state, :country, :category, :job_type, :description, :link, :id, :company_name, :_destroy],

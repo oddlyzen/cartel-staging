@@ -18,10 +18,9 @@
                   .row.cocoon-container
                     = user.simple_fields_for :educations do |education|
                       = render 'education_fields', f: education
-                  br
                   .row
-                    .col-xs-12
-                      = link_to_add_association fa_icon('plus').html_safe + ' add', user, :educations,
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :educations,
                         class: 'btn btn-default pull-right'
             hr.accordion-hr
             .panel.panel-default
@@ -34,10 +33,9 @@
                   .row.cocoon-container
                     = user.simple_fields_for :awards do |award|
                       = render 'award_fields', f: award
-                  br
                   .row
-                    .col-xs-12
-                      = link_to_add_association 'add', user, :awards, class: 'btn btn-default button-link pull-right'
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :awards, class: 'btn btn-default button-link pull-right'
             hr.accordion-hr
             .panel.panel-default
               #heading-participations.panel-heading role='tab' data-toggle='collapse' href='#collapse-participations'
@@ -49,10 +47,9 @@
                   .row.cocoon-container
                     = user.simple_fields_for :participations do |participation|
                       = render 'participation_fields', f: participation
-                  br
                   .row
-                    .col-xs-12
-                      = link_to_add_association 'add', user, :participations, class: 'btn btn-default button-link pull-right'
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :participations, class: 'btn btn-default button-link pull-right'
             hr.accordion-hr
             .panel.panel-default
               #heading-exhibition.panel-heading role='tab' data-toggle='collapse' href='#collapse-exhibition'
@@ -64,10 +61,9 @@
                   .row.cocoon-container
                     = user.simple_fields_for :exhibitions do |exhibition|
                       = render 'exhibition_fields', f: exhibition
-                  br
                   .row
-                    .col-xs-12
-                      = link_to_add_association 'add', user, :exhibitions, class: 'btn btn-default button-link pull-right'
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :exhibitions, class: 'btn btn-default button-link pull-right'
             hr.accordion-hr
             .panel.panel-default
               #heading-experience.panel-heading role='tab' data-toggle='collapse' href='#collapse-experience'
@@ -79,10 +75,9 @@
                   .row.cocoon-container
                     = user.simple_fields_for :experiences do |experience|
                       = render 'experience_fields', f: experience
-                  br
                   .row
-                    .col-xs-12
-                      = link_to_add_association 'add', user, :experiences, class: 'btn btn-default button-link pull-right'
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :experiences, class: 'btn btn-default button-link pull-right'
             hr.accordion-hr
             .panel.panel-default
               #heading-publications.panel-heading role='tab' data-toggle='collapse' href='#collapse-publications'
@@ -94,11 +89,9 @@
                   .row.cocoon-container
                     = user.simple_fields_for :publications do |publication|
                       = render 'publication_fields', f: publication
-                  br
-                  br
                   .row
-                    .col-xs-12
-                      = link_to_add_association 'add', user, :publications, class: 'btn btn-default button-link pull-right'
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :publications, class: 'btn btn-default button-link pull-right'
             hr.accordion-hr
             .panel.panel-default
               #heading-memberships.panel-heading role='tab' data-toggle='collapse' href='#collapse-memberships'
@@ -111,8 +104,8 @@
                     = user.simple_fields_for :memberships do |membership|
                       = render 'membership_fields', f: membership
                   .row
-                    .col-xs-12
-                      = link_to_add_association 'add', user, :memberships, class: 'btn btn-default button-link pull-right'
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :memberships, class: 'btn btn-default button-link pull-right'
             hr.accordion-hr
             .panel.panel-default
               #heading-media.panel-heading role='tab' data-toggle='collapse' href='#collapse-media'
@@ -124,12 +117,10 @@
                   .row.cocoon-container
                     = user.simple_fields_for :media_features do |media_feature|
                       = render 'media_feature_fields', f: media_feature
-                  br
                   .row
-                    .col-xs-12
-                      = link_to_add_association 'add', user, :media_features, class: 'btn btn-default button-link pull-right'
+                    br
+                    = link_to_add_association fa_icon('plus').html_safe + ' add another entry', user, :media_features, class: 'btn btn-default button-link pull-right'
   nav.row
     .cta
       = f.submit 'Save & Done', class: 'btn btn-default'
       = link_to 'Cancel', profile_path(current_user), class: 'btn btn-primary'
-

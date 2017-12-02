@@ -10,5 +10,5 @@ fieldset.nested-fields
       = f.input :title, label: false, required: false, placeholder: 'Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['media_features.title'].present?}" }
       = f.input :description, label: false, required: false, placeholder: 'Description'
       = f.input :link, label: false, required: false, placeholder: 'Link'
+    .col-xs-12
       = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f
-

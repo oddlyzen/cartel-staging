@@ -17,6 +17,10 @@ body.artists-show, body.artists-index {
     color: #c69898 ;
   }
 
+  .pdf_link {
+    font-weight: bold;
+  }
+
 }
 
 body.artists-show, body.professionals-show {
@@ -131,7 +135,7 @@ body.artists-show, body.professionals-show {
         text-decoration: underline;
       }
     }
-    
+
     .col--left {
       border-right: 3px solid $white;
       padding-right: 5px;

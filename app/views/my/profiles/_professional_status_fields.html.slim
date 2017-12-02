@@ -3,7 +3,7 @@ section.section-2
     .col-md-3
       .row
         .col-xs-12
-          .form-group.has-feedback
+          .has-feedback
             label Where are you based?
             = fa_icon('location-arrow', class: 'form-control-feedback')
             = f.input :based_location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete #{ 'error' if params[:errors] && params[:errors][:based_location].present?}" }
@@ -11,14 +11,14 @@ section.section-2
             = f.hidden_field :based_country, class: "location-country"
       .row
         .col-xs-12
-          .form-group.has-feedback
+          .has-feedback
             label Nationality
             = fa_icon('map-marker', class: 'form-control-feedback')
             = f.input :nationality_country, collection: Location.options_for_country,
               include_blank: false, input_html: { data: { selectize: true } }, wrapper: :selectize
       .row
         .col-xs-12
-          .form-group.has-feedback
+          .has-feedback
             = fa_icon('map-marker', class: 'form-control-feedback')
             = f.input :residency_status, collection: options_for_enum(User.residency_statuses),
               include_blank: false, input_html: { data: { selectize: true } }, wrapper: :selectize
@@ -30,22 +30,23 @@ section.section-2
       .row
         .col-xs-12
           .has-feedback
+            label Current Status
+            = f.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_PROFESSIONAL), include_blank: false, input_html: { class: "#{ 'error' if params[:errors] && params[:errors][:current_status].present?}" }, label: false
+            = f.input :representative_ids, collection: Company.pluck(:name, :id), selected: f.object.joined_companies.pluck(:id), include_hidden: false, placeholder: 'Organisations', input_html: { multiple: true, data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) } }, wrapper: :selectize
+            = f.input :other_status, label: false, placeholder: 'Other status'
+      .row
+        .col-xs-12
+          .has-feedback
             = fa_icon('facebook-official', class: 'form-control-feedback')
-            = f.input :facebook_link, placeholder: 'Place URL here', label: false
+            = f.input :facebook_link, placeholder: 'Facebook link', label: false
         .col-xs-12
           .has-feedback
             = fa_icon('twitter', class: 'form-control-feedback')
-            = f.input :twitter_link, placeholder: 'Place URL here', label: false
+            = f.input :twitter_link, placeholder: 'Twitter link', label: false
         .col-xs-12
           .has-feedback
             = fa_icon('instagram', class: 'form-control-feedback')
-            = f.input :instagram_link, label: false, placeholder: 'Instagram Link'
-      .row
-        .col-xs-12
-          label Current Status
-          = f.input :current_status, collection: options_for_enum(User::STATUS_OPTIONS_FOR_PROFESSIONAL), include_blank: false, input_html: { class: "#{ 'error' if params[:errors] && params[:errors][:current_status].present?}" }
-          = f.input :representative_ids, collection: Company.pluck(:name, :id), selected: f.object.joined_companies.pluck(:id), include_hidden: false, placeholder: 'Organisations', input_html: { multiple: true, data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) } }, wrapper: :selectize
-          = f.input :other_status, label: false, placeholder: 'Other status'
+            = f.input :instagram_link, label: false, placeholder: 'Instagram link'
     .col-md-9
       .row
         .col-md-12
@@ -55,15 +56,15 @@ section.section-2
                 .col-md-3
                   label Specialities
                   .input-group
-                    = profile.input :specialisation_ids, as: :select, collection: Specialisation.pluck(:name, :id), include_hidden: false, placeholder: 'Add a specialisation', input_html: { multiple: true, data: { klass: 'Specialisation', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+                    = profile.input :specialisation_ids, as: :select, collection: Specialisation.pluck(:name, :id), include_hidden: false, placeholder: 'eg. Southeast Asian Contemporary', input_html: { multiple: true, data: { klass: 'Specialisation', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
                 .col-md-3
                   label Services
                   .input-group
-                    = profile.input :service_ids, as: :select, collection: Service.pluck(:name, :id), include_hidden: false, placeholder: 'Add a service', input_html: { multiple: true, data: { klass: 'Service', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+                    = profile.input :service_ids, as: :select, collection: Service.pluck(:name, :id), include_hidden: false, placeholder: 'eg. Research, Producing', input_html: { multiple: true, data: { klass: 'Service', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
                 .col-md-3
                   label Skills
                   .input-group
-                    = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'Add a skill', input_html: { multiple: true, data: { klass: 'Skill', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
+                    = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'eg. Adobe Photoshop, Database', input_html: { multiple: true, data: { klass: 'Skill', selectize_tag: true, url: my_tags_path(format: :json) } }, wrapper: :selectize
                 .col-md-3
                   label Languages
                   #language-proficiencies
@@ -81,4 +82,3 @@ section.section-2
             .col-xs-12
               .pull-right max 500 characters
 hr.accordion-hr
-

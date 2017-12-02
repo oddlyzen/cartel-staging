@@ -1,5 +1,17 @@
 body.my-profiles-edit {
 
+  .section-3 {
+    a.remove_fields {
+      float: right;
+    }
+  }
+
+  fieldset.nested-fields:nth-child(1) {
+    hr {
+      display: none;
+    }
+  }
+
   .img-container {
     border-radius: 125px;
   }
@@ -339,7 +351,7 @@ body.my-profiles-edit {
       color: $light-grey;
       font-family: $font-heading;
       letter-spacing: 1.5px;
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 5px;
     }
 
@@ -400,10 +412,10 @@ body.my-profiles-edit {
     }
   }
 
-  .add_fields {
-    margin-top: -33px;
-    margin-right: 20px;
-  }
+  // .add_fields {
+  //   margin-top: -33px;
+  //   margin-right: 20px;
+  // }
 
   #language-proficiencies {
     hr { margin: 10px 0 }

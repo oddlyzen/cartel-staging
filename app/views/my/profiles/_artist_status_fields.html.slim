@@ -30,23 +30,23 @@ section.section-2
       .row
         .col-xs-12
           .has-feedback
-            = fa_icon('facebook-official', class: 'form-control-feedback')
-            = f.input :facebook_link, placeholder: 'Place URL here', label: false
-        .col-xs-12
-          .has-feedback
-            = fa_icon('twitter', class: 'form-control-feedback')
-            = f.input :twitter_link, placeholder: 'Place URL here', label: false
-        .col-xs-12
-          .has-feedback
-            = fa_icon('instagram', class: 'form-control-feedback')
-            = f.input :instagram_link, label: false, placeholder: 'Instagram Link'
-      .row
-        .col-xs-12
-          .form-group
             label Current Status
             = f.input :current_status, label: false, as: :select, collection: options_for_enum(User::STATUS_OPTIONS_FOR_ARTIST), include_blank: false
             = f.input :representative_ids, collection: Company.pluck(:name, :id), selected: f.object.joined_companies.pluck(:id), include_hidden: false, placeholder: 'Organisations', input_html: { multiple: true, data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) } }, wrapper: :selectize
             = f.input :other_status, label: false, placeholder: 'Other status'
+      .row
+        .col-xs-12
+          .has-feedback
+            = fa_icon('facebook-official', class: 'form-control-feedback')
+            = f.input :facebook_link, placeholder: 'Facebook link', label: false
+        .col-xs-12
+          .has-feedback
+            = fa_icon('twitter', class: 'form-control-feedback')
+            = f.input :twitter_link, placeholder: 'Twitter link', label: false
+        .col-xs-12
+          .has-feedback
+            = fa_icon('instagram', class: 'form-control-feedback')
+            = f.input :instagram_link, label: false, placeholder: 'Instagram Link'
       .row
         .col-xs-12
           .checkbox
@@ -61,15 +61,15 @@ section.section-2
                 .col-md-3
                   label Media
                   .input-group
-                    = profile.input :medium_ids, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'Add a media', input_html: { multiple: true, data: { klass: 'Medium', url: my_tags_path(format: :json) } }, wrapper: :selectize
+                    = profile.input :medium_ids, collection: Medium.pluck(:name, :id), include_hidden: false, placeholder: 'eg. Oil paint, Mixed media', input_html: { multiple: true, data: { klass: 'Medium', url: my_tags_path(format: :json) } }, wrapper: :selectize
                 .col-md-3
                   label Subjects & Themes
                   .input-group
-                    = profile.input :subject_ids, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'Add a subject/themes', input_html: { multiple: true, data: { klass: 'Subject', url: my_tags_path(format: :json) } }, wrapper: :selectize
+                    = profile.input :subject_ids, collection: Subject.pluck(:name, :id), include_hidden: false, placeholder: 'eg. Politics, Criticism', input_html: { multiple: true, data: { klass: 'Subject', url: my_tags_path(format: :json) } }, wrapper: :selectize
                 .col-md-3
                   label Skills
                   .input-group
-                    = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'Add a skill', input_html: { multiple: true, data: { klass: 'Skill', url: my_tags_path(format: :json) } }, wrapper: :selectize
+                    = profile.input :skill_ids, as: :select, collection: Skill.pluck(:name, :id), include_hidden: false, placeholder: 'eg. Print making, Adobe Photoshop', input_html: { multiple: true, data: { klass: 'Skill', url: my_tags_path(format: :json) } }, wrapper: :selectize
                 .col-md-3
                   label Languages
                   #language-proficiencies
