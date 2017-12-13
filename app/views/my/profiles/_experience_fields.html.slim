@@ -4,8 +4,8 @@ fieldset.nested-fields
   .row
     .col-xs-4
       .form-inline
-        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['experiences.start_month'].present?}" }
-        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.start_year'].present?}" }
+        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month*', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['experiences.start_month'].present?}" }
+        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.start_year'].present?}" }
         span &ndash;
         = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['experiences.end_month'].present?}" }
         = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.end_year'].present?}" }
@@ -13,13 +13,13 @@ fieldset.nested-fields
         = f.check_box :current
         = f.label :current, 'Present'
     .col-xs-6
-      = f.input :position, label: false, placeholder: 'Position', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.position'].present?}" }
+      = f.input :position, label: false, placeholder: 'Position*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.position'].present?}" }
       - if @user.artist?
         / = f.input :category, label: false, collection: Experience::OPTIONS_FOR_CATEGORY, prompt: 'Type', include_blank: false
       - elsif @user.professional?
         / = f.input :job_type, label: false, collection: Experience::OPTIONS_FOR_JOB_TYPE, prompt: 'Type', include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.job_type'].present?}" }
-      = f.association :company, label: false, prompt: 'Company', items: ['4'], wrapper: :selectize, input_html: { data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json), selected: '4' }, class: "#{'error' if params[:errors].present? && params[:errors]['experiences.company_name'].present?}"}
-      = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-experience" }
+      = f.association :company, label: false, prompt: 'Company*', items: ['4'], wrapper: :selectize, input_html: { data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json), selected: '4' }, class: "#{'error' if params[:errors].present? && params[:errors]['experiences.company_name'].present?}"}
+      = f.input :location, placeholder: "Enter city or country*", label: false, input_html: { class: "google-places-autocomplete-experience" }
       = f.hidden_field :state, class: "location-state-experience"
       = f.hidden_field :country, class: "location-country-experience"
       = f.input :description, label: false, placeholder: 'Description', input_html: { maxlength: 200 }

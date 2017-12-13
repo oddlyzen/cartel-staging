@@ -83,7 +83,10 @@ body.my-profiles-edit {
 
     .selectize-input {
       width: 175px;
-      min-height: 85px;
+      min-height: 257px;
+      @media only screen and (max-width: 991px) {
+        min-height: 85px;
+      }
     }
 
     .selectize-dropdown { z-index: 1000 }

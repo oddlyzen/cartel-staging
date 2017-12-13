@@ -12,8 +12,8 @@ class Experience < ActiveRecord::Base
   OPTIONS_FOR_JOB_TYPE = job_types.keys.map { |k| [k =~ /\A(other)/ ? 'Other' : k.humanize, k] }
 
   validates :position, presence: true
-  validates :start_month, :end_month, presence: true
-  validates :start_year, :end_year, presence: true
+  validates :start_month, :start_year, presence: true
+  validates :end_month, :end_year, presence: true, if: -> { current == false }
   validates :location, presence: true
   # validates :job_type, presence: true, if: -> { user.try(:role) != "artist" }
   validates :company_name, presence: true, on: :create, if: -> { user.try(:role) != "artist" }

@@ -25,7 +25,7 @@ fieldset.nested-fields
         .form-inline
           = f.input :day, label: false, collection: 1..31, prompt: 'Date', input_html: { class: "date #{'error' if params[:errors].present? && params[:errors]['bibliographies.day'].present?}" }
           = f.input :month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['bibliographies.month'].present?}" }
-          = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['bibliographies.year'].present?}" }
+          = f.input :year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['bibliographies.year'].present?}" }
 
       .col-xs-6.bibliography-fields
         = f.input :source_type, label: false, collection: options_for_enum(Bibliography.source_types), include_blank: false, prompt: 'Type'

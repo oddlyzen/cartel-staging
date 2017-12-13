@@ -20,6 +20,10 @@ module ApplicationHelper
     hash.map { |k, _v| [k.humanize, k] }
   end
 
+  def options_for_enum_original(hash)
+    hash.map { |k, _v| [k, k] }
+  end
+
   def options_for_array(array)
     array.map { |k, _v| [k.humanize, k] }
   end

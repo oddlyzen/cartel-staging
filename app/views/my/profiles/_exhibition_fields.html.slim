@@ -5,9 +5,9 @@ fieldset.nested-fields
     .row
       .col-xs-4
         .form-inline
-          = f.input :record_start_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.record_start_year'].present?}" }
+          = f.input :record_start_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.record_start_year'].present?}" }
           span &ndash;
-          = f.input :record_end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.record_end_year'].present?}" }
+          = f.input :record_end_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.record_end_year'].present?}" }
       .col-xs-6
         .exhibition-upload
           - if f.object.pdf_url.blank?
@@ -29,19 +29,19 @@ fieldset.nested-fields
     .row
       .col-xs-4
         .form-inline
-          = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['exhibitions.start_month'].present?}" }
-          = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.start_year'].present?}" }
+          = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month*', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['exhibitions.start_month'].present?}" }
+          = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.start_year'].present?}" }
           span &ndash;
-          = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['exhibitions.end_month'].present?}" }
-          = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.end_year'].present?}" }
+          = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month*', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['exhibitions.end_month'].present?}" }
+          = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.end_year'].present?}" }
       .col-xs-6
         / = f.input :involvement_string, label: false, placeholder: 'Involvement', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.involvement'].present?}" }
-        = f.input :title, label: false, placeholder: 'Exhibition Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.title'].present?}" }
+        = f.input :title, label: false, placeholder: 'Exhibition Title*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.title'].present?}" }
         - if @user.artist?
-          = f.input :category, label: false, collection: Exhibition::OPTIONS_FOR_CATEGORY, prompt: 'Type',
+          = f.input :category, label: false, collection: Exhibition::OPTIONS_FOR_CATEGORY, prompt: 'Type*',
             include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.category'].present?}" }
-        = f.association :venue, label: false, prompt: 'Venue', wrapper: :selectize, input_html: { data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) }, class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.venue'].present?}" }
-        = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-exhibition" }
+        = f.association :venue, label: false, prompt: 'Venue*', wrapper: :selectize, input_html: { data: { selectize_company: true, klass: Company.to_s, url: my_tags_path(format: :json) }, class: "#{'error' if params[:errors].present? && params[:errors]['exhibitions.venue'].present?}" }
+        = f.input :location, placeholder: "Enter city or country*", label: false, input_html: { class: "google-places-autocomplete-exhibition" }
         = f.hidden_field :state, class: "location-state-exhibition"
         = f.hidden_field :country, class: "location-country-exhibition"
   = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f

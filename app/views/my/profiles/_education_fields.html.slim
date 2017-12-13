@@ -4,8 +4,8 @@ fieldset.nested-fields
   .row
     .col-xs-4
       .form-inline
-        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{ 'error' if params[:errors].present? && params[:errors]['educations.start_month'].present?}" }
-        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.start_year'].present?}" }
+        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month*', input_html: { class: "month #{ 'error' if params[:errors].present? && params[:errors]['educations.start_month'].present?}" }
+        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.start_year'].present?}" }
         span &ndash;
         = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{ 'error' if params[:errors].present? && params[:errors]['educations.end_month'].present?}" }
         = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.end_year'].present?}" }
@@ -13,14 +13,14 @@ fieldset.nested-fields
         = f.check_box :current
         = f.label :current, 'Present'
     .col-xs-6
-      = f.input :institution, collection: Institution.all.pluck(:name), label: false, prompt: 'University',include_blank: false, input_html: { class: "form-control institution-name #{ 'error' if params[:errors].present? && params[:errors]['educations.institution'].present?}" }
+      = f.input :institution, collection: Institution.all.pluck(:name), label: false, prompt: 'University*',include_blank: false, input_html: { class: "form-control institution-name #{ 'error' if params[:errors].present? && params[:errors]['educations.institution'].present?}" }
       = f.input :other_institution, placeholder: "University Name", label: false, input_html: { class: "#{'hidden' if f.object.institution != 'Other'} #{ 'error' if params[:errors].present? && params[:errors]['educations.other_institution'].present?}" }
       = f.input :location, placeholder: "Enter city or country", label: false, input_html: { class: "google-places-autocomplete-education" }
       = f.hidden_field :state, class: "location-state-education"
       = f.hidden_field :country, class: "location-country-education"
-      = f.input :education_level, label: false, collection: options_for_enum(User.education_levels),
-        include_blank: false, prompt: 'Degree', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.education_level'].present?}" }
-      = f.input :field_of_study, label: false, placeholder: 'Field of Study (eg. Fine Art/Art History)', input_html: { class: "form-control #{'error' if params[:errors].present? && params[:errors]['educations.field_of_study'].present?}" }, required: true
+      = f.input :education_level, label: false, collection: options_for_enum_original(User.education_levels),
+        include_blank: false, prompt: 'Degree*', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.education_level'].present?}" }
+      = f.input :field_of_study, label: false, placeholder: 'Field of Study* (eg. Fine Art/Art History)', input_html: { class: "form-control #{'error' if params[:errors].present? && params[:errors]['educations.field_of_study'].present?}" }, required: true
       = f.input :education_grade, label: false, placeholder: 'Grade', input_html: { class: "#{ 'error' if params[:errors].present? && params[:errors]['educations.education_grade'].present?}" }
       = f.input :education_description, as: :text, label: false, placeholder: 'Description',
       input_html: { class: 'form-control', maxlength: 200, rows: 10 }
