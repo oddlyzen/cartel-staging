@@ -4,8 +4,8 @@ fieldset.nested-fields
   .row
     .col-xs-4
       .form-inline
-        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month*', input_html: { class: "month #{ 'error' if params[:errors] && params[:errors]['residencies.start_month'].present?}" }
-        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.start_year'].present?}" }
+        = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month*', input_html: { class: "month #{ 'error' if params[:errors] && params[:errors]['residencies.start_month'].present?}" }, required: true
+        = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.start_year'].present?}" }, required: true
         span &ndash;
         = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{ 'error' if params[:errors] && params[:errors]['residencies.end_month'].present?}" }
         = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.end_year'].present?}" }
@@ -13,9 +13,9 @@ fieldset.nested-fields
         = f.check_box :current
         = f.label :current, 'Present'
     .col-xs-6
-      = f.input :body, label: false, placeholder: 'Residency Body*', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.body'].present?}" }
-      = f.input :title, label: false, placeholder: 'Residency Title*', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.title'].present?}" }
-      = f.input :location, placeholder: "Enter city or country*", label: false, input_html: { class: "google-places-autocomplete-residency" }
+      = f.input :body, label: false, placeholder: 'Residency Body*', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.body'].present?}" }, required: true
+      = f.input :title, label: false, placeholder: 'Residency Title*', input_html: { class: "#{ 'error' if params[:errors] && params[:errors]['residencies.title'].present?}" }, required: true
+      = f.input :location, placeholder: "Enter city or country*", label: false, input_html: { class: "google-places-autocomplete-residency" }, required: true
       = f.hidden_field :state, class: "location-state-residency"
       = f.hidden_field :country, class: "location-country-residency"
     .col-xs-12

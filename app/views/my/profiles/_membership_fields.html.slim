@@ -3,6 +3,6 @@ fieldset.nested-fields
   hr.-thin
   .row
     .col-xs-6
-      = f.input :name, label: false, required: false, placeholder: 'Institution*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['memberships.name'].present?}" }
+      = f.input :name, label: false, required: false, placeholder: 'Institution*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['memberships.name'].present?}" }, required: true
     .col-xs-12
       = link_to_remove_association fa_icon('minus').html_safe + ' Remove', f

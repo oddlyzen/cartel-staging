@@ -1,5 +1,20 @@
 body.my-profiles-edit {
 
+  form.simple_form label.error {
+    border: 0;
+    color: #a94442;
+    margin-top: 5px;
+  }
+
+  form.simple_form .form-inline .form-group {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: top;
+    label {
+      max-width: 60px;
+    }
+  }
+
   .section-3 {
     a.remove_fields {
       float: right;
@@ -97,7 +112,8 @@ body.my-profiles-edit {
   }
 
   .form-inline > span {
-    padding: 10px;
+    padding: 7px 10px;
+    display: inline-block;
   }
 
   select.month, select.date {
@@ -260,7 +276,8 @@ body.my-profiles-edit {
     }
 
     &.-push {
-      left: 50%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 

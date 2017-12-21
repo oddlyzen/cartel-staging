@@ -60,7 +60,7 @@ section.section-2
                     em> #{professional.position}
                     / span = , professional.category&.capitalize
                   p = professional.description
-                  p = external_link_with_name(professional, professional.link)
+                  p.external-link = external_link_with_name(professional, professional.link)
 
       - unless artist.publications.blank?
         .item.item--no-border
@@ -141,10 +141,10 @@ section.section-2
 
                   - unless publication.attachment_url.blank?
                     br
-                    span = link_to ('View PDF'), publication.attachment_url, target: "blank", class: "pdf_link"
+                    span.external-link = link_to ('View PDF'), publication.attachment_url, target: "blank", class: "pdf_link"
 
                 - else
-                  span = link_to ('Publications as author'), publication.pdf_url, target: "blank"
+                  span.external-link = link_to ('Publications as author'), publication.pdf_url, target: "blank"
 
     .col-xs-6.col--right
       - unless artist.solo_exhibitions.blank?
@@ -178,11 +178,11 @@ section.section-2
 
       - unless artist.pdf_exhibitions.blank?
         .item
-          h2 Uploaded PDF
+          h2 Exhibition Records
           ul.group
             - artist.pdf_exhibitions.each_with_index do |exhibition, index|
               li
-                b = link_to ('Exhibition PDF'), exhibition.pdf_url
+                b.external-link = link_to ('Exhibition PDF'), exhibition.pdf_url
 
       - unless artist.bibliographies.blank?
         .item
@@ -264,10 +264,10 @@ section.section-2
 
                   - unless bibliography.attachment_url.blank?
                     br
-                    span = link_to ('View PDF'), bibliography.attachment_url, target: "_blank", class: "pdf_link"
+                    span.external-link = link_to ('View PDF'), bibliography.attachment_url, target: "_blank", class: "pdf_link"
 
                 - else
-                  span = link_to ('Bibliography'), bibliography.pdf_url, target: "_blank"
+                  span.external-link = link_to ('Bibliography'), bibliography.pdf_url, target: "_blank"
 
       - unless artist.collections.blank?
         .item

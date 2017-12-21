@@ -3,6 +3,25 @@ body.artists-show, body.artists-index {
 
   a:hover { text-decoration: none; }
 
+  .external-link {
+    a {
+      padding-left: 15px;
+      position: relative;
+      &:before {
+        content: "";
+        height: 9px;
+        width: 9px;
+        background-image: url('link-icon.png');
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
   #network, #pages { color: $light-grey; }
 
   .btn-user-action {

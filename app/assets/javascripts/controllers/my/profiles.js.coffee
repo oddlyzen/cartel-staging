@@ -26,6 +26,51 @@ Controllers['my/profiles'] = -> class MyProfiles
           $('#my_profile_form_user_attributes_profile_image_url').val(Blob.url)
       );
 
+    # start of form validation
+    add_another_buttons = $('.adding-another')
+    add_end_dates_validation = () ->
+      setTimeout ( ->
+        end_dates = $('.my_profile_form_user_educations_end_year select, .my_profile_form_user_educations_end_month select, .my_profile_form_user_residencies_end_month select, .my_profile_form_user_residencies_end_year select, .my_profile_form_user_experiences_end_month select, .my_profile_form_user_experiences_end_year select')
+
+        console.log(end_dates.length)
+
+        $.each end_dates, () ->
+          $(this).rules('add', {
+            required: {
+              param: true,
+              depends: ()->
+                return !$(this).closest('.nested-fields').find('[name*="[current]"]').is(':checked');
+            },
+            messages: {
+              required: 'This field is required unless "Present" is selected.'
+            }
+          })
+      ), 500
+
+    add_another_buttons.on 'click', add_end_dates_validation
+
+    add_end_dates_validation()
+
+
+
+      # $.each end_month, (i, field) ->
+      #   console.log('this.name', this.name)
+      #   rules[this.name] = {
+      #     required: {
+      #       param: true,
+      #       depends: ()->
+      #         return !$(this).closest('.nested-fields').find('[name*="[current]"]').is(':checked');
+      #     }
+      #   };
+      #   messages[this.name] = { required: 'This field is required unless "Present" is selected.' };
+
+
+    artist_profile_form = $('#professional-profile-form-validate form, #artist-profile-form-validate form')
+    artist_profile_form.validate()
+
+    # end of form validation
+
+    # start of bibliography/publications hide/show
     source_type_selects = $('select[id*="publications_attributes"][name*="category"], select[id*="bibliographies_attributes"][name*="source_type"]')
 
     hide_show_fields = (el) ->
@@ -124,6 +169,7 @@ Controllers['my/profiles'] = -> class MyProfiles
       hide_show_fields(select)
 
     $(document).on 'change', 'select[id*="publications_attributes"][name*="category"], select[id*="bibliographies_attributes"][name*="source_type"]', (e) -> hide_show_fields(e.target)
+    # end of bibliography/publications hide/show
 
     $(document).on 'change', '.institution-name', (e) ->
       if $(this).val() == "Other"
