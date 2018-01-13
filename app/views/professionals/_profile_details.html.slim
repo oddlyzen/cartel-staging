@@ -52,7 +52,7 @@ section.section-2
                   p.details
                     em #{exhibition.title}
                     - unless exhibition.venue.blank?
-                    span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
+                      span , #{link_to exhibition.venue&.name, company_path(exhibition.venue)}
                     span , #{exhibition.state}
               - else
                 b.external-link = link_to ('Exhibition PDF'), external_url(exhibition.pdf_url), target: '_blank'
