@@ -26,13 +26,33 @@ Controllers['my/profiles'] = -> class MyProfiles
           $('#my_profile_form_user_attributes_profile_image_url').val(Blob.url)
       );
 
+    $.validator.addMethod "startDateBeforeEndDate", (value, element) ->
+      start_month = $(element).closest('.nested-fields').find('[name*="[start_month]"]').val()
+      start_year = $(element).closest('.nested-fields').find('[name*="[start_year]"]').val()
+      end_month = $(element).closest('.nested-fields').find('[name*="[end_month]"]').val()
+      end_year = $(element).closest('.nested-fields').find('[name*="[end_year]"]').val()
+      start = new Date(start_year + '-' + start_month + '-01')
+      end = new Date(end_year + '-' + end_month + '-01')
+
+      if !start_month || !start_year || !end_month || !end_year
+        return true
+
+      if Date.parse(start) > Date.parse(end)
+        return false;
+      return true;
+    , 'End date must be after start date.'
+
     # start of form validation
+    # basic form validation
+    artist_profile_form = $('#professional-profile-form-validate form, #artist-profile-form-validate form')
+    artist_profile_form.validate()
+    # custom 'till present' validation
     add_another_buttons = $('.adding-another')
     add_end_dates_validation = () ->
       setTimeout ( ->
-        end_dates = $('.my_profile_form_user_educations_end_year select, .my_profile_form_user_educations_end_month select, .my_profile_form_user_residencies_end_month select, .my_profile_form_user_residencies_end_year select, .my_profile_form_user_experiences_end_month select, .my_profile_form_user_experiences_end_year select')
+        all_dates = $('.my_profile_form_user_educations_end_year select, .my_profile_form_user_educations_end_month select, .my_profile_form_user_residencies_end_month select, .my_profile_form_user_residencies_end_year select, .my_profile_form_user_experiences_end_month select, .my_profile_form_user_experiences_end_year select, .my_profile_form_user_educations_start_year select, .my_profile_form_user_educations_start_month select, .my_profile_form_user_residencies_start_month select, .my_profile_form_user_residencies_start_year select, .my_profile_form_user_experiences_start_month select, .my_profile_form_user_experiences_start_year select')
 
-        console.log(end_dates.length)
+        end_dates = $('.my_profile_form_user_educations_end_year select, .my_profile_form_user_educations_end_month select, .my_profile_form_user_residencies_end_month select, .my_profile_form_user_residencies_end_year select, .my_profile_form_user_experiences_end_month select, .my_profile_form_user_experiences_end_year select')
 
         $.each end_dates, () ->
           $(this).rules('add', {
@@ -41,32 +61,19 @@ Controllers['my/profiles'] = -> class MyProfiles
               depends: ()->
                 return !$(this).closest('.nested-fields').find('[name*="[current]"]').is(':checked');
             },
+            startDateBeforeEndDate: true,
             messages: {
               required: 'This field is required unless "Present" is selected.'
             }
           })
+
+        all_dates.on 'change', () -> end_dates.valid()
+
       ), 500
 
     add_another_buttons.on 'click', add_end_dates_validation
 
     add_end_dates_validation()
-
-
-
-      # $.each end_month, (i, field) ->
-      #   console.log('this.name', this.name)
-      #   rules[this.name] = {
-      #     required: {
-      #       param: true,
-      #       depends: ()->
-      #         return !$(this).closest('.nested-fields').find('[name*="[current]"]').is(':checked');
-      #     }
-      #   };
-      #   messages[this.name] = { required: 'This field is required unless "Present" is selected.' };
-
-
-    artist_profile_form = $('#professional-profile-form-validate form, #artist-profile-form-validate form')
-    artist_profile_form.validate()
 
     # end of form validation
 

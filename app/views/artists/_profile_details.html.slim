@@ -130,7 +130,8 @@ section.section-2
                   - elsif publication.category == 'review'
                     - unless publication.review_of.blank?
                       span . Review of #{publication.review_of}
-                    em , #{publication.publication_title}
+                    - unless publication.publication_title.blank?
+                      em , #{publication.publication_title}
                     - unless publication.volume.blank?
                       span , vol. #{publication.volume}
                     - unless publication.issue.blank?

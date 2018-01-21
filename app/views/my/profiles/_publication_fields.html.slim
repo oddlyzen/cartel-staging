@@ -32,7 +32,7 @@ fieldset.nested-fields
         /   = f.input :participation, label: false, collection: options_for_enum(Publication.participations), prompt: 'Participation', include_blank: false, input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.participation'].present?}" }
         = f.input :title, label: false, required: false, placeholder: 'Title*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.title'].present?}" }
         = f.input :review_of, label: false, required: false, placeholder: 'Review of'
-        = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.publication_title'].present?}" }
+        = f.input :publication_title, label: false, required: false, placeholder: 'Publication Title*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['publications.publication_title'].present?}" }
         = f.input :location, label: false, required: false, placeholder: 'Location'
         = f.input :publisher, label: false, required: false, placeholder: 'Publisher'
         = f.input :volume, label: false, required: false, placeholder: 'Volume'

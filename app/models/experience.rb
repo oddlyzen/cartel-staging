@@ -16,6 +16,6 @@ class Experience < ActiveRecord::Base
   validates :end_month, :end_year, presence: true, if: -> { current == false }
   validates :location, presence: true
   # validates :job_type, presence: true, if: -> { user.try(:role) != "artist" }
-  validates :company_name, presence: true, on: :create, if: -> { user.try(:role) != "artist" }
+  # validates :company_name, presence: true, on: :create, if: -> { user.try(:role) != "artist" }
 
 end
