@@ -1,5 +1,13 @@
 body.my-profiles-edit {
 
+  .form-inline .end-date-with-present {
+    display: inline-block;
+    .checkbox {
+      display: block;
+      margin-top: 10px;
+    }
+  }
+
   form.simple_form label.error {
     border: 0;
     color: #a94442;
@@ -94,6 +102,11 @@ body.my-profiles-edit {
       color: $light-grey;
       margin-top: 2px;
       font-weight: normal;
+      &.error {
+        font-family: inherit;
+        letter-spacing: 0;
+        font-size: 12px;
+      }
     }
 
     .selectize-input {
@@ -114,15 +127,16 @@ body.my-profiles-edit {
   .form-inline > span {
     padding: 7px 10px;
     display: inline-block;
+    vertical-align: top;
   }
 
-  select.month, select.date {
+  select.month, select.day {
     margin-right: 10px;
   }
 
   .form-group.date {
 
-    select.date {
+    select.day {
       width: 70px;
 
       &:first-of-type {

@@ -77,7 +77,7 @@ section.section-2
                       = render 'language_proficiency_fields', f: proficiency
 
                   #language-proficiencies-links
-                    = link_to_add_association 'Add more', profile, :language_proficiencies, class: 'btn btn-default', data: { association_insertion_node: '#language-proficiencies', association_insertion_method: 'append' }
+                    = link_to_add_association 'Add more', profile, :language_proficiencies, class: 'btn btn-default add_another_language', data: { association_insertion_node: '#language-proficiencies', association_insertion_method: 'append' }
       br
       .row
         .col-xs-12

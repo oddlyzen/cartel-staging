@@ -26,6 +26,18 @@ Controllers['my/profiles'] = -> class MyProfiles
           $('#my_profile_form_user_attributes_profile_image_url').val(Blob.url)
       );
 
+    $.validator.addMethod "startYearBeforeEndYear", (value, element) ->
+      start_year = $(element).closest('.nested-fields').find('[name*="[record_start_year]"]').val()
+      end_year = $(element).closest('.nested-fields').find('[name*="[record_end_year]"]').val()
+
+      if !start_year || !end_year
+        return true
+
+      if start_year > end_year
+        return false;
+      return true;
+    , 'End date must be after start date.'
+
     $.validator.addMethod "startDateBeforeEndDate", (value, element) ->
       start_month = $(element).closest('.nested-fields').find('[name*="[start_month]"]').val()
       start_year = $(element).closest('.nested-fields').find('[name*="[start_year]"]').val()
@@ -46,10 +58,83 @@ Controllers['my/profiles'] = -> class MyProfiles
     # basic form validation
     artist_profile_form = $('#professional-profile-form-validate form, #artist-profile-form-validate form')
     artist_profile_form.validate()
+
+    #custom 'language proficiencies' validation
+    add_another_language = $('.add_another_language');
+    add_language_validation = () ->
+      setTimeout ( ->
+        proficiency_fields = $('[name*="[language_proficiencies_attributes]"][name*="[level]"]')
+
+        $.each proficiency_fields, () ->
+          $(this).rules('add', {
+            required: {
+              param: true,
+              depends: ()->
+                return $(this).closest('.nested-fields').find('[name*="[language_proficiencies_attributes]"][name*="[language_id]"]').val();
+            },
+            messages: {
+              required: 'This field is required.'
+            }
+          })
+      ), 500
+
+    add_another_language.on 'click', add_language_validation
+    add_language_validation()
+
     # custom 'till present' validation
     add_another_buttons = $('.adding-another')
     add_end_dates_validation = () ->
       setTimeout ( ->
+
+        source_type = $('[source_type], [category]')
+        pdf_upload = $('[name*="[pdf_url]"]')
+
+        pdf_dates = $('.my_profile_form_user_exhibitions_record_start_year select, .my_profile_form_user_exhibitions_record_end_year select')
+
+        exhibition_fields = '.my_profile_form_user_exhibitions_start_month select, .my_profile_form_user_exhibitions_start_year select, .my_profile_form_user_exhibitions_end_month select, .my_profile_form_user_exhibitions_end_year select, .my_profile_form_user_exhibitions_title input, .my_profile_form_user_exhibitions_category select, .my_profile_form_user_exhibitions_venue select, .my_profile_form_user_exhibitions_location input'
+        bibliography_fields = '.my_profile_form_user_bibliographies_year select, .my_profile_form_user_bibliographies_author input, .my_profile_form_user_bibliographies_title input, my_profile_form_user_bibliographies_review_of input, .my_profile_form_user_bibliographies_publication_title input, .my_profile_form_user_bibliographies_location input, .my_profile_form_user_bibliographies_publisher input, .my_profile_form_user_bibliographies_volume input, .my_profile_form_user_bibliographies_issue input, .my_profile_form_user_bibliographies_edition input, .my_profile_form_user_bibliographies_publisher input'
+        publication_fields = '.my_profile_form_user_publications_year select, .my_profile_form_user_publications_author input, .my_profile_form_user_publications_title input, my_profile_form_user_publications_review_of input, .my_profile_form_user_publications_publication_title input, .my_profile_form_user_publications_location input, .my_profile_form_user_publications_publisher input, .my_profile_form_user_publications_volume input, .my_profile_form_user_publications_issue input, .my_profile_form_user_publications_edition input, .my_profile_form_user_publications_publisher input'
+
+        manual_info = $(exhibition_fields + ', ' + bibliography_fields + ', ' + publication_fields)
+
+        $.each manual_info, () ->
+          $(this).rules('add', {
+            required: {
+              param: true,
+              depends: ()->
+                placeholder = $(this).attr('placeholder');
+                if (placeholder)
+                  regex = /\*$/;
+                  is_required = placeholder.match(regex);
+                  return !$(this).closest('.nested-fields').find('[name*="[pdf_url]"]').val() && is_required;
+                return !$(this).closest('.nested-fields').find('[name*="[pdf_url]"]').val()
+            },
+            startDateBeforeEndDate: true,
+            messages: {
+              required: 'This field is required.'
+            }
+          })
+
+        $.each pdf_dates, () ->
+          $(this).rules('add', {
+            required: {
+              param: true,
+              depends: ()->
+                return $(this).closest('.row').find('[name*="[pdf_url]"]').val();
+            },
+            startYearBeforeEndYear :true,
+            messages: {
+              required: 'This field is required.'
+            }
+          })
+
+        pdf_upload.on 'change', () -> manual_info.valid()
+        pdf_dates.on 'change', () -> pdf_dates.valid()
+        source_type.on 'change', () -> manual_info.valid()
+
+
+        # partial-exhibition
+
         all_dates = $('.my_profile_form_user_educations_end_year select, .my_profile_form_user_educations_end_month select, .my_profile_form_user_residencies_end_month select, .my_profile_form_user_residencies_end_year select, .my_profile_form_user_experiences_end_month select, .my_profile_form_user_experiences_end_year select, .my_profile_form_user_educations_start_year select, .my_profile_form_user_educations_start_month select, .my_profile_form_user_residencies_start_month select, .my_profile_form_user_residencies_start_year select, .my_profile_form_user_experiences_start_month select, .my_profile_form_user_experiences_start_year select')
 
         end_dates = $('.my_profile_form_user_educations_end_year select, .my_profile_form_user_educations_end_month select, .my_profile_form_user_residencies_end_month select, .my_profile_form_user_residencies_end_year select, .my_profile_form_user_experiences_end_month select, .my_profile_form_user_experiences_end_year select')

@@ -33,9 +33,12 @@ section.section-1
           | Available for Commission
 
       ul.social-links.col-xs-12
-        li = link_to_if user.facebook_link, fa_icon('facebook-official'), user.facebook_link
-        li = link_to_if user.twitter_link,  fa_icon('twitter'), user.twitter_link
-        li = link_to_if user.instagram_link, fa_icon('instagram'), user.instagram_link
+        - unless user.facebook_link === 'http://'
+          li = link_to_if user.facebook_link, fa_icon('facebook-official'), user.facebook_link
+        - unless user.twitter_link === 'http://'
+          li = link_to_if user.twitter_link,  fa_icon('twitter'), user.twitter_link
+        - unless user.instagram_link === 'http://'
+          li = link_to_if user.instagram_link, fa_icon('instagram'), user.instagram_link
 
   .section-1-2.row
     .col-md-3.col-sm-3.col-xs-12

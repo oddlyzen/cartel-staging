@@ -7,11 +7,12 @@ fieldset.nested-fields
         = f.input :start_month, label: false, collection: Month.collection_options, prompt: 'Month*', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['experiences.start_month'].present?}" }, required: true
         = f.input :start_year, label: false, collection: Year.collection_options, prompt: 'Year*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.start_year'].present?}" }, required: true
         span &ndash;
-        = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['experiences.end_month'].present?}" }
-        = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.end_year'].present?}" }
-      .checkbox.-push
-        = f.check_box :current
-        = f.label :current, 'Present'
+        .end-date-with-present
+          = f.input :end_month, label: false, collection: Month.collection_options, prompt: 'Month', input_html: { class: "month #{'error' if params[:errors].present? && params[:errors]['experiences.end_month'].present?}" }
+          = f.input :end_year, label: false, collection: Year.collection_options, prompt: 'Year', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.end_year'].present?}" }
+          .checkbox.-push
+            = f.check_box :current
+            = f.label :current, 'Present'
     .col-xs-6
       = f.input :position, label: false, placeholder: 'Position*', input_html: { class: "#{'error' if params[:errors].present? && params[:errors]['experiences.position'].present?}" }, required: true
       - if @user.artist?
