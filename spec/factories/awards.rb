@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :award do
     title 'Award title'
     month 10

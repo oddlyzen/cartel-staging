@@ -4,7 +4,7 @@ RSpec.feature 'Session Feature' do
 
   describe 'Log In' do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     scenario 'Sign in with correct credentials' do
 

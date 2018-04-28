@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :enquiry_form do
     name 'Mr John'
     email 'email@pan.com'

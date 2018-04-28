@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :bibliography do
     title 'Bib title'
     publication_title 'Publication title'

@@ -6,546 +6,492 @@ body.events-index,
 body.opportunities-index,
 body.events-show,
 .company-events-index {
-
-  .card, .card-artist, .card-professional {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 2px solid black;
-    border-radius: 3px;
-    max-height: 340px;
-    max-width: 13em;
-    margin: 20px auto;
-
-    > header {
-      height: 200px;
-
-      h3 {
-        font-family: $font-body-regular;
-        letter-spacing: 10%;
-        font-size: 20px;
-        line-height: 25px;
-      }
-
-      p {
-        font-family: $font-body-light;
-        font-size: 12px;
-        margin: 0px;
-      }
-    }
-
-    > article {
-      min-height: 130px;
-
-      p {
-        margin-top: 10px;
-        margin-bottom: 15px;
-      }
-
-      ul {
-        @include inline-list();
-        max-height: 70px;
-
-        li.label {
-          overflow: hidden;
-          margin: 0px 3px 3px 0px;
-          padding: 10px;
-          background-color: $white;
-          color: $brand-primary;
+    .card,
+    .card-artist,
+    .card-professional {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 2px solid black;
+        border-radius: 3px;
+        max-height: 340px;
+        max-width: 13em;
+        margin: 20px auto;
+        >header {
+            height: 200px;
+            h3 {
+                font-family: $font-body-regular;
+                letter-spacing: 10%;
+                font-size: 20px;
+                line-height: 25px;
+            }
+            p {
+                font-family: $font-body-light;
+                font-size: 12px;
+                margin: 0px;
+            }
         }
-      }
-    }
-
-    > hr {
-      margin-top: 5px;
-    }
-
-    > footer {
-      .networking {
-        margin-top: 14px;
-      }
-    }
-
-    > nav {
-      font-family: $font-body-regular;
-
-      .col-xs-12 > ul {
-        @include no-style();
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        > li {
-
-          > .btn:only-of-type { margin-right: 0px; }
-
-          > span {
-            padding-right: 5px;
-            padding-left: 5px;
-            color: $light-grey;
-          }
+        >article {
+            min-height: 130px;
+            p {
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+            ul {
+                @include inline-list();
+                max-height: 70px;
+                li.label {
+                    overflow: hidden;
+                    margin: 0px 3px 3px 0px;
+                    padding: 10px;
+                    background-color: $white;
+                    color: $brand-primary;
+                }
+            }
         }
-      }
-
+        >hr {
+            margin-top: 5px;
+        }
+        >footer {
+            .networking {
+                margin-top: 14px;
+            }
+        }
+        >nav {
+            font-family: $font-body-regular;
+            .col-xs-12>ul {
+                @include no-style();
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                >li {
+                    >.btn:only-of-type {
+                        margin-right: 0px;
+                    }
+                    >span {
+                        padding-right: 5px;
+                        padding-left: 5px;
+                        color: $light-grey;
+                    }
+                }
+            }
+        }
     }
-  }
-
 }
 
 body.artists-index,
 body.networks-index,
 body.events-show,
 body.my-connections-index {
-  .card, .card-artist {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 2px solid black;
-    border-radius: 3px;
-    max-height: 340px;
-    max-width: 13em;
-    margin: 20px auto;
-    background-color: #f7f7f7;
-
-    img.img_responsive {
-      border-radius: 100px;
-    }
-
-    > header {
-      height: 200px;
-
-      h3 {
-        font-family: $font-body-regular;
-        letter-spacing: 10%;
-        font-size: 14px;
-        line-height: 25px;
-      }
-      h3.artist_name {
-        margin-bottom: 0px;
-      }
-      h4.artist_based{
-        letter-spacing: 10%;
-        margin-top: 0px;
-        font-size: 12px;
-      }
-
-      p {
-        font-family: $font-body-light;
-        font-size: 12px;
-        margin: 0px;
-      }
-    }
-
-    > article {
-      min-height: 130px;
-
-      p {
-        margin-top: 10px;
-        margin-bottom: 15px;
-      }
-
-      ul {
-        @include inline-list();
-        max-height: 70px;
-
-        li.label {
-          overflow: hidden;
-          margin: 0px 3px 3px 0px;
-          padding: 10px;
-          background-color: $white;
-          color: $brand-primary;
+    .card,
+    .card-artist {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 2px solid black;
+        border-radius: 3px;
+        max-height: 340px;
+        max-width: 13em;
+        margin: 20px auto;
+        background-color: #f7f7f7;
+        img.img_responsive {
+            border-radius: 100px;
         }
-      }
-    }
-
-    > hr {
-      margin-top: 5px;
-    }
-
-    > footer {
-      .networking {
-        margin-top: 14px;
-      }
-    }
-
-    > nav {
-      font-family: $font-body-regular;
-
-      .col-xs-12 > ul {
-        @include no-style();
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        > li {
-
-          > .btn:only-of-type { margin-right: 0px; }
-
-          > span {
-            padding-right: 5px;
-            padding-left: 5px;
-            color: $light-grey;
-          }
+        >header {
+            height: 200px;
+            h3 {
+                font-family: $font-body-regular;
+                letter-spacing: 10%;
+                font-size: 14px;
+                line-height: 25px;
+            }
+            h3.artist_name {
+                margin-bottom: 0px;
+            }
+            h4.artist_based {
+                letter-spacing: 10%;
+                margin-top: 0px;
+                font-size: 12px;
+            }
+            p {
+                font-family: $font-body-light;
+                font-size: 12px;
+                margin: 0px;
+            }
         }
-      }
-
+        >article {
+            min-height: 130px;
+            p {
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+            ul {
+                @include inline-list();
+                max-height: 70px;
+                li.label {
+                    overflow: hidden;
+                    margin: 0px 3px 3px 0px;
+                    padding: 10px;
+                    background-color: $white;
+                    color: $brand-primary;
+                }
+            }
+        }
+        >hr {
+            margin-top: 5px;
+        }
+        >footer {
+            .networking {
+                margin-top: 14px;
+            }
+        }
+        >nav {
+            font-family: $font-body-regular;
+            .col-xs-12>ul {
+                @include no-style();
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                >li {
+                    >.btn:only-of-type {
+                        margin-right: 0px;
+                    }
+                    >span {
+                        padding-right: 5px;
+                        padding-left: 5px;
+                        color: $light-grey;
+                    }
+                }
+            }
+        }
     }
-  }
 }
 
 body.events-index,
-.company-events-index, {
- .card {
-   min-height: 280px;
-   min-width: 200px;
-   padding: 15px;
-   border-radius: 3px;
-   margin: 10px auto;
-
-   .img-container {
-      width: 196px;
-      height: 100px;
-      display: inline-block;
-      margin: -15px;
-      background-size: cover !important;
-   }
-
-   > header {
-
-       height: 100px;
-
-       .tagline {
-         margin-top: 30px;
-       }
-
-       img {
-         width: 40%;
-         height: auto;
-       }
-
-       h3.event_name {
-         font-family: $font-body-regular;
-         font-size: 14px;
-         letter-spacing: 1px;
-         margin-top: 15px;
-         margin-bottom: 0px;
-         text-transform: uppercase;
-       }
-
-       h4.event_location {
-         font-family: $font-body-regular;
-         font-size: 12px;
-         margin-top: 0px;
-       }
-
-       h4.event_company {
-        font-family: $font-body-regular;
-        font-size: 11px;
-        margin-top: 0px;
-        text-transform: uppercase;
-       }
-
-       h4.event_type {
-        font-family: $font-body-regular;
-        font-size: 10px;
-        margin-top: 0px;
-       }
-
-       h4.event_date {
-        font-family: $font-body-semibold;
-        font-size: 11px;
-        margin-top: 0px;
-       }
-
-       .right-card{
-         padding-left: 30px;
-       }
-
-   }
-   > article {
-     min-height: 50px;
-   }
- }
+.company-events-index {
+    .card {
+        min-height: 480px;
+        min-width: 200px;
+        padding: 15px;
+        border-radius: 3px;
+        margin: 10px auto;
+        .img-container {
+            width: 196px;
+            height: 100px;
+            display: inline-block;
+            margin: -15px;
+            background-size: cover !important;
+        }
+        >header {
+            height: 100px;
+            .tagline {
+                margin-top: 30px;
+            }
+            img {
+                width: 40%;
+                height: auto;
+            }
+            h3.event_name {
+                font-family: $font-body-regular;
+                font-size: 14px;
+                letter-spacing: 1px;
+                margin-top: 15px;
+                margin-bottom: 0px;
+                text-transform: uppercase;
+            }
+            h4.event_location {
+                font-family: $font-body-regular;
+                font-size: 12px;
+                margin-top: 0px;
+            }
+            h4.event_company {
+                font-family: $font-body-regular;
+                font-size: 11px;
+                margin-top: 0px;
+                text-transform: uppercase;
+            }
+            h4.event_type {
+                font-family: $font-body-regular;
+                font-size: 10px;
+                margin-top: 0px;
+            }
+            h4.event_date {
+                font-family: $font-body-semibold;
+                font-size: 11px;
+                margin-top: 0px;
+            }
+            h4.sub_events {
+                font-family: $font-body-regular;
+                font-size: 13px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            h5.sub_name {
+                font-family: $font-body-regular;
+                font-size: 10px;
+                margin-top: 0px;
+            }
+            h6.sub_description {
+                font-family: $font-body-regular;
+                font-size: 9px;
+                margin-top: 0px;
+            }
+            h6.sub_date {
+                font-family: $font-body-semibold;
+                font-size: 9px;
+                margin-top: 0px;
+            }
+            .right-card {
+                padding-left: 30px;
+            }
+        }
+        >article {
+            min-height: 50px;
+        }
+    }
 }
 
-
 body.opportunities-index {
-  .card {
-    min-height: 150px;
-    min-width: 320px;
-    padding: 15px;
-    border-radius: 3px;
-    margin: 10px auto;
-
-    .img-container {
-      width: 120px;
-      height: 120px;
-      display: inline-block;
-      margin: 0 auto;
-    }
-
-    > header {
-        height: 100px;
-
-        .tagline {
-          margin-top: 30px;
+    .card {
+        min-height: 150px;
+        min-width: 320px;
+        padding: 15px;
+        border-radius: 3px;
+        margin: 10px auto;
+        .img-container {
+            width: 120px;
+            height: 120px;
+            display: inline-block;
+            margin: 0 auto;
         }
-
-        img {
-          width: 40%;
-          height: auto;
+        >header {
+            height: 100px;
+            .tagline {
+                margin-top: 30px;
+            }
+            img {
+                width: 40%;
+                height: auto;
+            }
+            h3.opportunity_name {
+                font-family: $font-body-regular;
+                font-size: 14px;
+                letter-spacing: 1px;
+                margin-top: 5px;
+                margin-bottom: 0px;
+                text-align: left;
+            }
+            h3.organisation_name {
+                font-family: $font-body-regular;
+                font-size: 14px;
+                letter-spacing: 1px;
+                margin-top: 5px;
+                margin-bottom: 0px;
+                text-align: right;
+            }
+            h4.organisation_location {
+                font-family: $font-body-regular;
+                font-size: 12px;
+                margin-top: 0px;
+                text-align: right;
+            }
+            p.opportunity_description {
+                font-family: $font-body-regular;
+                font-size: 10px;
+                text-align: left;
+            }
+            .right-card {
+                padding-left: 30px;
+            }
         }
-
-        h3.opportunity_name {
-          font-family: $font-body-regular;
-          font-size: 14px;
-          letter-spacing: 1px;
-          margin-top: 5px;
-          margin-bottom: 0px;
-          text-align: left;
-        }
-
-        h3.organisation_name {
-          font-family: $font-body-regular;
-          font-size: 14px;
-          letter-spacing: 1px;
-          margin-top: 5px;
-          margin-bottom: 0px;
-          text-align: right;
-        }
-
-        h4.organisation_location {
-          font-family: $font-body-regular;
-          font-size: 12px;
-          margin-top: 0px;
-          text-align: right;
-        }
-
-        p.opportunity_description {
-          font-family: $font-body-regular;
-          font-size: 10px;
-          text-align: left;
-        }
-        .right-card{
-          padding-left: 30px;
+        >article {
+            min-height: 50px;
         }
     }
-    > article {
-      min-height: 50px;
-    }
-  }
 }
 
 body.companies-index,
 body.my-companies-index {
-  .card {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 2px solid black;
-    border-radius: 3px;
-    height: 310px;
-    max-width: 13em;
-    margin: 20px auto;
-    background-color: #f7f7f7;
-
-    .img-container {
-      width: 120px;
-      height: 120px;
-      display: inline-block;
-      margin: 0 auto;
-    }
-
-    > header {
-      height: 200px;
-
-      h3 {
-        font-family: $font-body-regular;
-        text-transform: uppercase;
-        letter-spacing: 10%;
-        font-size: 14px;
-        line-height: 25px;
-      }
-      h3.organisation_name {
-        margin-bottom: 0px;
-      }
-      h4.organisation_location{
-        letter-spacing: 10%;
-        margin-top: 0px;
-        font-size: 12px;
-      }
-
-      p {
-        font-family: $font-body-light;
-        font-size: 12px;
-        margin: 0px;
-      }
-    }
-
-    > article {
-      min-height: 130px;
-
-      p {
-        margin-top: 10px;
-        margin-bottom: 15px;
-      }
-
-      ul {
-        @include inline-list();
-        max-height: 70px;
-
-        li.label {
-          overflow: hidden;
-          margin: 0px 3px 3px 0px;
-          padding: 10px;
-          background-color: $white;
-          color: $brand-primary;
+    .card {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 2px solid black;
+        border-radius: 3px;
+        height: 310px;
+        max-width: 13em;
+        margin: 20px auto;
+        background-color: #f7f7f7;
+        .img-container {
+            width: 120px;
+            height: 120px;
+            display: inline-block;
+            margin: 0 auto;
         }
-      }
-    }
-
-    > hr {
-      margin-top: 5px;
-    }
-
-    > footer {
-      .networking {
-        margin-top: 54px;
-      }
-    }
-
-    > nav {
-      font-family: $font-body-regular;
-
-      .col-xs-12 > ul {
-        @include no-style();
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        > li {
-
-          > .btn:only-of-type { margin-right: 0px; }
-
-          > span {
-            padding-right: 5px;
-            padding-left: 5px;
-            color: $light-grey;
-          }
+        >header {
+            height: 200px;
+            h3 {
+                font-family: $font-body-regular;
+                text-transform: uppercase;
+                letter-spacing: 10%;
+                font-size: 14px;
+                line-height: 25px;
+            }
+            h3.organisation_name {
+                margin-bottom: 0px;
+            }
+            h4.organisation_location {
+                letter-spacing: 10%;
+                margin-top: 0px;
+                font-size: 12px;
+            }
+            p {
+                font-family: $font-body-light;
+                font-size: 12px;
+                margin: 0px;
+            }
         }
-      }
-
+        >article {
+            min-height: 130px;
+            p {
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+            ul {
+                @include inline-list();
+                max-height: 70px;
+                li.label {
+                    overflow: hidden;
+                    margin: 0px 3px 3px 0px;
+                    padding: 10px;
+                    background-color: $white;
+                    color: $brand-primary;
+                }
+            }
+        }
+        >hr {
+            margin-top: 5px;
+        }
+        >footer {
+            .networking {
+                margin-top: 54px;
+            }
+        }
+        >nav {
+            font-family: $font-body-regular;
+            .col-xs-12>ul {
+                @include no-style();
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                >li {
+                    >.btn:only-of-type {
+                        margin-right: 0px;
+                    }
+                    >span {
+                        padding-right: 5px;
+                        padding-left: 5px;
+                        color: $light-grey;
+                    }
+                }
+            }
+        }
     }
-  }
 }
 
 body.professionals-index,
 body.events-show {
-  .card, .card-professional {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 2px solid black;
-    border-radius: 3px;
-    max-height: 340px;
-    max-width: 13em;
-    margin: 20px auto;
-    background-color: #f3ecec;
-
-    img.img_responsive {
-      border-radius: 100px;
-    }
-
-    > header {
-      height: 200px;
-
-      h3 {
-        font-family: $font-body-regular;
-        letter-spacing: 10%;
-        font-size: 14px;
-        line-height: 25px;
-      }
-      h3.artist_name {
-        margin-bottom: 0px;
-      }
-      h4.artist_based{
-        margin-top: 0px;
-        font-size: 12px;
-        letter-spacing: 10%;
-      }
-
-      p {
-        font-family: $font-body-light;
-        font-size: 12px;
-        margin: 0px;
-      }
-    }
-
-    > article {
-      min-height: 130px;
-
-      p {
-        margin-top: 10px;
-        margin-bottom: 15px;
-      }
-
-      ul {
-        @include inline-list();
-        max-height: 70px;
-
-        li.label {
-          overflow: hidden;
-          margin: 0px 3px 3px 0px;
-          padding: 10px;
-          background-color: $white;
-          color: $brand-primary;
+    .card,
+    .card-professional {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 2px solid black;
+        border-radius: 3px;
+        max-height: 340px;
+        max-width: 13em;
+        margin: 20px auto;
+        background-color: #f3ecec;
+        img.img_responsive {
+            border-radius: 100px;
         }
-      }
-    }
-
-    > hr {
-      margin-top: 5px;
-    }
-
-    > footer {
-      .networking {
-        margin-top: 14px;
-      }
-    }
-
-    > nav {
-      font-family: $font-body-regular;
-
-      .col-xs-12 > ul {
-        @include no-style();
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        > li {
-
-          > .btn:only-of-type { margin-right: 0px; }
-
-          > span {
-            padding-right: 5px;
-            padding-left: 5px;
-            color: $light-grey;
-          }
+        >header {
+            height: 200px;
+            h3 {
+                font-family: $font-body-regular;
+                letter-spacing: 10%;
+                font-size: 14px;
+                line-height: 25px;
+            }
+            h3.artist_name {
+                margin-bottom: 0px;
+            }
+            h4.artist_based {
+                margin-top: 0px;
+                font-size: 12px;
+                letter-spacing: 10%;
+            }
+            p {
+                font-family: $font-body-light;
+                font-size: 12px;
+                margin: 0px;
+            }
         }
-      }
-
+        >article {
+            min-height: 130px;
+            p {
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+            ul {
+                @include inline-list();
+                max-height: 70px;
+                li.label {
+                    overflow: hidden;
+                    margin: 0px 3px 3px 0px;
+                    padding: 10px;
+                    background-color: $white;
+                    color: $brand-primary;
+                }
+            }
+        }
+        >hr {
+            margin-top: 5px;
+        }
+        >footer {
+            .networking {
+                margin-top: 14px;
+            }
+        }
+        >nav {
+            font-family: $font-body-regular;
+            .col-xs-12>ul {
+                @include no-style();
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                >li {
+                    >.btn:only-of-type {
+                        margin-right: 0px;
+                    }
+                    >span {
+                        padding-right: 5px;
+                        padding-left: 5px;
+                        color: $light-grey;
+                    }
+                }
+            }
+        }
     }
-  }
 }
-
 
 body.networks-index,
 body.my-connections-index {
-  .card {
-    margin: 20px auto;
-    padding-bottom: 75px;
-
-    > nav {
-      .col-xs-12 > ul {
-        display: block;
-      }
+    .card {
+        margin: 20px auto;
+        padding-bottom: 75px;
+        >nav {
+            .col-xs-12>ul {
+                display: block;
+            }
+        }
     }
-  }
-
 }

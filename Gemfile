@@ -4,7 +4,7 @@ ruby '2.3.3'
 
 gem 'rails', '~> 4.2.7.1'
 
-gem 'pg'
+gem 'pg', '~> 0.18'
 gem 'unicorn-rails'
 
 # front-end
@@ -42,7 +42,7 @@ gem 'rollbar'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.1.0'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'byebug'
   gem 'slim_lint'

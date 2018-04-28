@@ -16,3 +16,9 @@
               h4.event_date = "#{event.start_date} - #{event.end_date}"
             - else
               h4.event_date = "#{event.start_date}"
+            - unless event.sub_events.empty?
+              h4.sub_events Related Events
+              - event.sub_events.each do |se|
+                h5.sub_name = se.name
+                h6.sub_description = se.description
+                h6.sub_date = se.start_date

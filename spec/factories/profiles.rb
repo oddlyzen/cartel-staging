@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :profile do
     skill_ids [1, 2]
     subject_ids [1, 2]

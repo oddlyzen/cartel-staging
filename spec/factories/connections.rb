@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :connection do
     status :pending
     user

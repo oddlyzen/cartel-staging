@@ -9,7 +9,7 @@ RSpec.feature 'Registration Feature' do
       Capybara.current_driver = Capybara.javascript_driver
     end
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     scenario 'Never participate in public exhibition' do
       visit new_registration_path

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :service do
     sequence :name do |n|
       "Tag_#{n}"

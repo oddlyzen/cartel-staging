@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :artwork_collaborator do
     status :pending
 

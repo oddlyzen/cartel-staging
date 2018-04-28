@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :exhibition do
     association :venue, factory: :company
     title 'Mega Exhibition'

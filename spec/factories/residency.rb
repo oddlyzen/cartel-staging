@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :residency do
     start_month 1
     start_year 1990

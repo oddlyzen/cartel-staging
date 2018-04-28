@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :artwork do
     image_url '/spec/fixtures/files/artpiece1.jpeg'
     title 'The Starry Night'
