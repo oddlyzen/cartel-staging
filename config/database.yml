@@ -20,13 +20,13 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  # host: localhost
-  # user: postgres
+  # user: root
   # password: whoami23
 
 development:
   <<: *default
-  # database: pan_development
+  database: pan_development
+  host: localhost
   #
   # uncoment if need to test in database
   # url: postgres://ftfubzeiiugory:LXbsUE21NUpMdBMQY4xthVlZ85@ec2-54-83-36-203.compute-1.amazonaws.com:5432/d9164ltid8evlj
